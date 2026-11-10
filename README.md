@@ -5,3 +5,4 @@
 - `ger101/` · GER101 Almanca I (eski repo: GER101LockIn)
 - `piano/` · Nota okuma (eski repo: Piano)
 - `mbp221/` · MBP221 Mobil Uygulamalar ve Teknolojiler
+- `mbp207/` · MBP207 Görsel Programlama (Python vizesi)
