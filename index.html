@@ -30,17 +30,16 @@
 
   /* ---------- kartlar ---------- */
   .grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-  /* Kart dinlenirken %94, üstüne gelince tam boy (1:1): son hâl hiç ölçeklenmediği için yazılar net kalır. */
+  /* Kart dururken hiç dönüştürülmez (düz, tam çözünürlük). Büyüme ölçekle değil gerçek boyutla yapılır. */
   a.card{
     display:block; height:276px; text-decoration:none; color:inherit; border-radius:18px; outline:none;
     position:relative; z-index:0; perspective:1200px;
-    transform:scale(.94); transition:transform .55s cubic-bezier(.34,1.45,.55,1);
   }
   .flip{
-    position:relative; width:100%; height:100%;
-    transform-style:preserve-3d;
-    transition:transform .85s cubic-bezier(.45,.05,.2,1.12);
+    position:absolute; inset:0;
+    transition:transform .85s cubic-bezier(.45,.05,.2,1.12), inset .55s cubic-bezier(.34,1.45,.55,1);
   }
+  a.card.p3d .flip{transform-style:preserve-3d}
   .face{
     position:absolute; inset:0; border-radius:18px; overflow:hidden;
     backface-visibility:hidden; -webkit-backface-visibility:hidden;
@@ -52,7 +51,8 @@
   .front::before{content:""; position:absolute; inset:0 0 auto 0; height:5px; background:var(--accent)}
   .back{transform:rotateY(180deg)}
 
-  a.card.hov{transform:scale(1); z-index:2}
+  a.card.hov{z-index:2}
+  a.card.hov .flip{inset:-10px -9px}
   a.card.flipped .flip{transform:rotateY(180deg)}
   /* Dönüş bitince: 3B katman kalkar, arka yüz düz ve net çizilir */
   a.card.settled .flip{transform:none; transform-style:flat; transition:none}
@@ -60,7 +60,6 @@
   a.card.settled .back{transform:none}
   a.card.snap .flip{transition:none}
   a.card:focus-visible .face{box-shadow:0 0 0 3px var(--accent)}
-  @media (hover:hover){ a.card:not(.hov):hover{transform:scale(.96)} }
 
   .tag{
     align-self:flex-start; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
@@ -125,8 +124,7 @@
   .mbp .go{color:#2b59d1} .py .go{color:#7095ff}
 
   /* dokunmatik: takla yok, kart düz kalır */
-  @media (hover:none){ a.card{transform:none} }
-  @media (prefers-reduced-motion: reduce){ a.card,.flip{transition:none} a.card{transform:none} a.card.hov{transform:none} }
+  @media (prefers-reduced-motion: reduce){ .flip{transition:none} }
 
   footer{width:min(1120px,92vw); margin:0 auto; padding:22px 0 30px; border-top:1px solid var(--line); color:var(--mute); font-size:.85rem}
 </style>
@@ -246,7 +244,7 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
   var cards = [].slice.call(document.querySelectorAll('a.card'));
   cards.forEach(function(c){
     var f = c.querySelector('.flip'), want = false;
-    function on(){ want = true; c.classList.add('hov'); if (reduce) c.classList.add('settled'); else c.classList.add('flipped'); }
+    function on(){ want = true; c.classList.add('hov'); if (reduce) c.classList.add('settled'); else c.classList.add('p3d','flipped'); }
     function off(){
       want = false;
       if (c.classList.contains('settled') && !reduce){
@@ -255,12 +253,14 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
       c.classList.remove('hov','flipped','settled');
     }
     f.addEventListener('transitionend', function(e){
-      if (e.target === f && e.propertyName === 'transform' && want && c.classList.contains('flipped')) c.classList.add('settled');
+      if (e.target !== f || e.propertyName !== 'transform') return;
+      if (want && c.classList.contains('flipped')) c.classList.add('settled');
+      else if (!want && !c.classList.contains('flipped')) c.classList.remove('p3d');
     });
     c.addEventListener('mouseenter', on); c.addEventListener('mouseleave', off);
     c.addEventListener('focus', on); c.addEventListener('blur', off);
   });
-  addEventListener('pageshow', function(e){ if (e.persisted) cards.forEach(function(c){ c.classList.remove('hov','flipped','settled','snap'); }); });
+  addEventListener('pageshow', function(e){ if (e.persisted) cards.forEach(function(c){ c.classList.remove('hov','flipped','settled','snap','p3d'); }); });
 })();
 </script>
 </body>
