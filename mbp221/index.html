@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobil Vize Çalışma · MBP221 Mobil Uygulamalar ve Teknolojiler</title>
+  <meta name="description" content="MBP221 Mobil Uygulamalar ve Teknolojiler (React Native) vize tekrarı ve testleri.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    (function () {
+      try { var t = localStorage.getItem('vize-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <nav class="courses" aria-label="Dersler">
+        <a href="./" class="active" aria-current="page">Mobil</a>
+      </nav>
+      <nav class="tabs" aria-label="Bölümler">
+        <a href="#tekrar" data-tab="tekrar">Genel Tekrar</a>
+        <a href="#test" data-tab="test">Test</a>
+      </nav>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Tema değiştir" title="Açık / koyu tema">◐</button>
+    </div>
+  </header>
+
+  <main id="app" class="container"></main>
+
+  <script src="assets/content.js"></script>
+  <script src="assets/questions.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

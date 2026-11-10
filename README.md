@@ -1,0 +1,7 @@
+# EncoristDers
+
+Üç çalışma sitesi tek repoda: https://emirhan-ozz.github.io/EncoristDers/
+
+- `ger101/` · GER101 Almanca I (eski repo: GER101LockIn)
+- `piano/` · Nota okuma (eski repo: Piano)
+- `mbp221/` · MBP221 Mobil Uygulamalar ve Teknolojiler
