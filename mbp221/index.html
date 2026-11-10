@@ -11,6 +11,21 @@
       try { var t = localStorage.getItem('vize-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     })();
   </script>
+<style id="vt-slide">
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:.5s cubic-bezier(.65,0,.25,1) both vt-out-l}
+::view-transition-new(root){animation:.5s cubic-bezier(.65,0,.25,1) both vt-in-r}
+html:active-view-transition-type(back)::view-transition-old(root){animation-name:vt-out-r}
+html:active-view-transition-type(back)::view-transition-new(root){animation-name:vt-in-l}
+@keyframes vt-out-l{to{transform:translateX(-100%)}}
+@keyframes vt-in-r{from{transform:translateX(100%)}}
+@keyframes vt-out-r{to{transform:translateX(100%)}}
+@keyframes vt-in-l{from{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+</style>
+<script id="vt-dir">
+addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=navigation.activation;if(!a||!a.from)return;var d=function(u){return new URL(u).pathname.replace(/index\.html$/,'').split('/').filter(Boolean).length};e.viewTransition.types.add(d(a.entry.url)<d(a.from.url)?'back':'forward')}catch(_){}});
+</script>
 </head>
 <body>
   <header class="topbar">
