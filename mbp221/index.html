@@ -26,6 +26,7 @@ html:active-view-transition-type(back)::view-transition-new(root){animation-name
 <script id="vt-dir">
 addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=navigation.activation;if(!a||!a.from)return;var d=function(u){return new URL(u).pathname.replace(/index\.html$/,'').split('/').filter(Boolean).length};e.viewTransition.types.add(d(a.entry.url)<d(a.from.url)?'back':'forward')}catch(_){}});
 </script>
+<script src="../phase.js?v=1" data-scroll="tekrar"></script>
 </head>
 <body>
   <header class="topbar">
