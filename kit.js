@@ -5,11 +5,16 @@
   if (window.StudyKit) return;
   var CFG = null, IDX = null, ui = null;
 
-  function fold(s) {
-    return String(s || '').toLowerCase()
-      .replace(/[İI]/g, 'i').replace(/ı/g, 'i').replace(/ş/g, 's').replace(/ğ/g, 'g').replace(/ç/g, 'c')
-      .replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ä/g, 'a').replace(/ß/g, 'ss').replace(/[âàá]/g, 'a').replace(/[îí]/g, 'i').replace(/[ûú]/g, 'u').replace(/[éè]/g, 'e');
+  var FM = { 'İ': 'i', 'I': 'i', 'ı': 'i', 'ş': 's', 'ğ': 'g', 'ç': 'c', 'ö': 'o', 'ü': 'u', 'ä': 'a', 'ß': 'ss', 'â': 'a', 'à': 'a', 'á': 'a', 'î': 'i', 'í': 'i', 'û': 'u', 'ú': 'u', 'é': 'e', 'è': 'e' };
+  function fc(ch) { var lo = FM[ch]; if (lo != null) return lo; lo = ch.toLowerCase(); return FM[lo] != null ? FM[lo] : lo.length === 1 ? lo : ch; }
+  /* katlanmış metin + her katlanmış karakterin asıl metindeki yeri (vurgulama kaymasın diye) */
+  function foldMap(s) {
+    s = String(s || ''); var f = '', map = [];
+    for (var i = 0; i < s.length; i++) { var c = fc(s[i]); for (var k = 0; k < c.length; k++) { f += c[k]; map.push(i); } }
+    map.push(s.length);
+    return { f: f, map: map };
   }
+  function fold(s) { return foldMap(s).f; }
   function plain(s) { return String(s == null ? '' : s).replace(/<[^>]+>/g, ' ').replace(/[*`_~]+/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim(); }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
@@ -121,8 +126,8 @@
     as[ui.sel].scrollIntoView({ block: 'nearest' });
   }
   function hl(text, terms) {
-    var f = fold(text), marks = [];
-    terms.forEach(function (tm) { var i = f.indexOf(tm); if (i >= 0) marks.push([i, i + tm.length]); });
+    var fm = foldMap(text), marks = [];
+    terms.forEach(function (tm) { var i = fm.f.indexOf(tm); if (i >= 0) marks.push([fm.map[i], fm.map[i + tm.length - 1] + 1]); });
     marks.sort(function (a, b) { return a[0] - b[0]; });
     var out = '', p = 0;
     marks.forEach(function (m) { if (m[0] < p) return; out += esc(text.slice(p, m[0])) + '<mark>' + esc(text.slice(m[0], m[1])) + '</mark>'; p = m[1]; });
@@ -130,10 +135,10 @@
   }
   function snippet(s, terms) {
     if (!s) return '';
-    var f = fold(s), i = -1;
-    terms.some(function (tm) { i = f.indexOf(tm); return i >= 0; });
+    var fm = foldMap(s), i = -1;
+    terms.some(function (tm) { i = fm.f.indexOf(tm); return i >= 0; });
     if (i < 0) return s.slice(0, 140);
-    var a = Math.max(0, i - 50);
+    var a = Math.max(0, fm.map[i] - 50);
     return (a ? '…' : '') + s.slice(a, a + 150);
   }
   function search() {
