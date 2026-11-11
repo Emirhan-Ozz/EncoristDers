@@ -83,7 +83,7 @@
         { ad: 'aralikToplamOrtalama, 2–4. aylar', pre: ['0'], call: 'aralikToplamOrtalama(gelirler)', cin: ['2', '4'] },
         { ad: 'ortalamaUstuAylar(gelirler)', pre: ['0'], call: 'ortalamaUstuAylar(gelirler)', cin: [] },
         { ad: 'Menü: 3 (1–12), 9, 0', pre: ['3', '1', '12', '9', '0'], call: null, cin: [], menu: true }],
-      sample: '4\n0' },
+      sample: '1\n0' },
 
     { id: 'diyabet', title: 'Diyabet tanı programı (vize hazırlık)', names: '`apg1_kontrol(apg1)`, `ogtt_kontrol(apg2, pg)`, `main()`',
       task: [
@@ -259,6 +259,7 @@
     '        err = type(e).__name__ + ": " + str(e)',
     '    finally:',
     '        sys.stdout = old',
+    '    err = err and __import__("re").sub(r" \\(kod\\.py, line \\d+\\)", "", err)',
     '    return json.dumps({"out": out.getvalue(), "ret": None if call is None else repr(ret), "err": err, "line": line})'].join('\n');
   var WSRC = 'importScripts("' + PYO + 'pyodide.js");var py,ready=loadPyodide({indexURL:"' + PYO + '"}).then(function(p){py=p;py.runPython(' + JSON.stringify(HARNESS) + ');postMessage({ready:true});});' +
     'onmessage=function(e){ready.then(function(){var f=py.globals.get("__run");var r=e.data.jobs.map(function(j){return JSON.parse(f(j.code,j.pre,j.call,j.cin));});postMessage({id:e.data.id,res:r});});};';
@@ -361,6 +362,8 @@
     '@media (max-width:640px){.kd-t .cols{grid-template-columns:1fr}}' +
     '.kd-run{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:10px;margin-top:6px}.kd-run textarea{font:13px/1.5 var(--mono);border:1px solid var(--border);border-radius:8px;padding:6px 8px;background:var(--surface);color:var(--text);min-height:90px}' +
     '.kd-run pre{margin:0;font:13px/1.5 var(--mono);background:var(--code-bg);color:var(--code-text);border-radius:8px;padding:8px 10px;white-space:pre-wrap;min-height:90px}' +
+    '.kd-runbox{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);padding:10px 12px;margin-top:10px}.kd-runh{font-size:.9rem;margin-bottom:6px}.kd-runh span{color:var(--muted)}.kd-run small{display:block;color:var(--muted);font-weight:600;margin-bottom:3px}.kd-run pre.err{color:#ffb0a8}' +
+    '.kd-bar .kd-runbtn{background:var(--ok);border-color:var(--ok);color:#fff}.kd-code .errl{background:rgba(240,113,103,.25);display:inline-block;width:100%}' +
     '.kd-sol{margin-top:10px}.kd-sol pre{background:var(--code-bg);color:var(--code-text);border-radius:var(--radius);padding:12px 14px;font:13.5px/1.6 var(--mono);overflow-x:auto}' +
     '.kd-win{background:var(--ok-soft);color:var(--ok);font-weight:700;border-radius:8px;padding:10px 14px;margin:8px 0}';
 
@@ -424,10 +427,11 @@
       '<div class="kd-progs">' + PROGS.map(function (x) { return '<a href="#kod/' + mode.id + '/' + x.id + '"' + (x === prog ? ' class="on"' : '') + '>' + esc(x.title) + (st0['done:' + mode.id + ':' + x.id] ? '<span class="d">✓</span>' : '') + '</a>'; }).join('') + '</div>' +
       '<div class="kd-task"><b>' + esc(mode.desc) + '</b>' + (mode.id === 'bos' ? '<ol>' + prog.task.map(function (t) { return '<li>' + md(t) + '</li>'; }).join('') + '</ol><div style="margin-top:6px">Gerekli adlar: ' + md(prog.names) + '</div>' : '') + '</div>' +
       '<div class="kd-work"></div>' +
-      '<div class="kd-bar"><button type="button" class="kd-check">Kontrol et</button><button type="button" class="kd-reset">Sıfırla</button><span class="kd-try"></span><button type="button" class="kd-give" hidden>Pes et, çözümü göster</button><span class="kd-py">Python: ilk kontrolde yüklenir</span></div>' +
+      '<div class="kd-bar"><button type="button" class="kd-runbtn">▶ Çalıştır</button><button type="button" class="kd-check">Kontrol et</button><button type="button" class="kd-reset">Sıfırla</button><span class="kd-try"></span><button type="button" class="kd-give" hidden>Pes et, çözümü göster</button><span class="kd-py">Python: ilk kontrolde yüklenir</span></div>' +
       '<div class="kd-res"></div><div class="kd-sol"></div>' +
-      '<details style="margin-top:10px"><summary style="cursor:pointer;font-weight:600">Kendi girdilerinle çalıştır</summary><div class="kd-run"><textarea placeholder="Her satıra bir input() değeri">' + esc(prog.sample) + '</textarea><pre>Çıktı burada görünür.</pre></div><div class="kd-bar"><button type="button" class="kd-runbtn">▶ Çalıştır</button></div></details>';
-    var work = app.querySelector('.kd-work'), getCode, markWrong, giveSol, ed = null;
+      '<div class="kd-runbox"><div class="kd-runh"><b>Çalıştır</b> <span>Kodu olduğu gibi çalıştırır. Sol kutuya programın soracağı <code>input()</code> değerlerini her satıra bir tane yaz.</span></div>' +
+      '<div class="kd-run"><div><small>Girdiler</small><textarea placeholder="Her satıra bir input() değeri">' + esc(prog.sample) + '</textarea></div><div><small>Çıktı</small><pre>▶ Çalıştır’a bas, çıktı burada görünür.</pre></div></div></div>';
+    var work = app.querySelector('.kd-work'), getCode, getRunCode = null, markWrong, giveSol, ed = null;
     var pyEl = app.querySelector('.kd-py');
     onState = function (s) { pyEl.className = 'kd-py ' + s; pyEl.textContent = s === 'yukleniyor' ? 'Python yükleniyor… (ilk sefer ~10 sn)' : s === 'hazir' ? 'Python hazır' : 'Python yüklenemedi, internet bağlantını kontrol et'; };
     if (W) onState(wReady ? 'hazir' : 'yukleniyor');
@@ -449,6 +453,7 @@
       });
       var vals = function () { return [].map.call(ins, function (y) { return y.value.trim(); }); };
       getCode = function () { return blankCode(prog, vals()); };
+      getRunCode = function () { var v = vals(), n = 0; var c = blankCode(prog, v.map(function (x) { if (!x) { n++; return null; } return x; })); return { code: c, filled: n }; };
       markWrong = function (allOk) {
         var v = vals(), norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
         if (allOk) { ins.forEach(function (x) { x.className = 'ok'; }); return Promise.resolve(); }
@@ -473,6 +478,7 @@
       var eds = [].map.call(work.querySelectorAll('.kd-ed'), function (b, n) { return wireEditor(b, function () { b.closest('.kd-blok').classList.remove('ok', 'no'); save(k, eds.map(function (e) { return e.ta.value; })); }); });
       var bv = function () { return eds.map(function (e) { return e.ta.value; }); };
       getCode = function () { return blokCode(parts, bv()); };
+      getRunCode = function () { var n = 0; var c = blokCode(parts, bv().map(function (x) { if (!x.trim()) { n++; return null; } return x; })); return { code: c, filled: n }; };
       var boxes = work.querySelectorAll('.kd-blok');
       markWrong = function (allOk) {
         if (allOk) { boxes.forEach(function (b) { b.classList.add('ok'); }); return Promise.resolve(); }
@@ -506,7 +512,7 @@
       testAll(prog, code, mode.id === 'bos').then(function (res) {
         var allOk = res.every(function (r) { return r.ok; });
         if (ed) { var bad = res.filter(function (r) { return r.got.line; }).map(function (r) { return r.got.line; }); ed.mark(bad); }
-        resEl.innerHTML = (allOk ? '<div class="kd-win">Tebrikler, bütün testler geçti! ✓</div>' : '') + results(res, mode.id === 'bos');
+        resEl.innerHTML = (allOk ? '<div class="kd-win">Tebrikler, bütün testler geçti! ✓</div>' : '') + results(res, mode.id !== 'blok');
         if (allOk) { save('done:' + k, 1); app.querySelectorAll('.kd-progs a.on').forEach(function (a) { if (!a.querySelector('.d')) a.insertAdjacentHTML('beforeend', '<span class="d">✓</span>'); }); }
         else { tries++; save('try:' + k, tries); showTry(); }
         return markWrong(allOk);
@@ -519,11 +525,25 @@
     });
     var runBtn = app.querySelector('.kd-runbtn'), runIn = app.querySelector('.kd-run textarea'), runOut = app.querySelector('.kd-run pre');
     runBtn.addEventListener('click', function () {
-      runBtn.disabled = true; runOut.textContent = 'Çalışıyor…';
-      run([{ code: getCode(), pre: runIn.value.split('\n').filter(function (x, i, a) { return i < a.length - 1 || x !== ''; }), call: null, cin: [] }]).then(function (r) {
-        runOut.textContent = (r[0].out || '') + (r[0].err ? '\n' + r[0].err + (r[0].line ? ' (satır ' + r[0].line + ')' : '') : '') || '(çıktı yok)';
-        if (ed && r[0].line) ed.mark([r[0].line]);
+      runBtn.disabled = true; runOut.className = ''; runOut.textContent = W && wReady ? 'Çalışıyor…' : 'Python yükleniyor… (ilk sefer ~10 sn)';
+      var lines0 = runIn.value.split('\n'); while (lines0.length && lines0[lines0.length - 1] === '') lines0.pop();
+      var rc = getRunCode ? getRunCode() : { code: getCode(), filled: 0 };
+      run([{ code: rc.code, pre: lines0, call: null, cin: [] }]).then(function (r) {
+        var x = r[0], txt = x.out || '';
+        if (rc.filled) txt = '(' + rc.filled + (mode.id === 'blok' ? ' boş blok' : ' boş kutu') + ' çalıştırırken hocanın koduyla dolduruldu)\n' + txt;
+        if (x.err) {
+          var where = x.line ? (mode.id === 'blok' ? '' : ' (satır ' + x.line + ')') : '';
+          txt += (txt ? '\n' : '') + '⚠ ' + x.err + where;
+          if (/^_?Bitti|EOF/.test(x.err)) txt += '\nGirdiler bitti: program daha fazla input() bekliyor.';
+          runOut.className = 'err';
+        }
+        runOut.textContent = txt || '(çıktı yok)';
+        if (ed && x.line) ed.mark([x.line]);
+        if (mode.id === 'bosluk' && x.line) {
+          var codeBox = work.querySelector('.kd-code'); codeBox.querySelectorAll('.errl').forEach(function (el) { el.outerHTML = el.innerHTML; });
+        }
         runBtn.disabled = false;
+        runOut.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       });
     });
     window.scrollTo(0, 0);
