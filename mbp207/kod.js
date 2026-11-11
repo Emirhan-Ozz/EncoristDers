@@ -314,7 +314,7 @@
     if (exp.err) return !got.err;
     if (got.err) return false;
     var lo = lines(got.out).join('\n') === lines(exp.out).join('\n');
-    if (!lo && loose) lo = lines(got.out).length === lines(exp.out).length && sameNums(got.out, exp.out);
+    if (!lo && loose) lo = nums(exp.out).length > 0 && lines(got.out).length === lines(exp.out).length && sameNums(got.out, exp.out);
     var ro = exp.ret == null || got.ret === exp.ret || (loose && sameNums(got.ret, exp.ret) && String(got.ret).replace(/[\d.\s-]/g, '') === String(exp.ret).replace(/[\d.\s-]/g, ''));
     if (!ro && exp.ret != null) ro = sameNums(got.ret, exp.ret) && String(got.ret).replace(/[\d.\s,()-]/g, '') === String(exp.ret).replace(/[\d.\s,()-]/g, '');
     return lo && ro;
@@ -570,5 +570,7 @@
     });
     window.scrollTo(0, 0);
   }
-  window.KodAlistirma = { render: render, progs: PROGS, _ref: refCode };
+  window.KodAlistirma = { render: render, progs: PROGS, _ref: refCode, run: run, check: testAll, editor: editor, wire: wireEditor, results: results,
+    css: function () { if (!document.getElementById('kd-css')) { var st = document.createElement('style'); st.id = 'kd-css'; st.textContent = CSS; document.head.appendChild(st); } },
+    state: function (f) { onState = f; if (W) f(wReady ? 'hazir' : 'yukleniyor'); } };
 })();
