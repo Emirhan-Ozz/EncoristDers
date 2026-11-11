@@ -7,7 +7,14 @@
   /* ---------- programlar ----------
      ⟦a‖b⟧ = boşluk (ilk cevap asıl); "##BLOK: ipucu" … "##SON" = eksik blok */
   var PROGS = [
-    { id: 'gelir', title: 'Gelir analizi (vize hazırlık)', names: '`gelirler` listesi, `aylikGelirler(liste)`, `aralikListele(liste)`, `aralikToplamOrtalama(liste)`, `ortalamaUstuAylar(liste)`, `main()`',
+    { id: 'gelir', soru: { giris: 'Bir işletmenin 12 aylık gelirleri aşağıdaki `gelirler` listesinde verilmiştir. Ay numaraları 1’den başlamaktadır. Aşağıdaki işlemleri fonksiyonlar kullanarak yapan Python programını yazınız.', liste: 'gelirler = [30000, 40000, 50000, 42000, 55000, 25000, 36000, 30000, 52000, 45000, 28000, 48000]',
+        maddeler: [
+          '**a)** Her gelirin kaçıncı aya ait olduğunu ve o ayın gelirini “1. ay geliri 30000” biçiminde yan yana yazan `aylikGelirler(liste)` fonksiyonunu `enumerate` kullanarak yazınız.',
+          '**b)** Kullanıcıdan başlangıç ve bitiş ay numarasını alarak bu aylar arasındaki gelirlerden yeni bir liste oluşturan, bu gelirleri gerçek ay numaralarıyla ekrana yazan ve yeni listeyi döndüren `aralikListele(liste)` fonksiyonunu yazınız.',
+          '**c)** Kullanıcının girdiği ay aralığındaki gelirlerin toplamını ve ortalamasını hesaplayıp döndüren `aralikToplamOrtalama(liste)` fonksiyonunu yazınız.',
+          '**d)** Yıllık ortalama gelirden fazla gelir elde edilen ayları ve gelirlerini ekrana yazan `ortalamaUstuAylar(liste)` fonksiyonunu yazınız.',
+          '**e)** Bu fonksiyonları 1–4 seçenekleriyle çağıran, 0 girilince “Programdan çıkılıyor” yazıp sonlanan ve geçersiz seçimde uyarı veren bir menüyü `main()` fonksiyonu içinde `while True` ile oluşturunuz. 3. seçenekte sonuç “Toplam: … Ortalama: …” biçiminde, ortalama iki ondalıkla yazılmalıdır.'] },
+      title: 'Gelir analizi (vize hazırlık)', names: '`gelirler` listesi, `aylikGelirler(liste)`, `aralikListele(liste)`, `aralikToplamOrtalama(liste)`, `ortalamaUstuAylar(liste)`, `main()`',
       task: [
         '`gelirler = [30000, 40000, 50000, 42000, 55000, 25000, 36000, 30000, 52000, 45000, 28000, 48000]` listesini tanımla.',
         '`aylikGelirler(liste)`: `enumerate` ile her ayı `1. ay geliri 30000` biçiminde yazsın (ay 1’den başlar).',
@@ -85,7 +92,12 @@
         { ad: 'Menü: 3 (1–12), 9, 0', pre: ['3', '1', '12', '9', '0'], call: null, cin: [], menu: true }],
       sample: '1\n0' },
 
-    { id: 'diyabet', title: 'Diyabet tanı programı (vize hazırlık)', names: '`apg1_kontrol(apg1)`, `ogtt_kontrol(apg2, pg)`, `main()`',
+    { id: 'diyabet', soru: { giris: 'Bir sağlık kuruluşu, açlık plazma glukozu (APG) ve oral glukoz tolerans testi (OGTT) değerlerine göre hastalara ön tanı koyan bir program istemektedir. Aşağıdaki kurallara göre programı fonksiyonlar kullanarak yazınız. Fonksiyonlar sonucu ekrana yazmamalı, `return` ile döndürmelidir.',
+        maddeler: [
+          '**a)** APG1 değerini parametre alan `apg1_kontrol(apg1)` fonksiyonunu yazınız: APG1 < 100 ise “Sonucunuz Normal”, 100–125 arası ise “OGTT”, 126 ve üzeri ise “Diyabet Hastasısınız” döndürülmelidir.',
+          '**b)** OGTT yapılan hastanın APG2 ve PG değerlerini parametre alan `ogtt_kontrol(apg2, pg)` fonksiyonunu yazınız. **Önce** APG2 ≥ 126 veya PG ≥ 200 ise “Diyabet Hastasısınız”; APG2 100–125 ve PG 140–199 ise “BAG ve BGT”; yalnız APG2 100–125 ise “İzole BAG”; yalnız PG 140–199 ise “İzole BGT”; hiçbiri değilse “Sonucunuz Normal” döndürülmelidir.',
+          '**c)** `main()` fonksiyonunda kullanıcıdan APG1 değerini alıp sonucu yazdırınız. Sonuç “OGTT” ise APG2 ve PG değerlerini de alıp OGTT sonucunu yazdırınız. Her hastadan sonra “Yeni hasta? (e/h)” sorusu sorulmalı, “h” girilirse program sonlanmalıdır (`while True`, `break`).'] },
+      title: 'Diyabet tanı programı (vize hazırlık)', names: '`apg1_kontrol(apg1)`, `ogtt_kontrol(apg2, pg)`, `main()`',
       task: [
         '`apg1_kontrol(apg1)`: < 100 → `"Sonucunuz Normal"`, 100–125 → `"OGTT"`, ≥ 126 → `"Diyabet Hastasısınız"` döndürsün.',
         '`ogtt_kontrol(apg2, pg)`: önce APG2 ≥ 126 veya PG ≥ 200 → `"Diyabet Hastasısınız"`; APG2 100–125 ve PG 140–199 → `"BAG ve BGT"`; APG2 100–125 → `"İzole BAG"`; PG 140–199 → `"İzole BGT"`; değilse `"Sonucunuz Normal"`.',
@@ -139,7 +151,12 @@
         { ad: 'Program: 110 → OGTT (110, 160), sonra 85, h', pre: ['110', '110', '160', 'e', '85', 'h'], call: null, cin: [], menu: true }],
       sample: '110\n110\n160\nh' },
 
-    { id: 'not', title: 'Not hesaplama (Lab 1 Görev 4)', names: '`harf_notu(ortalama)`, `not_hesapla()`',
+    { id: 'not', soru: { giris: 'Lab 1 Görev 4: Bir öğrencinin vize ve final notlarından ortalamasını ve harf notunu hesaplayan programı fonksiyonlar kullanarak yazınız.',
+        maddeler: [
+          '**a)** Ortalamayı parametre alıp harf notunu döndüren `harf_notu(ortalama)` fonksiyonunu yazınız. Harf aralıkları: 90 ve üzeri AA, 85 BA, 80 BB, 75 CB, 70 CC, 65 DC, 60 DD, 50 FD, 50’nin altı FF.',
+          '**b)** Kullanıcıdan vize ve final notunu alan `not_hesapla()` fonksiyonunu yazınız. Notlardan biri 0–100 aralığı dışındaysa “Notlar 0-100 arasında olmalıdır” yazıp fonksiyondan çıkılmalıdır.',
+          '**c)** Ortalama, vizenin %40’ı ve finalin %60’ı alınarak hesaplanmalıdır. Final notu 50’nin altındaysa harf notu ortalamaya bakılmaksızın FF olmalıdır. Sonuç “Ortalama: 76.0 | Harf notu: CB” biçiminde, ortalama bir ondalıkla yazdırılmalıdır.'] },
+      title: 'Not hesaplama (Lab 1 Görev 4)', names: '`harf_notu(ortalama)`, `not_hesapla()`',
       task: [
         '`harf_notu(ortalama)`: 90+ AA · 85+ BA · 80+ BB · 75+ CB · 70+ CC · 65+ DC · 60+ DD · 50+ FD · altı FF döndürsün.',
         '`not_hesapla()`: vize ve finali al; ikisi 0–100 dışındaysa “Notlar 0-100 arasında olmalıdır” yazıp `return` ile çık. Ortalama = vize × 0.4 + final × 0.6; final < 50 ise harf FF, değilse `harf_notu`. `Ortalama: 76.0 | Harf notu: CB` biçiminde yaz.',
@@ -330,7 +347,7 @@
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
   function save(k, v) { var d = load(); d[k] = v; try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) { /* yok say */ } }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
-  function md(s) { return esc(s).replace(/`([^`]+)`/g, '<code>$1</code>'); }
+  function md(s) { return esc(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>'); }
 
   var MODES = [
     { id: 'bosluk', title: '1 · Boşluk doldurma', desc: 'Hocanın hazırlık kodu; boş kutuları doldur.' },
@@ -364,6 +381,9 @@
     '.kd-run pre{margin:0;font:13px/1.5 var(--mono);background:var(--code-bg);color:var(--code-text);border-radius:8px;padding:8px 10px;white-space:pre-wrap;min-height:90px}' +
     '.kd-runbox{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);padding:10px 12px;margin-top:10px}.kd-runh{font-size:.9rem;margin-bottom:6px}.kd-runh span{color:var(--muted)}.kd-run small{display:block;color:var(--muted);font-weight:600;margin-bottom:3px}.kd-run pre.err{color:#ffb0a8}' +
     '.kd-bar .kd-runbtn{background:var(--ok);border-color:var(--ok);color:#fff}.kd-code .errl{background:rgba(240,113,103,.25);display:inline-block;width:100%}' +
+    '.kd-soru{border:1px solid var(--border);border-left:4px solid var(--accent);background:var(--surface);border-radius:var(--radius);padding:12px 16px;margin:0 0 12px;line-height:1.55}' +
+    '.kd-soru p{margin:.35rem 0}.kd-sh{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}.kd-soru pre{font:13px/1.5 var(--mono);background:var(--surface-2);border-radius:6px;padding:6px 10px;white-space:pre-wrap;margin:6px 0}' +
+    '.kd-soru code{font:.86em var(--mono);background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:0 4px}' +
     '.kd-sol{margin-top:10px}.kd-sol pre{background:var(--code-bg);color:var(--code-text);border-radius:var(--radius);padding:12px 14px;font:13.5px/1.6 var(--mono);overflow-x:auto}' +
     '.kd-win{background:var(--ok-soft);color:var(--ok);font-weight:700;border-radius:8px;padding:10px 14px;margin:8px 0}';
 
@@ -425,7 +445,9 @@
       '<h1>Kod alıştırmaları</h1><p style="color:var(--muted);margin:.3rem 0 0">Vize hazırlık programları tarayıcıda gerçek Python (Pyodide) ile çalışır. Kontrol, senin kodunu hocanın çözümüyle aynı girdilerle çalıştırıp çıktıları karşılaştırır. ' + MAXTRY + ' yanlış denemeden sonra <b>Pes et</b> çıkar.</p>' +
       '<div class="kd-modes">' + MODES.map(function (x) { return '<a href="#kod/' + x.id + '/' + prog.id + '"' + (x === mode ? ' class="on"' : '') + '>' + x.title + '</a>'; }).join('') + '</div>' +
       '<div class="kd-progs">' + PROGS.map(function (x) { return '<a href="#kod/' + mode.id + '/' + x.id + '"' + (x === prog ? ' class="on"' : '') + '>' + esc(x.title) + (st0['done:' + mode.id + ':' + x.id] ? '<span class="d">✓</span>' : '') + '</a>'; }).join('') + '</div>' +
-      '<div class="kd-task"><b>' + esc(mode.desc) + '</b>' + (mode.id === 'bos' ? '<ol>' + prog.task.map(function (t) { return '<li>' + md(t) + '</li>'; }).join('') + '</ol><div style="margin-top:6px">Gerekli adlar: ' + md(prog.names) + '</div>' : '') + '</div>' +
+      '<div class="kd-soru"><div class="kd-sh">Sınav sorusu</div><p>' + md(prog.soru.giris) + '</p>' + (prog.soru.liste ? '<pre>' + esc(prog.soru.liste) + '</pre>' : '') +
+        prog.soru.maddeler.map(function (t) { return '<p>' + md(t) + '</p>'; }).join('') + '</div>' +
+      '<div class="kd-task"><b>' + esc(mode.desc) + '</b>' + (mode.id === 'bos' ? '<div style="margin-top:6px">Testlerin bulabilmesi için şu adları kullan: ' + md(prog.names) + '</div>' : '') + '</div>' +
       '<div class="kd-work"></div>' +
       '<div class="kd-bar"><button type="button" class="kd-runbtn">▶ Çalıştır</button><button type="button" class="kd-check">Kontrol et</button><button type="button" class="kd-reset">Sıfırla</button><span class="kd-try"></span><button type="button" class="kd-give" hidden>Pes et, çözümü göster</button><span class="kd-py">Python: ilk kontrolde yüklenir</span></div>' +
       '<div class="kd-res"></div><div class="kd-sol"></div>' +
