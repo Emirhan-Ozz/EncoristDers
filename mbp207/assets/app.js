@@ -784,6 +784,7 @@
       window.scrollTo(0, 0);
       return;
     }
+    if (page === 'kod' && window.KodAlistirma) { setTab('kod'); current = 'kod'; S = null; window.KodAlistirma.render(app, arg, parts[2]); return; }
     if (page === 'kopya' && window.Kopya) { setTab('kopya'); current = 'kopya'; S = null; window.Kopya.render(app, arg); return; }
     if (C.noReview) { location.replace('#test'); return; }
     setTab('tekrar');
