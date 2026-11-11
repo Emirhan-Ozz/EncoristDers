@@ -28,6 +28,9 @@
       (window.WORDS || []).forEach(function (w) {
         out.push({ k: 'Kelime', t: (w.a ? w.a + ' ' : '') + w.w, s: (w.p ? 'Çoğul: ' + w.p + ' · ' : '') + w.t, h: '#kelimeler/' + encodeURIComponent(w.w) });
       });
+      (window.Kopya ? Kopya.sections : []).forEach(function (s) {
+        out.push({ k: 'Kopya kağıdı', t: s.no + '. ' + s.title, s: s.items.map(function (i) { return i[0] + ' ' + i[1]; }).join(' '), h: '#kopya', w: -1 });
+      });
       return out;
     }
   });

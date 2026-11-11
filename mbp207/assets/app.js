@@ -784,6 +784,7 @@
       window.scrollTo(0, 0);
       return;
     }
+    if (page === 'kopya' && window.Kopya) { setTab('kopya'); current = 'kopya'; S = null; window.Kopya.render(app, arg); return; }
     if (C.noReview) { location.replace('#test'); return; }
     setTab('tekrar');
     S = null;
