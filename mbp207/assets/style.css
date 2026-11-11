@@ -607,7 +607,10 @@ input.blank:disabled { opacity: 1; }
   .card { padding: 16px; }
   .format-grid { grid-template-columns: 1fr; }
   .topbar-inner { padding: 0 12px; gap: 8px; }
-  .tabs { gap: 0; }
+  .tabs { gap: 0; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs a { white-space: nowrap; flex: none; }
+  .theme-btn { flex: none; }
   .tabs a { padding: 0 8px; font-size: .92rem; }
   .courses a { padding: 3px 8px; font-size: .85rem; }
   pre.code { font-size: 13px; padding: 10px 12px; }

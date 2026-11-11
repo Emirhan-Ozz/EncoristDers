@@ -251,6 +251,8 @@
   /* ---------- Sekmeler ---------- */
   function setTab(name) {
     document.querySelectorAll('.tabs a').forEach(function (a) { a.classList.toggle('active', a.dataset.tab === name); });
+    var on = document.querySelector('.tabs a.active'), nav = document.querySelector('.tabs');
+    if (on && nav && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = on.offsetLeft - (nav.clientWidth - on.offsetWidth) / 2;
   }
 
   /* ---------- Genel tekrar ---------- */
@@ -786,6 +788,7 @@
     }
     if (page === 'ders' && window.KonuDers) { setTab('ders'); current = 'ders'; S = null; window.KonuDers.render(app, arg); return; }
     if (page === 'kod' && window.KodAlistirma) { setTab('kod'); current = 'kod'; S = null; window.KodAlistirma.render(app, arg, parts[2]); return; }
+    if (page === 'prova' && window.Prova) { setTab('prova'); current = 'prova'; S = null; window.Prova.render(app, arg); return; }
     if (page === 'kopya' && window.Kopya) { setTab('kopya'); current = 'kopya'; S = null; window.Kopya.render(app, arg); return; }
     if (C.noReview) { location.replace('#test'); return; }
     setTab('tekrar');

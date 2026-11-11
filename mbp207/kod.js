@@ -249,11 +249,18 @@
   var HARNESS = [
     'import sys, io, builtins, traceback, json',
     'class _Bitti(Exception): pass',
-    'def __run(code, pre, call, cin):',
+    'def __run(code, pre, call, cin, echo=False):',
     '    out = io.StringIO(); q = list(pre)',
+    '    st = {"noinput": False}',
     '    def _inp(p=""):',
-    '        if not q: raise _Bitti()',
-    '        return str(q.pop(0))',
+    '        if echo: out.write(str(p))',
+    '        if not q:',
+    '            st["noinput"] = True',
+    '            if echo: out.write("\\n")',
+    '            raise _Bitti()',
+    '        v = str(q.pop(0))',
+    '        if echo: out.write(v + "\\n")',
+    '        return v',
     '    builtins.input = _inp',
     '    ns = {"__name__": "__main__"}',
     '    old = sys.stdout; sys.stdout = out; err = None; line = None; ret = None',
@@ -277,9 +284,9 @@
     '    finally:',
     '        sys.stdout = old',
     '    err = err and __import__("re").sub(r" \\(kod\\.py, line \\d+\\)", "", err)',
-    '    return json.dumps({"out": out.getvalue(), "ret": None if call is None else repr(ret), "err": err, "line": line})'].join('\n');
+    '    return json.dumps({"out": out.getvalue(), "ret": None if call is None else repr(ret), "err": err, "line": line, "noinput": st["noinput"]})'].join('\n');
   var WSRC = 'importScripts("' + PYO + 'pyodide.js");var py,ready=loadPyodide({indexURL:"' + PYO + '"}).then(function(p){py=p;py.runPython(' + JSON.stringify(HARNESS) + ');postMessage({ready:true});});' +
-    'onmessage=function(e){ready.then(function(){var f=py.globals.get("__run");var r=e.data.jobs.map(function(j){return JSON.parse(f(j.code,j.pre,j.call,j.cin));});postMessage({id:e.data.id,res:r});});};';
+    'onmessage=function(e){ready.then(function(){var f=py.globals.get("__run");var r=e.data.jobs.map(function(j){return JSON.parse(f(j.code,j.pre,j.call,j.cin,!!j.echo));});postMessage({id:e.data.id,res:r});});};';
   var W = null, wReady = false, wq = {}, wid = 0, onState = function () {};
   function worker() {
     if (W) return W;
