@@ -265,7 +265,7 @@
     var s = '<section class="hero"><p class="lead">' + fmt(C.testLead) + '</p></section>';
     s += '<h2 class="sec">Seviyeler <small>önerilen sırayla</small></h2><div class="levels">' + LEVELS.map(levelCard).join('') + '</div>';
     s += '<h2 class="sec">Kendine göre</h2><div class="levels">';
-    s += '<a class="lvl special" href="#test/hatalar"><span class="no">✎</span><span class="lt">Hatalarım</span><span class="ld">' +
+    s += '<a class="lvl special" href="#test/hatalar"><span class="no">✎</span><span class="lt">Yanlışlarım</span><span class="ld">' +
       (weak.length ? 'Sık karıştırdığın ' + weak.length + ' nota üzerinden çalış.' : 'Henüz biriken hata yok. Birkaç seviye çözünce burası dolar.') + '</span></a>';
     s += '<a class="lvl special" href="#test/ozel"><span class="no">⚙</span><span class="lt">Özel çalışma</span><span class="ld">Anahtarı, aralığı ve işaretleri kendin seç.</span>' +
       (bestSummary('ozel') ? '<span class="best">' + esc(bestSummary('ozel')) + '</span>' : '') + '</a>';

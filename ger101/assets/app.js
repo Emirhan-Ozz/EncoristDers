@@ -129,6 +129,21 @@
   // Rastgele testlerde az görülen sorular öne alınır (tarayıcıda sayılır)
   var SEEN_KEY = BEST_KEY + '-seen';
   function sig(q) { return (q.q + '|' + (q.code || '')).slice(0, 160); }
+
+  /* ---------- Yanlışlarım ---------- */
+  var WRONG_KEY = BEST_KEY + '-yanlis';
+  function getWrong() { try { return JSON.parse(localStorage.getItem(WRONG_KEY)) || {}; } catch (e) { return {}; } }
+  function logWrong(q, r) {
+    if (!q || !r || r.empty) return;
+    var w = getWrong(), k = sig(q);
+    if (r.ok) { if (!(k in w)) return; delete w[k]; }
+    else {
+      w[k] = { q: JSON.parse(JSON.stringify(q)), t: Date.now() };
+      var ks = Object.keys(w);
+      if (ks.length > 300) ks.sort(function (a, b) { return w[a].t - w[b].t; }).slice(0, ks.length - 300).forEach(function (x) { delete w[x]; });
+    }
+    try { localStorage.setItem(WRONG_KEY, JSON.stringify(w)); } catch (e) { /* yok say */ }
+  }
   function getSeen() { try { return JSON.parse(localStorage.getItem(SEEN_KEY)) || {}; } catch (e) { return {}; } }
   function markSeen(qs) {
     var s = getSeen();
@@ -396,6 +411,13 @@
     });
   }
 
+  TESTS.push({
+    id: 'yanlislar', group: 'yanlis', title: 'Yanlışlarım', mode: 'practice', showTopic: true,
+    desc: 'Yanlış yaptığın sorular burada birikir; doğru cevapladığında listeden düşer.',
+    get count() { return Object.keys(getWrong()).length; },
+    build: function () { var w = getWrong(); return shuffle(Object.keys(w).map(function (k) { return copy(w[k].q); })); }
+  });
+
   /* ---------- Sekmeler ---------- */
   function setTab(name) {
     document.querySelectorAll('.tabs a').forEach(function (a) { a.classList.toggle('active', a.dataset.tab === name); });
@@ -507,6 +529,7 @@
     app.innerHTML = '<h1>Test</h1>' +
       '<p class="lead">' + fmt(C.testLead || '') + '</p>' +
       group(C.hocaTitle || 'Hocanın çalışma soruları', 'hoca', C.hocaNote || 'Cevap anahtarındaki açıklamalarla, her soru anında kontrol edilir.') +
+      group('Yanlışlarım', 'yanlis', 'Testlerde yanlış yaptığın sorular. Burada doğru cevapladığında listeden düşer.') +
       group('Vize formatında (100 puan)', 'vize', 'Cevaplar sonda topluca puanlanır, gerçek sınav gibi.') +
       group('Konu testleri', 'konu', 'Her soru anında kontrol edilir ve açıklaması gösterilir.') +
       group('Kelime testleri', 'kelime', 'Kelimeler sekmesindeki listeden üretilir; her açılışta farklı kelimeler.') +
@@ -606,6 +629,7 @@
       return;
     }
     var qs = t.build();
+    if (!qs.length) { app.innerHTML = '<a class="back" href="#test">← Testler</a><h1>' + esc(t.title) + '</h1><p class="empty">' + (t.id === 'yanlislar' ? 'Şu an yanlış listen boş. Testleri çözdükçe yanlış yaptığın sorular burada birikir.' : 'Bu testte soru yok.') + '</p>'; return; }
     if (t.random) markSeen(qs);
     S = {
       t: t, qs: qs,
@@ -650,7 +674,8 @@
     return a.some(function (x) { return normAns(x) !== ''; });
   }
 
-  function grade(i) {
+  function grade(i) { var r = grade0(i); logWrong(S.qs[i], r); return r; }
+  function grade0(i) {
     var q = S.qs[i], a = S.ans[i];
     if (q.type === 'mc') { var ok = a === q.a; return { ok: ok, frac: ok ? 1 : 0, empty: a === null }; }
     if (q.type === 'fill') { var ok2 = matchAns(a, q.ans, q.cs); return { ok: ok2, frac: ok2 ? 1 : 0, empty: normAns(a) === '' }; }
@@ -952,6 +977,7 @@
     var parts = h.split('/');
     var page = parts[0], arg = parts[1];
     if (page === 'kelimeler' && window.WORDS) {
+      if (arg) { WF.q = arg; }
       setTab('kelimeler'); current = 'kelimeler'; S = null;
       renderWords(); window.scrollTo(0, 0);
       return;
