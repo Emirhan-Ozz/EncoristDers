@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EncoristDers · Çalışma siteleri</title>
-<meta name="description" content="GER101 Almanca, piyano nota okuma, MBP221 Mobil Uygulamalar ve MBP207 Görsel Programlama çalışma siteleri tek yerde.">
+<meta name="description" content="GER101 Almanca, piyano nota okuma, MBP221 Mobil Uygulamalar, MBP207 Görsel Programlama ve MBP205 Nesne Tabanlı Programlama II çalışma siteleri tek yerde.">
 <style>
   @font-face{font-family:"CG";src:url("piano/assets/fonts/cg-latin-600.woff2") format("woff2");font-weight:600;font-display:swap}
   @font-face{font-family:"CG";src:url("piano/assets/fonts/cg-latin-500i.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
@@ -124,6 +124,13 @@
   .code .k{color:#7095ff} .code .s{color:#8fd19e} .code .f{color:#f0b86e}
   .mbp .go{color:#2b59d1} .py .go{color:#7095ff}
 
+  /* ---------- MBP205 · Java turuncusu ---------- */
+  .oop{--accent:#d9600b}
+  .oop .back{background:#fbf7f2; color:#1f2430; border:1px solid #eadfd2; padding:0}
+  .oop .ui-bar i.on{background:#fdebdc; color:#d9600b}
+  .oop .code .k{color:#ff9a3c} .oop .code .t{color:#7fc6ff} .oop .code .a{color:#e5c07b}
+  .oop .go{color:#d9600b}
+
   /* dokunmatik: takla yok, kart düz kalır */
   @media (prefers-reduced-motion: reduce){ .flip{transition:none} }
 
@@ -208,8 +215,8 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
 <main>
   <p class="eyebrow">Emirhan Öz</p>
   <h1>EncoristDers</h1>
-  <p class="lead">Dört çalışma sitesi tek adreste. Kartın üstüne gel, açılacak sitenin temasını gör.</p>
-  <ul class="stats"><li><b>4</b>çalışma sitesi</li><li><b>3</b>ders</li><li><b>1</b>hobi</li><li>Almanca · Mobil · Python · Piyano</li></ul>
+  <p class="lead">Beş çalışma sitesi tek adreste. Kartın üstüne gel, açılacak sitenin temasını gör.</p>
+  <ul class="stats"><li><b>5</b>çalışma sitesi</li><li><b>4</b>ders</li><li><b>1</b>hobi</li><li>Almanca · Mobil · Python · Java · Piyano</li></ul>
 
   <div class="grid">
     <a class="card ger" href="ger101/" aria-label="GER101 Almanca I sitesini aç">
@@ -270,6 +277,28 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
       </div>
     </a>
 
+    <a class="card oop" href="mbp205/" aria-label="MBP205 Nesne Tabanlı Programlama II sitesini aç">
+      <div class="flip">
+        <div class="face front">
+          <span class="tag">MBP205</span>
+          <h2>Nesne Tabanlı Programlama II</h2>
+          <p>Java vizesi: kalıtım, kapsülleme, soyutlama, çok biçimlilik, soyut sınıf, arayüz, UML; 7 soruluk yazılı prova.</p>
+          <span class="hint">Java turuncusu</span>
+        </div>
+        <div class="face back" aria-hidden="true">
+          <div class="ui-bar"><i>Genel Tekrar</i><i class="on">Yazılı prova</i><i>Test</i></div>
+          <div class="ui-body">
+            <span class="b-title sm">NTP II · MBP 205</span>
+            <div class="code"><span class="k">class</span> <span class="t">Kedi</span> <span class="k">extends</span> <span class="t">Hayvan</span>
+  <span class="k">implements</span> <span class="t">Kosabilir</span> {
+  <span class="a">@Override</span> ...</div>
+            <span class="go">Siteyi aç →</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+
     <a class="card piano" href="piano/" aria-label="Piano notes nota okuma sitesini aç">
       <div class="flip">
         <div class="face front">
@@ -318,6 +347,12 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
         <a href="mbp207/#test/konu-dongu">Döngüler<span>→</span></a>
         <a href="mbp207/#test/konu-fonksiyon">Fonksiyonlar<span>→</span></a>
       </div>
+      <div class="ql" style="--c:#d9600b"><p class="ql-h"><i></i>MBP205</p>
+        <a href="mbp205/#yazili">Yazılı prova (7 soru)<span>→</span></a>
+        <a href="mbp205/#tekrar/arayuz">Soyut sınıf ve arayüz<span>→</span></a>
+        <a href="mbp205/#tekrar/uml">UML diyagramları<span>→</span></a>
+        <a href="mbp205/#test/tahta">Tahtadaki maddeler<span>→</span></a>
+      </div>
       <div class="ql" style="--c:#b48a49"><p class="ql-h"><i></i>Piano notes</p>
         <a href="piano/#tekrar">Nota tekrarı<span>→</span></a>
         <a href="piano/#test">Alıştırmalar<span>→</span></a>
@@ -325,6 +360,7 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
     </div>
     <div class="duo">
       <div class="panel"><h2 class="sec">Son eklenenler</h2><ol class="tl">
+        <li style="--c:#d9600b"><b>MBP205 · Nesne Tabanlı Programlama II</b><span>Yeni site: tahtadaki konular, UML çizimleri, 7 soruluk açık uçlu yazılı prova (21 soru, model cevaplar), 121 test sorusu.</span></li>
         <li style="--c:#7095ff"><b>Tüm siteler · Yanlışlarım, arama, sesli okuma</b><span>Yanlış yaptığın sorular ayrı testte birikir; 🔍 ile site içinde ara; Almanca ve İngilizce kelimeleri dinle.</span></li>
         <li style="--c:#7095ff"><b>MBP207 Görsel Programlama</b><span>Python vizesi için test, boşluk doldurma, kod tamamlama ve yazma soruları.</span></li>
         <li style="--c:#b48a49"><b>Piano notes</b><span>Piyano sitesinin adı değişti, menüde en sağa geçti.</span></li>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d9600b">
+  <title>MBP205 · Nesne Tabanlı Programlama II vize çalışma</title>
+  <meta name="description" content="MBP205 Nesne Tabanlı Programlama II (Java): kalıtım, kapsülleme, soyutlama, çok biçimlilik, soyut sınıf, arayüz, UML. Konu özetleri, açık uçlu yazılı prova ve testler.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23d9600b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23fff' text-anchor='middle'%3E%7B%7D%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/style.css?v=20261113a">
+  <link rel="stylesheet" href="assets/theme.css?v=20261113b">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('mbp205-theme'); } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t || 'light');
+    })();
+  </script>
+<style id="vt-slide">
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:.5s cubic-bezier(.65,0,.25,1) both vt-out-l}
+::view-transition-new(root){animation:.5s cubic-bezier(.65,0,.25,1) both vt-in-r}
+html:active-view-transition-type(back)::view-transition-old(root){animation-name:vt-out-r}
+html:active-view-transition-type(back)::view-transition-new(root){animation-name:vt-in-l}
+@keyframes vt-out-l{to{transform:translateX(-100%)}}
+@keyframes vt-in-r{from{transform:translateX(100%)}}
+@keyframes vt-out-r{to{transform:translateX(100%)}}
+@keyframes vt-in-l{from{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+</style>
+<script id="vt-dir">
+addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=navigation.activation;if(!a||!a.from)return;var d=function(u){return new URL(u).pathname.replace(/index\.html$/,'').split('/').filter(Boolean).length};e.viewTransition.types.add(d(a.entry.url)<d(a.from.url)?'back':'forward')}catch(_){}});
+</script>
+<script src="../phase.js?v=1" data-scroll="tekrar"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#tekrar"><i></i>MBP205<span> · Nesne Tabanlı Programlama II</span></a>
+      <nav class="tabs" aria-label="Bölümler">
+        <a href="#tekrar" data-tab="tekrar">Genel Tekrar</a>
+        <a href="#yazili" data-tab="yazili">Yazılı prova</a>
+        <a href="#test" data-tab="test">Test</a>
+      </nav>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Tema değiştir" title="Açık / koyu tema">◐</button>
+    </div>
+  </header>
+
+  <main id="app" class="container"></main>
+
+  <script src="content.js?v=20261113a"></script>
+  <script src="questions.js?v=20261113a"></script>
+  <script src="yazili-data.js?v=20261113a"></script>
+  <script src="yazili.js?v=20261113c"></script>
+  <script src="assets/app.js?v=20261113a"></script>
+<script src="../kit.js?v=20261111m"></script>
+<script src="kit-init.js?v=20261111k"></script>
+</body>
+</html>

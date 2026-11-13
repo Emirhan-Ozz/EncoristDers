@@ -6,3 +6,4 @@
 - `piano/` · Piano notes, nota okuma (eski repo: Piano)
 - `mbp221/` · MBP221 Mobil Uygulamalar ve Teknolojiler
 - `mbp207/` · MBP207 Görsel Programlama (Python vizesi)
+- `mbp205/` · MBP205 Nesne Tabanlı Programlama II (Java vizesi, yazılı prova)
