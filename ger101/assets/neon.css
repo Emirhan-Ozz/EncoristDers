@@ -214,3 +214,5 @@ table.words td.hid * { visibility: hidden; }
 
 /* yazı boyutu +2px (kök 16 → 18) */
 html { font-size: 18px; }
+@media (max-width: 440px) { .brand { display: inline-block; font-size: 1.1rem; } }
+@media (max-width: 440px) { .chips, .wfilters { top: 101px; } html { scroll-padding-top: 156px; } }
