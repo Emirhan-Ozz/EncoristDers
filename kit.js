@@ -4,6 +4,8 @@
   'use strict';
   if (window.StudyKit) return;
   var CFG = null, IDX = null, ui = null;
+  /* repo kökü (ana menü): kit.js her zaman kökte durur */
+  var HOME = (function () { try { return new URL('./', document.currentScript.src).href; } catch (e) { return '../'; } })();
 
   var FM = { 'İ': 'i', 'I': 'i', 'ı': 'i', 'ş': 's', 'ğ': 'g', 'ç': 'c', 'ö': 'o', 'ü': 'u', 'ä': 'a', 'ß': 'ss', 'â': 'a', 'à': 'a', 'á': 'a', 'î': 'i', 'í': 'i', 'û': 'u', 'ú': 'u', 'é': 'e', 'è': 'e' };
   function fc(ch) { var lo = FM[ch]; if (lo != null) return lo; lo = ch.toLowerCase(); return FM[lo] != null ? FM[lo] : lo.length === 1 ? lo : ch; }
@@ -59,13 +61,24 @@
     '.sk-fab.sk-hide{transform:translateY(90px);opacity:0;pointer-events:none}' +
     'body:has(#prog.progress) .sk-fab{bottom:86px}' +
     '@media (max-width:640px){.sk-fab{width:40px;height:40px;left:12px;bottom:12px;opacity:.9;transition:transform .25s,opacity .25s}}' +
-    '@media print{.sk-fab,.sk-say{display:none}}';
+    '.sk-home{position:fixed;left:16px;bottom:68px;z-index:60;width:44px;height:44px;border-radius:50%;border:1px solid var(--sk-line);background:var(--sk-bg);color:var(--sk-fg);' +
+    'display:grid;place-items:center;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.18);transition:transform .25s,opacity .25s,border-color .15s}' +
+    '.sk-home:hover{transform:translateY(-2px);border-color:var(--sk-acc);color:var(--sk-acc)}' +
+    '.sk-home::after{content:attr(data-tip);position:absolute;left:52px;white-space:nowrap;font:600 12.5px/1 system-ui,sans-serif;padding:6px 9px;border-radius:7px;background:var(--sk-fg);color:var(--sk-bg);opacity:0;pointer-events:none;transform:translateX(-4px);transition:opacity .15s,transform .15s}' +
+    '.sk-home.sk-r::after{left:auto;right:52px;transform:translateX(4px)}' +
+    '.sk-home:hover::after,.sk-home:focus-visible::after{opacity:1;transform:none}' +
+    '.sk-home.sk-hide{transform:translateY(150px);opacity:0;pointer-events:none}' +
+    'body:has(#prog.progress) .sk-home{bottom:138px}' +
+    '@media (max-width:640px){.sk-home{width:40px;height:40px;left:12px;bottom:60px;opacity:.9}.sk-home::after{display:none}}' +
+    '@media print{.sk-fab,.sk-say,.sk-home{display:none}}';
 
   function build() {
     var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
     var root = document.createElement('div'); root.className = 'sk';
     root.style.setProperty('--sk-acc', CFG.accent || 'var(--accent, #5b7cfa)');
     root.innerHTML =
+      '<a class="sk-home" href="' + esc(CFG.home || HOME) + '" aria-label="Ana menüye dön" data-tip="Ana menü">' +
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h5v-6h4v6h5V9.5"/></svg></a>' +
       '<button type="button" class="sk-fab" aria-label="Sitede ara" title="Ara ( / )">' +
       '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>' +
       '<div class="sk-ov" role="dialog" aria-modal="true" aria-label="Arama"><div class="sk-box">' +
@@ -75,7 +88,9 @@
     (CFG.mount || document.body).appendChild(root);
     var fab = root.querySelector('.sk-fab');
     if (CFG.fabBottom) fab.style.bottom = CFG.fabBottom;
-    if (CFG.fabSide === 'right') { fab.style.left = 'auto'; fab.style.right = '16px'; }
+    var home = root.querySelector('.sk-home');
+    if (CFG.fabSide === 'right') { fab.style.left = 'auto'; fab.style.right = '16px'; home.style.left = 'auto'; home.style.right = '16px'; home.classList.add('sk-r'); home.style.bottom = 'calc(' + (CFG.fabBottom || '16px') + ' + 52px)'; }
+    else if (CFG.fabBottom) home.style.bottom = 'calc(' + CFG.fabBottom + ' + 52px)';
     ui = { root: root, ov: root.querySelector('.sk-ov'), inp: root.querySelector('input'), res: root.querySelector('.sk-res'), sel: 0, items: [] };
     fab.addEventListener('click', open);
     root.querySelector('.sk-x').addEventListener('click', close);
@@ -100,7 +115,7 @@
       ticking = requestAnimationFrame(function () {
         ticking = 0;
         var y = window.scrollY, d = y - lastY;
-        if (Math.abs(d) > 6) { fab.classList.toggle('sk-hide', d > 0 && y > 120); lastY = y; }
+        if (Math.abs(d) > 6) { var hide = d > 0 && y > 120; fab.classList.toggle('sk-hide', hide); home.classList.toggle('sk-hide', hide); lastY = y; }
       });
     }, { passive: true });
     paint();
