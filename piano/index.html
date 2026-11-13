@@ -8,14 +8,14 @@
 <meta name="theme-color" content="#efe6d4">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%238c5a3c'/%3E%3Cellipse cx='13' cy='21' rx='6' ry='4.3' transform='rotate(-22 13 21)' fill='%23f8f2e4'/%3E%3Crect x='17.6' y='5' width='2.2' height='16' fill='%23f8f2e4'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/noto-music.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/style.css?v=20261113j">
+<link rel="stylesheet" href="assets/style.css?v=20261113n">
 <script>
   (function () {
     try {
       var p = JSON.parse(localStorage.getItem('piano-prefs') || '{}');
-      var t = p.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var t = p.theme || 'dark';
       document.documentElement.setAttribute('data-theme', t);
-    } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+    } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
   })();
 </script>
 <style id="vt-slide">
@@ -36,35 +36,29 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
 <script src="../phase.js?v=1"></script>
 </head>
 <body>
-<header class="top">
-  <div class="wrap top-row">
-    <a class="brand" href="#tekrar">
-      <span class="brand-t">Je te laisserai des notes</span>
-      <span class="brand-s">nota okuma defteri</span>
-    </a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#tekrar"><i></i>Je te laisserai des notes<span> · nota okuma defteri</span></a>
+    <nav class="tabs" aria-label="Bölümler">
+      <a href="#tekrar" data-tab="tekrar">Genel Tekrar</a>
+      <a href="#test" data-tab="test">Alıştırma</a>
+    </nav>
     <div class="tools">
       <button type="button" class="icon-btn" id="soundBtn" aria-label="Ses"></button>
-      <button type="button" class="icon-btn" id="themeBtn" aria-label="Tema"></button>
+      <button type="button" class="icon-btn theme-btn" id="themeBtn" aria-label="Tema">◐</button>
     </div>
   </div>
-  <svg class="top-staff" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 2H100M0 6H100M0 10H100M0 14H100M0 18H100" />
-  </svg>
-  <nav class="tabs wrap">
-    <a href="#tekrar" data-tab="tekrar">Genel Tekrar</a>
-    <a href="#test" data-tab="test">Alıştırma</a>
-  </nav>
 </header>
 
-<main id="main" class="wrap"></main>
+<main id="main" class="container"></main>
 
-<footer class="wrap foot">
+<footer class="foot">
   <p>Notalara dokununca sesleri çalar. İlerlemen yalnızca bu tarayıcıda saklanır.</p>
 </footer>
 
 <script src="assets/music.js"></script>
 <script src="assets/content.js"></script>
-<script src="assets/app.js?v=20261111k"></script>
+<script src="assets/app.js?v=20261113m"></script>
 <script src="../kit.js?v=20261113h"></script>
 <script src="kit-init.js?v=20261111k"></script>
 </body>

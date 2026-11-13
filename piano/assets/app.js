@@ -28,11 +28,11 @@
   function mmss(sec) { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ':' + ('0' + (sec % 60)).slice(-2); }
 
   /* ---------- tema ve ses düğmeleri ---------- */
-  function currentTheme() { return prefs.theme || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function currentTheme() { return prefs.theme || 'dark'; }
   function applyTheme() {
     var t = currentTheme();
     document.documentElement.setAttribute('data-theme', t);
-    $('#themeBtn').textContent = t === 'dark' ? '☀' : '☾';
+    $('#themeBtn').textContent = '◐';
     $('#themeBtn').title = t === 'dark' ? 'Açık tema' : 'Koyu tema';
     var mc = document.querySelector('meta[name=theme-color]');
     if (mc) mc.setAttribute('content', t === 'dark' ? '#17130f' : '#efe6d4');

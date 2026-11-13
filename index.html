@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EncoristDers · Çalışma siteleri</title>
-<meta name="description" content="GER101 Almanca, piyano nota okuma, MBP221 Mobil Uygulamalar, MBP207 Görsel Programlama ve MBP205 Nesne Tabanlı Programlama II çalışma siteleri tek yerde.">
+<meta name="description" content="GER101 Almanca, piyano nota okuma, MBP221 Mobil Uygulamalar, MBP207 Görsel Programlama, MBP205 Nesne Tabanlı Programlama II ve MBP203 Veri Tabanı ve Yönetimi çalışma siteleri tek yerde.">
 <style>
   @font-face{font-family:"CG";src:url("piano/assets/fonts/cg-latin-600.woff2") format("woff2");font-weight:600;font-display:swap}
   @font-face{font-family:"CG";src:url("piano/assets/fonts/cg-latin-500i.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
@@ -72,64 +72,40 @@
   .hint{margin-top:auto; font-size:.8rem; color:var(--mute)}
   .go{margin-top:auto; font-weight:600; font-size:.9rem}
 
-  /* ---------- GER101 · neon ---------- */
-  .ger{--accent:#ff2bd6}
-  .ger .back{
-    background:#07060f; color:#ece9ff; border:1px solid #2a2550;
-    font-family:"Inter",system-ui,sans-serif;
-    box-shadow:inset 0 0 0 1px rgba(0,240,255,.35), 0 0 34px rgba(0,240,255,.22);
-    background-image:radial-gradient(circle at 85% 10%, rgba(255,43,214,.22), transparent 45%),
-                     radial-gradient(circle at 10% 95%, rgba(0,240,255,.18), transparent 50%);
-  }
-  .ger .b-title{font-weight:900; font-size:1.55rem; letter-spacing:.02em; color:#00f0ff; text-shadow:0 0 12px rgba(0,240,255,.6)}
-  .ger .b-sub{color:#9a94c4; font-size:.85rem}
-  .ger .arts{display:flex; gap:8px; margin-top:4px}
-  .ger .arts span{padding:5px 12px; border-radius:8px; font-weight:700; font-size:.9rem; background:#0f0d1c}
-  .ger .der{color:#3fa9ff; box-shadow:0 0 0 1px #3fa9ff66, 0 0 12px #3fa9ff44}
-  .ger .die{color:#ff4fd8; box-shadow:0 0 0 1px #ff4fd866, 0 0 12px #ff4fd844}
-  .ger .das{color:#39ff88; box-shadow:0 0 0 1px #39ff8866, 0 0 12px #39ff8844}
-  .ger .go{color:#ff2bd6; text-shadow:0 0 10px rgba(255,43,214,.6)}
+  .front h2 small{display:block; font-size:.8rem; font-weight:500; color:var(--mute); margin-top:3px; letter-spacing:0}
+  .front p{margin-bottom:auto}
 
-  /* ---------- Piyano · kâğıt ---------- */
-  .piano{--accent:#b48a49}
-  .piano .back{
-    background:#f7f0e1; color:#2d241b; border:1px solid #d9cab0;
-    font-family:"Lora",Georgia,serif;
-    box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 16px 30px -16px rgba(70,45,20,.45);
-  }
-  .piano .b-title{font-family:"CG",Georgia,serif; font-weight:600; font-size:1.7rem; line-height:1.05; color:#2d241b}
-  .piano .b-sub{font-family:"CG",Georgia,serif; font-style:italic; font-weight:500; color:#7b6a57; font-size:1.05rem}
-  .piano svg{width:100%; height:62px; margin-top:2px}
-  .piano .go{color:#8b5a3a}
+  /* ---------- arka yüz: Starter Python kart yapısı ---------- */
+  .back{padding:0; gap:0; background:#0f1218; color:#e5e8ee; border:1px solid #262c37; box-shadow:0 8px 26px rgba(0,0,0,.35);
+    background-image:radial-gradient(circle at 100% 100%, var(--g2), transparent 55%), radial-gradient(circle at 0% 0%, var(--g1), transparent 50%)}
+  .ui-bar{display:flex; gap:6px; align-items:center; padding:12px 16px; background:#161a22; border-bottom:1px solid #262c37; position:relative}
+  .ui-bar::after{content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--band)}
+  .ui-bar i{display:block; padding:4px 10px; border-radius:7px; font-style:normal; font-size:.78rem; color:#98a1b1; white-space:nowrap}
+  .ui-bar i.on{background:var(--soft); color:var(--hi); font-weight:600}
+  .ui-body{padding:10px 16px 12px; display:flex; flex-direction:column; gap:7px; flex:1}
+  .b-title.sm{display:block; font-weight:700; font-size:1rem; background:var(--band); -webkit-background-clip:text; background-clip:text; color:transparent; width:fit-content}
+  .code2{font-family:"JetBrains Mono","Cascadia Code",Consolas,Menlo,monospace; font-size:.72rem; line-height:1.5; background:#0b0e13; color:#e5e8ee;
+    border:1px solid #262c37; border-radius:10px; padding:8px 11px; white-space:pre; overflow:hidden}
+  .code2 .k{color:var(--hi)} .code2 .s{color:#a5e3a1} .code2 .f{color:#f0c38e} .code2 .n{color:#f0c38e} .code2 .t{color:#7fc6ff} .code2 .a{color:#e5c07b}
+  .mini{background:#161a22; border:1px solid #262c37; border-radius:10px; padding:8px 11px; display:flex; flex-direction:column; gap:5px; font-size:.74rem; line-height:1.35}
+  .mini b{font-weight:600; color:#e5e8ee; font-size:.78rem}
+  .mini span{display:flex; align-items:center; gap:7px; color:#c9cfda}
+  .mini em{flex:none; min-width:30px; text-align:center; padding:1px 6px; border-radius:6px; font-style:normal; font-size:.66rem; font-weight:700}
+  .mini em.der{color:#3fa9ff; background:rgba(63,169,255,.14)} .mini em.die{color:#ff4fd8; background:rgba(255,79,216,.14)} .mini em.das{color:#39ff88; background:rgba(57,255,136,.12)}
+  .staffbox{background:#161a22; border:1px solid #262c37; border-radius:10px; padding:6px 10px; color:#e5e8ee}
+  .staffbox svg{display:block; width:100%; height:52px}
+  .go{color:var(--hi)}
+  .wm{position:absolute !important; z-index:0 !important; left:0; right:0; text-align:center; bottom:38px; line-height:1.35; padding:.12em 0; font-weight:800;
+      letter-spacing:-.03em; pointer-events:none; white-space:nowrap; user-select:none; font-size:2.6rem; color:transparent;
+      background:var(--band); -webkit-background-clip:text; background-clip:text; opacity:.3}
+  .front::before{background:var(--band)}
 
-  /* ---------- MBP221 / MBP207 · sade mavi ---------- */
-  .mbp{--accent:#2b59d1}
-  .py{--accent:#7095ff}
-  .mbp .back, .py .back{
-    background:#f5f6f8; color:#1c2230; border:1px solid #e1e4ea; padding:0;
-  }
-  .py .back{background:#0f1218; color:#e5e8ee; border-color:#262c37}
-  .ui-bar{display:flex; gap:6px; align-items:center; padding:12px 16px; background:#fff; border-bottom:1px solid #e1e4ea}
-  .py .ui-bar{background:#161a22; border-color:#262c37}
-  .ui-bar i{display:block; padding:4px 10px; border-radius:7px; font-style:normal; font-size:.78rem; color:#5d6677}
-  .py .ui-bar i{color:#98a1b1}
-  .ui-bar i.on{background:#e8eefc; color:#2b59d1; font-weight:600}
-  .py .ui-bar i.on{background:#1b2440; color:#7095ff}
-  .ui-body{padding:14px 16px; display:flex; flex-direction:column; gap:10px; flex:1}
-  .b-title.sm{font-weight:700; font-size:1.1rem}
-  .code{
-    font-family:"JetBrains Mono","Cascadia Code",Consolas,Menlo,monospace; font-size:.76rem; line-height:1.5;
-    background:#1d2230; color:#e4e7ee; padding:10px 12px; border-radius:10px; white-space:pre; overflow:hidden;
-  }
-  .code .k{color:#7095ff} .code .s{color:#8fd19e} .code .f{color:#f0b86e}
-  .mbp .go{color:#2b59d1} .py .go{color:#7095ff}
-
-  /* ---------- MBP205 · Java turuncusu ---------- */
-  .oop{--accent:#d9600b}
-  .oop .back{background:#fbf7f2; color:#1f2430; border:1px solid #eadfd2; padding:0}
-  .oop .ui-bar i.on{background:#fdebdc; color:#d9600b}
-  .oop .code .k{color:#ff9a3c} .oop .code .t{color:#7fc6ff} .oop .code .a{color:#e5c07b}
-  .oop .go{color:#d9600b}
+  .ger{--accent:#ff2bd6; --band:linear-gradient(90deg,#00f0ff,#ff2bd6); --soft:#2a1430; --hi:#5ff6ff; --g1:rgba(0,240,255,.14); --g2:rgba(255,43,214,.18)}
+  .mbp{--accent:#2b59d1; --band:linear-gradient(90deg,#2b59d1,#7095ff); --soft:#1b2440; --hi:#8fb0ff; --g1:rgba(43,89,209,.16); --g2:rgba(112,149,255,.14)}
+  .py{--accent:#7095ff; --band:linear-gradient(90deg,#7095ff,#4fc3dc); --soft:#1b2440; --hi:#9ab4ff; --g1:rgba(112,149,255,.15); --g2:rgba(79,195,220,.14)}
+  .oop{--accent:#d9600b; --band:linear-gradient(90deg,#ffb45c,#ff8a2a 50%,#5fa8e0); --soft:#33261a; --hi:#ffad5e; --g1:rgba(255,138,42,.15); --g2:rgba(95,168,224,.14)}
+  .db{--accent:#00758f; --band:linear-gradient(90deg,#4cc3dc,#2aa3bd 45%,#f5a945); --soft:#14303a; --hi:#6fd6ec; --g1:rgba(76,195,220,.15); --g2:rgba(245,169,69,.14)}
+  .piano{--accent:#b48a49; --band:linear-gradient(90deg,#d2a964,#d4897a); --soft:#2a2316; --hi:#e0bb7a; --g1:rgba(210,169,100,.14); --g2:rgba(212,137,122,.15)}
 
   /* dokunmatik: takla yok, kart düz kalır */
   @media (prefers-reduced-motion: reduce){ .flip{transition:none} }
@@ -215,8 +191,8 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
 <main>
   <p class="eyebrow">Emirhan Öz</p>
   <h1>EncoristDers</h1>
-  <p class="lead">Beş çalışma sitesi tek adreste. Kartın üstüne gel, açılacak sitenin temasını gör.</p>
-  <ul class="stats"><li><b>5</b>çalışma sitesi</li><li><b>4</b>ders</li><li><b>1</b>hobi</li><li>Almanca · Mobil · Python · Java · Piyano</li></ul>
+  <p class="lead">Altı çalışma sitesi tek adreste. Kartın üstüne gel, açılacak sitenin temasını gör.</p>
+  <ul class="stats"><li><b>6</b>çalışma sitesi</li><li><b>5</b>ders</li><li><b>1</b>hobi</li><li>Almanca · Mobil · Python · Java · SQL · Piyano</li></ul>
 
   <div class="grid">
     <a class="card ger" href="ger101/" aria-label="GER101 Almanca I sitesini aç">
@@ -225,13 +201,15 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
           <span class="tag">GER101</span>
           <h2>Almanca I</h2>
           <p>Ara sınav hazırlığı: Schritte international Neu 1, Lektion 1–4.</p>
-          <span class="hint">Neon tema</span>
         </div>
         <div class="face back" aria-hidden="true">
-          <span class="b-title">ALMANCA I</span>
-          <span class="b-sub">Lektion 1–4 · Wortschatz · Grammatik</span>
-          <div class="arts"><span class="der">der</span><span class="die">die</span><span class="das">das</span></div>
-          <span class="go">Siteyi aç →</span>
+          <span class="wm">Almanca</span>
+          <div class="ui-bar"><i class="on">Genel Tekrar</i><i>Test</i><i>Kelimeler</i></div>
+          <div class="ui-body">
+            <span class="b-title sm">GER101 · Almanca I</span>
+            <div class="mini"><b>Kelimeler</b><span><em class="der">der</em>Tisch · masa</span><span><em class="die">die</em>Lampe · lamba</span><span><em class="das">das</em>Buch · kitap</span></div>
+            <span class="go">Siteyi aç →</span>
+          </div>
         </div>
       </div>
     </a>
@@ -242,13 +220,13 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
           <span class="tag">MBP221</span>
           <h2>Mobil Uygulamalar ve Teknolojiler</h2>
           <p>Vize çalışması: mobil geliştirme ve React Native, soru bankası.</p>
-          <span class="hint">Sade tema</span>
         </div>
         <div class="face back" aria-hidden="true">
-          <div class="ui-bar"><i class="on">Tekrar</i><i>Test</i><i>Deneme</i></div>
+          <span class="wm">Mobil</span>
+          <div class="ui-bar"><i class="on">Genel Tekrar</i><i>Test</i></div>
           <div class="ui-body">
-            <span class="b-title sm">Mobil Vize Çalışma</span>
-            <div class="code"><span class="k">import</span> { Text }
+            <span class="b-title sm">MBP221 · Mobil Uygulamalar</span>
+            <div class="code2"><span class="k">import</span> { Text }
   <span class="k">from</span> <span class="s">'react-native'</span>;
 &lt;<span class="f">Text</span>&gt;Merhaba&lt;/<span class="f">Text</span>&gt;</div>
             <span class="go">Siteyi aç →</span>
@@ -263,13 +241,13 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
           <span class="tag">MBP207</span>
           <h2>Görsel Programlama</h2>
           <p>Python vizesi: test, boşluk doldurma, kod tamamlama ve yazma soruları.</p>
-          <span class="hint">Sade tema</span>
         </div>
         <div class="face back" aria-hidden="true">
-          <div class="ui-bar"><i class="on">Test</i><i>Rastgele vize</i></div>
+          <span class="wm">Python</span>
+          <div class="ui-bar"><i class="on">Test</i><i>Konu Anlatımı</i><i>Kod</i></div>
           <div class="ui-body">
-            <span class="b-title sm">Python Vize · MBP 207</span>
-            <div class="code"><span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(3):
+            <span class="b-title sm">MBP207 · Görsel Programlama</span>
+            <div class="code2"><span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(<span class="n">3</span>):
     <span class="f">print</span>(<span class="s">f"Gelir {i}"</span>)</div>
             <span class="go">Siteyi aç →</span>
           </div>
@@ -283,13 +261,13 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
           <span class="tag">MBP205</span>
           <h2>Nesne Tabanlı Programlama II</h2>
           <p>Java vizesi: kalıtım, kapsülleme, soyutlama, çok biçimlilik, soyut sınıf, arayüz, UML; 7 soruluk yazılı prova.</p>
-          <span class="hint">Java turuncusu</span>
         </div>
         <div class="face back" aria-hidden="true">
+          <span class="wm">Java</span>
           <div class="ui-bar"><i>Genel Tekrar</i><i class="on">Yazılı prova</i><i>Test</i></div>
           <div class="ui-body">
-            <span class="b-title sm">NTP II · MBP 205</span>
-            <div class="code"><span class="k">class</span> <span class="t">Kedi</span> <span class="k">extends</span> <span class="t">Hayvan</span>
+            <span class="b-title sm">MBP205 · NTP II (Java)</span>
+            <div class="code2"><span class="k">class</span> <span class="t">Kedi</span> <span class="k">extends</span> <span class="t">Hayvan</span>
   <span class="k">implements</span> <span class="t">Kosabilir</span> {
   <span class="a">@Override</span> ...</div>
             <span class="go">Siteyi aç →</span>
@@ -298,6 +276,27 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
       </div>
     </a>
 
+    <a class="card db" href="mbp203/" aria-label="MBP203 Veri Tabanı ve Yönetimi sitesini aç">
+      <div class="flip">
+        <div class="face front">
+          <span class="tag">MBP203</span>
+          <h2>Veri Tabanı ve Yönetimi</h2>
+          <p>MySQL: ilişkisel model, SQL, JOIN, GROUP BY / HAVING, görünüm ve tetikleyiciler; 5 deneme sınavı.</p>
+        </div>
+        <div class="face back" aria-hidden="true">
+          <span class="wm">SQL</span>
+          <div class="ui-bar"><i class="on">Genel Tekrar</i><i>Test</i></div>
+          <div class="ui-body">
+            <span class="b-title sm">MBP203 · Veri Tabanı (MySQL)</span>
+            <div class="code2"><span class="k">SELECT</span> sehir, <span class="f">COUNT</span>(*)
+<span class="k">FROM</span> musteriler
+<span class="k">GROUP BY</span> sehir
+<span class="k">HAVING</span> <span class="f">COUNT</span>(*) &gt; <span class="n">1</span>;</div>
+            <span class="go">Siteyi aç →</span>
+          </div>
+        </div>
+      </div>
+    </a>
 
     <a class="card piano" href="piano/" aria-label="Piano notes nota okuma sitesini aç">
       <div class="flip">
@@ -305,22 +304,15 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
           <span class="tag">Piyano</span>
           <h2>Piano notes</h2>
           <p>Nota okuma çalışması: porte, notalar ve alıştırmalar.</p>
-          <span class="hint">Kâğıt tema</span>
         </div>
         <div class="face back" aria-hidden="true">
-          <span class="b-title">Piano notes</span>
-          <span class="b-sub">nota okuma defteri</span>
-          <svg viewBox="0 0 240 62" fill="none" stroke="#2d241b">
-            <g stroke-width="1" opacity=".55"><path d="M0 10H240M0 20H240M0 30H240M0 40H240M0 50H240"/></g>
-            <g fill="#2d241b" stroke="none">
-              <ellipse cx="62" cy="45" rx="6.2" ry="4.4" transform="rotate(-20 62 45)"/>
-              <ellipse cx="104" cy="35" rx="6.2" ry="4.4" transform="rotate(-20 104 35)"/>
-              <ellipse cx="146" cy="25" rx="6.2" ry="4.4" transform="rotate(-20 146 25)"/>
-              <ellipse cx="188" cy="15" rx="6.2" ry="4.4" transform="rotate(-20 188 15)"/>
-            </g>
-            <g stroke-width="1.6"><path d="M67.5 43V14M109.5 33V4M140.5 27V56M182.5 17V46"/></g>
-          </svg>
-          <span class="go">Siteyi aç →</span>
+          <span class="wm">Piyano</span>
+          <div class="ui-bar"><i class="on">Genel Tekrar</i><i>Alıştırma</i></div>
+          <div class="ui-body">
+            <span class="b-title sm">Je te laisserai des notes</span>
+            <div class="staffbox"><svg viewBox="0 0 240 62" fill="none" stroke="currentColor"><g stroke-width="1" opacity=".55"><path d="M0 10H240M0 20H240M0 30H240M0 40H240M0 50H240"/></g><g fill="currentColor" stroke="none"><ellipse cx="62" cy="45" rx="6.2" ry="4.4" transform="rotate(-20 62 45)"/><ellipse cx="104" cy="35" rx="6.2" ry="4.4" transform="rotate(-20 104 35)"/><ellipse cx="146" cy="25" rx="6.2" ry="4.4" transform="rotate(-20 146 25)"/><ellipse cx="188" cy="15" rx="6.2" ry="4.4" transform="rotate(-20 188 15)"/></g><g stroke-width="1.6"><path d="M67.5 43V14M109.5 33V4M140.5 27V56M182.5 17V46"/></g></svg></div>
+            <span class="go">Siteyi aç →</span>
+          </div>
         </div>
       </div>
     </a>
@@ -353,6 +345,12 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
         <a href="mbp205/#tekrar/uml">UML diyagramları<span>→</span></a>
         <a href="mbp205/#test/tahta">Tahtadaki maddeler<span>→</span></a>
       </div>
+      <div class="ql" style="--c:#00758f"><p class="ql-h"><i></i>MBP203</p>
+        <a href="mbp203/#test/deneme1">Deneme sınavı 1<span>→</span></a>
+        <a href="mbp203/#test/uygulama">GROUP BY / HAVING uygulaması<span>→</span></a>
+        <a href="mbp203/#tekrar/iliskisel">ER diyagramı ve anahtarlar<span>→</span></a>
+        <a href="mbp203/#tekrar/ileri2">JOIN türleri<span>→</span></a>
+      </div>
       <div class="ql" style="--c:#b48a49"><p class="ql-h"><i></i>Piano notes</p>
         <a href="piano/#tekrar">Nota tekrarı<span>→</span></a>
         <a href="piano/#test">Alıştırmalar<span>→</span></a>
@@ -360,11 +358,11 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
     </div>
     <div class="duo">
       <div class="panel"><h2 class="sec">Son eklenenler</h2><ol class="tl">
+        <li style="--c:#00758f"><b>MBP203 · Veri Tabanı ve Yönetimi</b><span>Yeni site: 7 konu özeti (MySQL), ER diyagramları, 217 soru, 5 deneme sınavı (17 test + 2 boşluk + 1 eşleştirme); SQL cevapları gerçek veri tabanında doğrulandı.</span></li>
+        <li style="--c:#7095ff"><b>Tüm siteler · yeni arayüz</b><span>Kartlar ve siteler Starter Python düzeninde; Piano notes da aynı görünüme geçti.</span></li>
         <li style="--c:#d9600b"><b>MBP205 · Nesne Tabanlı Programlama II</b><span>Yeni site: tahtadaki konular, UML çizimleri, 7 soruluk açık uçlu yazılı prova (21 soru, model cevaplar), 121 test sorusu.</span></li>
         <li style="--c:#7095ff"><b>Tüm siteler · Yanlışlarım, arama, sesli okuma</b><span>Yanlış yaptığın sorular ayrı testte birikir; 🔍 ile site içinde ara; Almanca ve İngilizce kelimeleri dinle.</span></li>
         <li style="--c:#7095ff"><b>MBP207 Görsel Programlama</b><span>Python vizesi için test, boşluk doldurma, kod tamamlama ve yazma soruları.</span></li>
-        <li style="--c:#b48a49"><b>Piano notes</b><span>Piyano sitesinin adı değişti, menüde en sağa geçti.</span></li>
-        <li style="--c:#2b59d1"><b>Tüm siteler · yumuşak sayfa geçişleri</b><span>Site içinde sayfa değişirken içerik kayarak geçiyor.</span></li>
       </ol></div>
       <div class="panel"><h2 class="sec">Nasıl çalışılır?</h2><ol class="steps">
         <li><div><b>Önce konu özetini oku</b><span>Tekrar bölümleri dersin ya da kitabın sırasını izler; tuzak notlarına özellikle bak.</span></div></li>
