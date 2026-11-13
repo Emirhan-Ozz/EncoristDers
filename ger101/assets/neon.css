@@ -211,3 +211,6 @@ table.words td.hid * { visibility: hidden; }
   table.words td.tr { min-width: 90px; }
   .wcard { padding: 14px 10px; }
 }
+
+/* yazı boyutu +2px (kök 16 → 18) */
+html { font-size: 18px; }

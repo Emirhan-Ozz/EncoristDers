@@ -225,7 +225,7 @@
     '.ds-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin:0 0 16px;line-height:1.6}' +
     '.ds-card h3{margin:16px 0 6px;font-size:1.05rem;color:var(--accent)}.ds-card h3:first-child{margin-top:0}.ds-card p{margin:.4rem 0}.ds-card ul{margin:.3rem 0;padding-left:20px}' +
     '.ds-card code{font:.86em var(--mono);background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:0 4px}' +
-    '.ds-card pre{background:var(--code-bg);color:var(--code-text);border-radius:8px;padding:10px 14px;font:13.5px/1.6 var(--mono);overflow-x:auto;margin:8px 0}' +
+    '.ds-card pre{background:var(--code-bg);color:var(--code-text);border-radius:8px;padding:10px 14px;font:15.5px/1.6 var(--mono);overflow-x:auto;margin:8px 0}' +
     '.ds-card table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.93rem}.ds-card th,.ds-card td{border:1px solid var(--border);padding:6px 9px;text-align:left;vertical-align:top}.ds-card th{background:var(--surface-2)}' +
     '.ds-lbl{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}' +
     '.ds-ex .io{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ds-ex .io small{color:var(--muted);font-weight:600}@media (max-width:640px){.ds-ex .io{grid-template-columns:1fr}}' +
@@ -286,7 +286,7 @@
           chk.disabled = false; chk.textContent = 'Kontrol et';
         });
       });
-      give.addEventListener('click', function () { box.querySelector('.kd-sol').innerHTML = '<div class="ds-lbl" style="margin-top:8px">Örnek çözüm</div><pre style="background:var(--code-bg);color:var(--code-text);border-radius:8px;padding:10px 14px;font:13.5px/1.6 var(--mono)">' + esc(q.ref.join('\n')) + '</pre>'; });
+      give.addEventListener('click', function () { box.querySelector('.kd-sol').innerHTML = '<div class="ds-lbl" style="margin-top:8px">Örnek çözüm</div><pre style="background:var(--code-bg);color:var(--code-text);border-radius:8px;padding:10px 14px;font:15.5px/1.6 var(--mono)">' + esc(q.ref.join('\n')) + '</pre>'; });
       var rb = box.querySelector('.kd-runbtn'), rin = box.querySelector('.kd-run textarea'), rout = box.querySelector('.kd-run pre');
       rb.addEventListener('click', function () {
         if (q.fn) { chk.click(); return; }

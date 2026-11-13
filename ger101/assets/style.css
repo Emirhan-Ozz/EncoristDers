@@ -71,7 +71,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -142,7 +142,7 @@ code {
   width: 34px;
   height: 34px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
 }
 .theme-btn:hover { color: var(--text); }
 
@@ -309,7 +309,7 @@ pre.code {
   margin: 0;
   background: var(--code-bg);
   color: var(--code-text);
-  font: 14px/1.6 var(--mono);
+  font: 16px/1.6 var(--mono);
   padding: 12px 16px;
   overflow-x: auto;
   tab-size: 4;
@@ -317,14 +317,14 @@ pre.code {
 .out {
   background: var(--code-out);
   color: #c9d1e0;
-  font: 13.5px/1.55 var(--mono);
+  font: 15.5px/1.55 var(--mono);
   padding: 8px 16px 10px;
   white-space: pre-wrap;
   border-top: 1px solid rgba(255,255,255,.07);
 }
 .out .lbl {
   display: block;
-  font: 600 11px/1.6 system-ui, sans-serif;
+  font: 600 13px/1.6 system-ui, sans-serif;
   text-transform: uppercase;
   letter-spacing: .08em;
   color: #8a94a8;
@@ -476,7 +476,7 @@ input.blank.ok { border: 1px solid #4cc27f; background: #173826; }
 input.blank.bad { border: 1px solid #f07167; background: #43201e; }
 input.blank:disabled { opacity: 1; }
 .blank-no {
-  font-size: 11px;
+  font-size: 13px;
   color: #9aa6c0;
   vertical-align: super;
   margin-right: 1px;
@@ -610,7 +610,7 @@ input.blank:disabled { opacity: 1; }
   .tabs { gap: 0; }
   .tabs a { padding: 0 8px; font-size: .92rem; }
   .courses a { padding: 3px 8px; font-size: .85rem; }
-  pre.code { font-size: 13px; padding: 10px 12px; }
+  pre.code { font-size: 15px; padding: 10px 12px; }
   .q { padding: 14px; }
   .result .row { grid-template-columns: 1fr 70px; }
   .result .row .bar { display: none; }

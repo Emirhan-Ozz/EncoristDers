@@ -62,7 +62,7 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; min-height: 100vh;
   background: var(--bg); color: var(--ink);
-  font: 17px/1.6 'Lora', Georgia, serif;
+  font: 19px/1.6 'Lora', Georgia, serif;
   -webkit-font-smoothing: antialiased;
 }
 /* film greni + kenar kararması */
@@ -137,17 +137,17 @@ kbd { font: .72rem ui-monospace, monospace; border: 1px solid currentColor; bord
 .staff { display: block; width: 100%; height: auto; margin: 0 auto; color: var(--ink); overflow: visible; }
 .st-lines line, .sysline { stroke: currentColor; stroke-width: .9; opacity: .72; }
 .sysline { stroke-width: 1.4; }
-.clef { font-family: 'Noto Music', serif; font-size: 40px; fill: currentColor; }
+.clef { font-family: 'Noto Music', serif; font-size: 42px; fill: currentColor; }
 .note { color: var(--ink); }
 .note .head { fill: currentColor; }
 .note .stem { stroke: currentColor; stroke-width: 1.25; }
 .note .ledger { stroke: currentColor; stroke-width: 1.15; }
-.note .acc { font-family: 'Noto Music', serif; font-size: 22px; fill: currentColor; text-anchor: end; }
+.note .acc { font-family: 'Noto Music', serif; font-size: 24px; fill: currentColor; text-anchor: end; }
 .note .hit { fill: transparent; }
 .note.ok, .st-label.ok { color: var(--ok); fill: var(--ok); }
 .note.bad, .st-label.bad { color: var(--bad); fill: var(--bad); }
 .note.ghost { color: var(--rose); opacity: .85; }
-.st-label { font: italic 12.5px 'Lora', serif; fill: var(--muted); text-anchor: middle; }
+.st-label { font: italic 14.5px 'Lora', serif; fill: var(--muted); text-anchor: middle; }
 .staff.demo .note { cursor: pointer; }
 .staff.demo .note:hover, .note.ping { color: var(--accent); }
 .mini-staff .note { cursor: pointer; }
@@ -346,7 +346,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--rose); outline-
 
 /* ---------- mobil ---------- */
 @media (max-width: 600px) {
-  body { font-size: 16px; }
+  body { font-size: 18px; }
   .wrap { padding: 0 10px; }
   main { padding: 18px 12px 26px; border-radius: 0 12px 12px 12px; }
   h1 { font-size: 1.75rem; }
@@ -363,3 +363,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--rose); outline-
   .seg button { padding: 7px 12px; font-size: .95rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* yazı boyutu +2px (kök 16 → 18) */
+html { font-size: 18px; }
