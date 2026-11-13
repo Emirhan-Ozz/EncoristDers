@@ -55,7 +55,7 @@
   var JKW = ('abstract class interface extends implements public private protected static final void new return if else for while do switch case break continue default ' +
     'this super import package try catch throw throws instanceof true false null').split(' ');
   var JTY = 'int double float long short byte char boolean String Object var'.split(' ');
-  var JR = /("(?:\\.|[^"\\\n])*"?|'(?:\\.|[^'\\\n])*'?)|(\/\/[^\n]*|\/\*[\s\S]*?(?:\*\/|$))|(@\w+)|(\b\d+(?:\.\d+)?\b)|(\b[A-Za-z_][\w]*\b)/g;
+  var JR = /(\u0001\d+\u0001)|("(?:\\.|[^"\\\n])*"?|'(?:\\.|[^'\\\n])*'?)|(\/\/[^\n]*|\/\*[\s\S]*?(?:\*\/|$))|(@\w+)|(\b\d+(?:\.\d+)?\b)|(\b[A-Za-z_][\w]*\b)/g;
   function hlJava(code) {
     var out = '', last = 0, m;
     JR.lastIndex = 0;
@@ -63,11 +63,12 @@
       out += esc(code.slice(last, m.index));
       var t = m[0], cls = null;
       last = JR.lastIndex;
-      if (m[1]) cls = 's';
-      else if (m[2]) cls = 'c';
-      else if (m[3]) cls = 'an';
-      else if (m[4]) cls = 'n';
-      else if (m[5]) {
+      if (m[1]) { out += t; continue; }
+      if (m[2]) cls = 's';
+      else if (m[3]) cls = 'c';
+      else if (m[4]) cls = 'an';
+      else if (m[5]) cls = 'n';
+      else if (m[6]) {
         if (JKW.indexOf(t) !== -1) cls = 'k';
         else if (JTY.indexOf(t) !== -1) cls = 'cn';
         else if (/^[A-Z]/.test(t)) cls = 'ty';
