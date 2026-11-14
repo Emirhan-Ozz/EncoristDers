@@ -32,7 +32,7 @@ html:active-view-transition-type(back)::view-transition-new(root){animation-name
 addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=navigation.activation;if(!a||!a.from)return;var d=function(u){return new URL(u).pathname.replace(/index\.html$/,'').split('/').filter(Boolean).length};e.viewTransition.types.add(d(a.entry.url)<d(a.from.url)?'back':'forward')}catch(_){}});
 </script>
 <script src="../phase.js?v=1" data-scroll="tekrar"></script>
-<style>.tabs a.tab-onemli{color:#fff;background:#d92b0b;border-radius:8px;font-weight:800;padding-left:10px;padding-right:10px}.tabs a.tab-onemli.active{outline:2px solid #d92b0b;outline-offset:2px}</style>
+<style>.tabs a.tab-onemli{color:var(--accent);font-weight:800}.tabs a.tab-onemli:hover{color:var(--accent)}</style>
 </head>
 <body>
   <header class="topbar">
