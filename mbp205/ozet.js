@@ -149,12 +149,62 @@
     '.oz-ex pre code{background:none;border:0;padding:0;font:inherit;color:inherit}' +
     '.oz-ex pre.uml{background:var(--surface-2);color:var(--text);border:1px solid var(--border);margin-bottom:6px}' +
     '.oz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}' +
+    '.oz-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}.oz-head h1{margin:0}.oz-head h1 a{color:inherit;text-decoration:none}' +
+    '.oz-imp{text-decoration:none;font-weight:700;border:2px solid var(--accent);color:var(--accent);border-radius:999px;padding:5px 14px}.oz-imp:hover,.oz-imp.on{background:var(--accent);color:#fff}' +
+    '.oz-img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border)}' +
+    '.oz-tab td,.oz-tab th{vertical-align:top}' +
     '.oz-tab{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:.93rem}.oz-tab th,.oz-tab td{border:1px solid var(--border);padding:6px 10px;text-align:left}.oz-tab th{background:var(--surface-2)}';
+
+
+  /* Tahta fotoğrafı (hocanın sınav başlıkları) → tablo */
+  var ONEMLI = {
+    ust: '`Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir` → tek üst sınıf, birden çok arayüz',
+    temel: [
+      ['Kalıtım (Inheritance)', '↳ **override**', 'UML: düz çizgi + boş üçgen `──▷`'],
+      ['Kapsülleme (Encapsulation)', '`public` / `private` / `protected`', 'UML: `+` / `−` / `#`'],
+      ['Soyutlama (Abstraction)', 'Ne yaptığını göster, nasıl yaptığını gizle', '`abstract class` ve `interface` ile'],
+      ['Çok biçimlilik (Polymorphism)', '`Hayvan h = new Kedi();`', '`ArrayList<Hayvan> liste;`'],
+      ['Bağlantı (has-a) · köşedeki çizim', 'Sınıf ──▶ `Random` (ok ile)', '`Random r = new Random();`']
+    ],
+    cesit: [
+      ['Tanım', '`public abstract class ...`', '`public interface ...`'],
+      ['UML oku', 'düz çizgi + boş üçgen `──▷`', 'kesikli çizgi + boş üçgen `- - -▷`'],
+      ['Nesne', 'Üretilmez', 'Yok'],
+      ['Referans', 'Olabilir', 'Var'],
+      ['Kullanım', '`extends` ile', '`implements` ile'],
+      ['Kaç tane?', 'extends\'e bağlı: bir sınıfın **max bir** üst sınıfı olabilir', 'Bir sınıfın **sınırsız** arayüzü olabilir'],
+      ['Metotlar', 'Soyut metot **içerebilir** (normal metot da olur)', 'Tüm metotları **soyuttur** ↳ `private` ve `default` normal metot yazılabilir'],
+      ['Erişim', 'Kapsülleme kullanılabilir', 'Her şey `public`'],
+      ['Özellikler', 'Her türlü alan', 'Özellikler **SABİT** (`final`)'],
+      ['Constructor', '**Var**', '**Yok**']
+    ]
+  };
+
+  function table(head, rows) {
+    return '<table class="oz-tab"><tr>' + head.map(function (h) { return '<th>' + md(h) + '</th>'; }).join('') + '</tr>' +
+      rows.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td>' + md(c) + '</td>' : '<td><b>' + md(c) + '</b></td>'; }).join('') + '</tr>'; }).join('') + '</table>';
+  }
+  function head(active) {
+    return '<div class="oz-head"><h1>' + (active === 'onemli' ? '<a href="#ozet">Özet</a>' : 'Özet') + '</h1>' +
+      '<a class="oz-imp' + (active === 'onemli' ? ' on' : '') + '" href="#ozet/onemli">★ Önemli</a></div>';
+  }
+  function renderOnemli(app) {
+    document.title = 'Önemli · MBP205';
+    app.innerHTML = head('onemli') +
+      '<div class="oz-lead"><b>Hocanın tahtası:</b> sınavdaki 7 soru bu başlıklardan gelecek. Fotoğraf aşağıda, yazıları tablolara çevirdim.</div>' +
+      '<section class="oz-card"><h2><span>★</span>Tahtanın en üst satırı</h2><p class="oz-tanim">' + md(ONEMLI.ust) + '</p></section>' +
+      '<section class="oz-card"><h2><span>1</span>NTP\'nin temelleri</h2>' + table(['Başlık', 'Tahtadaki not', 'Ek'], ONEMLI.temel) + '</section>' +
+      '<section class="oz-card"><h2><span>2</span>Sınıf çeşitleri: Soyut sınıf ve Arayüz</h2>' + table(['', 'Soyut sınıf (Abstract Class)', 'Arayüz (Interface)'], ONEMLI.cesit) + '</section>' +
+      '<section class="oz-card"><h2><span>📷</span>Tahtanın fotoğrafı</h2><a href="assets/tahta.jpg" target="_blank" rel="noopener"><img class="oz-img" src="assets/tahta.jpg" alt="Hocanın tahtası: NTP temelleri, sınıf çeşitleri, arayüz"></a>' +
+      '<p style="color:var(--muted);font-size:.88rem;margin:6px 0 0">Büyütmek için fotoğrafa tıkla.</p></section>';
+    window.scrollTo(0, 0);
+  }
 
   function render(app, arg) {
     if (!document.getElementById('oz-css')) { var st = document.createElement('style'); st.id = 'oz-css'; st.textContent = CSS; document.head.appendChild(st); }
+    if (arg === 'onemli') return renderOnemli(app);
     document.title = 'Özet · MBP205';
-    app.innerHTML = '<h1>Özet</h1>' +
+    app.innerHTML = head('ozet') +
       '<div class="oz-lead">Tahtadaki 7 başlık: <b>kısa tanım + maddeler + sınavda yazılacak boyutta örnek</b>. ' +
       'Hoca tam Java dosyası değil, kavramı gösteren <b>kısa kod</b> istiyor; buradaki örnekler o kadar (main yok, sadece gereken satırlar). ' +
       'Kâğıda: önce tanımı yaz, 2-3 madde ekle, altına bir örnek kod koy.</div>' +
@@ -177,5 +227,6 @@
   }
 
   window.OZET = OZET;
+  window.OZET_ONEMLI = ONEMLI;
   window.Ozet = { render: render };
 })();
