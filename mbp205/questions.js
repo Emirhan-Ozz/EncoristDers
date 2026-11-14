@@ -2,11 +2,11 @@
 window.EXAMS = [
  {
   "id": "tahta",
-  "title": "Tahtadaki maddeler",
+  "title": "Temel kurallar",
   "group": "hoca",
   "mode": "practice",
   "featured": true,
-  "desc": "Hocanın tahtaya yazdığı her madde bir soru: soyut sınıf ve arayüz kuralları, dört temel kavram, UML okları. Anında kontrol.",
+  "desc": "Soyut sınıf ve arayüz kuralları, dört temel kavram, UML okları. Anında kontrol.",
   "questions": [
    {
     "type": "mc",
@@ -19,8 +19,8 @@ window.EXAMS = [
      "Evet, her sınıf gibi"
     ],
     "a": 1,
-    "exp": "Tahta: \"Nesne üretilmez.\" `new Hayvan()` derleme hatası verir.",
-    "src": "Tahta"
+    "exp": "Kural: \"Nesne üretilmez.\" `new Hayvan()` derleme hatası verir.",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -33,8 +33,8 @@ window.EXAMS = [
      "Hayır, soyut sınıf tip olarak kullanılamaz"
     ],
     "a": 1,
-    "exp": "Tahta: \"Referans olabilir.\" Referans soyut sınıf tipinde, nesne alt sınıftan.",
-    "src": "Tahta"
+    "exp": "Kural: \"Referans olabilir.\" Referans soyut sınıf tipinde, nesne alt sınıftan.",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -47,8 +47,8 @@ window.EXAMS = [
      "extends"
     ],
     "a": 3,
-    "exp": "Tahta: \"extends ile kullanılır.\"",
-    "src": "Tahta"
+    "exp": "Kural: \"extends ile kullanılır.\"",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -61,8 +61,8 @@ window.EXAMS = [
      "İki"
     ],
     "a": 0,
-    "exp": "Tahta: \"max bir tane üst sınıfı olabilir.\" Java tek kalıtımı destekler.",
-    "src": "Tahta"
+    "exp": "Kural: \"max bir tane üst sınıfı olabilir.\" Java tek kalıtımı destekler.",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -75,8 +75,8 @@ window.EXAMS = [
      "Hayır, sadece arayüzler içerir"
     ],
     "a": 1,
-    "exp": "Tahta: \"Soyut metot içerebilir.\" Normal metot da içerebilir.",
-    "src": "Tahta"
+    "exp": "Kural: \"Soyut metot içerebilir.\" Normal metot da içerebilir.",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -89,8 +89,8 @@ window.EXAMS = [
      "Sadece final alanlar olabilir"
     ],
     "a": 1,
-    "exp": "Tahta: \"Kapsülleme kullanılabilir.\" Her şeyin public olması arayüzün kuralıdır.",
-    "src": "Tahta"
+    "exp": "Kural: \"Kapsülleme kullanılabilir.\" Her şeyin public olması arayüzün kuralıdır.",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -103,8 +103,8 @@ window.EXAMS = [
      "Sadece static olursa"
     ],
     "a": 0,
-    "exp": "Tahta: \"Constructor var.\" Alt sınıf `super(...)` ile çağırır.",
-    "src": "Tahta"
+    "exp": "Kural: \"Constructor var.\" Alt sınıf `super(...)` ile çağırır.",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -117,8 +117,8 @@ window.EXAMS = [
      "Evet"
     ],
     "a": 0,
-    "exp": "Tahta: \"Nesne yok.\"",
-    "src": "Tahta"
+    "exp": "Kural: \"Nesne yok.\"",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -131,8 +131,8 @@ window.EXAMS = [
      "Evet, referans var"
     ],
     "a": 3,
-    "exp": "Tahta: \"Referans var.\"",
-    "src": "Tahta"
+    "exp": "Kural: \"Referans var.\"",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -145,8 +145,8 @@ window.EXAMS = [
      "abstract"
     ],
     "a": 1,
-    "exp": "Tahta: \"implements ile kullanılır.\"",
-    "src": "Tahta"
+    "exp": "Kural: \"implements ile kullanılır.\"",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -159,13 +159,13 @@ window.EXAMS = [
      "Sınırsız"
     ],
     "a": 3,
-    "exp": "Tahta: \"Bir sınıfın sınırsız arayüzü olabilir.\" Virgülle yazılır.",
-    "src": "Tahta"
+    "exp": "Kural: \"Bir sınıfın sınırsız arayüzü olabilir.\" Virgülle yazılır.",
+    "src": "Temel"
    },
    {
     "type": "mc",
     "topic": "arayuz",
-    "q": "Arayüzdeki metotlar için tahtadaki kural hangisidir?",
+    "q": "Arayüzdeki metotlar için hangisi doğrudur?",
     "opts": [
      "Hepsi gövdeli olmak zorundadır",
      "Hepsi private'tır",
@@ -173,8 +173,8 @@ window.EXAMS = [
      "Metot yazılamaz, sadece alan olur"
     ],
     "a": 2,
-    "exp": "Tahta: \"Tüm metotları soyuttur → private ve default normal metot yazılabilir.\"",
-    "src": "Tahta"
+    "exp": "Kural: \"Tüm metotları soyuttur → private ve default normal metot yazılabilir.\"",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -187,8 +187,8 @@ window.EXAMS = [
      "Paket düzeyi (default)"
     ],
     "a": 0,
-    "exp": "Tahta: \"Herşey public.\"",
-    "src": "Tahta"
+    "exp": "Kural: \"Herşey public.\"",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -201,8 +201,8 @@ window.EXAMS = [
      "Sadece constructor'da atanır"
     ],
     "a": 2,
-    "exp": "Tahta: \"Özellikler SABİT (final).\" Otomatik public static final.",
-    "src": "Tahta"
+    "exp": "Kural: \"Özellikler SABİT (final).\" Otomatik public static final.",
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -215,13 +215,13 @@ window.EXAMS = [
      "Sadece bir tane olabilir"
     ],
     "a": 0,
-    "exp": "Tahta: \"Constructor yok.\"",
-    "src": "Tahta"
+    "exp": "Kural: \"Constructor yok.\"",
+    "src": "Temel"
    },
    {
     "type": "mc",
     "topic": "arayuz",
-    "q": "Tahtadaki `Kedi (extends Hayvan) implements Kosabilir, SesCikarabilir, Surunebilir` satırı neyi gösterir?",
+    "q": "`class Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir` tanımı neyi gösterir?",
     "opts": [
      "Kedi dört sınıftan kalıtım alır",
      "Hayvan, Kedi'den kalıtım alır",
@@ -230,7 +230,7 @@ window.EXAMS = [
     ],
     "a": 2,
     "exp": "Önce extends (tek üst sınıf), sonra implements (birden çok arayüz, virgülle).",
-    "src": "Tahta"
+    "src": "Temel"
    },
    {
     "type": "mc",
@@ -243,13 +243,13 @@ window.EXAMS = [
      "Kalıtım, kapsülleme, soyutlama, çok biçimlilik"
     ],
     "a": 3,
-    "exp": "Tahta: Kalıtım (Inheritance), Kapsülleme (Encapsulation), Soyutlama (Abstraction), Çok Biçimlilik (Polymorphism).",
-    "src": "Tahta"
+    "exp": "Dört temel kavram: Kalıtım (Inheritance), Kapsülleme (Encapsulation), Soyutlama (Abstraction), Çok Biçimlilik (Polymorphism).",
+    "src": "Temel"
    },
    {
     "type": "mc",
     "topic": "kalitim",
-    "q": "Tahtada kalıtımın altına yazılan kavram ve ok neyi anlatır?",
+    "q": "Kalıtımda alt sınıfın metodu yeniden yazması ve UML'deki kalıtım oku hangisidir?",
     "opts": [
      "private; dolu elmas",
      "override; UML'de düz çizgi + içi boş üçgen",
@@ -258,12 +258,12 @@ window.EXAMS = [
     ],
     "a": 1,
     "exp": "Kalıtımla gelen metot alt sınıfta override edilir; UML'de kalıtım ▷ (boş üçgen) ile çizilir.",
-    "src": "Tahta"
+    "src": "Temel"
    },
    {
     "type": "mc",
     "topic": "kapsulleme",
-    "q": "Tahtada kapsüllemenin altındaki `+ − #` simgeleri sırasıyla hangi erişim belirleyicileridir?",
+    "q": "UML'de kapsüllemeyi gösteren `+ − #` simgeleri sırasıyla hangi erişim belirleyicileridir?",
     "opts": [
      "public, private, protected",
      "private, public, protected",
@@ -272,12 +272,12 @@ window.EXAMS = [
     ],
     "a": 0,
     "exp": "UML: + public, − private, # protected.",
-    "src": "Tahta"
+    "src": "Temel"
    },
    {
     "type": "mc",
     "topic": "polimorfizm",
-    "q": "Tahtadaki `Hayvan h = new Kedi();` ve `ArrayList<Hayvan> liste;` hangi kavramın örneğidir?",
+    "q": "`Hayvan h = new Kedi();` ve `ArrayList<Hayvan> liste;` hangi kavramın örneğidir?",
     "opts": [
      "Composition",
      "Çok biçimlilik (polymorphism)",
@@ -286,12 +286,12 @@ window.EXAMS = [
     ],
     "a": 1,
     "exp": "Üst sınıf referansı alt sınıf nesnesini tutar; listeye farklı alt sınıflar eklenir.",
-    "src": "Tahta"
+    "src": "Temel"
    },
    {
     "type": "mc",
     "topic": "uml",
-    "q": "Tahtadaki kutuda bir sınıftan Random'a çizilen ok ve altındaki `Random r = new Random();` neyi gösterir?",
+    "q": "UML'de bir sınıftan Random'a çizilen ok ve sınıfın içindeki `Random r = new Random();` alanı neyi gösterir?",
     "opts": [
      "Composition: Random silinince sınıf da silinir",
      "Association: sınıf bir Random nesnesine sahiptir (has-a)",
@@ -300,12 +300,12 @@ window.EXAMS = [
     ],
     "a": 1,
     "exp": "Sınıfın içinde başka sınıf tipinde bir alan varsa bu bağlantıdır (has-a); ok sahip olandan sahip olunana çizilir.",
-    "src": "Tahta"
+    "src": "Temel"
    },
    {
     "type": "mc",
     "topic": "uml",
-    "q": "Tahtada arayüz başlığının yanındaki `- - - -▷` oku UML'de neyi gösterir?",
+    "q": "UML'de sınıftan arayüze çizilen `- - - -▷` oku neyi gösterir?",
     "opts": [
      "Kalıtım",
      "Bağımlılık yok",
@@ -314,7 +314,7 @@ window.EXAMS = [
     ],
     "a": 2,
     "exp": "Kesikli çizgi + boş üçgen = implements.",
-    "src": "Tahta"
+    "src": "Temel"
    }
   ]
  },
@@ -701,7 +701,7 @@ window.EXAMS = [
      "protected ve final"
     ],
     "a": 0,
-    "exp": "Tahta: \"private ve default normal metot yazılabilir.\""
+    "exp": "Kural: \"private ve default normal metot yazılabilir.\""
    },
    {
     "type": "mc",
@@ -851,7 +851,7 @@ window.EXAMS = [
      "yoktur"
     ],
     "cs": false,
-    "exp": "Tahta: \"Constructor yok.\" Soyut sınıfta ise var."
+    "exp": "Kural: \"Constructor yok.\" Soyut sınıfta ise var."
    },
    {
     "type": "fill",
@@ -1916,7 +1916,7 @@ window.TOPIC_QUESTIONS = {
     "protected ve final"
    ],
    "a": 0,
-   "exp": "Tahta: \"private ve default normal metot yazılabilir.\""
+   "exp": "Kural: \"private ve default normal metot yazılabilir.\""
   },
   {
    "type": "mc",
@@ -2049,7 +2049,7 @@ window.TOPIC_QUESTIONS = {
     "İkisinde de alanlar sabittir"
    ],
    "a": 3,
-   "exp": "Tahtada iki sütunda da: nesne yok, referans var."
+   "exp": "İkisinde de: nesne yok, referans var."
   },
   {
    "type": "mc",
@@ -2116,7 +2116,7 @@ window.TOPIC_QUESTIONS = {
     "yoktur"
    ],
    "cs": false,
-   "exp": "Tahta: \"Constructor yok.\" Soyut sınıfta ise var."
+   "exp": "Kural: \"Constructor yok.\" Soyut sınıfta ise var."
   }
  ],
  "uml": [
@@ -2292,7 +2292,7 @@ window.TOPIC_QUESTIONS = {
     "Generalization: Karakter ▷ Random"
    ],
    "a": 1,
-   "exp": "Tahtadaki kutu: sınıfın içinde Random tipinde alan."
+   "exp": "Bağlantı (has-a): sınıfın içinde Random tipinde alan."
   },
   {
    "type": "mc",

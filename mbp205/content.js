@@ -35,7 +35,7 @@ window.COURSE = {
  "randomDesc": "Bütün konulardan 15 test, 4 boşluk, 1 kod tamamlama. Az gördüğün sorular önce gelir.",
  "reviewTitle": "Nesne Tabanlı Programlama II",
  "reviewLead": "Vize **7 açık uçlu soru**: hoca tahtadaki başlıkları **açıklamanızı ve örnek vermenizi** isteyecek, kod yazdırmayacak. Konular tahtadaki sırayla; örnekler derste yazdığımız kodlardan (Yarış, Banka, Çalışan/Müşteri, Karakter oyunu, Kedi). Bütün Java örnekleri derlenip çalıştırılarak kontrol edildi. Çalıştıktan sonra **Yazılı prova** sekmesinde cevap yazmayı dene.",
- "testLead": "Sınav açık uçlu; bu testler kavramları pekiştirmek için. Önce **tahtadaki maddeler** testini çöz (121 soru toplam). Çıktı soran soruların cevabı gerçek Java ile çalıştırılarak doğrulandı.",
+ "testLead": "Sınav açık uçlu; bu testler kavramları pekiştirmek için. Önce **Temel kurallar** testini çöz (121 soru toplam). Çıktı soran soruların cevabı gerçek Java ile çalıştırılarak doğrulandı.",
  "formatTitle": "Vize formatı",
  "formatNote": "Hocanın söylediği: kod fazla sorulmayacak; tahtadaki başlıkları açıklayıp örnek vermenizi isteyen **7 soru**. Puan dağılımı belirtilmedi; Yazılı prova 7 soruyu toplam 100 puan sayar (soru başı ≈14,3).",
  "hocaLink": {

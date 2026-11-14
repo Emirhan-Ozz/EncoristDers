@@ -104,8 +104,8 @@ def deneme(seed, used):
     return sel
 used = set()
 EXAMS = [
-    {'id': 'tahta', 'title': 'Tahtadaki maddeler', 'group': 'hoca', 'mode': 'practice', 'featured': True,
-     'desc': 'Hocanın tahtaya yazdığı her madde bir soru: soyut sınıf ve arayüz kuralları, dört temel kavram, UML okları. Anında kontrol.', 'questions': TAHTA},
+    {'id': 'tahta', 'title': 'Temel kurallar', 'group': 'hoca', 'mode': 'practice', 'featured': True,
+     'desc': 'Soyut sınıf ve arayüz kuralları, dört temel kavram, UML okları. Anında kontrol.', 'questions': TAHTA},
     {'id': 'deneme1', 'title': 'Karma test 1', 'desc': '16 test + 4 boşluk; bütün konulardan.', 'questions': deneme(1, used)},
     {'id': 'deneme2', 'title': 'Karma test 2', 'desc': '16 test + 4 boşluk; bütün konulardan.', 'questions': deneme(2, used)},
 ]
@@ -118,7 +118,7 @@ course = {
     'randomDesc': 'Bütün konulardan 15 test, 4 boşluk, 1 kod tamamlama. Az gördüğün sorular önce gelir.',
     'reviewTitle': 'Nesne Tabanlı Programlama II',
     'reviewLead': 'Vize **7 açık uçlu soru**: hoca tahtadaki başlıkları **açıklamanızı ve örnek vermenizi** isteyecek, kod yazdırmayacak. Konular tahtadaki sırayla; örnekler derste yazdığımız kodlardan (Yarış, Banka, Çalışan/Müşteri, Karakter oyunu, Kedi). Bütün Java örnekleri derlenip çalıştırılarak kontrol edildi. Çalıştıktan sonra **Yazılı prova** sekmesinde cevap yazmayı dene.',
-    'testLead': 'Sınav açık uçlu; bu testler kavramları pekiştirmek için. Önce **tahtadaki maddeler** testini çöz (%d soru toplam). Çıktı soran soruların cevabı gerçek Java ile çalıştırılarak doğrulandı.' % total,
+    'testLead': 'Sınav açık uçlu; bu testler kavramları pekiştirmek için. Önce **Temel kurallar** testini çöz (%d soru toplam). Çıktı soran soruların cevabı gerçek Java ile çalıştırılarak doğrulandı.' % total,
     'formatTitle': 'Vize formatı',
     'formatNote': 'Hocanın söylediği: kod fazla sorulmayacak; tahtadaki başlıkları açıklayıp örnek vermenizi isteyen **7 soru**. Puan dağılımı belirtilmedi; Yazılı prova 7 soruyu toplam 100 puan sayar (soru başı ≈14,3).',
     'hocaLink': {'href': '#yazili', 'text': 'Yazılı provaya geç →'},

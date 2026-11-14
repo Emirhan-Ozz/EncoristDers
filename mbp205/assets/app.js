@@ -864,6 +864,11 @@
       window.Yazili.render(app, arg);
       return;
     }
+    if (page === 'onemli' && window.Ozet) {
+      setTab('onemli'); current = 'onemli'; S = null;
+      window.Ozet.render(app, 'onemli');
+      return;
+    }
     if (page === 'ozet' && window.Ozet) {
       setTab('ozet'); current = 'ozet'; S = null;
       window.Ozet.render(app, arg);

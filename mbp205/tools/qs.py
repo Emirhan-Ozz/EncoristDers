@@ -28,7 +28,7 @@ def code(title, q, src, blanks, exps, expect=None, java_tail='', note=None):
     Q.append((CUR['t'], d))
 
 def tahta(q, opts, a, exp, topic, code=None, java=None, fixed=False, kind='nocompile'):
-    d = {'type': 'mc', 'topic': topic, 'q': q, 'opts': list(opts), 'a': a, 'exp': exp, 'src': 'Tahta'}
+    d = {'type': 'mc', 'topic': topic, 'q': q, 'opts': list(opts), 'a': a, 'exp': exp, 'src': 'Temel'}
     if code: d['code'] = dd(code)
     d['chk'] = {'java': dd(java) if java else None, 'fixed': fixed, 'kind': kind}
     TAHTA.append(d)
@@ -73,46 +73,46 @@ M = lambda body: 'public class Main {\n    public static void main(String[] args
 
 # =================================================================== TAHTA (birebir maddeler)
 tahta('Soyut sınıftan (`abstract class`) `new` ile nesne üretilebilir mi?', ['Hayır, nesne üretilmez', 'Evet, her sınıf gibi', 'Sadece parametresiz yapıcıyla', 'Sadece aynı paketten'], 0,
-      'Tahta: "Nesne üretilmez." `new Hayvan()` derleme hatası verir.', 'soyut',
+      'Kural: "Nesne üretilmez." `new Hayvan()` derleme hatası verir.', 'soyut',
       java='abstract class Hayvan { }\n' + M('Hayvan h = new Hayvan();'))
 tahta('Soyut sınıf tipinde bir **referans** tanımlanabilir mi? `Hayvan h = new Kedi();`', ['Evet, referans olabilir', 'Hayır, soyut sınıf tip olarak kullanılamaz', 'Sadece arayüzlerde olur', 'Sadece static ise'], 0,
-      'Tahta: "Referans olabilir." Referans soyut sınıf tipinde, nesne alt sınıftan.', 'soyut')
-tahta('Soyut sınıf hangi anahtar kelimeyle kullanılır?', ['extends', 'implements', 'abstract new', 'uses'], 0, 'Tahta: "extends ile kullanılır."', 'soyut')
-tahta('`extends`\'e bağlı olarak bir sınıfın en fazla kaç üst sınıfı olabilir?', ['Bir', 'İki', 'Sınırsız', 'Sıfır'], 0, 'Tahta: "max bir tane üst sınıfı olabilir." Java tek kalıtımı destekler.', 'soyut',
+      'Kural: "Referans olabilir." Referans soyut sınıf tipinde, nesne alt sınıftan.', 'soyut')
+tahta('Soyut sınıf hangi anahtar kelimeyle kullanılır?', ['extends', 'implements', 'abstract new', 'uses'], 0, 'Kural: "extends ile kullanılır."', 'soyut')
+tahta('`extends`\'e bağlı olarak bir sınıfın en fazla kaç üst sınıfı olabilir?', ['Bir', 'İki', 'Sınırsız', 'Sıfır'], 0, 'Kural: "max bir tane üst sınıfı olabilir." Java tek kalıtımı destekler.', 'soyut',
       java='class A { } class B { }\nclass C extends A, B { }\n' + M(''))
-tahta('Soyut sınıf soyut metot içerebilir mi?', ['Evet', 'Hayır, sadece arayüzler içerir', 'Sadece static olarak', 'Sadece private olarak'], 0, 'Tahta: "Soyut metot içerebilir." Normal metot da içerebilir.', 'soyut')
+tahta('Soyut sınıf soyut metot içerebilir mi?', ['Evet', 'Hayır, sadece arayüzler içerir', 'Sadece static olarak', 'Sadece private olarak'], 0, 'Kural: "Soyut metot içerebilir." Normal metot da içerebilir.', 'soyut')
 tahta('Soyut sınıfta kapsülleme (private alanlar) kullanılabilir mi?', ['Evet', 'Hayır, her şey public olmalı', 'Sadece protected kullanılabilir', 'Sadece final alanlar olabilir'], 0,
-      'Tahta: "Kapsülleme kullanılabilir." Her şeyin public olması arayüzün kuralıdır.', 'soyut')
+      'Kural: "Kapsülleme kullanılabilir." Her şeyin public olması arayüzün kuralıdır.', 'soyut')
 tahta('Soyut sınıfın constructor\'ı (yapıcısı) var mıdır?', ['Vardır', 'Yoktur', 'Sadece arayüz uygularsa', 'Sadece static olursa'], 0,
-      'Tahta: "Constructor var." Alt sınıf `super(...)` ile çağırır.', 'soyut',
+      'Kural: "Constructor var." Alt sınıf `super(...)` ile çağırır.', 'soyut',
       java='abstract class Hayvan { String isim; Hayvan(String i) { isim = i; } }\nclass Kedi extends Hayvan { Kedi() { super("Tekir"); } }\n' + M('System.out.println(new Kedi().isim);'), kind='compile')
-tahta('Arayüzden (`interface`) nesne üretilebilir mi?', ['Hayır, nesne yok', 'Evet', 'Sadece default metot varsa', 'Sadece constructor yazılırsa'], 0, 'Tahta: "Nesne yok."', 'arayuz',
+tahta('Arayüzden (`interface`) nesne üretilebilir mi?', ['Hayır, nesne yok', 'Evet', 'Sadece default metot varsa', 'Sadece constructor yazılırsa'], 0, 'Kural: "Nesne yok."', 'arayuz',
       java='interface Kosabilir { void kos(); }\n' + M('Kosabilir k = new Kosabilir();'))
-tahta('Arayüz tipinde referans tanımlanabilir mi? `YemekYiyebilir y = new Kedi();`', ['Evet, referans var', 'Hayır', 'Sadece soyut sınıflarda olur', 'Sadece static metotlarda'], 0, 'Tahta: "Referans var."', 'arayuz')
-tahta('Arayüz bir sınıfa hangi anahtar kelimeyle eklenir?', ['implements', 'extends', 'interface', 'abstract'], 0, 'Tahta: "implements ile kullanılır."', 'arayuz')
-tahta('Bir sınıf kaç arayüz uygulayabilir?', ['Sınırsız', 'Bir', 'İki', 'Sadece üst sınıfı yoksa bir'], 0, 'Tahta: "Bir sınıfın sınırsız arayüzü olabilir." Virgülle yazılır.', 'arayuz')
-tahta('Arayüzdeki metotlar için tahtadaki kural hangisidir?', ['Tüm metotlar soyuttur; private ve default metotlar gövdeli yazılabilir', 'Hepsi gövdeli olmak zorundadır', 'Hepsi private\'tır', 'Metot yazılamaz, sadece alan olur'], 0,
-      'Tahta: "Tüm metotları soyuttur → private ve default normal metot yazılabilir."', 'arayuz')
-tahta('Arayüzdeki üyelerin erişim düzeyi nedir?', ['Her şey public', 'Her şey private', 'Her şey protected', 'Paket düzeyi (default)'], 0, 'Tahta: "Herşey public."', 'arayuz')
+tahta('Arayüz tipinde referans tanımlanabilir mi? `YemekYiyebilir y = new Kedi();`', ['Evet, referans var', 'Hayır', 'Sadece soyut sınıflarda olur', 'Sadece static metotlarda'], 0, 'Kural: "Referans var."', 'arayuz')
+tahta('Arayüz bir sınıfa hangi anahtar kelimeyle eklenir?', ['implements', 'extends', 'interface', 'abstract'], 0, 'Kural: "implements ile kullanılır."', 'arayuz')
+tahta('Bir sınıf kaç arayüz uygulayabilir?', ['Sınırsız', 'Bir', 'İki', 'Sadece üst sınıfı yoksa bir'], 0, 'Kural: "Bir sınıfın sınırsız arayüzü olabilir." Virgülle yazılır.', 'arayuz')
+tahta('Arayüzdeki metotlar için hangisi doğrudur?', ['Tüm metotlar soyuttur; private ve default metotlar gövdeli yazılabilir', 'Hepsi gövdeli olmak zorundadır', 'Hepsi private\'tır', 'Metot yazılamaz, sadece alan olur'], 0,
+      'Kural: "Tüm metotları soyuttur → private ve default normal metot yazılabilir."', 'arayuz')
+tahta('Arayüzdeki üyelerin erişim düzeyi nedir?', ['Her şey public', 'Her şey private', 'Her şey protected', 'Paket düzeyi (default)'], 0, 'Kural: "Herşey public."', 'arayuz')
 tahta('Arayüzde tanımlanan özellikler (alanlar) nasıldır?', ['Sabittir (final), değiştirilemez', 'Her nesnede ayrı değer alır', 'Private\'tır', 'Sadece constructor\'da atanır'], 0,
-      'Tahta: "Özellikler SABİT (final)." Otomatik public static final.', 'arayuz',
+      'Kural: "Özellikler SABİT (final)." Otomatik public static final.', 'arayuz',
       java='interface A { int YAS = 5; }\n' + M('A.YAS = 10;'))
-tahta('Arayüzün constructor\'ı var mıdır?', ['Yoktur', 'Vardır', 'Sadece default olarak', 'Sadece bir tane olabilir'], 0, 'Tahta: "Constructor yok."', 'arayuz',
+tahta('Arayüzün constructor\'ı var mıdır?', ['Yoktur', 'Vardır', 'Sadece default olarak', 'Sadece bir tane olabilir'], 0, 'Kural: "Constructor yok."', 'arayuz',
       java='interface A { A() { } }\n' + M(''))
-tahta('Tahtadaki `Kedi (extends Hayvan) implements Kosabilir, SesCikarabilir, Surunebilir` satırı neyi gösterir?',
+tahta('`class Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir` tanımı neyi gösterir?',
       ['Kedi tek bir sınıftan kalıtım alıp üç arayüzü uygular', 'Kedi dört sınıftan kalıtım alır', 'Kedi bir arayüzdür', 'Hayvan, Kedi\'den kalıtım alır'], 0,
       'Önce extends (tek üst sınıf), sonra implements (birden çok arayüz, virgülle).', 'arayuz')
 tahta('NTP\'nin dört temel kavramı hangileridir?', ['Kalıtım, kapsülleme, soyutlama, çok biçimlilik', 'Sınıf, nesne, metot, değişken', 'Kalıtım, arayüz, döngü, dizi', 'Public, private, protected, default'], 0,
-      'Tahta: Kalıtım (Inheritance), Kapsülleme (Encapsulation), Soyutlama (Abstraction), Çok Biçimlilik (Polymorphism).', 'kalitim')
-tahta('Tahtada kalıtımın altına yazılan kavram ve ok neyi anlatır?', ['override; UML\'de düz çizgi + içi boş üçgen', 'overload; kesikli çizgi', 'private; dolu elmas', 'interface; açık ok'], 0,
+      'Dört temel kavram: Kalıtım (Inheritance), Kapsülleme (Encapsulation), Soyutlama (Abstraction), Çok Biçimlilik (Polymorphism).', 'kalitim')
+tahta('Kalıtımda alt sınıfın metodu yeniden yazması ve UML\'deki kalıtım oku hangisidir?', ['override; UML\'de düz çizgi + içi boş üçgen', 'overload; kesikli çizgi', 'private; dolu elmas', 'interface; açık ok'], 0,
       'Kalıtımla gelen metot alt sınıfta override edilir; UML\'de kalıtım ▷ (boş üçgen) ile çizilir.', 'kalitim')
-tahta('Tahtada kapsüllemenin altındaki `+ − #` simgeleri sırasıyla hangi erişim belirleyicileridir?', ['public, private, protected', 'private, public, protected', 'protected, private, public', 'public, protected, private'], 0,
+tahta('UML\'de kapsüllemeyi gösteren `+ − #` simgeleri sırasıyla hangi erişim belirleyicileridir?', ['public, private, protected', 'private, public, protected', 'protected, private, public', 'public, protected, private'], 0,
       'UML: + public, − private, # protected.', 'kapsulleme', fixed=True)
-tahta('Tahtadaki `Hayvan h = new Kedi();` ve `ArrayList<Hayvan> liste;` hangi kavramın örneğidir?', ['Çok biçimlilik (polymorphism)', 'Kapsülleme', 'Aşırı yükleme', 'Composition'], 0,
+tahta('`Hayvan h = new Kedi();` ve `ArrayList<Hayvan> liste;` hangi kavramın örneğidir?', ['Çok biçimlilik (polymorphism)', 'Kapsülleme', 'Aşırı yükleme', 'Composition'], 0,
       'Üst sınıf referansı alt sınıf nesnesini tutar; listeye farklı alt sınıflar eklenir.', 'polimorfizm')
-tahta('Tahtadaki kutuda bir sınıftan Random\'a çizilen ok ve altındaki `Random r = new Random();` neyi gösterir?', ['Association: sınıf bir Random nesnesine sahiptir (has-a)', 'Kalıtım: sınıf Random\'dan türer', 'Realization: Random bir arayüzdür', 'Composition: Random silinince sınıf da silinir'], 0,
+tahta('UML\'de bir sınıftan Random\'a çizilen ok ve sınıfın içindeki `Random r = new Random();` alanı neyi gösterir?', ['Association: sınıf bir Random nesnesine sahiptir (has-a)', 'Kalıtım: sınıf Random\'dan türer', 'Realization: Random bir arayüzdür', 'Composition: Random silinince sınıf da silinir'], 0,
       'Sınıfın içinde başka sınıf tipinde bir alan varsa bu bağlantıdır (has-a); ok sahip olandan sahip olunana çizilir.', 'uml')
-tahta('Tahtada arayüz başlığının yanındaki `- - - -▷` oku UML\'de neyi gösterir?', ['Gerçekleşme (realization): sınıf arayüzü uygular', 'Kalıtım', 'Aggregation', 'Bağımlılık yok'], 0,
+tahta('UML\'de sınıftan arayüze çizilen `- - - -▷` oku neyi gösterir?', ['Gerçekleşme (realization): sınıf arayüzü uygular', 'Kalıtım', 'Aggregation', 'Bağımlılık yok'], 0,
       'Kesikli çizgi + boş üçgen = implements.', 'uml')
 
 # =================================================================== sinif
@@ -377,7 +377,7 @@ mc('Hangisi doğru sıradır?', ['class Kedi extends Hayvan implements A, B', 'c
    java='interface A { } interface B { }\nabstract class Hayvan { }\nclass Kedi extends Hayvan implements A, B { }\n' + M('System.out.println("ok");'), kind='compile')
 mc('Arayüzü uygulayan sınıf, arayüzdeki soyut metotları yazmazsa ne olur?', ['Derleme hatası (sınıf abstract değilse)', 'Metotlar otomatik eklenir', 'Hiçbir şey olmaz', 'Çalışma zamanında hata'], 0, 'Sözleşme: bütün soyut metotlar yazılmalı.',
    java='interface Kosabilir { void kos(); }\nclass Kedi implements Kosabilir { }\n' + M(''), kind='nocompile')
-mc('Arayüzde hangi metot türleri gövdeli yazılabilir?', ['default ve private', 'Sadece public', 'Sadece abstract', 'protected ve final', 'Hiçbiri'], 0, 'Tahta: "private ve default normal metot yazılabilir."')
+mc('Arayüzde hangi metot türleri gövdeli yazılabilir?', ['default ve private', 'Sadece public', 'Sadece abstract', 'protected ve final', 'Hiçbiri'], 0, 'Kural: "private ve default normal metot yazılabilir."')
 mc('Arayüzde constructor (yapıcı) yazılırsa ne olur?', ['Derleme hatası', 'Nesne üretilebilir hâle gelir', 'Uyarı verir ama çalışır', 'Sadece default olarak çalışır'], 0, 'Arayüzün yapıcısı olmaz.',
    java='interface A { public A() { } }\n' + M(''), fixed=True)
 mc('Java\'da çoklu kalıtımın yerine ne kullanılır?', ['Birden çok arayüz uygulamak', 'Birden çok extends', 'static sınıflar', 'final sınıflar', 'Paketler'], 0, 'implements A, B, C.')
@@ -407,12 +407,12 @@ public class Main {
 
 # =================================================================== karsilastirma
 topic('karsilastirma')
-mc('Soyut sınıf ile arayüzün **ortak** özelliği hangisidir?', ['İkisinden de nesne üretilmez ama referans olabilir', 'İkisinin de constructor\'ı vardır', 'İkisi de implements ile kullanılır', 'İkisinde de alanlar sabittir', 'İkisinde de her şey public\'tir'], 0, 'Tahtada iki sütunda da: nesne yok, referans var.')
+mc('Soyut sınıf ile arayüzün **ortak** özelliği hangisidir?', ['İkisinden de nesne üretilmez ama referans olabilir', 'İkisinin de constructor\'ı vardır', 'İkisi de implements ile kullanılır', 'İkisinde de alanlar sabittir', 'İkisinde de her şey public\'tir'], 0, 'İkisinde de: nesne yok, referans var.')
 mc('Hangisi **sadece arayüz** için doğrudur?', ['Alanlar sabittir (final)', 'Constructor vardır', 'extends ile kullanılır', 'private alan olabilir', 'Bir sınıfın en fazla bir tane olabilir'], 0, 'Diğerleri soyut sınıfa ait.')
 mc('Hangisi **sadece soyut sınıf** için doğrudur?', ['Constructor vardır', 'Bir sınıf sınırsız sayıda uygulayabilir', 'Her şey public\'tir', 'implements ile kullanılır', 'Alanlar otomatik static final\'dır'], 0, 'Arayüzün constructor\'ı yoktur.')
 mc('"is-a" ve "can-do" ilişkileri sırasıyla hangi yapılara uygundur?', ['Soyut sınıf (kalıtım), arayüz', 'Arayüz, soyut sınıf', 'Composition, aggregation', 'Overloading, overriding', 'Private, public'], 0, 'Kedi bir Hayvandır; Kedi koşabilir.', fixed=False)
 mc('Bir sınıf hem soyut sınıftan kalıtım alıp hem arayüz uygulayabilir mi?', ['Evet: extends tek sınıf, implements birden çok arayüz', 'Hayır, ikisinden biri seçilmeli', 'Sadece arayüz soyut sınıfı extends ederse', 'Sadece iki arayüze kadar'], 0, 'Kedi extends Hayvan implements YemekYiyebilir, Uyuyabilir.')
-fill('Boşluğu doldurun: arayüzün yapıcısı ____ .', '// arayüzde constructor: ____', ['yok', 'yoktur'], 'Tahta: "Constructor yok." Soyut sınıfta ise var.', cs=False)
+fill('Boşluğu doldurun: arayüzün yapıcısı ____ .', '// arayüzde constructor: ____', ['yok', 'yoktur'], 'Kural: "Constructor yok." Soyut sınıfta ise var.', cs=False)
 
 # =================================================================== uml
 topic('uml')
@@ -427,7 +427,7 @@ mc('"Kalp insanın parçasıdır, insan yok olduğunda kalp de yok olur." Bu han
 mc('Çokluk gösteriminde `1..*` ne anlama gelir?', ['Bir ya da daha fazla', 'Sıfır ya da daha fazla', 'Tam olarak bir', 'Sıfır ya da bir', 'Hiç'], 0, '0..* sıfır ya da daha fazla.')
 mc('"Öğrenci 0 ya da sonsuz derse kaydolabilir" ilişkisinde ders tarafına ne yazılır?', ['0..*', '1', '0..1', '1..1', '1..*'], 0, 'Sıfır ya da daha fazla.')
 mc('Bir `Dizin`in alt dizinleri yine `Dizin` ise bu ilişki hangisidir?', ['Reflexive (dönüşlü) association', 'Composition', 'Realization', 'Generalization', 'Aggregation'], 0, 'Sınıfın kendisiyle ilişkisi.')
-mc('Kodda `class Karakter { private Random r = new Random(); }` varsa UML\'de Karakter ile Random arasında hangi ilişki çizilir?', ['Association: Karakter → Random (has-a)', 'Generalization: Karakter ▷ Random', 'Realization', 'Hiç ilişki çizilmez', 'Random → Karakter kalıtım'], 0, 'Tahtadaki kutu: sınıfın içinde Random tipinde alan.')
+mc('Kodda `class Karakter { private Random r = new Random(); }` varsa UML\'de Karakter ile Random arasında hangi ilişki çizilir?', ['Association: Karakter → Random (has-a)', 'Generalization: Karakter ▷ Random', 'Realization', 'Hiç ilişki çizilmez', 'Random → Karakter kalıtım'], 0, 'Bağlantı (has-a): sınıfın içinde Random tipinde alan.')
 mc('UML\'de arayüz nasıl gösterilir?', ['Adın üstünde «interface»', 'Adı altı çizili', 'Adı kalın ve kırmızı', 'Kutu kesikli çizilir', 'Adın önüne # konur'], 0, 'Soyut sınıf italik/«abstract», arayüz «interface».')
 fill('UML\'de private erişim hangi simgeyle gösterilir?', '____ isim : String', ['-', '−'], '+ public, − private, # protected.', cs=False)
 fill('UML\'de protected erişim hangi simgeyle gösterilir?', '____ noOlustur() : String', ['#'], '# protected.', cs=False)

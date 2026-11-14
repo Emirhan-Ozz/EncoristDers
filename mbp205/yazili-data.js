@@ -1086,7 +1086,7 @@ window.YAZILI = {
    "cevap": [
     "**Arayüz**, bir sınıfın **ne yapabileceğini** belirten bir sözleşmedir (yetenek listesi): `public interface YemekYiyebilir`. Sınıflar arayüzü `implements` ile uygular ve içindeki metotları yazmak zorundadır.",
     "• Nesne üretilmez, ama **referans olabilir**. • `implements` ile kullanılır; bir sınıf **sınırsız sayıda** arayüz uygulayabilir. • Tüm metotları **soyuttur**; Java 8'den sonra `default`, Java 9'dan sonra `private` gövdeli metot yazılabilir. • Her şey **public**. • Özellikler **sabittir** (`public static final`). • **Constructor yoktur**.",
-    "Tahtadaki örnek: `class Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir`: tek üst sınıf, üç arayüz."
+    "Örnek: `class Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir`: tek üst sınıf, üç arayüz."
    ],
    "kod": "interface Kosabilir { void kos(); }\ninterface SesCikarabilir { void sesCikar(); }\nabstract class Hayvan {\n    public void uyu() { System.out.println(\"Zzz\"); }\n}\nclass Kedi extends Hayvan implements Kosabilir, SesCikarabilir {\n    @Override public void kos() { System.out.println(\"Kedi kosuyor\"); }\n    @Override public void sesCikar() { System.out.println(\"Miyav\"); }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Kedi k = new Kedi();\n        k.kos();\n        k.sesCikar();\n        k.uyu();\n        SesCikarabilir s = k;                 // arayüz tipinde referans\n        s.sesCikar();\n    }\n}",
    "out": "Kedi kosuyor\nMiyav\nZzz\nMiyav"
@@ -1355,7 +1355,7 @@ window.YAZILI = {
   {
    "slot": 7,
    "id": "kedi1",
-   "q": "Tahtadaki `Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir` tanımını açıklayınız. Bu satırda hangi nesne tabanlı kavramlar kullanılmıştır? Java kodu ve UML ilişkileriyle gösteriniz.",
+   "q": "`class Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir` tanımını açıklayınız. Bu satırda hangi nesne tabanlı kavramlar kullanılmıştır? Java kodu ve UML ilişkileriyle gösteriniz.",
    "keys": [
     {
      "k": "extends: Hayvan'dan kalıtım (tek üst sınıf)",

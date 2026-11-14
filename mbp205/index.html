@@ -32,6 +32,7 @@ html:active-view-transition-type(back)::view-transition-new(root){animation-name
 addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=navigation.activation;if(!a||!a.from)return;var d=function(u){return new URL(u).pathname.replace(/index\.html$/,'').split('/').filter(Boolean).length};e.viewTransition.types.add(d(a.entry.url)<d(a.from.url)?'back':'forward')}catch(_){}});
 </script>
 <script src="../phase.js?v=1" data-scroll="tekrar"></script>
+<style>.tabs a.tab-onemli{color:#fff;background:#d92b0b;border-radius:8px;font-weight:800;padding-left:10px;padding-right:10px}.tabs a.tab-onemli.active{outline:2px solid #d92b0b;outline-offset:2px}</style>
 </head>
 <body>
   <header class="topbar">
@@ -39,6 +40,7 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
       <a class="brand" href="#tekrar"><i></i>MBP205<span> · Nesne Tabanlı Programlama II</span></a>
       <nav class="tabs" aria-label="Bölümler">
         <a href="#tekrar" data-tab="tekrar">Genel Tekrar</a>
+        <a href="#onemli" data-tab="onemli" class="tab-onemli">! ÖNEMLİ !</a>
         <a href="#ozet" data-tab="ozet">Özet</a>
         <a href="#yazili" data-tab="yazili">Yazılı prova</a>
         <a href="#test" data-tab="test">Test</a>
@@ -49,13 +51,13 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
 
   <main id="app" class="container"></main>
 
-  <script src="content.js?v=20261114a"></script>
-  <script src="questions.js?v=20261113a"></script>
-  <script src="yazili-data.js?v=20261113a"></script>
+  <script src="content.js?v=20261115a"></script>
+  <script src="questions.js?v=20261115a"></script>
+  <script src="yazili-data.js?v=20261115a"></script>
   <script src="yazili.js?v=20261114a"></script>
-  <script src="ozet.js?v=20261114b"></script>
-  <script src="assets/app.js?v=20261114a"></script>
+  <script src="ozet.js?v=20261115a"></script>
+  <script src="assets/app.js?v=20261115a"></script>
 <script src="../kit.js?v=20261113h"></script>
-<script src="kit-init.js?v=20261114b"></script>
+<script src="kit-init.js?v=20261115a"></script>
 </body>
 </html>

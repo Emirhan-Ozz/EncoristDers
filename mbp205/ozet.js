@@ -185,11 +185,11 @@
       rows.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td>' + md(c) + '</td>' : '<td><b>' + md(c) + '</b></td>'; }).join('') + '</tr>'; }).join('') + '</table>';
   }
   function head(active) {
-    return '<div class="oz-head"><h1>' + (active === 'onemli' ? '<a href="#ozet">Özet</a>' : 'Özet') + '</h1>' +
-      '<a class="oz-imp' + (active === 'onemli' ? ' on' : '') + '" href="#ozet/onemli">★ Önemli</a></div>';
+    if (active === 'onemli') return '<div class="oz-head"><h1>! ÖNEMLİ !</h1><a class="oz-imp" href="#ozet">Özet →</a></div>';
+    return '<div class="oz-head"><h1>Özet</h1><a class="oz-imp" href="#onemli">! ÖNEMLİ !</a></div>';
   }
   function renderOnemli(app) {
-    document.title = 'Önemli · MBP205';
+    document.title = '! ÖNEMLİ ! · MBP205';
     app.innerHTML = head('onemli') +
       '<div class="oz-lead"><b>Hocanın tahtası:</b> sınavdaki 7 soru bu başlıklardan gelecek. Fotoğraf aşağıda, yazıları tablolara çevirdim.</div>' +
       '<section class="oz-card"><h2><span>★</span>Tahtanın en üst satırı</h2><p class="oz-tanim">' + md(ONEMLI.ust) + '</p></section>' +
@@ -202,7 +202,7 @@
 
   function render(app, arg) {
     if (!document.getElementById('oz-css')) { var st = document.createElement('style'); st.id = 'oz-css'; st.textContent = CSS; document.head.appendChild(st); }
-    if (arg === 'onemli') return renderOnemli(app);
+    if (arg === 'onemli') { if (location.hash !== '#onemli') { location.replace('#onemli'); return; } return renderOnemli(app); }
     document.title = 'Özet · MBP205';
     app.innerHTML = head('ozet') +
       '<div class="oz-lead">Tahtadaki 7 başlık: <b>kısa tanım + maddeler + sınavda yazılacak boyutta örnek</b>. ' +

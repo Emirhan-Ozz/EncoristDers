@@ -449,7 +449,7 @@ q(6, 'ara1', 'Arayüz (interface) nedir? Özelliklerini maddeler hâlinde yazıp
    ('Örnek: extends + implements', ['extends', 'interface', 'class kedi'], 2)],
   ['**Arayüz**, bir sınıfın **ne yapabileceğini** belirten bir sözleşmedir (yetenek listesi): `public interface YemekYiyebilir`. Sınıflar arayüzü `implements` ile uygular ve içindeki metotları yazmak zorundadır.',
    '• Nesne üretilmez, ama **referans olabilir**. • `implements` ile kullanılır; bir sınıf **sınırsız sayıda** arayüz uygulayabilir. • Tüm metotları **soyuttur**; Java 8\'den sonra `default`, Java 9\'dan sonra `private` gövdeli metot yazılabilir. • Her şey **public**. • Özellikler **sabittir** (`public static final`). • **Constructor yoktur**.',
-   'Tahtadaki örnek: `class Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir`: tek üst sınıf, üç arayüz.'],
+   'Örnek: `class Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir`: tek üst sınıf, üç arayüz.'],
   '''interface Kosabilir { void kos(); }
 interface SesCikarabilir { void sesCikar(); }
 abstract class Hayvan {
@@ -573,7 +573,7 @@ public class Main {
     }
 }''', 'true')
 
-q(7, 'kedi1', 'Tahtadaki `Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir` tanımını açıklayınız. Bu satırda hangi nesne tabanlı kavramlar kullanılmıştır? Java kodu ve UML ilişkileriyle gösteriniz.',
+q(7, 'kedi1', '`class Kedi extends Hayvan implements Kosabilir, SesCikarabilir, Surunebilir` tanımını açıklayınız. Bu satırda hangi nesne tabanlı kavramlar kullanılmıştır? Java kodu ve UML ilişkileriyle gösteriniz.',
   [('extends: Hayvan\'dan kalıtım (tek üst sınıf)', ['extends', 'kalitim', 'miras', 'ust sinif'], 2),
    ('implements: üç arayüz, birden çok olabilir', ['implements', 'arayuz', 'interface', 'birden'], 2),
    ('Kedi arayüz metotlarını yazmak zorunda (override)', ['zorunda', 'override', 'yazmak', 'metotlarini'], 2),
