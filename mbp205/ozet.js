@@ -153,6 +153,8 @@
     '.oz-imp{text-decoration:none;font-weight:700;border:2px solid var(--accent);color:var(--accent);border-radius:999px;padding:5px 14px}.oz-imp:hover,.oz-imp.on{background:var(--accent);color:#fff}' +
     '.oz-img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border)}' +
     '.oz-tab td,.oz-tab th{vertical-align:top}' +
+    '.oz-not{border-top:1px dashed var(--border);padding:12px 0 4px}.oz-not:first-of-type{border-top:0}.oz-not h3{margin:0 0 6px;font-size:1.05rem;color:var(--accent)}' +
+    '.oz-fix{font-size:.88rem;color:var(--muted);margin:6px 0 0}.oz-photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:14px}' +
     '.oz-tab{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:.93rem}.oz-tab th,.oz-tab td{border:1px solid var(--border);padding:6px 10px;text-align:left}.oz-tab th{background:var(--surface-2)}';
 
 
@@ -196,8 +198,48 @@
       '<section class="oz-card"><h2><span>1</span>NTP\'nin temelleri</h2>' + table(['Başlık', 'Tahtadaki not', 'Ek'], ONEMLI.temel) + '</section>' +
       '<section class="oz-card"><h2><span>2</span>Sınıf çeşitleri: Soyut sınıf ve Arayüz</h2>' + table(['', 'Soyut sınıf (Abstract Class)', 'Arayüz (Interface)'], ONEMLI.cesit) + '</section>' +
       '<section class="oz-card"><h2><span>📷</span>Tahtanın fotoğrafı</h2><a href="assets/tahta.jpg" target="_blank" rel="noopener"><img class="oz-img" src="assets/tahta.jpg" alt="Hocanın tahtası: NTP temelleri, sınıf çeşitleri, arayüz"></a>' +
-      '<p style="color:var(--muted);font-size:.88rem;margin:6px 0 0">Büyütmek için fotoğrafa tıkla.</p></section>';
+      '<p style="color:var(--muted);font-size:.88rem;margin:6px 0 0">Büyütmek için fotoğrafa tıkla.</p></section>' +
+      renderNotlar();
     window.scrollTo(0, 0);
+  }
+
+
+  /* El yazısı ders notları (2 sayfa) → metin. Kodda "sout" System.out.println olarak yazıldı, bariz yazım hataları düzeltildi. */
+  var NOTLAR = [
+    { t: 'Kalıtım', m: ['Miras alma: alt sınıf üst sınıfın özellik ve metotlarını alır.', '`extends` anahtar kelimesi', '**Override:** alt sınıf metodu aynı imzayla yeniden yazar.', 'Örnek → Hayvan / Tavşan', 'Kod tekrarını azaltır / yeniden kullanım', '`super` ile üst sınıfa erişim'],
+      k: 'class Tavsan extends Hayvan {\n    @Override\n    public void kos() {\n        super.kos();\n        System.out.println("Tavsan zipladi!");\n    }\n}' },
+    { t: 'Kapsülleme', m: ['Alanlar `private` (−)', 'Getter / Setter kullanılır.', '`public` / `protected` (+ ve #)', 'Örnek: setter içinde kontrol (`bakiye >= 0` vb.)', 'Veriyi gizleme / erişimi engelleme'],
+      k: 'private int bakiye = 100;\n\npublic int getBakiye() {\n    return bakiye;\n}\npublic void setBakiye(int bakiye) {\n    if (bakiye >= 0) {\n        this.bakiye = bakiye;\n    }\n}', not: 'Notta getter\'ın adı "setBakiye" yazılmış; doğrusu `getBakiye()`.' },
+    { t: 'Soyutlama', m: ['**Ne** yaptığını gösterip **nasıl** yaptığını gizlemek', 'Sadece gerekli olanı göstererek', 'Araba örneği', '`System.out.println(...);` komutu Java örneği! (nasıl yazdırdığını bilmeden kullanırız)'],
+      k: 'class Araba {\n    public void gazaBas() {           // kullanıcı bunu görür (NE)\n        yakitPuskurt();\n        System.out.println("Araba hizlandi");\n    }\n    private void yakitPuskurt() {     // gizli detay (NASIL)\n        System.out.println("Motora yakit puskurtuldu");\n    }\n}' },
+    { t: 'Çok biçimlilik', m: ['Aynı referansın / çağrının farklı davranması', 'Üst sınıf referansı alt sınıf nesnesini tutar', 'ArrayList ile farklı alt sınıflar tek listede', 'Override ile birlikte çalışır.'],
+      k: 'Hayvan h = new Kedi();\nh.sesCikar();\n\nHayvan[] hayvanlar = { new Kedi(), new Kopek() };\nfor (Hayvan x : hayvanlar) x.sesCikar();', not: 'Notta döngü `for (Hayvan x : in hayvanlar)` yazılmış; Java\'da `in` yok, doğrusu `for (Hayvan x : hayvanlar)`.' },
+    { t: 'Soyut sınıf', m: ['Referans olabilir', '`extends` ile kullanılır, tek üst sınıf', 'Soyut metot içerebilir, alt sınıf yazmak zorunda', 'Normal metot / kapsülleme olabilir.', 'Nesne üretilemez.', 'Constructor vardır.'],
+      k: 'abstract class Hayvan {\n    public abstract void kos();   // gövde yok, sadece NE yapılacağı belli\n}\nclass Kedi extends Hayvan {\n    @Override\n    public void kos() { System.out.println("Kedi kosuyor!"); }  // NASIL\'ı burada\n}' },
+    { t: 'Arayüz', m: ['`implements` ile kullanılır', 'Nesne üretilmez, constructor yok', 'Metotlar soyut, her şey `public`', 'Alanlar sabit (`final`)', 'Sınıfın ne yapabileceğini gösteren sözleşme', 'Birden çok arayüz olabilir.'] },
+    { t: 'Soyut sınıf / Arayüz farkı', tab: [
+        ['Soyut sınıf', 'Arayüz'],
+        ['`extends`', '`implements`'],
+        ['En fazla **bir** üst sınıf', '**Sınırsız** arayüz uygulanabilir'],
+        ['Constructor **var**', 'Constructor **yok**'],
+        ['Soyut ve normal metot var', 'Metotlar soyut, alanlar sabit (`final`)'],
+        ['`private` / `protected` (kapsülleme)', 'Her şey `public`']
+      ], m: ['**İkisinde de** nesne üretilmez, **ikisi de** referans olur.'] }
+  ];
+  function renderNotlar() {
+    return '<section class="oz-card"><h2><span>✎</span>Ders notları (el yazısından)</h2>' +
+      '<p style="color:var(--muted);font-size:.9rem;margin:0 0 10px">İki sayfalık el yazısı notun metne çevrilmiş hali. Kodlardaki <code>sout</code> kısaltması <code>System.out.println</code> olarak yazıldı.</p>' +
+      NOTLAR.map(function (n) {
+        return '<div class="oz-not"><h3>' + esc(n.t) + '</h3>' +
+          (n.tab ? '<table class="oz-tab"><tr>' + n.tab[0].map(function (h) { return '<th>' + md(h) + '</th>'; }).join('') + '</tr>' +
+            n.tab.slice(1).map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + md(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</table>' : '') +
+          '<ul>' + n.m.map(function (x) { return '<li>' + md(x) + '</li>'; }).join('') + '</ul>' +
+          (n.k ? '<div class="oz-ex"><pre class="code">' + hl(n.k) + '</pre></div>' : '') +
+          (n.not ? '<p class="oz-fix">✱ ' + md(n.not) + '</p>' : '') + '</div>';
+      }).join('') +
+      '<div class="oz-photos"><a href="assets/not1.jpg" target="_blank" rel="noopener"><img class="oz-img" src="assets/not1.jpg" alt="El yazısı not, sayfa 1: kalıtım, kapsülleme, soyutlama"></a>' +
+      '<a href="assets/not2.jpg" target="_blank" rel="noopener"><img class="oz-img" src="assets/not2.jpg" alt="El yazısı not, sayfa 2: çok biçimlilik, soyut sınıf, arayüz"></a></div>' +
+      '<p style="color:var(--muted);font-size:.88rem;margin:6px 0 0">Büyütmek için fotoğrafa tıkla.</p></section>';
   }
 
   function render(app, arg) {
@@ -228,5 +270,6 @@
 
   window.OZET = OZET;
   window.OZET_ONEMLI = ONEMLI;
+  window.OZET_NOTLAR = NOTLAR;
   window.Ozet = { render: render };
 })();

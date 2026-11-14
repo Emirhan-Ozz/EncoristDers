@@ -32,6 +32,7 @@
         out.push({ k: 'Özet', t: t.title, s: t.tanim + ' ' + t.maddeler.join(' ') + ' ' + t.kodlar.map(function (x) { return x.k; }).join(' '), h: '#ozet/' + t.id, w: -1 });
       });
       if (window.OZET_ONEMLI) out.push({ k: 'Özet', t: '! ÖNEMLİ !: hocanın tahtası', s: window.OZET_ONEMLI.cesit.concat(window.OZET_ONEMLI.temel).map(function (r) { return r.join(' '); }).join(' '), h: '#onemli', w: -1 });
+      (window.OZET_NOTLAR || []).forEach(function (n) { out.push({ k: 'Not', t: 'Ders notu: ' + n.t, s: n.m.join(' ') + ' ' + (n.k || ''), h: '#onemli', w: -1 }); });
       var Y = window.YAZILI;
       if (Y) Y.sorular.forEach(function (q) {
         var d = Y.denemeler.filter(function (x) { return x.ids.indexOf(q.id) !== -1; })[0];
