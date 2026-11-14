@@ -1,9 +1,11 @@
 /* MBP205 · Yazılı prova: hocanın sınavı gibi 7 açık uçlu soru (kavramı açıkla + örnek ver).
    #yazili · #yazili/<denemeId> · #yazili/rastgele
-   Puanlama: cevaptaki anahtar kavramlara bakan otomatik tahmin (soru başına 10). Gerçek notu hoca verir; amaç eksik noktayı görmek. */
+   Puanlama: cevaptaki anahtar kavramlara bakan otomatik tahmin; 7 soru toplam 100 (soru başına ≈14,3). Anahtar ağırlıkları 10 üzerinden yazılı, gösterimde PT/10 ile ölçeklenir. Gerçek notu hoca verir; amaç eksik noktayı görmek. */
 (function () {
   'use strict';
   var KEY = 'mbp205-yazili';
+  var PT = 100 / 7;   // soru başına puan (7 soru = 100)
+  function sc100(raw) { return raw * PT / 10; }
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
   function save(k, v) { var d = load(); d[k] = v; try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) { /* yok say */ } }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -101,10 +103,10 @@
       'Her denemede tahtadaki 7 başlıktan birer soru var: kalıtım, kapsülleme, soyutlama, çok biçimlilik, soyut sınıf, arayüz ve karşılaştırma/UML. ' +
       'Cevabını kâğıda yazar gibi yaz, <b>Puanla</b>\'ya bas: cevabında geçen ve eksik kalan kavramları görürsün, sonra model cevapla karşılaştır.</div>' +
       '<div class="yz-list">' + Y.denemeler.concat([{ id: 'rastgele', title: 'Rastgele yazılı', ids: null }]).map(function (x) {
-        var sc = st['best:' + x.id];
+        var sc = st['best100:' + x.id];
         return '<a class="yz-card" href="#yazili/' + x.id + '"><h3>' + esc(x.title) + '</h3>' +
           (x.ids ? '<ol>' + x.ids.map(function (i) { return '<li>' + esc(Y.slots[byId(i).slot]) + '</li>'; }).join('') + '</ol>' : '<ol><li>Her başlıktan bir soru</li><li>Az çalıştığın sorular önce gelir</li></ol>') +
-          '<div class="m">7 soru · 70 puan' + (sc != null ? ' · En iyi: <b>' + fmt(sc) + '/70</b>' : '') + '</div></a>';
+          '<div class="m">7 soru · 100 puan' + (sc != null ? ' · En iyi: <b>' + fmt(sc) + '/100</b>' : '') + '</div></a>';
       }).join('') + '</div>' +
       '<p class="yz-info" style="background:var(--surface-2)">Otomatik puan bir tahmindir: cevabında anahtar kavramların geçip geçmediğine bakar, anlamını değerlendiremez. Asıl amaç <b>hangi noktayı unuttuğunu</b> görmek. Hoca örnek istediği için her soruda bir puan örneğe ayrıldı.</p>';
     window.scrollTo(0, 0);
@@ -115,20 +117,19 @@
     document.title = d.title + ' · MBP205';
     app.innerHTML = '<p><a href="#yazili">← Yazılı prova</a></p><h1>' + esc(d.title) + '</h1>' +
       qs.map(function (q, i) {
-        return '<section class="yz-q" data-i="' + i + '"><span class="tag">' + (i + 1) + '. soru · ' + esc(Y.slots[q.slot]) + ' · 10 puan</span>' +
+        return '<section class="yz-q" data-i="' + i + '"><span class="tag">' + (i + 1) + '. soru · ' + esc(Y.slots[q.slot]) + ' · ' + fmt(PT) + ' puan</span>' +
           '<div class="soru">' + md(q.q) + '</div>' +
           '<textarea placeholder="Cevabını buraya yaz: tanım, maddeler ve kısa bir Java örneği">' + esc(st['c:' + q.id] || '') + '</textarea>' +
           '<div class="yz-bar"><button type="button" class="pri yz-grade">Puanla</button><button type="button" class="yz-show">Model cevabı göster</button><span class="n"></span><span class="yz-score" hidden></span></div>' +
           '<div class="yz-res"></div><div class="yz-model" hidden></div></section>';
       }).join('') +
-      '<div class="yz-sum"><span>Toplam: <b class="yz-tot">–</b> / 70</span><span class="n" style="color:var(--muted)">(100 üzerinden <b class="yz-100">–</b>)</span>' +
+      '<div class="yz-sum"><span>Toplam: <b class="yz-tot">–</b> / 100</span>' +
       '<span style="flex:1"></span><button type="button" class="yz-all" style="font:inherit;font-weight:600;cursor:pointer;border-radius:8px;padding:7px 14px;border:1px solid var(--accent);background:var(--accent);color:#fff">Hepsini puanla</button></div>';
     var scores = {};
     function total() {
       var t = 0, n = 0; Object.keys(scores).forEach(function (k) { t += scores[k]; n++; });
       app.querySelector('.yz-tot').textContent = n ? fmt(t) : '–';
-      app.querySelector('.yz-100').textContent = n ? fmt(t / 70 * 100) : '–';
-      if (n === 7) { var b = load()['best:' + d.id]; if (b == null || t > b) save('best:' + d.id, t); }
+      if (n === 7) { var b = load()['best100:' + d.id]; if (b == null || t > b) save('best100:' + d.id, t); }
     }
     app.querySelectorAll('.yz-q').forEach(function (box) {
       var q = qs[+box.dataset.i], ta = box.querySelector('textarea'), cnt = box.querySelector('.n'),
@@ -138,12 +139,12 @@
       words();
       function doGrade() {
         var r = grade(q, ta.value);
-        scores[q.id] = r.score;
-        sc.hidden = false; sc.textContent = fmt(r.score) + ' / 10';
+        scores[q.id] = sc100(r.score);
+        sc.hidden = false; sc.textContent = fmt(sc100(r.score)) + ' / ' + fmt(PT);
         sc.className = 'yz-score ' + (r.score >= 7 ? 'hi' : r.score >= 4 ? 'mid' : 'lo');
         res.innerHTML = (r.short ? '<div class="x">Cevap çok kısa: en az birkaç cümle ve bir örnek yaz.</div>' : '') +
-          r.hits.map(function (k) { return '<div class="h">' + md(k.k) + ' <small>(' + fmt(k.w) + ')</small></div>'; }).join('') +
-          r.miss.map(function (k) { return '<div class="x">' + md(k.k) + ' <small>(' + fmt(k.w) + ')</small></div>'; }).join('');
+          r.hits.map(function (k) { return '<div class="h">' + md(k.k) + ' <small>(' + fmt(sc100(k.w)) + ')</small></div>'; }).join('') +
+          r.miss.map(function (k) { return '<div class="x">' + md(k.k) + ' <small>(' + fmt(sc100(k.w)) + ')</small></div>'; }).join('');
         save('n:' + q.id, (load()['n:' + q.id] || 0) + 1);
         total();
       }

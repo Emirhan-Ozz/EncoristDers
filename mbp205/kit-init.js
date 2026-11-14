@@ -28,6 +28,9 @@
       (window.WORDS || []).forEach(function (w) {
         out.push({ k: 'Kelime', t: (w.a ? w.a + ' ' : '') + w.w, s: (w.p ? 'Çoğul: ' + w.p + ' · ' : '') + w.t, h: '#kelimeler/' + encodeURIComponent(w.w) });
       });
+      (window.OZET || []).forEach(function (t) {
+        out.push({ k: 'Özet', t: t.title, s: t.tanim + ' ' + t.maddeler.join(' ') + ' ' + t.kodlar.map(function (x) { return x.k; }).join(' '), h: '#ozet/' + t.id, w: -1 });
+      });
       var Y = window.YAZILI;
       if (Y) Y.sorular.forEach(function (q) {
         var d = Y.denemeler.filter(function (x) { return x.ids.indexOf(q.id) !== -1; })[0];
