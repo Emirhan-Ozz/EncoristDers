@@ -154,6 +154,13 @@ for k in range(5):
 UYG = [q for q in TQ['ileri1'] + TQ['ileri2'] if re.search(r'[Uu]ygulama', q['q'] + ' ' + q.get('exp', ''))]
 EXAMS = [{'id': 'uygulama', 'title': 'GROUP BY / HAVING uygulaması', 'group': 'hoca', 'mode': 'practice',
           'desc': 'Derste yapılan magaza uygulamasının (10 soru + bonus) sonuçlarını soran sorular. Anında kontrol.', 'questions': UYG}] + DENEMELER
+import kahoot
+for k in kahoot.KAHOOTS:
+    n = len(k['questions'])
+    yaz = sum(q['type'] == 'fill' for q in k['questions'])
+    EXAMS.append({'id': k['id'], 'title': k['title'], 'group': 'kahoot', 'mode': 'practice',
+                  'desc': '%d soru, derste oynanan Kahoot\'un kendisi. %s' % (n, 'Cevabı yazıp Enter\'a bas; anında kontrol.' if yaz else 'Şıkka tıklayınca anında doğru/yanlış.'),
+                  'questions': k['questions']})
 
 total = sum(len(v) for v in TQ.values())
 course = {

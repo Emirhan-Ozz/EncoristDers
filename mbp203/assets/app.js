@@ -462,6 +462,7 @@
       '<p class="lead">' + fmt(C.testLead || '') + '</p>' +
       group('Yanlışlarım', 'yanlis', 'Testlerde yanlış yaptığın sorular. Burada doğru cevapladığında listeden düşer.') +
       group(C.hocaTitle || 'Hocanın çalışma soruları', 'hoca', C.hocaNote || 'Cevap anahtarındaki açıklamalarla, her soru anında kontrol edilir.') +
+      group('Kahoot soruları', 'kahoot', 'Derste (Panopto kayıtlarında) oynanan 5 Kahoot, sorular ve doğru cevaplar aynen. Her soru anında kontrol edilir.') +
       group('Vize formatında (100 puan)', 'vize', 'Cevaplar sonda topluca puanlanır, gerçek sınav gibi.') +
       group('Konu testleri', 'konu', 'Her soru anında kontrol edilir ve açıklaması gösterilir.') +
       group('Ek pratik', 'ek');
