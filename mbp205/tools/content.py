@@ -484,20 +484,304 @@ add('oyun', 'Derste yazdığımız oyun: hepsi bir arada', 'H4_2, H5_1, H5_2 (ka
           ['Çok biçimlilik', '`ArrayList<Karakter> dusmanlar`; `Karakter mc = new AnaKarakter();`; `saldir(Karakter dusman)`'],
           ['Soyutlama', '`Main` sadece `new Oyun().baslat();` der; savaş, seviye, rastgele düşman seçimi gizli'],
           ['Association', '`Karakter` içinde `private Random r = new Random();`; `Oyun` Karakter listesi tutar']),
-    code('''public class Karakter {
+    p('**Oyunun tam kodu (13 dosya).** Derste yazdığımız yapıya göre tamamlandı: sınıf adları, `super(100, 60, 20, 20)` gibi değerler, menü, `Collections.shuffle`, seviye atlama, hile kodu ve son boss Ejderha anlatıldığı gibi. Hepsi aynı klasöre ayrı `.java` dosyaları olarak konup `javac *.java` ve `java Main` ile çalışır (Java 17+, `nextInt(a, b)` için). Menüde `hile` yazınca can 9999 olur.'),
+    p('**1) Karakter.java**: ortak üst sınıf (kapsülleme, `saldir`, private `savun`, `seviyeAtla`).'),
+    code('''import java.util.Random;
+
+public class Karakter {
     private int can;
+    private int maxCan;
     private int saldiriGucu;
-    private Random r = new Random();
-    public void saldir(Karakter dusman) {          // her Karakter alt tipini kabul eder
+    private int savunmaGucu;
+    private int kritikOrani;          // yüzde
+    private int seviye = 1;
+    private Random r = new Random();  // association: Karakter bir Random'a sahip
+
+    public Karakter(int can, int saldiriGucu, int savunmaGucu, int kritikOrani) {
+        this.can = can;
+        this.maxCan = can;
+        this.saldiriGucu = saldiriGucu;
+        this.savunmaGucu = savunmaGucu;
+        this.kritikOrani = kritikOrani;
+    }
+
+    public int getCan() { return can; }
+    public int getSeviye() { return seviye; }
+    public boolean yasiyorMu() { return can > 0; }
+
+    // Her Karakter alt tipini kabul eder (çok biçimlilik)
+    public void saldir(Karakter dusman) {
         int saldiriPuani = r.nextInt(saldiriGucu - 15, saldiriGucu + 16);
-        int savunmaPuani = dusman.savun();          // private ama aynı sınıf içinde
+        if (r.nextInt(100) < kritikOrani) {
+            saldiriPuani *= 2;
+            System.out.println("  KRITIK VURUS!");
+        }
+        int savunmaPuani = dusman.savun();   // private ama aynı sınıfın kodu
         if (saldiriPuani > savunmaPuani) {
-            dusman.can -= saldiriPuani - savunmaPuani;
+            int hasar = saldiriPuani - savunmaPuani;
+            dusman.can = Math.max(0, dusman.can - hasar);
+            System.out.println("  " + isim() + " -> " + dusman.isim() + " : " + hasar + " hasar (kalan can: " + dusman.can + ")");
+        } else {
+            System.out.println("  " + dusman.isim() + " saldiriyi savusturdu!");
         }
     }
+
+    // Kapsülleme: dışarıdan çağrılamaz, sadece saldir() içinde kullanılır
+    private int savun() {
+        return r.nextInt(Math.max(0, savunmaGucu - 10), savunmaGucu + 11);
+    }
+
+    public void seviyeAtla() {
+        seviye++;
+        maxCan += 20;
+        saldiriGucu += 5;
+        savunmaGucu += 3;
+        can = maxCan;                  // seviye atlayınca can dolar
+        System.out.println("  *** SEVIYE ATLADIN! Seviye: " + seviye + " ***");
+    }
+
+    public void hile() {               // gizli hile kodu
+        can = 9999;
+        maxCan = 9999;
+        saldiriGucu = 200;
+    }
+
+    public String isim() { return getClass().getSimpleName(); }
+
     public void bilgiGoster() {
-        System.out.println("Isim : " + this.getClass().getName());
-        System.out.println("Can : " + can);
+        System.out.println("Isim   : " + isim());
+        System.out.println("Can    : " + can + "/" + maxCan);
+        System.out.println("Saldiri: " + saldiriGucu + "  Savunma: " + savunmaGucu + "  Kritik: %" + kritikOrani);
+    }
+}'''),
+    p('**2) AnaKarakter.java ve Vampir.java**: kalıtım + `super(...)` + `bilgiGoster()` override.'),
+    code('''// AnaKarakter.java
+public class AnaKarakter extends Karakter {
+    public AnaKarakter() {
+        super(150, 50, 25, 15);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("   O   ");
+        System.out.println("  /|\\\\=>");
+        System.out.println("  / \\\\  ");
+        super.bilgiGoster();
+    }
+}
+
+// Vampir.java
+public class Vampir extends Karakter {
+    public Vampir() {
+        super(100, 60, 20, 20);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  (\\\\^v^/)  ");
+        super.bilgiGoster();
+    }
+}'''),
+    p('**3) Diğer 9 düşman**: hepsi aynı kalıp, sadece değerler ve ASCII resim farklı. Her biri ayrı dosya.'),
+    code('''// Elf.java
+public class Elf extends Karakter {
+    public Elf() {
+        super(80, 55, 15, 30);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  <(o_o)>-->  ");
+        super.bilgiGoster();
+    }
+}
+
+// Ork.java
+public class Ork extends Karakter {
+    public Ork() {
+        super(130, 50, 25, 10);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  [O_O]##  ");
+        super.bilgiGoster();
+    }
+}
+
+// Goblin.java
+public class Goblin extends Karakter {
+    public Goblin() {
+        super(70, 40, 10, 25);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  (>_<)/  ");
+        super.bilgiGoster();
+    }
+}
+
+// Iskelet.java
+public class Iskelet extends Karakter {
+    public Iskelet() {
+        super(75, 45, 10, 15);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  [x_x]  ");
+        super.bilgiGoster();
+    }
+}
+
+// Kurtadam.java
+public class Kurtadam extends Karakter {
+    public Kurtadam() {
+        super(120, 60, 20, 15);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  /\\\\_/\\\\ (O.O)  ");
+        super.bilgiGoster();
+    }
+}
+
+// Zombi.java
+public class Zombi extends Karakter {
+    public Zombi() {
+        super(110, 40, 15, 5);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  [-_-]  ");
+        super.bilgiGoster();
+    }
+}
+
+// Trol.java
+public class Trol extends Karakter {
+    public Trol() {
+        super(160, 55, 30, 5);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  (OO)##  ");
+        super.bilgiGoster();
+    }
+}
+
+// Hayalet.java
+public class Hayalet extends Karakter {
+    public Hayalet() {
+        super(60, 50, 35, 20);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  ( o o )~~  ");
+        super.bilgiGoster();
+    }
+}
+
+// Buyucu.java
+public class Buyucu extends Karakter {
+    public Buyucu() {
+        super(85, 65, 10, 25);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("  /\\\\ (*_*)  ");
+        super.bilgiGoster();
+    }
+}'''),
+    p('**4) Ejderha.java**: son boss.'),
+    code('''public class Ejderha extends Karakter {      // son boss
+    public Ejderha() {
+        super(300, 75, 35, 20);
+    }
+    @Override
+    public void bilgiGoster() {
+        System.out.println("      __/\\\\__     ");
+        System.out.println("  <==(  @@  )==>  EJDERHA");
+        System.out.println("       \\\\/\\\\/      ");
+        super.bilgiGoster();
+    }
+}'''),
+    p('**5) Oyun.java**: menü, düşman listesi (çok biçimlilik), 5 düşman + boss, savaş döngüsü.'),
+    code('''import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Oyun {
+    private Scanner sc = new Scanner(System.in);
+    private Karakter mc = new AnaKarakter();               // üst tip referans
+    private ArrayList<Karakter> dusmanlar = new ArrayList<>();
+
+    public Oyun() {
+        dusmanlar.add(new Vampir());
+        dusmanlar.add(new Elf());
+        dusmanlar.add(new Ork());
+        dusmanlar.add(new Goblin());
+        dusmanlar.add(new Iskelet());
+        dusmanlar.add(new Kurtadam());
+        dusmanlar.add(new Zombi());
+        dusmanlar.add(new Trol());
+        dusmanlar.add(new Hayalet());
+        dusmanlar.add(new Buyucu());
+        Collections.shuffle(dusmanlar);                    // 10 düşmanı karıştır
+    }
+
+    public void baslat() {
+        while (true) {
+            System.out.println("\\n===== MENU =====");
+            System.out.println("1 - Oyuna basla");
+            System.out.println("2 - Karakterimi goster");
+            System.out.println("3 - Dusmanlari goster");
+            System.out.println("0 - Cikis");
+            System.out.print("Secim: ");
+            String secim = sc.nextLine().trim();
+            switch (secim) {
+                case "1": oyna(); break;
+                case "2": mc.bilgiGoster(); break;
+                case "3": for (Karakter d : dusmanlar) d.bilgiGoster(); break;  // her biri kendi resmini çizer
+                case "hile": mc.hile(); System.out.println("Hile aktif!"); break;
+                case "0": System.out.println("Gule gule!"); System.exit(0);
+                default: System.out.println("Gecersiz secim!");
+            }
+        }
+    }
+
+    private void oyna() {
+        for (int i = 0; i < 5; i++) {                      // 10 düşmandan 5'i gelir
+            Karakter dusman = dusmanlar.get(i);
+            System.out.println("\\n--- " + (i + 1) + ". dusman ---");
+            dusman.bilgiGoster();
+            if (!savas(mc, dusman)) { oyunBitti(false); return; }
+            mc.seviyeAtla();
+        }
+        System.out.println("\\n!!! SON BOSS GELIYOR !!!");
+        Karakter boss = new Ejderha();
+        boss.bilgiGoster();
+        oyunBitti(savas(mc, boss));
+    }
+
+    // true: oyuncu kazandı
+    private boolean savas(Karakter mc, Karakter dusman) {
+        while (mc.yasiyorMu() && dusman.yasiyorMu()) {
+            System.out.print("[1] Saldir  [2] Bilgi  [0] Kac : ");
+            String s = sc.nextLine().trim();
+            if (s.equals("0")) { System.out.println("Kactin..."); System.exit(0); }
+            if (s.equals("2")) { mc.bilgiGoster(); continue; }
+            if (s.equals("hile")) { mc.hile(); System.out.println("Hile aktif!"); continue; }
+            mc.saldir(dusman);
+            if (dusman.yasiyorMu()) dusman.saldir(mc);
+        }
+        return mc.yasiyorMu();
+    }
+
+    private void oyunBitti(boolean kazandi) {
+        System.out.println(kazandi ? "\\nTEBRIKLER! Ejderhayi yendin, oyunu kazandin!" : "\\nOYUN BITTI. Kaybettin.");
+        System.exit(0);
+    }
+}'''),
+    p('**6) Main.java**: soyutlama; kullanıcı sadece oyunu başlatır.'),
+    code('''public class Main {
+    public static void main(String[] args) {
+        new Oyun().baslat();     // soyutlama: ayrıntılar Oyun'un içinde gizli
     }
 }'''),
     tip('Açık uçlu sorulara örnek vermekte zorlanırsan bu oyunu anlat: her kavramın somut karşılığı var ve hoca bu projeyi kendisi yazdırdı.'),
