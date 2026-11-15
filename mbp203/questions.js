@@ -3963,6 +3963,2404 @@ window.EXAMS = [
   ]
  },
  {
+  "id": "kahoot-tum",
+  "title": "Kahoot · Tüm sorular",
+  "group": "kahoot",
+  "mode": "practice",
+  "featured": true,
+  "desc": "169 soru: bu dönemin 5 Kahoot'u + hocanın geçen dönemki 9 Kahoot'u (ER, PK/FK, JOIN, GROUP BY, tarih/metin fonksiyonları, VIEW, saklı yordam). Anında kontrol.",
+  "questions": [
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Aşağıdakilerden hangisi 1:1 (bire bir) ilişkiye örnektir?",
+    "opts": [
+     "Öğrenci – Öğrenci Kartı",
+     "Bölüm – Ders",
+     "Yazar – Kitap",
+     "Öğrenci – Ders"
+    ],
+    "a": 0,
+    "exp": "Her öğrencinin tek kartı, her kartın tek öğrencisi var. Bölüm–Ders ve Yazar–Kitap 1:N, Öğrenci–Ders M:N.",
+    "src": "Kahoot 1"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "`ogrenci_karti` tablosunda 1:1 ilişkiyi garanti eden kelime hangisidir?",
+    "opts": [
+     "UNIQUE",
+     "PRIMARY",
+     "AUTO_INCREMENT",
+     "DEFAULT"
+    ],
+    "a": 0,
+    "exp": "FK sütunu (ogrenci_no) UNIQUE olunca aynı öğrenciye ikinci kart eklenemez; ilişki 1:1 kalır.",
+    "src": "Kahoot 1"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "(Doğru/Yanlış) Ahmet'e ikinci bir kart eklemeye çalıştığımızda MySQL'in hata vermesi, veritabanının yanlış tasarlandığını gösterir.",
+    "opts": [
+     "Doğru",
+     "Yanlış"
+    ],
+    "a": 1,
+    "exp": "Yanlış: hata, UNIQUE kısıtının doğru çalıştığını gösterir. Tasarım tam olarak bunu engellemek için yapıldı.",
+    "src": "Kahoot 1"
+   },
+   {
+    "type": "fill",
+    "topic": "iliskisel",
+    "q": "Tablodaki her satırı tekil olarak tanımlayan sütuna ne ad verilir?",
+    "code": "____",
+    "ans": [
+     "PRIMARY KEY",
+     "primary",
+     "PK",
+     "birincil anahtar",
+     "birincil",
+     "primary key (birincil anahtar)"
+    ],
+    "cs": false,
+    "exp": "PRIMARY KEY (birincil anahtar, PK).",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "fill",
+    "topic": "iliskisel",
+    "q": "Başka bir tablonun birincil anahtarına bağlanan sütuna ne ad verilir?",
+    "code": "____",
+    "ans": [
+     "FOREIGN KEY",
+     "foreign",
+     "FK",
+     "yabancı anahtar",
+     "yabanci anahtar",
+     "yabancı",
+     "yabanci",
+     "ikincil anahtar"
+    ],
+    "cs": false,
+    "exp": "FOREIGN KEY (yabancı anahtar, FK).",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "fill",
+    "topic": "iliskisel",
+    "q": "1:1 ilişkide, yabancı anahtar sütununa ilişkinin bozulmaması için hangi kısıt eklenir?",
+    "code": "____",
+    "ans": [
+     "UNIQUE",
+     "tekil",
+     "benzersiz"
+    ],
+    "cs": false,
+    "exp": "UNIQUE: aynı FK değeri ikinci kez girilemez.",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "fill",
+    "topic": "sql-giris",
+    "q": "Tabloya yeni bir kayıt eklemek için hangi SQL komutu kullanılır?",
+    "code": "____",
+    "ans": [
+     "INSERT INTO",
+     "INSERT",
+     "INSERT INTO ... VALUES",
+     "INSERT INTO VALUES"
+    ],
+    "cs": false,
+    "exp": "INSERT INTO tablo (sütunlar) VALUES (...);",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "fill",
+    "topic": "iliskisel",
+    "q": "Bölüm–Ders (1:N) ilişkisinde yabancı anahtar hangi tabloya eklenir?",
+    "code": "____",
+    "ans": [
+     "ders",
+     "ders tablosu",
+     "ders tablosuna",
+     "ders tablosuna (çok tarafı)",
+     "çok tarafı",
+     "cok tarafi"
+    ],
+    "cs": false,
+    "exp": "1:N'de FK her zaman çok tarafına, yani ders tablosuna eklenir (bolum_no).",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "fill",
+    "topic": "iliskisel",
+    "q": "Öğrenci–Ders (M:N) ilişkisini kurabilmek için veritabanımıza eklediğimiz ara tablonun adı nedir?",
+    "code": "____",
+    "ans": [
+     "ders_kaydi",
+     "ders_kaydı",
+     "ders kaydi",
+     "ders kaydı",
+     "derskaydi"
+    ],
+    "cs": false,
+    "exp": "ders_kaydi: ogrenci_no ve ders_kodu FK'lerini tutar.",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "fill",
+    "topic": "sql-giris",
+    "q": "`ders` tablosunda `ders_kodu` INT ise, `ders_kaydi` tablosundaki `ders_kodu` hangi veri tipinde olmalıdır?",
+    "code": "____",
+    "ans": [
+     "INT",
+     "integer",
+     "tam sayı",
+     "tam sayi",
+     "tamsayı",
+     "tamsayi"
+    ],
+    "cs": false,
+    "exp": "FK ile başvurduğu sütun aynı tipte olmalı: INT.",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "fill",
+    "topic": "sql-giris",
+    "q": "Önce hangi tabloya INSERT yapılmalıdır: `bolum` mu, `ders` mi?",
+    "code": "____",
+    "ans": [
+     "bolum",
+     "bölüm",
+     "bolum tablosu",
+     "bölüm tablosu",
+     "bolum tablosuna",
+     "bölüm tablosuna"
+    ],
+    "cs": false,
+    "exp": "Ders, bolum_no ile bölüme bağlı; bölüm yoksa FK hatası alınır. Önce bolum.",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "fill",
+    "topic": "iliskisel",
+    "q": "`ders_kaydi` tablosundaki `harf_notu` bilgisi öğrenciye mi, derse mi, yoksa kayda mı aittir?",
+    "code": "____",
+    "ans": [
+     "kayda",
+     "kayıt",
+     "kayit",
+     "kayda ait",
+     "ders kaydına",
+     "ders kaydina",
+     "ders_kaydi",
+     "ders_kaydına",
+     "kayda aittir"
+    ],
+    "cs": false,
+    "exp": "Not belli bir öğrencinin belli bir dersteki kaydına aittir; bu yüzden ara tabloda durur.",
+    "src": "Kahoot 2"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Bir kişinin yalnızca bir pasaportu olabiliyorsa kişi – pasaport ilişkisi hangisidir?",
+    "opts": [
+     "İlişki yoktur",
+     "Çoka çok (M:N)",
+     "Bire çok (1:N)",
+     "Bire bir (1:1)"
+    ],
+    "a": 3,
+    "exp": "Her iki taraf da en fazla bir: 1:1.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Bir müşterinin birden çok siparişi olabiliyorsa müşteri – sipariş ilişkisi hangisidir?",
+    "opts": [
+     "İlişki kurulamaz",
+     "1:N",
+     "M:N",
+     "1:1"
+    ],
+    "a": 1,
+    "exp": "Bir müşteri → çok sipariş, bir sipariş → tek müşteri: 1:N.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Çoka çok (M:N) ilişki ilişkisel veritabanında nasıl kurulur?",
+    "opts": [
+     "Bir tabloya liste olarak yazılır",
+     "Tek tabloda birleştirilir",
+     "Sadece FOREIGN KEY yeterlidir",
+     "Ara (bağlantı) tablo oluşturulur"
+    ],
+    "a": 3,
+    "exp": "İki tarafın PK'lerini FK olarak tutan ara tablo (ör. ders_kaydi).",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Bir tablodaki her satırı benzersiz olarak tanımlayan alana ne denir?",
+    "opts": [
+     "FOREIGN KEY",
+     "INDEX",
+     "DEFAULT",
+     "PRIMARY KEY"
+    ],
+    "a": 3,
+    "exp": "PRIMARY KEY: benzersiz ve NULL olamaz.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "FOREIGN KEY (yabancı anahtar) ne işe yarar?",
+    "opts": [
+     "Tekrarlı kayıtları siler",
+     "Sorguları otomatik hızlandırır",
+     "Sütunu otomatik artırır",
+     "Tablolar arası bilgi bütünlüğünü korur"
+    ],
+    "a": 3,
+    "exp": "Referans bütünlüğü: FK değeri başvurduğu tabloda olmalı.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "sql-giris",
+    "q": "Bir sütunda aynı değerin iki kez girilmesini engelleyen kısıt hangisidir?",
+    "opts": [
+     "CHECK",
+     "UNIQUE",
+     "NOT NULL",
+     "DEFAULT"
+    ],
+    "a": 1,
+    "exp": "UNIQUE tekrar eden değeri engeller.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "ER diyagramında varlıklar (entity) genellikle hangi şekille gösterilir?",
+    "opts": [
+     "Ok",
+     "Eşkenar dörtgen",
+     "Dikdörtgen",
+     "Elips"
+    ],
+    "a": 2,
+    "exp": "Varlık dikdörtgen, nitelik elips, ilişki eşkenar dörtgen.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "sql-giris",
+    "q": "Uzunluğu değişen metinler (ad, adres) için en uygun veri tipi hangisidir?",
+    "opts": [
+     "DATE",
+     "INT",
+     "CHAR(2)",
+     "VARCHAR"
+    ],
+    "a": 3,
+    "exp": "VARCHAR(n) değişken uzunluklu metin.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "sorgular",
+    "q": "NULL değer içeren kayıtları bulmak için doğru koşul hangisidir?",
+    "opts": [
+     "IS NULL",
+     "= NULL",
+     "= ''",
+     "== NULL"
+    ],
+    "a": 0,
+    "exp": "NULL = ile karşılaştırılamaz; IS NULL yazılır.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "sorgular",
+    "q": "`LIKE 'A%'` koşulu hangi değerleri getirir?",
+    "opts": [
+     "A ile başlayanları",
+     "A ile bitenleri",
+     "İçinde A geçenleri",
+     "Sadece 'A' olanları"
+    ],
+    "a": 0,
+    "exp": "% herhangi sayıda karakter: A ile başlayan her şey.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "sorgular",
+    "q": "Sonuçta tekrar eden satırları tek göstermek için hangisi kullanılır?",
+    "opts": [
+     "DISTINCT",
+     "DIFFERENT",
+     "SINGLE",
+     "UNIQUE"
+    ],
+    "a": 0,
+    "exp": "SELECT DISTINCT tekrarları atar. UNIQUE bir kısıttır.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "sorgular",
+    "q": "`ORDER BY sütun DESC` ifadesi ne yapar?",
+    "opts": [
+     "Küçükten büyüğe sıralar",
+     "Tekrarları siler",
+     "İlk satırı getirir",
+     "Büyükten küçüğe (azalan) sıralar"
+    ],
+    "a": 3,
+    "exp": "DESC azalan, ASC (varsayılan) artan.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "sorgular",
+    "q": "Sorgu sonucunu ilk 5 satırla sınırlamak için MySQL'de hangisi kullanılır?",
+    "opts": [
+     "LIMIT 5",
+     "TOP 5",
+     "ROWNUM 5",
+     "FIRST 5"
+    ],
+    "a": 0,
+    "exp": "MySQL: LIMIT. TOP SQL Server'da, ROWNUM Oracle'da.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "`COUNT(*)` ile `COUNT(sütun)` arasındaki fark nedir?",
+    "opts": [
+     "COUNT(sütun) NULL'ları saymaz",
+     "COUNT(sütun) tekrarları saymaz",
+     "Fark yoktur",
+     "COUNT(*) NULL'ları saymaz"
+    ],
+    "a": 0,
+    "exp": "COUNT(*) bütün satırları sayar; COUNT(sütun) NULL olmayanları.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Bir sütunun ortalamasını hesaplayan fonksiyon hangisidir?",
+    "opts": [
+     "COUNT",
+     "AVG",
+     "SUM",
+     "MEAN"
+    ],
+    "a": 1,
+    "exp": "AVG ortalama. SQL'de MEAN yok.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Kayıtları gruplayıp her grup için toplam/sayı almak için hangisi kullanılır?",
+    "opts": [
+     "LIMIT",
+     "GROUP BY",
+     "DISTINCT",
+     "ORDER BY"
+    ],
+    "a": 1,
+    "exp": "GROUP BY + toplama fonksiyonu.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "WHERE ile HAVING arasındaki temel fark nedir?",
+    "opts": [
+     "HAVING gruplara, WHERE satırlara koşul koyar",
+     "İkisi aynıdır",
+     "WHERE gruplara, HAVING satırlara koşul koyar",
+     "HAVING sadece JOIN'de kullanılır"
+    ],
+    "a": 0,
+    "exp": "WHERE gruplamadan önce satırları, HAVING sonra grupları süzer.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Yalnızca iki tabloda da eşleşen kayıtları getiren JOIN türü hangisidir?",
+    "opts": [
+     "CROSS JOIN",
+     "LEFT JOIN",
+     "RIGHT JOIN",
+     "INNER JOIN"
+    ],
+    "a": 3,
+    "exp": "INNER JOIN sadece eşleşenleri getirir.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "LEFT JOIN'de sağ tabloda eşleşme yoksa o sütunlara ne gelir?",
+    "opts": [
+     "Boş metin",
+     "0",
+     "Satır listelenmez",
+     "NULL"
+    ],
+    "a": 3,
+    "exp": "Sol satır yine gelir; sağ sütunlar NULL olur.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "İki tabloyu JOIN ile birleştirirken ON kısmında genellikle hangi alanlar eşleştirilir?",
+    "opts": [
+     "PRIMARY KEY ile FOREIGN KEY",
+     "İki tablonun PRIMARY KEY'leri",
+     "İki tablonun ilk sütunları",
+     "Aynı veri tipindeki tüm sütunlar"
+    ],
+    "a": 0,
+    "exp": "ON k.ogrenci_no = o.ogrenci_no: FK ile başvurduğu PK.",
+    "src": "Kahoot 3"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Öğrenci ile öğrenci kartı arasındaki ilişki türü hangisidir?",
+    "opts": [
+     "İlişki yoktur",
+     "1:N",
+     "1:1",
+     "M:N"
+    ],
+    "a": 2,
+    "exp": "Bir öğrenci → bir kart: 1:1.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Bölüm – Ders (bir bölümün çok dersi var) ilişkisinde FOREIGN KEY hangi tabloya eklenir?",
+    "opts": [
+     "Ara tabloya",
+     "İki tabloya da",
+     "Ders tablosuna",
+     "Bölüm tablosuna"
+    ],
+    "a": 2,
+    "exp": "FK çok tarafına: ders.bolum_no.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "M:N ilişkiyi tablolara dönüştürmek için ne gerekir?",
+    "opts": [
+     "AUTO_INCREMENT",
+     "Ara (bağlantı) tablo",
+     "UNIQUE kısıtı",
+     "Tek bir FOREIGN KEY"
+    ],
+    "a": 1,
+    "exp": "M:N → ara tablo.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "PRIMARY KEY için hangisi DOĞRUDUR?",
+    "opts": [
+     "Her tabloda birden çok olabilir",
+     "Benzersiz ve NULL olamaz",
+     "Tekrar edebilir",
+     "NULL olabilir"
+    ],
+    "a": 1,
+    "exp": "PK = UNIQUE + NOT NULL, tabloda bir tane.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "İki tabloda yalnızca eşleşen kayıtları getiren JOIN hangisidir?",
+    "opts": [
+     "CROSS JOIN",
+     "INNER JOIN",
+     "RIGHT JOIN",
+     "LEFT JOIN"
+    ],
+    "a": 1,
+    "exp": "INNER JOIN.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Hiç siparişi olmayan müşterileri de listelemek için hangisi kullanılır?",
+    "opts": [
+     "WHERE ile eşitlik",
+     "LEFT JOIN (müşteriler solda)",
+     "GROUP BY",
+     "INNER JOIN"
+    ],
+    "a": 1,
+    "exp": "Soldaki (müşteriler) bütün satırlar gelir; siparişi olmayanın sipariş sütunları NULL.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Bir sütundaki değerlerin ortalamasını veren fonksiyon hangisidir?",
+    "opts": [
+     "AVG()",
+     "SUM()",
+     "COUNT()",
+     "MAX()"
+    ],
+    "a": 0,
+    "exp": "AVG ortalama.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "`COUNT(*)` ile `COUNT(sutun)` farkı nedir?",
+    "opts": [
+     "COUNT(sutun) NULL değerleri saymaz",
+     "COUNT(*) NULL saymaz",
+     "Fark yoktur",
+     "COUNT(sutun) daha hızlıdır"
+    ],
+    "a": 0,
+    "exp": "COUNT(sutun) NULL'ları atlar.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "`SELECT MAX(fiyat) FROM urunler;` sorgusu kaç satır döndürür?",
+    "opts": [
+     "Kategori sayısı kadar",
+     "Tablodaki satır sayısı kadar",
+     "0",
+     "1"
+    ],
+    "a": 3,
+    "exp": "GROUP BY yoksa toplama fonksiyonu tek satır (tek değer) döndürür.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "GROUP BY ne işe yarar?",
+    "opts": [
+     "Tekrarları siler",
+     "Aynı değere sahip satırları gruplar",
+     "Satırları sıralar",
+     "Tabloları birleştirir"
+    ],
+    "a": 1,
+    "exp": "Aynı değerli satırları bir grup yapar.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "`SELECT kategori_id, COUNT(*) FROM urunler GROUP BY kategori_id;` ne listeler?",
+    "opts": [
+     "Her kategorideki ürün sayısını",
+     "Kategori adlarını",
+     "En pahalı ürünü",
+     "Toplam ürün sayısını"
+    ],
+    "a": 0,
+    "exp": "Her kategori_id için bir satır ve o gruptaki ürün sayısı.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "GROUP BY kullanılan sorguda SELECT'e hangi sütunlar yazılabilir?",
+    "opts": [
+     "Tüm sütunlar",
+     "Gruplanan sütunlar ve aggregate fonksiyonlar",
+     "Sadece sayısal sütunlar",
+     "Sadece PRIMARY KEY"
+    ],
+    "a": 1,
+    "exp": "Gruplanmayan bir sütun yazılırsa hangi değerin geleceği belli olmaz (ONLY_FULL_GROUP_BY hatası).",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Birden fazla sütuna göre gruplama nasıl yazılır?",
+    "opts": [
+     "GROUP sehir BY yil",
+     "GROUP BY sehir AND yil",
+     "GROUP BY sehir, yil",
+     "GROUP BY (sehir + yil)"
+    ],
+    "a": 2,
+    "exp": "Sütunlar virgülle ayrılır.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "HAVING ne zaman kullanılır?",
+    "opts": [
+     "Tablo birleştirmek için",
+     "Gruplamadan önce filtrelemek için",
+     "Gruplanmış sonuçları filtrelemek için",
+     "Sıralama yapmak için"
+    ],
+    "a": 2,
+    "exp": "HAVING grupları süzer.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "WHERE içinde aggregate fonksiyon (ör. COUNT) kullanılabilir mi?",
+    "opts": [
+     "Sadece LIMIT ile birlikte",
+     "Sadece SUM kullanılabilir",
+     "Evet, her zaman",
+     "Hayır, HAVING kullanılır"
+    ],
+    "a": 3,
+    "exp": "WHERE'de COUNT → #1111 Invalid use of group function.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "5'ten fazla ürünü olan kategoriler için doğru koşul hangisidir?",
+    "opts": [
+     "ORDER BY COUNT(*) > 5",
+     "HAVING COUNT(*) > 5",
+     "WHERE COUNT(*) > 5",
+     "GROUP BY COUNT(*) > 5"
+    ],
+    "a": 1,
+    "exp": "Toplama fonksiyonlu koşul HAVING'e.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "İptal edilen siparişleri hesaba katmadan toplam almak için koşul nereye yazılır?",
+    "opts": [
+     "GROUP BY durum",
+     "WHERE durum <> 'iptal'",
+     "HAVING durum <> 'iptal'",
+     "ORDER BY durum"
+    ],
+    "a": 1,
+    "exp": "İptal tek tek satırların özelliği; gruplamadan önce WHERE ile atılır.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Doğru cümle sırası hangisidir?",
+    "opts": [
+     "SELECT-FROM-GROUP BY-WHERE-HAVING",
+     "SELECT-GROUP BY-FROM-WHERE-ORDER BY",
+     "SELECT-FROM-WHERE-HAVING-GROUP BY",
+     "SELECT-FROM-WHERE-GROUP BY-HAVING-ORDER BY"
+    ],
+    "a": 3,
+    "exp": "SELECT … FROM … WHERE … GROUP BY … HAVING … ORDER BY …",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Sorgu çalışırken hangisi önce işlenir?",
+    "opts": [
+     "SELECT",
+     "HAVING",
+     "ORDER BY",
+     "WHERE"
+    ],
+    "a": 3,
+    "exp": "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Toplam satışa göre en çok satan kategoriyi bulmak için GROUP BY'a hangi ikili eklenir?",
+    "opts": [
+     "WHERE + LIMIT",
+     "ORDER BY ... DESC LIMIT",
+     "JOIN + UNION",
+     "HAVING + DISTINCT"
+    ],
+    "a": 1,
+    "exp": "Toplama göre azalan sırala, ilk satırı al: ORDER BY SUM(...) DESC LIMIT 1.",
+    "src": "Kahoot 4"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Bir yazarın birden çok kitabı olabilir, her kitabın tek yazarı vardır. İlişki türü nedir?",
+    "opts": [
+     "1:1",
+     "M:N",
+     "İlişki yoktur",
+     "1:N"
+    ],
+    "a": 3,
+    "exp": "Yazar → çok kitap, kitap → tek yazar: 1:N.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Her ülkenin tek başkenti vardır, her başkent tek ülkeye aittir. İlişki türü nedir?",
+    "opts": [
+     "1:1",
+     "M:N",
+     "1:N",
+     "Mutlaka ara tablo gerekir"
+    ],
+    "a": 0,
+    "exp": "İki taraf da tek: 1:1.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Doktor–Hasta M:N ilişkisinde muayene tarihi gibi bilgiler nerede saklanır?",
+    "opts": [
+     "Saklanamaz",
+     "Doktor tablosunda",
+     "Ara (bağlantı) tabloda",
+     "Hasta tablosunda"
+    ],
+    "a": 2,
+    "exp": "Tarih belli bir doktor–hasta eşleşmesine ait; ara tabloda durur (harf_notu gibi).",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "sql-giris",
+    "q": "Yeni bir veritabanı oluşturan komut hangisidir?",
+    "opts": [
+     "NEW DATABASE Kutuphane;",
+     "MAKE DATABASE Kutuphane;",
+     "CREATE DATABASE Kutuphane;",
+     "CREATE TABLE Kutuphane;"
+    ],
+    "a": 2,
+    "exp": "CREATE DATABASE; CREATE TABLE tablo oluşturur.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "PRIMARY KEY için **doğru olanların hepsi** hangi şıkta verilmiştir?",
+    "opts": [
+     "NULL değer alamaz + Her kaydı benzersiz tanımlar",
+     "Değerleri tekrar edebilir + NULL değer alamaz",
+     "Bir tabloda iki ayrı PRIMARY KEY olabilir + Her kaydı benzersiz tanımlar",
+     "Sadece: Her kaydı benzersiz tanımlar"
+    ],
+    "a": 0,
+    "exp": "Kahoot'ta birden çok doğrulu soruydu. PK tekrar edemez ve tabloda bir tanedir (birden çok sütundan oluşabilir ama yine tek PK).",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "FOREIGN KEY için **doğru olanların hepsi** hangi şıkta verilmiştir?",
+    "opts": [
+     "Bir tabloda birden çok FK olabilir + Referans bütünlüğünü sağlar + Başka tablonun PK'sini referans eder",
+     "FK sütunu her zaman PK olmalıdır + Referans bütünlüğünü sağlar",
+     "Referans bütünlüğünü sağlar + Başka tablonun PK'sini referans eder",
+     "Bir tabloda birden çok FK olabilir + FK sütunu her zaman PK olmalıdır"
+    ],
+    "a": 0,
+    "exp": "Kahoot'ta birden çok doğrulu soruydu. FK'nin PK olması gerekmez (ders.bolum_no FK ama PK değil). ders_kaydi'nde 2 FK var.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "sql-giris",
+    "q": "`Siparis` tablosunda `MusteriID` için doğru FOREIGN KEY tanımı hangisidir?",
+    "opts": [
+     "FOREIGN KEY (MusteriID) REFERENCES Musteri(MusteriID)",
+     "FOREIGN KEY (MusteriID) LINKS Musteri(MusteriID)",
+     "REFERENCES (MusteriID) FROM Musteri",
+     "FOREIGN KEY Musteri JOINS MusteriID"
+    ],
+    "a": 0,
+    "exp": "Kalıp: FOREIGN KEY (sütun) REFERENCES tablo(sütun).",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "sql-giris",
+    "q": "`Musteri` tablosunda olmayan `MusteriID=9` ile `Siparis` eklenirse ne olur?",
+    "opts": [
+     "Musteri otomatik eklenir",
+     "Kayıt eklenir",
+     "FOREIGN KEY hatası alınır",
+     "MusteriID NULL olur"
+    ],
+    "a": 2,
+    "exp": "Referans bütünlüğü: #1452 Cannot add or update a child row.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "sql-giris",
+    "q": "`Ogrenci(No PK, Ad NOT NULL, Bolum)`. Hangi INSERT **hatalıdır**?",
+    "opts": [
+     "INSERT INTO Ogrenci (No,Ad) VALUES (4,'Ece');",
+     "INSERT INTO Ogrenci VALUES (2,NULL,'BP');",
+     "INSERT INTO Ogrenci (Ad,No) VALUES ('Can',3);",
+     "INSERT INTO Ogrenci VALUES (1,'Ali','BP');"
+    ],
+    "a": 1,
+    "exp": "Ad NOT NULL; NULL verilemez. Sütun sırası belirtilirse (Ad,No) farklı sırada yazmak serbest.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "sql-giris",
+    "q": "`No=1` tabloda zaten varken `INSERT INTO Ogrenci VALUES (1,'Su','BP');` çalışırsa?",
+    "opts": [
+     "Kayıt eklenir",
+     "Duplicate entry (PK) hatası",
+     "Eski kayıt güncellenir",
+     "No otomatik 2 olur"
+    ],
+    "a": 1,
+    "exp": "PK tekrar edemez: #1062 Duplicate entry '1' for key 'PRIMARY'.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`Musteri`: 1, 2, 3. `Siparis.MusteriID`: 1, 1, 2. INNER JOIN (MusteriID) kaç satır döner?",
+    "opts": [
+     "6",
+     "2",
+     "3",
+     "4"
+    ],
+    "a": 2,
+    "exp": "Her sipariş satırı bir müşteriyle eşleşir: 3 satır. Müşteri 3 gelmez.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Aynı tablolarda `Musteri LEFT JOIN Siparis` kaç satır döner?",
+    "opts": [
+     "6",
+     "4",
+     "3",
+     "2",
+     "5"
+    ],
+    "a": 1,
+    "exp": "3 eşleşen + siparişi olmayan müşteri 3 için NULL'lu 1 satır = 4.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "`SELECT UrunID, SUM(Miktar) FROM Satis GROUP BY UrunID;` ne döndürür?",
+    "opts": [
+     "En çok satan ürün",
+     "Her ürünün satış sayısı",
+     "Her ürünün toplam satış miktarı",
+     "Tüm satışların toplamı"
+    ],
+    "a": 2,
+    "exp": "SUM(Miktar) miktarları toplar; satış sayısı COUNT(*) olurdu.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "GROUP BY için **doğru olanların hepsi** hangi şıkta verilmiştir?",
+    "opts": [
+     "Aggregate fonksiyonlarla kullanılır + Satırları gruplara ayırır + Her grup için özet satır üretir",
+     "Sadece sayısal sütunlarda kullanılır + Satırları gruplara ayırır",
+     "Satırları gruplara ayırır + Her grup için özet satır üretir",
+     "Sadece sayısal sütunlarda kullanılır + Aggregate fonksiyonlarla kullanılır"
+    ],
+    "a": 0,
+    "exp": "Kahoot'ta birden çok doğrulu soruydu. Metin sütunuyla (sehir) da gruplanır.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "COUNT için **doğru olanların hepsi** hangi şıkta verilmiştir?",
+    "opts": [
+     "COUNT(*) NULL içeren satırları da sayar + COUNT(DISTINCT sutun) benzersizleri sayar + COUNT(sutun) NULL değerleri saymaz",
+     "COUNT(*) NULL içeren satırları da sayar + Sadece GROUP BY ile kullanılabilir",
+     "COUNT(DISTINCT sutun) benzersizleri sayar + COUNT(sutun) NULL değerleri saymaz",
+     "Sadece GROUP BY ile kullanılabilir + COUNT(sutun) NULL değerleri saymaz"
+    ],
+    "a": 0,
+    "exp": "Kahoot'ta birden çok doğrulu soruydu. COUNT GROUP BY olmadan da kullanılır: SELECT COUNT(*) FROM musteriler;",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "`SELECT m.Ad, ___(s.Tutar) FROM Musteri m JOIN Siparis s ON ...` Müşteri başına TOPLAM için boşluğa ne gelir?",
+    "opts": [
+     "COUNT",
+     "SUM",
+     "AVG",
+     "MAX"
+    ],
+    "a": 1,
+    "exp": "Toplam tutar: SUM.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Müşteri başına toplam sorgusunun sonuna hangisi eklenmelidir?",
+    "opts": [
+     "ORDER BY m.Ad",
+     "HAVING m.Ad",
+     "GROUP BY m.Ad",
+     "WHERE m.Ad"
+    ],
+    "a": 2,
+    "exp": "Müşteri başına = müşteriye göre grupla.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "`SELECT Sehir, COUNT(*) FROM Musteri GROUP BY Sehir WHERE COUNT(*) > 2;` sorgusundaki **hataların hepsi** hangi şıkta verilmiştir?",
+    "opts": [
+     "WHERE, GROUP BY'dan önce gelmeli + Aggregate koşul için HAVING kullanılmalı",
+     "COUNT(*) yanlış yazılmış",
+     "Hata yok",
+     "Sadece: WHERE, GROUP BY'dan önce gelmeli"
+    ],
+    "a": 0,
+    "exp": "Kahoot'ta birden çok doğrulu soruydu. Doğrusu: … GROUP BY Sehir HAVING COUNT(*) > 2;",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "sorgular",
+    "q": "Fiyatlar: Kalem 10, Defter 25, Cetvel 40, Çanta 60. `WHERE Fiyat BETWEEN 25 AND 40` ne döndürür?",
+    "opts": [
+     "Defter ve Cetvel",
+     "Cetvel ve Çanta",
+     "Kalem, Defter, Cetvel",
+     "Sadece Defter"
+    ],
+    "a": 0,
+    "exp": "BETWEEN uç değerleri dahil eder: 25 ≤ fiyat ≤ 40.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "sorgular",
+    "q": "Soyadı 'K' ile başlayanları bulmak için doğru koşul hangisidir?",
+    "opts": [
+     "Soyad IN ('K')",
+     "Soyad LIKE '%K'",
+     "Soyad LIKE 'K%'",
+     "Soyad = 'K%'"
+    ],
+    "a": 2,
+    "exp": "'K%' K ile başlayan; '%K' K ile biten. = ile joker çalışmaz.",
+    "src": "Kahoot 5"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "ER diyagramında bir özniteliğin Birincil Anahtar (PK) olduğunu Chen notasyonunda nasıl gösteririz?",
+    "opts": [
+     "Yıldız işareti eklenir",
+     "Metnin altı çizilir",
+     "Metin kalın yazılır",
+     "Oval çift çizgi yapılır"
+    ],
+    "a": 1,
+    "exp": "Chen notasyonunda anahtar öznitelik altı çizili yazılır.",
+    "src": "Kahoot 6"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Bir okulda birçok öğrenci var, her öğrenci sadece bir okula kayıtlı. İlişki türü nedir?",
+    "opts": [
+     "Zayıf ilişki",
+     "1:1",
+     "M:N",
+     "1:N"
+    ],
+    "a": 3,
+    "exp": "Okul → çok öğrenci, öğrenci → tek okul: 1:N.",
+    "src": "Kahoot 6"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen notasyonunda \"Elmas\" (Diamond) sembolü neyi temsil eder?",
+    "opts": [
+     "İlişki (Relationship)",
+     "Veri Akışı",
+     "Öznitelik (Attribute)",
+     "Varlık Kümesi"
+    ],
+    "a": 0,
+    "exp": "Varlık dikdörtgen, öznitelik oval, ilişki elmas (eşkenar dörtgen).",
+    "src": "Kahoot 6"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Filmler ve Oyuncular (bir filmde çok oyuncu, bir oyuncu çok filmde) arasındaki ilişki hangisidir?",
+    "opts": [
+     "1:N",
+     "N:M",
+     "N:1",
+     "1:1"
+    ],
+    "a": 1,
+    "exp": "İki taraf da çok: N:M (M:N), ara tablo gerekir.",
+    "src": "Kahoot 6"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "ER diyagramlarının önemine dair hangisi **yanlıştır**?",
+    "opts": [
+     "Ekip içi iletişimi kolaylaştırır",
+     "SQL sorgularının temelini oluşturur",
+     "Tasarım hatalarının erken fark edilmesini sağlar",
+     "Sadece küçük ölçekli veri tabanları için geçerlidir"
+    ],
+    "a": 3,
+    "exp": "ER diyagramı her ölçekte kullanılır.",
+    "src": "Kahoot 6"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen notasyonunda öznitelikler (Attributes) hangi sembolle gösterilir?",
+    "opts": [
+     "Oval (Elips)",
+     "Üçgen",
+     "Kare",
+     "Daire"
+    ],
+    "a": 0,
+    "exp": "Öznitelik: oval.",
+    "src": "Kahoot 6"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "ER diyagramında \"Kardinalite\" (Cardinality) neyi ifade eder?",
+    "opts": [
+     "Varlıklar arasındaki sayısal ilişki miktarını",
+     "Toplam tablo sayısını",
+     "Sorguların çalışma hızını",
+     "Verilerin disk üzerindeki boyutunu"
+    ],
+    "a": 0,
+    "exp": "Kardinalite: 1:1, 1:N, M:N.",
+    "src": "Kahoot 6"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Normalizasyonun temel amacı nedir?",
+    "opts": [
+     "Tekrarı azaltmak",
+     "Tabloyu büyütmek",
+     "Veri şifrelemek",
+     "Index silmek"
+    ],
+    "a": 0,
+    "exp": "Normalizasyon veri tekrarını ve tutarsızlığı azaltır.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Doğal anahtar (natural key) kullanmanın riski nedir?",
+    "opts": [
+     "Çoğalır",
+     "Değişebilir",
+     "Yavaşlatır",
+     "Anlamsızdır"
+    ],
+    "a": 1,
+    "exp": "TC no, e-posta gibi gerçek dünya değerleri zamanla değişebilir.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Vekil anahtarın (surrogate key) avantajı nedir?",
+    "opts": [
+     "Değişmez ve hızlı",
+     "Karmaşıktır",
+     "Güvensizdir",
+     "Anlamlıdır"
+    ],
+    "a": 0,
+    "exp": "AUTO_INCREMENT id gibi anlamı olmayan, değişmeyen kısa anahtar.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Cümleyi tamamla: \"1:M en ...\"",
+    "opts": [
+     "yaygın ilişkidir",
+     "karmaşık türdür",
+     "seyrek görülür",
+     "yavaş modeldir"
+    ],
+    "a": 0,
+    "exp": "1:M (1:N) en yaygın ilişki türüdür.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Departman – Çalışan hangi ilişkidir?",
+    "opts": [
+     "Zayıf ilişki",
+     "M:N",
+     "1:M",
+     "1:1"
+    ],
+    "a": 2,
+    "exp": "Bir departmanda çok çalışan, çalışan tek departmanda.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Öğrenci – Ders hangi ilişkidir?",
+    "opts": [
+     "Bağsız",
+     "M:N",
+     "1:M",
+     "1:1"
+    ],
+    "a": 1,
+    "exp": "Öğrenci çok ders alır, derste çok öğrenci var.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Öğrenci kimlik kartı tablosunda FK hangisidir?",
+    "opts": [
+     "gecerlilik",
+     "ad",
+     "kart_no",
+     "ogrenci_id"
+    ],
+    "a": 3,
+    "exp": "Kart, ogrenci_id ile öğrenciye bağlanır; kart_no kartın kendi PK'si.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "(Doğru/Yanlış) FK her zaman ara tabloda bulunur.",
+    "opts": [
+     "Doğru",
+     "Yanlış"
+    ],
+    "a": 1,
+    "exp": "Yanlış: 1:N'de FK çok tarafındaki normal tabloda (ders.bolum_no).",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Öğretmen – Ders hangi ilişkidir?",
+    "opts": [
+     "1:M",
+     "Zayıf bağ",
+     "1:1",
+     "M:N"
+    ],
+    "a": 0,
+    "exp": "Kahoot'un cevabı: bir öğretmen çok ders verir, her dersin tek öğretmeni var.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Kategori – Ürün hangi ilişkidir?",
+    "opts": [
+     "1:M",
+     "1:1",
+     "M:N",
+     "Yok"
+    ],
+    "a": 0,
+    "exp": "Kategoride çok ürün, ürün tek kategoride.",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Ara tabloda hangi anahtarlar vardır?",
+    "opts": [
+     "Tek PK",
+     "Sadece indeks",
+     "İki FK",
+     "Sanal alan"
+    ],
+    "a": 2,
+    "exp": "İki tarafın PK'lerini tutan iki FK (çoğu zaman birlikte PK).",
+    "src": "Kahoot 7"
+   },
+   {
+    "type": "mc",
+    "topic": "giris",
+    "q": "Veritabanı nedir?",
+    "opts": [
+     "Bir programlama dili",
+     "İnternet tarayıcısı",
+     "Grafik tasarım aracı",
+     "Organize edilmiş veri koleksiyonu"
+    ],
+    "a": 3,
+    "exp": "Düzenli saklanan, ilişkili veri topluluğu.",
+    "src": "Kahoot 8"
+   },
+   {
+    "type": "mc",
+    "topic": "giris",
+    "q": "Hangisi bir Veritabanı Yönetim Sistemi (DBMS) **değildir**?",
+    "opts": [
+     "Oracle",
+     "Microsoft Access",
+     "Microsoft Word",
+     "MySQL"
+    ],
+    "a": 2,
+    "exp": "Word kelime işlemcidir.",
+    "src": "Kahoot 8"
+   },
+   {
+    "type": "mc",
+    "topic": "giris",
+    "q": "SQL'in açılımı nedir?",
+    "opts": [
+     "Structured Query Language",
+     "Simple Question Logic",
+     "Software Quality Level",
+     "System Query Loop"
+    ],
+    "a": 0,
+    "exp": "Yapılandırılmış Sorgu Dili.",
+    "src": "Kahoot 8"
+   },
+   {
+    "type": "mc",
+    "topic": "giris",
+    "q": "Bir tabloda satırlar neyi temsil eder?",
+    "opts": [
+     "Kayıtları (records)",
+     "Alanları (fields)",
+     "Tabloların ilişkisini",
+     "Veritabanı adını"
+    ],
+    "a": 0,
+    "exp": "Satır = kayıt, sütun = alan.",
+    "src": "Kahoot 8"
+   },
+   {
+    "type": "mc",
+    "topic": "giris",
+    "q": "Aşağıdakilerden hangisi veritabanı **kullanmaz**?",
+    "opts": [
+     "Netflix",
+     "Online bankacılık",
+     "Hastane sistemi",
+     "Hesap makinesi uygulaması"
+    ],
+    "a": 3,
+    "exp": "Hesap makinesi kalıcı veri saklamaz.",
+    "src": "Kahoot 8"
+   },
+   {
+    "type": "mc",
+    "topic": "giris",
+    "q": "Dünyanın en çok kullanılan açık kaynak veritabanı hangisidir?",
+    "opts": [
+     "Microsoft SQL Server",
+     "MongoDB",
+     "MySQL",
+     "Firebase"
+    ],
+    "a": 2,
+    "exp": "MySQL açık kaynak ilişkisel VTYS.",
+    "src": "Kahoot 8"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "GROUP BY hangi komuttan **önce** yazılır?",
+    "opts": [
+     "HAVING",
+     "FROM",
+     "WHERE",
+     "SELECT"
+    ],
+    "a": 0,
+    "exp": "… WHERE … GROUP BY … HAVING …",
+    "src": "Kahoot 9"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "GROUP BY ile en sık hangi fonksiyon kullanılır?",
+    "opts": [
+     "LIMIT",
+     "LIKE",
+     "COUNT",
+     "CONCAT"
+    ],
+    "a": 2,
+    "exp": "COUNT, SUM, AVG gibi toplama fonksiyonları.",
+    "src": "Kahoot 9"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "GROUP BY'da ID kolonu kullanılmasının nedeni nedir?",
+    "opts": [
+     "Daha kolay yazım",
+     "Benzersiz gruplama",
+     "Daha hızlı sorgulama",
+     "Daha az bellek"
+    ],
+    "a": 1,
+    "exp": "Aynı isimli farklı kayıtlar (iki \"Ahmet\") karışmaz.",
+    "src": "Kahoot 9"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "HAVING hangi komuttan **sonra** yazılır?",
+    "opts": [
+     "GROUP BY",
+     "SELECT",
+     "FROM",
+     "WHERE"
+    ],
+    "a": 0,
+    "exp": "HAVING, GROUP BY'dan hemen sonra gelir.",
+    "src": "Kahoot 9"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "JOIN kullanırken tabloları birleştiren (eşleşme koşulunu yazdığımız) anahtar kelime hangisidir?",
+    "opts": [
+     "ON",
+     "FROM",
+     "AS",
+     "WHERE"
+    ],
+    "a": 0,
+    "exp": "JOIN … ON a.id = b.a_id",
+    "src": "Kahoot 10"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "3 tabloyu birleştirmek için kaç tane JOIN gerekir?",
+    "opts": [
+     "2",
+     "1",
+     "4",
+     "3"
+    ],
+    "a": 0,
+    "exp": "n tablo için n − 1 JOIN.",
+    "src": "Kahoot 10"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "LEFT JOIN ile JOIN arasındaki temel fark nedir?",
+    "opts": [
+     "Hiçbir fark yoktur",
+     "LEFT JOIN eşleşme olmasa da sol tablonun tüm satırlarını getirir",
+     "JOIN her zaman daha fazla sonuç döndürür",
+     "LEFT JOIN daha hızlıdır"
+    ],
+    "a": 1,
+    "exp": "JOIN (INNER) sadece eşleşenleri getirir.",
+    "src": "Kahoot 10"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`FROM bolge b JOIN iller i ON b.bolge_id = i.bolge_id` ifadesinde `b` ve `i` ne işe yarar?",
+    "opts": [
+     "Tablo takma adıdır (alias)",
+     "Filtre uygular",
+     "Kolon adı belirtir",
+     "Sıralama belirtir"
+    ],
+    "a": 0,
+    "exp": "Takma ad; AS yazmadan da verilebilir.",
+    "src": "Kahoot 10"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "GROUP BY ile birlikte hangisi (aggregate olarak) kullanılamaz?",
+    "opts": [
+     "COUNT",
+     "MAX",
+     "LIKE",
+     "SUM"
+    ],
+    "a": 2,
+    "exp": "LIKE bir karşılaştırma operatörüdür, toplama fonksiyonu değil.",
+    "src": "Kahoot 10"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Aşağıdakilerden hangisi HAVING içinde kullanılabilir?",
+    "opts": [
+     "COUNT(*)",
+     "BETWEEN",
+     "LIKE",
+     "ORDER BY"
+    ],
+    "a": 0,
+    "exp": "Kahoot'un cevabı: HAVING toplama fonksiyonlarıyla grupları süzer.",
+    "src": "Kahoot 10"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "SQL'de veritabanının sorguyu işleme sırası hangisidir?",
+    "opts": [
+     "WHERE → FROM → GROUP BY → HAVING → SELECT",
+     "FROM → SELECT → WHERE → HAVING → GROUP BY",
+     "SELECT → FROM → WHERE → GROUP BY → HAVING",
+     "FROM/JOIN → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT"
+    ],
+    "a": 3,
+    "exp": "Mantıksal çalışma sırası; yazım sırasından farklı.",
+    "src": "Kahoot 10"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Ankara'nın ilçe sayısından fazla ilçesi olan illeri bulmak için en uygun yöntem hangisidir?",
+    "opts": [
+     "ORDER BY ilce_sayisi DESC LIMIT 1",
+     "WHERE il_ad != 'Ankara'",
+     "HAVING ilce_sayisi > (SELECT COUNT(*) FROM ... WHERE il_ad = 'Ankara')",
+     "HAVING ilce_sayisi > 25"
+    ],
+    "a": 2,
+    "exp": "Karşılaştırılacak sayı sabit yazılmaz, alt sorguyla hesaplanır.",
+    "src": "Kahoot 10"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Hem tarihi hem saati aynı anda döndüren MySQL fonksiyonu hangisidir?",
+    "opts": [
+     "CURTIME()",
+     "CURRENT_TIMESTAMP",
+     "CURDATE()",
+     "SYSDATE_NOW()"
+    ],
+    "a": 1,
+    "exp": "CURRENT_TIMESTAMP (NOW() ile aynı): 2024-11-15 14:05:30.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`SELECT CURDATE();` ne döndürür?",
+    "opts": [
+     "11-15-2024",
+     "14:05:30",
+     "2024-11-15",
+     "2024-11-15 14:05"
+    ],
+    "a": 2,
+    "exp": "Sadece tarih, YYYY-MM-DD.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "EXTRACT fonksiyonunun doğru sözdizimi hangisidir?",
+    "opts": [
+     "EXTRACT(YEAR FROM tarih)",
+     "EXTRACT(YEAR OF tarih)",
+     "EXTRACT(tarih FROM YEAR)",
+     "EXTRACT(tarih, YEAR)"
+    ],
+    "a": 0,
+    "exp": "EXTRACT(birim FROM tarih).",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`SELECT EXTRACT(MONTH FROM '2010-04-15');` ne döndürür?",
+    "opts": [
+     "4",
+     "10",
+     "2010",
+     "15"
+    ],
+    "a": 0,
+    "exp": "Ay: 4 (Kahoot'ta \"04\" yazıyordu).",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "EXTRACT'ta kullanılan bileşenlerden hangisi **yanlıştır**? (derste gösterilen listeye göre)",
+    "opts": [
+     "YEAR",
+     "WEEK",
+     "SECOND",
+     "MINUTE"
+    ],
+    "a": 1,
+    "exp": "Kahoot'un cevabı WEEK. Not: MySQL aslında WEEK'i de destekler; derste gösterilen listede yoktu.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Bugünkü tarihe 10 gün ekleyen sorgu hangisidir?",
+    "opts": [
+     "NOW() + INTERVAL 10 DAY",
+     "DATE_ADD(NOW(), INTERVAL 10 DAY)",
+     "ADD_DATE(NOW(), INTERVAL 10)",
+     "DATE_ADD(NOW(), 10 DAY)"
+    ],
+    "a": 1,
+    "exp": "Kahoot'un cevabı DATE_ADD(…, INTERVAL 10 DAY). (a da MySQL'de çalışır ama derste DATE_ADD gösterildi.)",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Mevcut saate 90 dakika ekleyen sorgu hangisidir?",
+    "opts": [
+     "DATE_SUB(NOW(), INTERVAL 90 MINUTE)",
+     "DATE_ADD(NOW(), INTERVAL 90 MINUTE)",
+     "DATE_ADD(NOW(), INTERVAL 1.5 HOUR)",
+     "DATE_ADD(NOW(), INTERVAL 90 SECOND)"
+    ],
+    "a": 1,
+    "exp": "DATE_SUB çıkarır; INTERVAL ondalık saat almaz.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Türkçe gün/ay adı almak için hangi komut çalıştırılmalıdır?",
+    "opts": [
+     "USE LANGUAGE 'tr_TR'",
+     "SET NLS_LANGUAGE = 'TURKISH'",
+     "SET lc_time_names = 'tr_TR'",
+     "SET LANGUAGE = 'Turkish'"
+    ],
+    "a": 2,
+    "exp": "lc_time_names MONTHNAME, DAYNAME, DATE_FORMAT adlarını değiştirir.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`lc_time_names = 'tr_TR'` iken `MONTHNAME('1997-04-03')` ne döndürür?",
+    "opts": [
+     "Mart",
+     "Mayıs",
+     "Nisan",
+     "04"
+    ],
+    "a": 2,
+    "exp": "4. ay: Nisan.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`SELECT DATEDIFF('2024-04-25', '2024-04-15');` ne döndürür?",
+    "opts": [
+     "10",
+     "15",
+     "-10",
+     "25"
+    ],
+    "a": 0,
+    "exp": "İlk tarih − ikinci tarih = 10 gün.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "İki saat değeri arasındaki farkı HH:MM:SS formatında döndüren fonksiyon hangisidir?",
+    "opts": [
+     "TIMESTAMPDIFF()",
+     "TIMEDIFF()",
+     "DATEDIFF()",
+     "TIME_BETWEEN()"
+    ],
+    "a": 1,
+    "exp": "DATEDIFF gün sayısı verir, TIMEDIFF saat farkı.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`DATE_FORMAT(tarih, '%d %M %Y %W')` hangi çıktıyı üretir? (Türkçe ayarda)",
+    "opts": [
+     "15 Kasım 2024 Cuma",
+     "2024/11/15 Cuma",
+     "Cuma, 15-11-2024",
+     "15 Kas 2024 Cum"
+    ],
+    "a": 0,
+    "exp": "%d gün, %M ay adı, %Y 4 haneli yıl, %W gün adı.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "DATE_FORMAT içinde günü 2 haneli sayı olarak gösteren format kodu hangisidir?",
+    "opts": [
+     "%D",
+     "%d",
+     "%G",
+     "%y"
+    ],
+    "a": 1,
+    "exp": "%d: 01–31. %D: 1st, 2nd… %y: 2 haneli yıl.",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Tarih/saat fonksiyonları SQL'in hangi cümleleriyle kullanılabilir?",
+    "opts": [
+     "Yalnızca ORDER BY",
+     "Yalnızca SELECT",
+     "SELECT, WHERE ve ORDER BY",
+     "Yalnızca WHERE"
+    ],
+    "a": 2,
+    "exp": "Örn. WHERE YEAR(tarih) = 2024, ORDER BY MONTH(tarih).",
+    "src": "Kahoot 11"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`UPPER('ankara')` sonucu nedir?",
+    "opts": [
+     "'ANkara'",
+     "'ankara'",
+     "'Ankara'",
+     "'ANKARA'"
+    ],
+    "a": 3,
+    "exp": "UPPER tamamını büyük harfe çevirir.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Türkçe karakter içeren metindeki karakter sayısını doğru ölçen fonksiyon hangisidir?",
+    "opts": [
+     "SIZE()",
+     "CHAR_LENGTH()",
+     "COUNT()",
+     "LENGTH()"
+    ],
+    "a": 1,
+    "exp": "LENGTH byte sayar (ş, ğ 2 byte); CHAR_LENGTH karakter sayar.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`SELECT LEFT('Bilgisayar', 4);` sonucu nedir?",
+    "opts": [
+     "'sara'",
+     "'Bilg'",
+     "'yar '",
+     "'Bilgi'"
+    ],
+    "a": 1,
+    "exp": "Soldan 4 karakter.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`SELECT LPAD('42', 6, '0');` sonucu nedir?",
+    "opts": [
+     "'42 '",
+     "'004200'",
+     "'420000'",
+     "'000042'"
+    ],
+    "a": 3,
+    "exp": "Soldan 0 ile 6 karaktere tamamlar.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`TRIM(' Merhaba ')` sonucu nedir?",
+    "opts": [
+     "'Merhaba '",
+     "' Merhaba'",
+     "'Merhaba'",
+     "'merhaba'"
+    ],
+    "a": 2,
+    "exp": "Baştaki ve sondaki boşlukları siler.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`SELECT REPLACE('05-32-100', '-', '');` sonucu nedir?",
+    "opts": [
+     "'053 2100'",
+     "'05-32-100'",
+     "'0532100'",
+     "'05 32 100'"
+    ],
+    "a": 2,
+    "exp": "Bütün - karakterleri boş metinle değiştirilir.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`INSTR('Ankara', 'kar')` ne döndürür?",
+    "opts": [
+     "2",
+     "1",
+     "4",
+     "3"
+    ],
+    "a": 3,
+    "exp": "A1 n2 k3: \"kar\" 3. karakterde başlar.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`SELECT SUBSTRING('Programlama', 8, 4);` sonucu nedir?",
+    "opts": [
+     "'ama '",
+     "'Prog'",
+     "'gram'",
+     "'lama'"
+    ],
+    "a": 3,
+    "exp": "8. karakterden (l) başlayıp 4 karakter: lama.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`FORMAT(1234567.5, 2)` sonucu nedir?",
+    "opts": [
+     "'1.234.567,50'",
+     "'1234567.50'",
+     "'12345.6750'",
+     "'1,234,567.50'"
+    ],
+    "a": 3,
+    "exp": "Varsayılan (en_US) biçim: binlik virgül, ondalık nokta.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`ogrenci_no = '2021001003'` iken sağdan 4 karakteri almak için hangisi kullanılır?",
+    "opts": [
+     "LEFT(ogrenci_no, 4)",
+     "TRIM(ogrenci_no, 4)",
+     "INSTR(ogrenci_no, 4)",
+     "RIGHT(ogrenci_no, 4)"
+    ],
+    "a": 3,
+    "exp": "RIGHT → 1003.",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`SELECT CONCAT_WS(' ', 'Ahmet', NULL, 'Yilmaz');` sonucu nedir?",
+    "opts": [
+     "NULL",
+     "'Ahmet Yilmaz'",
+     "'Ahmet NULL Yilmaz'"
+    ],
+    "a": 1,
+    "exp": "CONCAT_WS NULL'ları atlar. (CONCAT olsaydı sonuç NULL olurdu.)",
+    "src": "Kahoot 12"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "SQL'de VIEW (Görünüm) nedir?",
+    "opts": [
+     "Verileri fiziksel olarak depolayan tablo",
+     "Yalnızca sayısal veri tutan yapı",
+     "Birden fazla veritabanını birleştiren araç",
+     "SELECT sorgusuna dayalı sanal bir tablo"
+    ],
+    "a": 3,
+    "exp": "VIEW veri saklamaz; kayıtlı bir SELECT'tir.",
+    "src": "Kahoot 13"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Yeni bir VIEW oluşturmak için hangi komut kullanılır?",
+    "opts": [
+     "MAKE VIEW view_adi FROM SELECT",
+     "CREATE VIEW view_adi AS SELECT",
+     "BUILD VIEW view_adi USING SELECT",
+     "INSERT INTO view_adi AS SELECT"
+    ],
+    "a": 1,
+    "exp": "CREATE VIEW ad AS SELECT …;",
+    "src": "Kahoot 13"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "VIEW yapısında hangisi **yapılamaz**? (derste anlatılana göre)",
+    "opts": [
+     "WHERE ile filtreleme",
+     "Doğrudan INSERT / UPDATE / DELETE yapmak",
+     "JOIN ile birden fazla tabloyu birleştirmek",
+     "GROUP BY ile gruplama"
+    ],
+    "a": 1,
+    "exp": "Derste anlatılan: VIEW üzerinden veri değiştirilmez (JOIN/GROUP BY'lı VIEW'larda MySQL de izin vermez).",
+    "src": "Kahoot 13"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "`DROP VIEW view_adi;` ne işe yarar?",
+    "opts": [
+     "VIEW'ı kalıcı olarak siler",
+     "Geçici olarak devre dışı bırakır",
+     "Adını değiştirir",
+     "İçindeki tüm satırları temizler"
+    ],
+    "a": 0,
+    "exp": "Sadece VIEW tanımı silinir; temel tablolar etkilenmez.",
+    "src": "Kahoot 13"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "`CREATE OR REPLACE VIEW` ne zaman kullanılır?",
+    "opts": [
+     "Mevcut VIEW'ı silmeden güncellemek için",
+     "Başka veritabanına kopyalamak için",
+     "İki VIEW'ı birleştirmek için",
+     "Verileri yedeklemek için"
+    ],
+    "a": 0,
+    "exp": "Varsa tanımı değiştirir, yoksa oluşturur.",
+    "src": "Kahoot 13"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "VIEW içinde COUNT, SUM gibi aggregate fonksiyon kullanırken ne zorunludur?",
+    "opts": [
+     "Sonuçlara AS ile takma ad verilmesi",
+     "Sütun adlarının tek tırnak içine alınması",
+     "Fonksiyonların büyük harfle yazılması",
+     "GROUP BY'ın VIEW öncesinde yazılması"
+    ],
+    "a": 0,
+    "exp": "VIEW'ın sütun adı olacağı için COUNT(*) AS ders_sayisi gibi ad verilir.",
+    "src": "Kahoot 13"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "VIEW her sorgulandığında ne olur?",
+    "opts": [
+     "Tanımı silinir",
+     "Kalıcı tabloya dönüşür",
+     "Yalnızca önbellekten okunur",
+     "Veritabanı motoru VIEW'ı yeniden üretir"
+    ],
+    "a": 3,
+    "exp": "SELECT her seferinde güncel veriyle yeniden çalışır.",
+    "src": "Kahoot 13"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Bir VIEW'ın dayandığı tabloya ne ad verilir?",
+    "opts": [
+     "Source Table",
+     "Root Table",
+     "Master Table",
+     "Base Table (Temel Tablo)"
+    ],
+    "a": 3,
+    "exp": "Temel tablo (base table).",
+    "src": "Kahoot 13"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Hangi JOIN türü iki tablonun kartezyen çarpımını üretir?",
+    "opts": [
+     "LEFT JOIN",
+     "INNER JOIN",
+     "RIGHT JOIN",
+     "CROSS JOIN"
+    ],
+    "a": 3,
+    "exp": "Her satır her satırla: m × n.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Birden fazla tabloyu birleştiren SQL anahtar kelimesi hangisidir?",
+    "opts": [
+     "LINK",
+     "MERGE",
+     "UNION",
+     "JOIN"
+    ],
+    "a": 3,
+    "exp": "UNION sonuçları alt alta ekler; tabloları sütun bazında birleştiren JOIN.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Doktor ve hasta tablolarını birleştirmek için hangisi doğrudur?",
+    "opts": [
+     "doktor JOIN hasta ON doktor.id = hasta.dok_id",
+     "doktor MERGE hasta ON id",
+     "doktor CONNECT hasta ON id",
+     "doktor UNION hasta"
+    ],
+    "a": 0,
+    "exp": "JOIN … ON PK = FK.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "RIGHT JOIN ile LEFT JOIN arasındaki temel fark nedir?",
+    "opts": [
+     "İkisi çıktı üretmez",
+     "Sol tablo önceliklidir",
+     "Sağ tablo önceliklidir",
+     "Fark yoktur"
+    ],
+    "a": 2,
+    "exp": "RIGHT JOIN'de sağ tablonun bütün satırları gelir.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "SELECT sorgusunda tablo takma adı (alias) hangi anahtar kelimeyle tanımlanır?",
+    "opts": [
+     "BY",
+     "AS",
+     "TO",
+     "IS"
+    ],
+    "a": 1,
+    "exp": "AS (isteğe bağlı, yazılmayabilir de).",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Her bölgedeki il sayısını bulmak için hangi fonksiyon kullanılır?",
+    "opts": [
+     "AVG(il_id)",
+     "COUNT(il_id)",
+     "SUM(il_id)",
+     "MAX(il_id)"
+    ],
+    "a": 1,
+    "exp": "Sayı → COUNT; id'leri toplamak anlamsız.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Bir gruptaki en büyük değeri döndüren aggregate fonksiyon hangisidir?",
+    "opts": [
+     "AVG()",
+     "SUM()",
+     "COUNT()",
+     "MAX()"
+    ],
+    "a": 3,
+    "exp": "MAX en büyük, MIN en küçük.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "GROUP BY sorgusunda ORDER BY nereye yazılır?",
+    "opts": [
+     "GROUP BY'dan önce",
+     "GROUP BY'dan sonra",
+     "FROM'dan önce",
+     "WHERE'den önce"
+    ],
+    "a": 1,
+    "exp": "… GROUP BY … HAVING … ORDER BY …",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "MySQL'de anlık tarih ve saati döndüren fonksiyon hangisidir?",
+    "opts": [
+     "TODAY()",
+     "DATE()",
+     "NOW()",
+     "TIME()"
+    ],
+    "a": 2,
+    "exp": "NOW(): 2024-11-15 14:05:30.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`YEAR('2024-06-15')` ne döndürür?",
+    "opts": [
+     "06",
+     "2024",
+     "15",
+     "2024-06"
+    ],
+    "a": 1,
+    "exp": "Yıl kısmı.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "İki tarih arasındaki gün farkını hesaplayan fonksiyon hangisidir?",
+    "opts": [
+     "DATEADD()",
+     "DIFFDATE()",
+     "TIMEDIFF()",
+     "DATEDIFF()"
+    ],
+    "a": 3,
+    "exp": "DATEDIFF(tarih1, tarih2) gün sayısı.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`DATE_FORMAT(tarih, '%d/%m/%Y')` tarihi nasıl biçimlendirir?",
+    "opts": [
+     "YYYY/DD/MM",
+     "MM-DD-YYYY",
+     "DD/MM/YYYY",
+     "YYYY-MM-DD"
+    ],
+    "a": 2,
+    "exp": "%d gün, %m ay, %Y yıl, araya /.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`DATE_ADD('2024-01-01', INTERVAL 30 DAY)` ne döndürür?",
+    "opts": [
+     "2024-02-01",
+     "2024-01-31",
+     "2024-12-31",
+     "2024-01-30"
+    ],
+    "a": 1,
+    "exp": "1 Ocak + 30 gün = 31 Ocak.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`MONTH('2024-08-20')` ne döndürür?",
+    "opts": [
+     "08-20",
+     "20",
+     "8",
+     "2024"
+    ],
+    "a": 2,
+    "exp": "Ay sayısı: 8.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Yalnızca tarihi (saat olmadan) döndüren fonksiyon hangisidir?",
+    "opts": [
+     "YEAR()",
+     "DATE()",
+     "NOW()",
+     "TIME()"
+    ],
+    "a": 1,
+    "exp": "DATE(NOW()) → 2024-11-15.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`CURDATE()` ve `CURTIME()` farkı nedir?",
+    "opts": [
+     "CURDATE() tarihi verir (saat yok), CURTIME() saati verir",
+     "İkisi de tarih ve saati verir",
+     "CURDATE() saati, CURTIME() tarihi verir",
+     "Fark yoktur"
+    ],
+    "a": 0,
+    "exp": "CURDATE: 2024-11-15, CURTIME: 14:05:30.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "2024 yılında yazılan reçeteleri filtrelemek için hangi koşul kullanılır?",
+    "opts": [
+     "WHERE DATE = '2024'",
+     "WHERE tarih = 2024",
+     "HAVING YEAR = 2024",
+     "WHERE YEAR(tarih) = 2024"
+    ],
+    "a": 3,
+    "exp": "Tarihin yıl kısmı alınıp karşılaştırılır.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`DATE_SUB()` ne işe yarar?",
+    "opts": [
+     "Tarih ekler",
+     "Tarihi siler",
+     "Tarihten süre çıkarır",
+     "Tarihi sıralar"
+    ],
+    "a": 2,
+    "exp": "DATE_SUB(tarih, INTERVAL 7 DAY).",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "`DAYOFWEEK('2024-01-01')` ne döndürür?",
+    "opts": [
+     "Haftanın gün numarası",
+     "Yılın kaçıncı günü",
+     "Ayın kaçıncı günü",
+     "Toplam gün sayısı"
+    ],
+    "a": 0,
+    "exp": "1 = Pazar … 7 = Cumartesi.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Hastanın doğum tarihinden yaşını hesaplamak için hangisi kullanılır?",
+    "opts": [
+     "DAY(dogum_tar)",
+     "YEAR(NOW()) - YEAR(dogum_tar)",
+     "MONTH(dogum_tar)",
+     "DATE(dogum_tar)"
+    ],
+    "a": 1,
+    "exp": "Bu yıl − doğum yılı.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "MySQL'de saklı yordam (stored procedure) oluşturmak için hangisi kullanılır?",
+    "opts": [
+     "DEFINE PROCEDURE",
+     "CREATE PROCEDURE",
+     "MAKE PROCEDURE",
+     "BUILD PROCEDURE"
+    ],
+    "a": 1,
+    "exp": "CREATE PROCEDURE ad(…) BEGIN … END",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Saklı yordamı çalıştırmak için hangi anahtar kelime kullanılır?",
+    "opts": [
+     "START",
+     "RUN",
+     "CALL",
+     "EXEC"
+    ],
+    "a": 2,
+    "exp": "CALL yordam_adi(…); (EXEC SQL Server'da).",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Saklı yordamda IN parametresi ne anlama gelir?",
+    "opts": [
+     "İkisi aynıdır",
+     "Hem alır hem verir",
+     "Değer döndürür",
+     "Değer alır (içeriye)"
+    ],
+    "a": 3,
+    "exp": "Dışarıdan yordama değer gelir.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Saklı yordamda OUT parametresi ne işe yarar?",
+    "opts": [
+     "Sorguyu siler",
+     "Hem alır hem verir",
+     "Sonucu dışa aktarır",
+     "Değer alır"
+    ],
+    "a": 2,
+    "exp": "Yordamın sonucu dışarı verilir.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "DELIMITER komutunun saklı yordamdaki amacı nedir?",
+    "opts": [
+     "Satır sonunu kaldırır",
+     "Ayraç (bitiş) karakterini değiştirir",
+     "Yordamı siler",
+     "Tabloları böler"
+    ],
+    "a": 1,
+    "exp": "Yordamın içindeki ; komutu bitirmesin diye ayraç // yapılır.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Saklı yordam içinde yerel değişken tanımlamak için hangisi kullanılır?",
+    "opts": [
+     "SET",
+     "DEFINE",
+     "LET",
+     "DECLARE"
+    ],
+    "a": 3,
+    "exp": "DECLARE toplam INT; değer atamak için SET.",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Saklı yordamı silmek için hangisi kullanılır?",
+    "opts": [
+     "ERASE PROCEDURE",
+     "DROP PROCEDURE",
+     "REMOVE PROCEDURE",
+     "DELETE PROCEDURE"
+    ],
+    "a": 1,
+    "exp": "DROP PROCEDURE ad;",
+    "src": "Kahoot 14"
+   },
+   {
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Saklı yordamda INOUT parametresi ne anlama gelir?",
+    "opts": [
+     "Yalnızca değer alır",
+     "Hem değer alır hem verir",
+     "Yalnızca değer verir",
+     "Parametre almaz"
+    ],
+    "a": 1,
+    "exp": "IN + OUT birlikte.",
+    "src": "Kahoot 14"
+   }
+  ]
+ },
+ {
   "id": "kahoot1",
   "title": "Kahoot 1 · İlişkiler ve ER diyagramı",
   "group": "kahoot",

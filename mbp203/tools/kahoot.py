@@ -156,3 +156,127 @@ KAHOOTS = [
 for k in KAHOOTS:
     for q in k['questions']:
         if q['type'] == 'mc': assert 0 <= q['a'] < len(q['opts']), q['q']
+
+# ---------------- Ek: hocanın hesabındaki diğer Kahoot'lar (Şubat–Nisan 2026, dersin geçen dönemki hali)
+G, F, V = 'giris', 'ileri2', 'gorunum'
+K6 = [
+    mc(I, 'ER diyagramında bir özniteliğin Birincil Anahtar (PK) olduğunu Chen notasyonunda nasıl gösteririz?', ['Yıldız işareti eklenir', 'Metnin altı çizilir', 'Metin kalın yazılır', 'Oval çift çizgi yapılır'], 1, 'Chen notasyonunda anahtar öznitelik altı çizili yazılır.'),
+    mc(I, 'Bir okulda birçok öğrenci var, her öğrenci sadece bir okula kayıtlı. İlişki türü nedir?', ['Zayıf ilişki', '1:1', 'M:N', '1:N'], 3, 'Okul → çok öğrenci, öğrenci → tek okul: 1:N.'),
+    mc(I, 'Chen notasyonunda "Elmas" (Diamond) sembolü neyi temsil eder?', ['İlişki (Relationship)', 'Veri Akışı', 'Öznitelik (Attribute)', 'Varlık Kümesi'], 0, 'Varlık dikdörtgen, öznitelik oval, ilişki elmas (eşkenar dörtgen).'),
+    mc(I, 'Filmler ve Oyuncular (bir filmde çok oyuncu, bir oyuncu çok filmde) arasındaki ilişki hangisidir?', ['1:N', 'N:M', 'N:1', '1:1'], 1, 'İki taraf da çok: N:M (M:N), ara tablo gerekir.'),
+    mc(I, 'ER diyagramlarının önemine dair hangisi **yanlıştır**?', ['Ekip içi iletişimi kolaylaştırır', 'SQL sorgularının temelini oluşturur', 'Tasarım hatalarının erken fark edilmesini sağlar', 'Sadece küçük ölçekli veri tabanları için geçerlidir'], 3, 'ER diyagramı her ölçekte kullanılır.'),
+    mc(I, 'Chen notasyonunda öznitelikler (Attributes) hangi sembolle gösterilir?', ['Oval (Elips)', 'Üçgen', 'Kare', 'Daire'], 0, 'Öznitelik: oval.'),
+    mc(I, 'ER diyagramında "Kardinalite" (Cardinality) neyi ifade eder?', ['Varlıklar arasındaki sayısal ilişki miktarını', 'Toplam tablo sayısını', 'Sorguların çalışma hızını', 'Verilerin disk üzerindeki boyutunu'], 0, 'Kardinalite: 1:1, 1:N, M:N.'),
+]
+K7 = [
+    mc(I, 'Normalizasyonun temel amacı nedir?', ['Tekrarı azaltmak', 'Tabloyu büyütmek', 'Veri şifrelemek', 'Index silmek'], 0, 'Normalizasyon veri tekrarını ve tutarsızlığı azaltır.'),
+    mc(I, 'Doğal anahtar (natural key) kullanmanın riski nedir?', ['Çoğalır', 'Değişebilir', 'Yavaşlatır', 'Anlamsızdır'], 1, 'TC no, e-posta gibi gerçek dünya değerleri zamanla değişebilir.'),
+    mc(I, 'Vekil anahtarın (surrogate key) avantajı nedir?', ['Değişmez ve hızlı', 'Karmaşıktır', 'Güvensizdir', 'Anlamlıdır'], 0, 'AUTO_INCREMENT id gibi anlamı olmayan, değişmeyen kısa anahtar.'),
+    mc(I, 'Cümleyi tamamla: "1:M en ..."', ['yaygın ilişkidir', 'karmaşık türdür', 'seyrek görülür', 'yavaş modeldir'], 0, '1:M (1:N) en yaygın ilişki türüdür.'),
+    mc(I, 'Departman – Çalışan hangi ilişkidir?', ['Zayıf ilişki', 'M:N', '1:M', '1:1'], 2, 'Bir departmanda çok çalışan, çalışan tek departmanda.'),
+    mc(I, 'Öğrenci – Ders hangi ilişkidir?', ['Bağsız', 'M:N', '1:M', '1:1'], 1, 'Öğrenci çok ders alır, derste çok öğrenci var.'),
+    mc(I, 'Öğrenci kimlik kartı tablosunda FK hangisidir?', ['gecerlilik', 'ad', 'kart_no', 'ogrenci_id'], 3, 'Kart, ogrenci_id ile öğrenciye bağlanır; kart_no kartın kendi PK\'si.'),
+    mc(I, '(Doğru/Yanlış) FK her zaman ara tabloda bulunur.', DY, 1, 'Yanlış: 1:N\'de FK çok tarafındaki normal tabloda (ders.bolum_no).'),
+    mc(I, 'Öğretmen – Ders hangi ilişkidir?', ['1:M', 'Zayıf bağ', '1:1', 'M:N'], 0, 'Kahoot\'un cevabı: bir öğretmen çok ders verir, her dersin tek öğretmeni var.'),
+    mc(I, 'Kategori – Ürün hangi ilişkidir?', ['1:M', '1:1', 'M:N', 'Yok'], 0, 'Kategoride çok ürün, ürün tek kategoride.'),
+    mc(I, 'Ara tabloda hangi anahtarlar vardır?', ['Tek PK', 'Sadece indeks', 'İki FK', 'Sanal alan'], 2, 'İki tarafın PK\'lerini tutan iki FK (çoğu zaman birlikte PK).'),
+]
+K8 = [
+    mc(G, 'Veritabanı nedir?', ['Bir programlama dili', 'İnternet tarayıcısı', 'Grafik tasarım aracı', 'Organize edilmiş veri koleksiyonu'], 3, 'Düzenli saklanan, ilişkili veri topluluğu.'),
+    mc(G, 'Hangisi bir Veritabanı Yönetim Sistemi (DBMS) **değildir**?', ['Oracle', 'Microsoft Access', 'Microsoft Word', 'MySQL'], 2, 'Word kelime işlemcidir.'),
+    mc(G, 'SQL\'in açılımı nedir?', ['Structured Query Language', 'Simple Question Logic', 'Software Quality Level', 'System Query Loop'], 0, 'Yapılandırılmış Sorgu Dili.'),
+    mc(G, 'Bir tabloda satırlar neyi temsil eder?', ['Kayıtları (records)', 'Alanları (fields)', 'Tabloların ilişkisini', 'Veritabanı adını'], 0, 'Satır = kayıt, sütun = alan.'),
+    mc(G, 'Aşağıdakilerden hangisi veritabanı **kullanmaz**?', ['Netflix', 'Online bankacılık', 'Hastane sistemi', 'Hesap makinesi uygulaması'], 3, 'Hesap makinesi kalıcı veri saklamaz.'),
+    mc(G, 'Dünyanın en çok kullanılan açık kaynak veritabanı hangisidir?', ['Microsoft SQL Server', 'MongoDB', 'MySQL', 'Firebase'], 2, 'MySQL açık kaynak ilişkisel VTYS.'),
+]
+K9 = [
+    mc(A, 'GROUP BY hangi komuttan **önce** yazılır?', ['HAVING', 'FROM', 'WHERE', 'SELECT'], 0, '… WHERE … GROUP BY … HAVING …'),
+    mc(A, 'GROUP BY ile en sık hangi fonksiyon kullanılır?', ['LIMIT', 'LIKE', 'COUNT', 'CONCAT'], 2, 'COUNT, SUM, AVG gibi toplama fonksiyonları.'),
+    mc(A, 'GROUP BY\'da ID kolonu kullanılmasının nedeni nedir?', ['Daha kolay yazım', 'Benzersiz gruplama', 'Daha hızlı sorgulama', 'Daha az bellek'], 1, 'Aynı isimli farklı kayıtlar (iki "Ahmet") karışmaz.'),
+    mc(A, 'HAVING hangi komuttan **sonra** yazılır?', ['GROUP BY', 'SELECT', 'FROM', 'WHERE'], 0, 'HAVING, GROUP BY\'dan hemen sonra gelir.'),
+]
+K10 = [
+    mc(J, 'JOIN kullanırken tabloları birleştiren (eşleşme koşulunu yazdığımız) anahtar kelime hangisidir?', ['ON', 'FROM', 'AS', 'WHERE'], 0, 'JOIN … ON a.id = b.a_id'),
+    mc(J, '3 tabloyu birleştirmek için kaç tane JOIN gerekir?', ['2', '1', '4', '3'], 0, 'n tablo için n − 1 JOIN.'),
+    mc(J, 'LEFT JOIN ile JOIN arasındaki temel fark nedir?', ['Hiçbir fark yoktur', 'LEFT JOIN eşleşme olmasa da sol tablonun tüm satırlarını getirir', 'JOIN her zaman daha fazla sonuç döndürür', 'LEFT JOIN daha hızlıdır'], 1, 'JOIN (INNER) sadece eşleşenleri getirir.'),
+    mc(J, '`FROM bolge b JOIN iller i ON b.bolge_id = i.bolge_id` ifadesinde `b` ve `i` ne işe yarar?', ['Tablo takma adıdır (alias)', 'Filtre uygular', 'Kolon adı belirtir', 'Sıralama belirtir'], 0, 'Takma ad; AS yazmadan da verilebilir.'),
+    mc(A, 'GROUP BY ile birlikte hangisi (aggregate olarak) kullanılamaz?', ['COUNT', 'MAX', 'LIKE', 'SUM'], 2, 'LIKE bir karşılaştırma operatörüdür, toplama fonksiyonu değil.'),
+    mc(A, 'Aşağıdakilerden hangisi HAVING içinde kullanılabilir?', ['COUNT(*)', 'BETWEEN', 'LIKE', 'ORDER BY'], 0, 'Kahoot\'un cevabı: HAVING toplama fonksiyonlarıyla grupları süzer.'),
+    mc(A, 'SQL\'de veritabanının sorguyu işleme sırası hangisidir?', ['WHERE → FROM → GROUP BY → HAVING → SELECT', 'FROM → SELECT → WHERE → HAVING → GROUP BY', 'SELECT → FROM → WHERE → GROUP BY → HAVING', 'FROM/JOIN → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT'], 3, 'Mantıksal çalışma sırası; yazım sırasından farklı.'),
+    mc(A, 'Ankara\'nın ilçe sayısından fazla ilçesi olan illeri bulmak için en uygun yöntem hangisidir?', ['ORDER BY ilce_sayisi DESC LIMIT 1', "WHERE il_ad != 'Ankara'", "HAVING ilce_sayisi > (SELECT COUNT(*) FROM ... WHERE il_ad = 'Ankara')", 'HAVING ilce_sayisi > 25'], 2, 'Karşılaştırılacak sayı sabit yazılmaz, alt sorguyla hesaplanır.'),
+]
+K11 = [
+    mc(F, 'Hem tarihi hem saati aynı anda döndüren MySQL fonksiyonu hangisidir?', ['CURTIME()', 'CURRENT_TIMESTAMP', 'CURDATE()', 'SYSDATE_NOW()'], 1, 'CURRENT_TIMESTAMP (NOW() ile aynı): 2024-11-15 14:05:30.'),
+    mc(F, '`SELECT CURDATE();` ne döndürür?', ['11-15-2024', '14:05:30', '2024-11-15', '2024-11-15 14:05'], 2, 'Sadece tarih, YYYY-MM-DD.'),
+    mc(F, 'EXTRACT fonksiyonunun doğru sözdizimi hangisidir?', ['EXTRACT(YEAR FROM tarih)', 'EXTRACT(YEAR OF tarih)', 'EXTRACT(tarih FROM YEAR)', 'EXTRACT(tarih, YEAR)'], 0, 'EXTRACT(birim FROM tarih).'),
+    mc(F, "`SELECT EXTRACT(MONTH FROM '2010-04-15');` ne döndürür?", ['4', '10', '2010', '15'], 0, 'Ay: 4 (Kahoot\'ta "04" yazıyordu).'),
+    mc(F, 'EXTRACT\'ta kullanılan bileşenlerden hangisi **yanlıştır**? (derste gösterilen listeye göre)', ['YEAR', 'WEEK', 'SECOND', 'MINUTE'], 1, 'Kahoot\'un cevabı WEEK. Not: MySQL aslında WEEK\'i de destekler; derste gösterilen listede yoktu.'),
+    mc(F, 'Bugünkü tarihe 10 gün ekleyen sorgu hangisidir?', ['NOW() + INTERVAL 10 DAY', 'DATE_ADD(NOW(), INTERVAL 10 DAY)', 'ADD_DATE(NOW(), INTERVAL 10)', 'DATE_ADD(NOW(), 10 DAY)'], 1, 'Kahoot\'un cevabı DATE_ADD(…, INTERVAL 10 DAY). (a da MySQL\'de çalışır ama derste DATE_ADD gösterildi.)'),
+    mc(F, 'Mevcut saate 90 dakika ekleyen sorgu hangisidir?', ['DATE_SUB(NOW(), INTERVAL 90 MINUTE)', 'DATE_ADD(NOW(), INTERVAL 90 MINUTE)', 'DATE_ADD(NOW(), INTERVAL 1.5 HOUR)', 'DATE_ADD(NOW(), INTERVAL 90 SECOND)'], 1, 'DATE_SUB çıkarır; INTERVAL ondalık saat almaz.'),
+    mc(F, 'Türkçe gün/ay adı almak için hangi komut çalıştırılmalıdır?', ["USE LANGUAGE 'tr_TR'", "SET NLS_LANGUAGE = 'TURKISH'", "SET lc_time_names = 'tr_TR'", "SET LANGUAGE = 'Turkish'"], 2, 'lc_time_names MONTHNAME, DAYNAME, DATE_FORMAT adlarını değiştirir.'),
+    mc(F, "`lc_time_names = 'tr_TR'` iken `MONTHNAME('1997-04-03')` ne döndürür?", ['Mart', 'Mayıs', 'Nisan', '04'], 2, '4. ay: Nisan.'),
+    mc(F, "`SELECT DATEDIFF('2024-04-25', '2024-04-15');` ne döndürür?", ['10', '15', '-10', '25'], 0, 'İlk tarih − ikinci tarih = 10 gün.'),
+    mc(F, 'İki saat değeri arasındaki farkı HH:MM:SS formatında döndüren fonksiyon hangisidir?', ['TIMESTAMPDIFF()', 'TIMEDIFF()', 'DATEDIFF()', 'TIME_BETWEEN()'], 1, 'DATEDIFF gün sayısı verir, TIMEDIFF saat farkı.'),
+    mc(F, "`DATE_FORMAT(tarih, '%d %M %Y %W')` hangi çıktıyı üretir? (Türkçe ayarda)", ['15 Kasım 2024 Cuma', '2024/11/15 Cuma', 'Cuma, 15-11-2024', '15 Kas 2024 Cum'], 0, '%d gün, %M ay adı, %Y 4 haneli yıl, %W gün adı.'),
+    mc(F, 'DATE_FORMAT içinde günü 2 haneli sayı olarak gösteren format kodu hangisidir?', ['%D', '%d', '%G', '%y'], 1, '%d: 01–31. %D: 1st, 2nd… %y: 2 haneli yıl.'),
+    mc(F, 'Tarih/saat fonksiyonları SQL\'in hangi cümleleriyle kullanılabilir?', ['Yalnızca ORDER BY', 'Yalnızca SELECT', 'SELECT, WHERE ve ORDER BY', 'Yalnızca WHERE'], 2, 'Örn. WHERE YEAR(tarih) = 2024, ORDER BY MONTH(tarih).'),
+]
+K12 = [
+    mc(F, "`UPPER('ankara')` sonucu nedir?", ["'ANkara'", "'ankara'", "'Ankara'", "'ANKARA'"], 3, 'UPPER tamamını büyük harfe çevirir.'),
+    mc(F, 'Türkçe karakter içeren metindeki karakter sayısını doğru ölçen fonksiyon hangisidir?', ['SIZE()', 'CHAR_LENGTH()', 'COUNT()', 'LENGTH()'], 1, 'LENGTH byte sayar (ş, ğ 2 byte); CHAR_LENGTH karakter sayar.'),
+    mc(F, "`SELECT LEFT('Bilgisayar', 4);` sonucu nedir?", ["'sara'", "'Bilg'", "'yar '", "'Bilgi'"], 1, 'Soldan 4 karakter.'),
+    mc(F, "`SELECT LPAD('42', 6, '0');` sonucu nedir?", ["'42 '", "'004200'", "'420000'", "'000042'"], 3, 'Soldan 0 ile 6 karaktere tamamlar.'),
+    mc(F, "`TRIM(' Merhaba ')` sonucu nedir?", ["'Merhaba '", "' Merhaba'", "'Merhaba'", "'merhaba'"], 2, 'Baştaki ve sondaki boşlukları siler.'),
+    mc(F, "`SELECT REPLACE('05-32-100', '-', '');` sonucu nedir?", ["'053 2100'", "'05-32-100'", "'0532100'", "'05 32 100'"], 2, 'Bütün - karakterleri boş metinle değiştirilir.'),
+    mc(F, "`INSTR('Ankara', 'kar')` ne döndürür?", ['2', '1', '4', '3'], 3, 'A1 n2 k3: "kar" 3. karakterde başlar.'),
+    mc(F, "`SELECT SUBSTRING('Programlama', 8, 4);` sonucu nedir?", ["'ama '", "'Prog'", "'gram'", "'lama'"], 3, '8. karakterden (l) başlayıp 4 karakter: lama.'),
+    mc(F, '`FORMAT(1234567.5, 2)` sonucu nedir?', ["'1.234.567,50'", "'1234567.50'", "'12345.6750'", "'1,234,567.50'"], 3, 'Varsayılan (en_US) biçim: binlik virgül, ondalık nokta.'),
+    mc(F, "`ogrenci_no = '2021001003'` iken sağdan 4 karakteri almak için hangisi kullanılır?", ['LEFT(ogrenci_no, 4)', 'TRIM(ogrenci_no, 4)', 'INSTR(ogrenci_no, 4)', 'RIGHT(ogrenci_no, 4)'], 3, 'RIGHT → 1003.'),
+    mc(F, "`SELECT CONCAT_WS(' ', 'Ahmet', NULL, 'Yilmaz');` sonucu nedir?", ['NULL', "'Ahmet Yilmaz'", "'Ahmet NULL Yilmaz'"], 1, 'CONCAT_WS NULL\'ları atlar. (CONCAT olsaydı sonuç NULL olurdu.)'),
+]
+K13 = [
+    mc(V, 'SQL\'de VIEW (Görünüm) nedir?', ['Verileri fiziksel olarak depolayan tablo', 'Yalnızca sayısal veri tutan yapı', 'Birden fazla veritabanını birleştiren araç', 'SELECT sorgusuna dayalı sanal bir tablo'], 3, 'VIEW veri saklamaz; kayıtlı bir SELECT\'tir.'),
+    mc(V, 'Yeni bir VIEW oluşturmak için hangi komut kullanılır?', ['MAKE VIEW view_adi FROM SELECT', 'CREATE VIEW view_adi AS SELECT', 'BUILD VIEW view_adi USING SELECT', 'INSERT INTO view_adi AS SELECT'], 1, 'CREATE VIEW ad AS SELECT …;'),
+    mc(V, 'VIEW yapısında hangisi **yapılamaz**? (derste anlatılana göre)', ['WHERE ile filtreleme', 'Doğrudan INSERT / UPDATE / DELETE yapmak', 'JOIN ile birden fazla tabloyu birleştirmek', 'GROUP BY ile gruplama'], 1, 'Derste anlatılan: VIEW üzerinden veri değiştirilmez (JOIN/GROUP BY\'lı VIEW\'larda MySQL de izin vermez).'),
+    mc(V, '`DROP VIEW view_adi;` ne işe yarar?', ['VIEW\'ı kalıcı olarak siler', 'Geçici olarak devre dışı bırakır', 'Adını değiştirir', 'İçindeki tüm satırları temizler'], 0, 'Sadece VIEW tanımı silinir; temel tablolar etkilenmez.'),
+    mc(V, '`CREATE OR REPLACE VIEW` ne zaman kullanılır?', ['Mevcut VIEW\'ı silmeden güncellemek için', 'Başka veritabanına kopyalamak için', 'İki VIEW\'ı birleştirmek için', 'Verileri yedeklemek için'], 0, 'Varsa tanımı değiştirir, yoksa oluşturur.'),
+    mc(V, 'VIEW içinde COUNT, SUM gibi aggregate fonksiyon kullanırken ne zorunludur?', ['Sonuçlara AS ile takma ad verilmesi', 'Sütun adlarının tek tırnak içine alınması', 'Fonksiyonların büyük harfle yazılması', 'GROUP BY\'ın VIEW öncesinde yazılması'], 0, 'VIEW\'ın sütun adı olacağı için COUNT(*) AS ders_sayisi gibi ad verilir.'),
+    mc(V, 'VIEW her sorgulandığında ne olur?', ['Tanımı silinir', 'Kalıcı tabloya dönüşür', 'Yalnızca önbellekten okunur', 'Veritabanı motoru VIEW\'ı yeniden üretir'], 3, 'SELECT her seferinde güncel veriyle yeniden çalışır.'),
+    mc(V, 'Bir VIEW\'ın dayandığı tabloya ne ad verilir?', ['Source Table', 'Root Table', 'Master Table', 'Base Table (Temel Tablo)'], 3, 'Temel tablo (base table).'),
+]
+K14 = [
+    mc(J, 'Hangi JOIN türü iki tablonun kartezyen çarpımını üretir?', ['LEFT JOIN', 'INNER JOIN', 'RIGHT JOIN', 'CROSS JOIN'], 3, 'Her satır her satırla: m × n.'),
+    mc(J, 'Birden fazla tabloyu birleştiren SQL anahtar kelimesi hangisidir?', ['LINK', 'MERGE', 'UNION', 'JOIN'], 3, 'UNION sonuçları alt alta ekler; tabloları sütun bazında birleştiren JOIN.'),
+    mc(J, 'Doktor ve hasta tablolarını birleştirmek için hangisi doğrudur?', ['doktor JOIN hasta ON doktor.id = hasta.dok_id', 'doktor MERGE hasta ON id', 'doktor CONNECT hasta ON id', 'doktor UNION hasta'], 0, 'JOIN … ON PK = FK.'),
+    mc(J, 'RIGHT JOIN ile LEFT JOIN arasındaki temel fark nedir?', ['İkisi çıktı üretmez', 'Sol tablo önceliklidir', 'Sağ tablo önceliklidir', 'Fark yoktur'], 2, 'RIGHT JOIN\'de sağ tablonun bütün satırları gelir.'),
+    mc(J, 'SELECT sorgusunda tablo takma adı (alias) hangi anahtar kelimeyle tanımlanır?', ['BY', 'AS', 'TO', 'IS'], 1, 'AS (isteğe bağlı, yazılmayabilir de).'),
+    mc(A, 'Her bölgedeki il sayısını bulmak için hangi fonksiyon kullanılır?', ['AVG(il_id)', 'COUNT(il_id)', 'SUM(il_id)', 'MAX(il_id)'], 1, 'Sayı → COUNT; id\'leri toplamak anlamsız.'),
+    mc(A, 'Bir gruptaki en büyük değeri döndüren aggregate fonksiyon hangisidir?', ['AVG()', 'SUM()', 'COUNT()', 'MAX()'], 3, 'MAX en büyük, MIN en küçük.'),
+    mc(A, 'GROUP BY sorgusunda ORDER BY nereye yazılır?', ['GROUP BY\'dan önce', 'GROUP BY\'dan sonra', 'FROM\'dan önce', 'WHERE\'den önce'], 1, '… GROUP BY … HAVING … ORDER BY …'),
+    mc(F, 'MySQL\'de anlık tarih ve saati döndüren fonksiyon hangisidir?', ['TODAY()', 'DATE()', 'NOW()', 'TIME()'], 2, 'NOW(): 2024-11-15 14:05:30.'),
+    mc(F, "`YEAR('2024-06-15')` ne döndürür?", ['06', '2024', '15', '2024-06'], 1, 'Yıl kısmı.'),
+    mc(F, 'İki tarih arasındaki gün farkını hesaplayan fonksiyon hangisidir?', ['DATEADD()', 'DIFFDATE()', 'TIMEDIFF()', 'DATEDIFF()'], 3, 'DATEDIFF(tarih1, tarih2) gün sayısı.'),
+    mc(F, "`DATE_FORMAT(tarih, '%d/%m/%Y')` tarihi nasıl biçimlendirir?", ['YYYY/DD/MM', 'MM-DD-YYYY', 'DD/MM/YYYY', 'YYYY-MM-DD'], 2, '%d gün, %m ay, %Y yıl, araya /.'),
+    mc(F, "`DATE_ADD('2024-01-01', INTERVAL 30 DAY)` ne döndürür?", ['2024-02-01', '2024-01-31', '2024-12-31', '2024-01-30'], 1, '1 Ocak + 30 gün = 31 Ocak.'),
+    mc(F, "`MONTH('2024-08-20')` ne döndürür?", ['08-20', '20', '8', '2024'], 2, 'Ay sayısı: 8.'),
+    mc(F, 'Yalnızca tarihi (saat olmadan) döndüren fonksiyon hangisidir?', ['YEAR()', 'DATE()', 'NOW()', 'TIME()'], 1, 'DATE(NOW()) → 2024-11-15.'),
+    mc(F, '`CURDATE()` ve `CURTIME()` farkı nedir?', ['CURDATE() tarihi verir (saat yok), CURTIME() saati verir', 'İkisi de tarih ve saati verir', 'CURDATE() saati, CURTIME() tarihi verir', 'Fark yoktur'], 0, 'CURDATE: 2024-11-15, CURTIME: 14:05:30.'),
+    mc(F, '2024 yılında yazılan reçeteleri filtrelemek için hangi koşul kullanılır?', ["WHERE DATE = '2024'", 'WHERE tarih = 2024', 'HAVING YEAR = 2024', 'WHERE YEAR(tarih) = 2024'], 3, 'Tarihin yıl kısmı alınıp karşılaştırılır.'),
+    mc(F, '`DATE_SUB()` ne işe yarar?', ['Tarih ekler', 'Tarihi siler', 'Tarihten süre çıkarır', 'Tarihi sıralar'], 2, 'DATE_SUB(tarih, INTERVAL 7 DAY).'),
+    mc(F, "`DAYOFWEEK('2024-01-01')` ne döndürür?", ['Haftanın gün numarası', 'Yılın kaçıncı günü', 'Ayın kaçıncı günü', 'Toplam gün sayısı'], 0, '1 = Pazar … 7 = Cumartesi.'),
+    mc(F, 'Hastanın doğum tarihinden yaşını hesaplamak için hangisi kullanılır?', ['DAY(dogum_tar)', 'YEAR(NOW()) - YEAR(dogum_tar)', 'MONTH(dogum_tar)', 'DATE(dogum_tar)'], 1, 'Bu yıl − doğum yılı.'),
+    mc(V, 'MySQL\'de saklı yordam (stored procedure) oluşturmak için hangisi kullanılır?', ['DEFINE PROCEDURE', 'CREATE PROCEDURE', 'MAKE PROCEDURE', 'BUILD PROCEDURE'], 1, 'CREATE PROCEDURE ad(…) BEGIN … END'),
+    mc(V, 'Saklı yordamı çalıştırmak için hangi anahtar kelime kullanılır?', ['START', 'RUN', 'CALL', 'EXEC'], 2, 'CALL yordam_adi(…); (EXEC SQL Server\'da).'),
+    mc(V, 'Saklı yordamda IN parametresi ne anlama gelir?', ['İkisi aynıdır', 'Hem alır hem verir', 'Değer döndürür', 'Değer alır (içeriye)'], 3, 'Dışarıdan yordama değer gelir.'),
+    mc(V, 'Saklı yordamda OUT parametresi ne işe yarar?', ['Sorguyu siler', 'Hem alır hem verir', 'Sonucu dışa aktarır', 'Değer alır'], 2, 'Yordamın sonucu dışarı verilir.'),
+    mc(V, 'DELIMITER komutunun saklı yordamdaki amacı nedir?', ['Satır sonunu kaldırır', 'Ayraç (bitiş) karakterini değiştirir', 'Yordamı siler', 'Tabloları böler'], 1, 'Yordamın içindeki ; komutu bitirmesin diye ayraç // yapılır.'),
+    mc(V, 'Saklı yordam içinde yerel değişken tanımlamak için hangisi kullanılır?', ['SET', 'DEFINE', 'LET', 'DECLARE'], 3, 'DECLARE toplam INT; değer atamak için SET.'),
+    mc(V, 'Saklı yordamı silmek için hangisi kullanılır?', ['ERASE PROCEDURE', 'DROP PROCEDURE', 'REMOVE PROCEDURE', 'DELETE PROCEDURE'], 1, 'DROP PROCEDURE ad;'),
+    mc(V, 'Saklı yordamda INOUT parametresi ne anlama gelir?', ['Yalnızca değer alır', 'Hem değer alır hem verir', 'Yalnızca değer verir', 'Parametre almaz'], 1, 'IN + OUT birlikte.'),
+]
+EK = [('Kahoot 6 · ER diyagrama giriş', K6), ('Kahoot 7 · PK ve FK hızlı tur', K7), ('Kahoot 8 · Temel VT ve SQL', K8), ('Kahoot 9 · GROUP BY ve HAVING', K9),
+      ('Kahoot 10 · JOIN, GROUP BY, HAVING', K10), ('Kahoot 11 · Tarih ve saat fonksiyonları', K11), ('Kahoot 12 · Metin fonksiyonları', K12),
+      ('Kahoot 13 · VIEW ve alt sorgular', K13), ('Kahoot 14 · JOIN, tarih, saklı yordam', K14)]
+for _, L in EK:
+    for q in L: assert 0 <= q['a'] < len(q['opts']), q['q']
+TUM = [dict(q, src=t.split(' · ')[0]) for t, L in [(k['title'], k['questions']) for k in KAHOOTS] + EK for q in L]

@@ -1477,6 +1477,10 @@ window.TOPICS = [
        "4"
       ],
       [
+       "Kablosuz Kulaklık",
+       "3"
+      ],
+      [
        "Bluetooth Hoparlör",
        "3"
       ],
@@ -1494,10 +1498,6 @@ window.TOPICS = [
       ],
       [
        "Kot Pantolon",
-       "3"
-      ],
-      [
-       "Kablosuz Kulaklık",
        "3"
       ]
      ]

@@ -155,6 +155,9 @@ UYG = [q for q in TQ['ileri1'] + TQ['ileri2'] if re.search(r'[Uu]ygulama', q['q'
 EXAMS = [{'id': 'uygulama', 'title': 'GROUP BY / HAVING uygulaması', 'group': 'hoca', 'mode': 'practice',
           'desc': 'Derste yapılan magaza uygulamasının (10 soru + bonus) sonuçlarını soran sorular. Anında kontrol.', 'questions': UYG}] + DENEMELER
 import kahoot
+EXAMS.append({'id': 'kahoot-tum', 'title': 'Kahoot · Tüm sorular', 'group': 'kahoot', 'mode': 'practice', 'featured': True,
+              'desc': '%d soru: bu dönemin 5 Kahoot\'u + hocanın geçen dönemki 9 Kahoot\'u (ER, PK/FK, JOIN, GROUP BY, tarih/metin fonksiyonları, VIEW, saklı yordam). Anında kontrol.' % len(kahoot.TUM),
+              'questions': kahoot.TUM})
 for k in kahoot.KAHOOTS:
     n = len(k['questions'])
     yaz = sum(q['type'] == 'fill' for q in k['questions'])
