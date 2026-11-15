@@ -4011,154 +4011,137 @@ window.EXAMS = [
     "src": "Kahoot 1"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "Tablodaki her satırı tekil olarak tanımlayan sütuna ne ad verilir?",
-    "code": "____",
-    "ans": [
-     "PRIMARY KEY",
-     "primary",
-     "PK",
-     "birincil anahtar",
-     "birincil",
-     "primary key (birincil anahtar)"
+    "opts": [
+     "PRIMARY KEY (birincil anahtar)",
+     "FOREIGN KEY (yabancı anahtar)",
+     "UNIQUE",
+     "INDEX",
+     "DEFAULT"
     ],
-    "cs": false,
+    "a": 0,
     "exp": "PRIMARY KEY (birincil anahtar, PK).",
     "src": "Kahoot 2"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "Başka bir tablonun birincil anahtarına bağlanan sütuna ne ad verilir?",
-    "code": "____",
-    "ans": [
-     "FOREIGN KEY",
-     "foreign",
-     "FK",
-     "yabancı anahtar",
-     "yabanci anahtar",
-     "yabancı",
-     "yabanci",
-     "ikincil anahtar"
+    "opts": [
+     "PRIMARY KEY (birincil anahtar)",
+     "FOREIGN KEY (yabancı anahtar)",
+     "AUTO_INCREMENT",
+     "UNIQUE",
+     "CHECK"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "FOREIGN KEY (yabancı anahtar, FK).",
     "src": "Kahoot 2"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "1:1 ilişkide, yabancı anahtar sütununa ilişkinin bozulmaması için hangi kısıt eklenir?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "NOT NULL",
+     "DEFAULT",
      "UNIQUE",
-     "tekil",
-     "benzersiz"
+     "AUTO_INCREMENT",
+     "CHECK"
     ],
-    "cs": false,
+    "a": 2,
     "exp": "UNIQUE: aynı FK değeri ikinci kez girilemez.",
     "src": "Kahoot 2"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "sql-giris",
     "q": "Tabloya yeni bir kayıt eklemek için hangi SQL komutu kullanılır?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "UPDATE",
      "INSERT INTO",
-     "INSERT",
-     "INSERT INTO ... VALUES",
-     "INSERT INTO VALUES"
+     "ALTER TABLE",
+     "CREATE TABLE",
+     "SELECT"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "INSERT INTO tablo (sütunlar) VALUES (...);",
     "src": "Kahoot 2"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "Bölüm–Ders (1:N) ilişkisinde yabancı anahtar hangi tabloya eklenir?",
-    "code": "____",
-    "ans": [
-     "ders",
-     "ders tablosu",
-     "ders tablosuna",
+    "opts": [
+     "bolum tablosuna",
      "ders tablosuna (çok tarafı)",
-     "çok tarafı",
-     "cok tarafi"
+     "İki tabloya da",
+     "Ara tabloya",
+     "Hiçbirine"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "1:N'de FK her zaman çok tarafına, yani ders tablosuna eklenir (bolum_no).",
     "src": "Kahoot 2"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "Öğrenci–Ders (M:N) ilişkisini kurabilmek için veritabanımıza eklediğimiz ara tablonun adı nedir?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "ogrenci_karti",
+     "bolum",
      "ders_kaydi",
-     "ders_kaydı",
-     "ders kaydi",
-     "ders kaydı",
-     "derskaydi"
+     "ders",
+     "ogrenci"
     ],
-    "cs": false,
+    "a": 2,
     "exp": "ders_kaydi: ogrenci_no ve ders_kodu FK'lerini tutar.",
     "src": "Kahoot 2"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "sql-giris",
     "q": "`ders` tablosunda `ders_kodu` INT ise, `ders_kaydi` tablosundaki `ders_kodu` hangi veri tipinde olmalıdır?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "VARCHAR",
      "INT",
-     "integer",
-     "tam sayı",
-     "tam sayi",
-     "tamsayı",
-     "tamsayi"
+     "DATE",
+     "CHAR(2)",
+     "Fark etmez"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "FK ile başvurduğu sütun aynı tipte olmalı: INT.",
     "src": "Kahoot 2"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "sql-giris",
     "q": "Önce hangi tabloya INSERT yapılmalıdır: `bolum` mu, `ders` mi?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "ders",
      "bolum",
-     "bölüm",
-     "bolum tablosu",
-     "bölüm tablosu",
-     "bolum tablosuna",
-     "bölüm tablosuna"
+     "Fark etmez",
+     "İkisine aynı anda",
+     "ders_kaydi"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "Ders, bolum_no ile bölüme bağlı; bölüm yoksa FK hatası alınır. Önce bolum.",
     "src": "Kahoot 2"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "`ders_kaydi` tablosundaki `harf_notu` bilgisi öğrenciye mi, derse mi, yoksa kayda mı aittir?",
-    "code": "____",
-    "ans": [
-     "kayda",
-     "kayıt",
-     "kayit",
-     "kayda ait",
-     "ders kaydına",
-     "ders kaydina",
-     "ders_kaydi",
-     "ders_kaydına",
-     "kayda aittir"
+    "opts": [
+     "Öğrenciye",
+     "Derse",
+     "Kayda (ders kaydına)",
+     "Bölüme",
+     "Hiçbirine"
     ],
-    "cs": false,
+    "a": 2,
     "exp": "Not belli bir öğrencinin belli bir dersteki kaydına aittir; bu yüzden ara tabloda durur.",
     "src": "Kahoot 2"
    },
@@ -6411,160 +6394,143 @@ window.EXAMS = [
  },
  {
   "id": "kahoot2",
-  "title": "Kahoot 2 · İlişkiler ve temel SQL (yazarak cevap)",
+  "title": "Kahoot 2 · İlişkiler ve temel SQL",
   "group": "kahoot",
   "mode": "practice",
-  "desc": "9 soru, derste oynanan Kahoot'un kendisi. Cevabı yazıp Enter'a bas; anında kontrol.",
+  "desc": "9 soru, derste oynanan Kahoot'un kendisi. Şıkka tıklayınca anında doğru/yanlış.",
   "questions": [
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "Tablodaki her satırı tekil olarak tanımlayan sütuna ne ad verilir?",
-    "code": "____",
-    "ans": [
-     "PRIMARY KEY",
-     "primary",
-     "PK",
-     "birincil anahtar",
-     "birincil",
-     "primary key (birincil anahtar)"
+    "opts": [
+     "PRIMARY KEY (birincil anahtar)",
+     "FOREIGN KEY (yabancı anahtar)",
+     "UNIQUE",
+     "INDEX",
+     "DEFAULT"
     ],
-    "cs": false,
+    "a": 0,
     "exp": "PRIMARY KEY (birincil anahtar, PK).",
     "src": "Kahoot"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "Başka bir tablonun birincil anahtarına bağlanan sütuna ne ad verilir?",
-    "code": "____",
-    "ans": [
-     "FOREIGN KEY",
-     "foreign",
-     "FK",
-     "yabancı anahtar",
-     "yabanci anahtar",
-     "yabancı",
-     "yabanci",
-     "ikincil anahtar"
+    "opts": [
+     "PRIMARY KEY (birincil anahtar)",
+     "FOREIGN KEY (yabancı anahtar)",
+     "AUTO_INCREMENT",
+     "UNIQUE",
+     "CHECK"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "FOREIGN KEY (yabancı anahtar, FK).",
     "src": "Kahoot"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "1:1 ilişkide, yabancı anahtar sütununa ilişkinin bozulmaması için hangi kısıt eklenir?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "NOT NULL",
+     "DEFAULT",
      "UNIQUE",
-     "tekil",
-     "benzersiz"
+     "AUTO_INCREMENT",
+     "CHECK"
     ],
-    "cs": false,
+    "a": 2,
     "exp": "UNIQUE: aynı FK değeri ikinci kez girilemez.",
     "src": "Kahoot"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "sql-giris",
     "q": "Tabloya yeni bir kayıt eklemek için hangi SQL komutu kullanılır?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "UPDATE",
      "INSERT INTO",
-     "INSERT",
-     "INSERT INTO ... VALUES",
-     "INSERT INTO VALUES"
+     "ALTER TABLE",
+     "CREATE TABLE",
+     "SELECT"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "INSERT INTO tablo (sütunlar) VALUES (...);",
     "src": "Kahoot"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "Bölüm–Ders (1:N) ilişkisinde yabancı anahtar hangi tabloya eklenir?",
-    "code": "____",
-    "ans": [
-     "ders",
-     "ders tablosu",
-     "ders tablosuna",
+    "opts": [
+     "bolum tablosuna",
      "ders tablosuna (çok tarafı)",
-     "çok tarafı",
-     "cok tarafi"
+     "İki tabloya da",
+     "Ara tabloya",
+     "Hiçbirine"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "1:N'de FK her zaman çok tarafına, yani ders tablosuna eklenir (bolum_no).",
     "src": "Kahoot"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "Öğrenci–Ders (M:N) ilişkisini kurabilmek için veritabanımıza eklediğimiz ara tablonun adı nedir?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "ogrenci_karti",
+     "bolum",
      "ders_kaydi",
-     "ders_kaydı",
-     "ders kaydi",
-     "ders kaydı",
-     "derskaydi"
+     "ders",
+     "ogrenci"
     ],
-    "cs": false,
+    "a": 2,
     "exp": "ders_kaydi: ogrenci_no ve ders_kodu FK'lerini tutar.",
     "src": "Kahoot"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "sql-giris",
     "q": "`ders` tablosunda `ders_kodu` INT ise, `ders_kaydi` tablosundaki `ders_kodu` hangi veri tipinde olmalıdır?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "VARCHAR",
      "INT",
-     "integer",
-     "tam sayı",
-     "tam sayi",
-     "tamsayı",
-     "tamsayi"
+     "DATE",
+     "CHAR(2)",
+     "Fark etmez"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "FK ile başvurduğu sütun aynı tipte olmalı: INT.",
     "src": "Kahoot"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "sql-giris",
     "q": "Önce hangi tabloya INSERT yapılmalıdır: `bolum` mu, `ders` mi?",
-    "code": "____",
-    "ans": [
+    "opts": [
+     "ders",
      "bolum",
-     "bölüm",
-     "bolum tablosu",
-     "bölüm tablosu",
-     "bolum tablosuna",
-     "bölüm tablosuna"
+     "Fark etmez",
+     "İkisine aynı anda",
+     "ders_kaydi"
     ],
-    "cs": false,
+    "a": 1,
     "exp": "Ders, bolum_no ile bölüme bağlı; bölüm yoksa FK hatası alınır. Önce bolum.",
     "src": "Kahoot"
    },
    {
-    "type": "fill",
+    "type": "mc",
     "topic": "iliskisel",
     "q": "`ders_kaydi` tablosundaki `harf_notu` bilgisi öğrenciye mi, derse mi, yoksa kayda mı aittir?",
-    "code": "____",
-    "ans": [
-     "kayda",
-     "kayıt",
-     "kayit",
-     "kayda ait",
-     "ders kaydına",
-     "ders kaydina",
-     "ders_kaydi",
-     "ders_kaydına",
-     "kayda aittir"
+    "opts": [
+     "Öğrenciye",
+     "Derse",
+     "Kayda (ders kaydına)",
+     "Bölüme",
+     "Hiçbirine"
     ],
-    "cs": false,
+    "a": 2,
     "exp": "Not belli bir öğrencinin belli bir dersteki kaydına aittir; bu yüzden ara tabloda durur.",
     "src": "Kahoot"
    }

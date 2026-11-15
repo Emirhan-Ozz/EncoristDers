@@ -1477,6 +1477,14 @@ window.TOPICS = [
        "4"
       ],
       [
+       "Akıllı Saat",
+       "3"
+      ],
+      [
+       "Kot Pantolon",
+       "3"
+      ],
+      [
        "Kablosuz Kulaklık",
        "3"
       ],
@@ -1490,14 +1498,6 @@ window.TOPICS = [
       ],
       [
        "Kapüşonlu Sweatshirt",
-       "3"
-      ],
-      [
-       "Akıllı Saat",
-       "3"
-      ],
-      [
-       "Kot Pantolon",
        "3"
       ]
      ]

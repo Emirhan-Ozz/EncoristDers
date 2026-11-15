@@ -21,24 +21,15 @@ K1 = [
 ]
 
 K2 = [
-    op(I, 'Tablodaki her satırı tekil olarak tanımlayan sütuna ne ad verilir?',
-       ['PRIMARY KEY', 'primary', 'PK', 'birincil anahtar', 'birincil', 'primary key (birincil anahtar)'], 'PRIMARY KEY (birincil anahtar, PK).'),
-    op(I, 'Başka bir tablonun birincil anahtarına bağlanan sütuna ne ad verilir?',
-       ['FOREIGN KEY', 'foreign', 'FK', 'yabancı anahtar', 'yabanci anahtar', 'yabancı', 'yabanci', 'ikincil anahtar'], 'FOREIGN KEY (yabancı anahtar, FK).'),
-    op(I, '1:1 ilişkide, yabancı anahtar sütununa ilişkinin bozulmaması için hangi kısıt eklenir?',
-       ['UNIQUE', 'tekil', 'benzersiz'], 'UNIQUE: aynı FK değeri ikinci kez girilemez.'),
-    op(D, 'Tabloya yeni bir kayıt eklemek için hangi SQL komutu kullanılır?',
-       ['INSERT INTO', 'INSERT', 'INSERT INTO ... VALUES', 'INSERT INTO VALUES'], 'INSERT INTO tablo (sütunlar) VALUES (...);'),
-    op(I, 'Bölüm–Ders (1:N) ilişkisinde yabancı anahtar hangi tabloya eklenir?',
-       ['ders', 'ders tablosu', 'ders tablosuna', 'ders tablosuna (çok tarafı)', 'çok tarafı', 'cok tarafi'], '1:N\'de FK her zaman çok tarafına, yani ders tablosuna eklenir (bolum_no).'),
-    op(I, 'Öğrenci–Ders (M:N) ilişkisini kurabilmek için veritabanımıza eklediğimiz ara tablonun adı nedir?',
-       ['ders_kaydi', 'ders_kaydı', 'ders kaydi', 'ders kaydı', 'derskaydi'], 'ders_kaydi: ogrenci_no ve ders_kodu FK\'lerini tutar.'),
-    op(D, '`ders` tablosunda `ders_kodu` INT ise, `ders_kaydi` tablosundaki `ders_kodu` hangi veri tipinde olmalıdır?',
-       ['INT', 'integer', 'tam sayı', 'tam sayi', 'tamsayı', 'tamsayi'], 'FK ile başvurduğu sütun aynı tipte olmalı: INT.'),
-    op(D, 'Önce hangi tabloya INSERT yapılmalıdır: `bolum` mu, `ders` mi?',
-       ['bolum', 'bölüm', 'bolum tablosu', 'bölüm tablosu', 'bolum tablosuna', 'bölüm tablosuna'], 'Ders, bolum_no ile bölüme bağlı; bölüm yoksa FK hatası alınır. Önce bolum.'),
-    op(I, '`ders_kaydi` tablosundaki `harf_notu` bilgisi öğrenciye mi, derse mi, yoksa kayda mı aittir?',
-       ['kayda', 'kayıt', 'kayit', 'kayda ait', 'ders kaydına', 'ders kaydina', 'ders_kaydi', 'ders_kaydına', 'kayda aittir'],
+    mc(I, 'Tablodaki her satırı tekil olarak tanımlayan sütuna ne ad verilir?', ['PRIMARY KEY (birincil anahtar)', 'FOREIGN KEY (yabancı anahtar)', 'UNIQUE', 'INDEX', 'DEFAULT'], 0, 'PRIMARY KEY (birincil anahtar, PK).'),
+    mc(I, 'Başka bir tablonun birincil anahtarına bağlanan sütuna ne ad verilir?', ['PRIMARY KEY (birincil anahtar)', 'FOREIGN KEY (yabancı anahtar)', 'AUTO_INCREMENT', 'UNIQUE', 'CHECK'], 1, 'FOREIGN KEY (yabancı anahtar, FK).'),
+    mc(I, '1:1 ilişkide, yabancı anahtar sütununa ilişkinin bozulmaması için hangi kısıt eklenir?', ['NOT NULL', 'DEFAULT', 'UNIQUE', 'AUTO_INCREMENT', 'CHECK'], 2, 'UNIQUE: aynı FK değeri ikinci kez girilemez.'),
+    mc(D, 'Tabloya yeni bir kayıt eklemek için hangi SQL komutu kullanılır?', ['UPDATE', 'INSERT INTO', 'ALTER TABLE', 'CREATE TABLE', 'SELECT'], 1, 'INSERT INTO tablo (sütunlar) VALUES (...);'),
+    mc(I, 'Bölüm–Ders (1:N) ilişkisinde yabancı anahtar hangi tabloya eklenir?', ['bolum tablosuna', 'ders tablosuna (çok tarafı)', 'İki tabloya da', 'Ara tabloya', 'Hiçbirine'], 1, '1:N\'de FK her zaman çok tarafına, yani ders tablosuna eklenir (bolum_no).'),
+    mc(I, 'Öğrenci–Ders (M:N) ilişkisini kurabilmek için veritabanımıza eklediğimiz ara tablonun adı nedir?', ['ogrenci_karti', 'bolum', 'ders_kaydi', 'ders', 'ogrenci'], 2, 'ders_kaydi: ogrenci_no ve ders_kodu FK\'lerini tutar.'),
+    mc(D, '`ders` tablosunda `ders_kodu` INT ise, `ders_kaydi` tablosundaki `ders_kodu` hangi veri tipinde olmalıdır?', ['VARCHAR', 'INT', 'DATE', 'CHAR(2)', 'Fark etmez'], 1, 'FK ile başvurduğu sütun aynı tipte olmalı: INT.'),
+    mc(D, 'Önce hangi tabloya INSERT yapılmalıdır: `bolum` mu, `ders` mi?', ['ders', 'bolum', 'Fark etmez', 'İkisine aynı anda', 'ders_kaydi'], 1, 'Ders, bolum_no ile bölüme bağlı; bölüm yoksa FK hatası alınır. Önce bolum.'),
+    mc(I, '`ders_kaydi` tablosundaki `harf_notu` bilgisi öğrenciye mi, derse mi, yoksa kayda mı aittir?', ['Öğrenciye', 'Derse', 'Kayda (ders kaydına)', 'Bölüme', 'Hiçbirine'], 2,
        'Not belli bir öğrencinin belli bir dersteki kaydına aittir; bu yüzden ara tabloda durur.'),
 ]
 
@@ -148,7 +139,7 @@ K5 = [
 
 KAHOOTS = [
     {'id': 'kahoot1', 'title': 'Kahoot 1 · İlişkiler ve ER diyagramı', 'questions': K1},
-    {'id': 'kahoot2', 'title': 'Kahoot 2 · İlişkiler ve temel SQL (yazarak cevap)', 'questions': K2},
+    {'id': 'kahoot2', 'title': 'Kahoot 2 · İlişkiler ve temel SQL', 'questions': K2},
     {'id': 'kahoot3', 'title': 'Kahoot 3 · İlişkisel VT ve SQL temel kavramlar', 'questions': K3},
     {'id': 'kahoot4', 'title': 'Kahoot 4 · SQL ve sorgulama (GROUP BY, HAVING)', 'questions': K4},
     {'id': 'kahoot5', 'title': 'Kahoot 5 · Veritabanı ve SQL bilgi yarışması', 'questions': K5},
