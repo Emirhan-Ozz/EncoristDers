@@ -170,6 +170,46 @@
   footer a{color:var(--mute); text-decoration:none; border-bottom:1px dashed var(--line)}
   footer a:hover{color:var(--ink)}
   footer{width:min(1120px,92vw); margin:0 auto; padding:22px 0 30px; border-top:1px solid var(--line); color:var(--mute); font-size:.85rem}
+
+  /* ---------- ana ekran: "Ne çalışmak istiyorsun?" ---------- */
+  .home{min-height:calc(100vh - 200px); display:flex; flex-direction:column; justify-content:center}
+  .ask{font-size:clamp(2.6rem,7.2vw,5.4rem); line-height:1.02; letter-spacing:-.035em; margin:0 0 14px; font-weight:800;
+    background:linear-gradient(90deg,var(--ink) 0 55%,color-mix(in srgb,var(--c1) 70%,var(--ink)) 80%,color-mix(in srgb,var(--c2) 80%,var(--ink)));
+    -webkit-background-clip:text; background-clip:text; color:transparent; padding-bottom:.06em}
+  .home .lead{margin:0 0 44px}
+  .big-grid{display:grid; gap:28px; grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:760px){ .big-grid{grid-template-columns:1fr; gap:18px} a.card.big{height:360px} a.card.big .face{padding:26px} }
+  @media (hover:none){ a.card.big .hint{display:none} }
+  a.card.big{height:460px}
+  a.card.big .face{padding:34px; border-radius:24px}
+  a.card.big .back{padding:0}
+  a.card.big .front::before{height:7px}
+  a.card.big.hov .flip{inset:-14px -12px}
+  a.card.big .front h2{font-size:clamp(2rem,3.6vw,2.9rem); letter-spacing:-.025em; margin-top:10px}
+  a.card.big .front p{font-size:1.05rem; max-width:34ch}
+  a.card.big .tag{font-size:.8rem; padding:5px 12px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto}
+  .chips i{font-style:normal; font-size:.82rem; font-weight:600; padding:5px 11px; border-radius:999px; border:1px solid var(--line);
+    color:var(--ink); background:color-mix(in srgb,var(--c) 12%,transparent); border-color:color-mix(in srgb,var(--c) 35%,var(--line))}
+  a.card.big .hint{margin-top:14px; font-size:.86rem}
+  a.card.big .wm{font-size:5.2rem; bottom:26px; opacity:.22}
+  a.card.big .ui-bar{padding:14px 20px} a.card.big .ui-bar i{font-size:.86rem}
+  a.card.big .ui-body{padding:16px 22px 18px; gap:9px}
+  a.card.big .b-title.sm{font-size:1.25rem; margin-bottom:4px}
+  .rows{display:flex; flex-direction:column; gap:8px}
+  .rows span{display:flex; align-items:center; gap:12px; background:#161a22; border:1px solid #262c37; border-radius:12px; padding:9px 14px;
+    font-size:.98rem; font-weight:600; color:#e5e8ee; position:relative; overflow:hidden}
+  .rows span::before{content:""; position:absolute; inset:0 auto 0 0; width:4px; background:var(--c)}
+  .rows em{flex:none; min-width:70px; font-style:normal; font-size:.74rem; font-weight:800; letter-spacing:.06em; color:var(--c);
+    padding:3px 8px; border-radius:7px; background:color-mix(in srgb,var(--c) 16%,transparent); text-align:center}
+  .rows small{margin-left:auto; font-size:.76rem; font-weight:500; color:#98a1b1; white-space:nowrap}
+  @media (max-width:520px){ .rows small{display:none} }
+  .all{--accent:#7095ff; --band:linear-gradient(90deg,#ff2bd6,#2b59d1 30%,#7095ff 50%,#ff8a2a 75%,#2aa3bd); --soft:#1b2440; --hi:#9ab4ff;
+    --g1:rgba(112,149,255,.16); --g2:rgba(255,138,42,.13)}
+  /* dokunmatikte arka yüz görünmediği için ön yüzde ders çipleri var */
+  .back-link{display:inline-flex; gap:8px; align-items:center; color:var(--mute); text-decoration:none; font-size:.92rem; margin:0 0 18px}
+  .back-link:hover{color:var(--ink)}
+  [hidden]{display:none !important}
 </style>
 <style id="vt-slide">
 @view-transition{navigation:auto}
@@ -189,6 +229,66 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
 </head>
 <body>
 <main>
+  <section class="home" id="home">
+    <p class="eyebrow">Emirhan Öz · EncoristDers</p>
+    <h1 class="ask">Ne çalışmak istiyorsun?</h1>
+    <p class="lead">Kartın üstüne gel, içinde ne olduğunu gör. Tıklayınca açılır.</p>
+    <div class="big-grid">
+      <a class="card big all" href="#dersler" aria-label="Dersler: 5 dersin çalışma sitelerini aç">
+        <div class="flip">
+          <div class="face front">
+            <span class="tag">Güz 2026–2027</span>
+            <h2>Dersler<small>5 dersin çalışma sitesi</small></h2>
+            <p>Konu özetleri, testler, deneme sınavları ve yazılı provalar. Vizeler bitti; siteler finale kadar açık.</p>
+            <div class="chips"><i style="--c:#ff2bd6">Almanca</i><i style="--c:#2b59d1">Mobil</i><i style="--c:#7095ff">Python</i><i style="--c:#ff8a2a">Java</i><i style="--c:#2aa3bd">SQL</i></div>
+            <span class="hint">Üstüne gel: ders adlarını gör →</span>
+          </div>
+          <div class="face back" aria-hidden="true">
+            <span class="wm">Dersler</span>
+            <div class="ui-bar"><i class="on">Dersler</i><i>Genel Tekrar</i><i>Test</i></div>
+            <div class="ui-body">
+              <span class="b-title sm">5 ders · Güz 2026–2027</span>
+              <div class="rows">
+                <span style="--c:#ff2bd6"><em>GER101</em>Almanca I<small>Tekrar · Test · Kelimeler</small></span>
+                <span style="--c:#5b84ff"><em>MBP221</em>Mobil Uygulamalar ve Teknolojiler<small>Tekrar · Test</small></span>
+                <span style="--c:#7095ff"><em>MBP207</em>Görsel Programlama<small>Python · Kod</small></span>
+                <span style="--c:#ff8a2a"><em>MBP205</em>Nesne Tabanlı Programlama II<small>Java · Yazılı</small></span>
+                <span style="--c:#2aa3bd"><em>MBP203</em>Veri Tabanı ve Yönetimi<small>SQL · Kahoot</small></span>
+              </div>
+              <span class="go">Dersleri aç →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a class="card big piano" href="piano/" aria-label="Piyano: nota okuma sitesini aç">
+        <div class="flip">
+          <div class="face front">
+            <span class="tag">Hobi</span>
+            <h2>Piyano<small>Piano notes · nota okuma</small></h2>
+            <p>Porte, notalar ve alıştırmalar. Je te laisserai des notes üzerinden nota okuma çalışması.</p>
+            <div class="chips"><i style="--c:#d2a964">Nota tekrarı</i><i style="--c:#d4897a">Alıştırmalar</i></div>
+            <span class="hint">Üstüne gel: içeriği gör →</span>
+          </div>
+          <div class="face back" aria-hidden="true">
+            <span class="wm">Piyano</span>
+            <div class="ui-bar"><i class="on">Genel Tekrar</i><i>Alıştırma</i></div>
+            <div class="ui-body">
+              <span class="b-title sm">Je te laisserai des notes</span>
+              <div class="staffbox"><svg viewBox="0 0 240 62" fill="none" stroke="currentColor"><g stroke-width="1" opacity=".55"><path d="M0 10H240M0 20H240M0 30H240M0 40H240M0 50H240"/></g><g fill="currentColor" stroke="none"><ellipse cx="62" cy="45" rx="6.2" ry="4.4" transform="rotate(-20 62 45)"/><ellipse cx="104" cy="35" rx="6.2" ry="4.4" transform="rotate(-20 104 35)"/><ellipse cx="146" cy="25" rx="6.2" ry="4.4" transform="rotate(-20 146 25)"/><ellipse cx="188" cy="15" rx="6.2" ry="4.4" transform="rotate(-20 188 15)"/></g><g stroke-width="1.6"><path d="M67.5 43V14M109.5 33V4M140.5 27V56M182.5 17V46"/></g></svg></div>
+              <div class="rows">
+                <span style="--c:#d2a964"><em>Tekrar</em>Nota tekrarı<small>Porte · notalar</small></span>
+                <span style="--c:#d4897a"><em>Alıştırma</em>Nota okuma alıştırmaları<small>Anında kontrol</small></span>
+              </div>
+              <span class="go">Siteyi aç →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="dersler" hidden>
+  <a class="back-link" href="#">← Ne çalışmak istiyorsun?</a>
   <p class="eyebrow">Emirhan Öz</p>
   <h1>EncoristDers</h1>
   <p class="lead">Altı çalışma sitesi tek adreste. Kartın üstüne gel, açılacak sitenin temasını gör.</p>
@@ -371,6 +471,7 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
       </ol></div>
     </div>
   </section>
+  </section>
 </main>
 <footer><span>EncoristDers · GitHub Pages</span><span>Emirhan Öz · 2026 · <a href="https://github.com/Emirhan-Ozz/EncoristDers">GitHub</a></span></footer>
 <script>
@@ -397,6 +498,19 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
     c.addEventListener('focus', on); c.addEventListener('blur', off);
   });
   addEventListener('pageshow', function(e){ if (e.persisted) cards.forEach(function(c){ c.classList.remove('hov','flipped','settled','snap','p3d'); }); });
+})();
+</script>
+<script>
+(function(){
+  var home = document.getElementById('home'), ders = document.getElementById('dersler');
+  function route(){
+    var d = location.hash === '#dersler';
+    home.hidden = d; ders.hidden = !d;
+    document.title = d ? 'Dersler · EncoristDers' : 'EncoristDers · Ne çalışmak istiyorsun?';
+    document.querySelectorAll('a.card').forEach(function(c){ c.classList.remove('hov','flipped','settled','snap','p3d'); });
+    scrollTo(0, 0);
+  }
+  addEventListener('hashchange', route); route();
 })();
 </script>
 </body>
