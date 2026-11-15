@@ -153,6 +153,16 @@ figure.erd .rel text { font-weight: 700; font-size: 12.5px; }
 figure.erd line { stroke: var(--muted); stroke-width: 1.3; }
 figure.erd .card { font-weight: 800; fill: var(--accent); font-size: 14px; }
 figure.erd figcaption { font-size: .88rem; color: var(--muted); text-align: center; margin-top: 6px; }
+figure.erd .in { fill: none; }
+figure.erd .ent rect.in { stroke: var(--accent); stroke-width: 1.4; }
+figure.erd .att.multi ellipse.in { stroke: var(--muted); stroke-width: 1.2; }
+figure.erd .att.derived ellipse { stroke-dasharray: 5 4; stroke-width: 1.6; }
+figure.erd .rel polygon.in { stroke: var(--rose); stroke-width: 1.4; }
+figure.erd text.lg { text-anchor: start; fill: var(--muted); font-size: 13.5px; }
+figure.erd text.lg-b { fill: var(--text); font-weight: 800; font-size: 14.5px; }
+figure.erd line.sep { stroke: var(--border); stroke-dasharray: 3 4; }
+.q figure.erd { margin: 8px 0 12px; }
+.q figure.erd svg { max-width: 860px; }
 @media (max-width: 600px) { figure.erd { overflow-x: auto; padding: 8px 6px; } figure.erd svg { min-width: 540px; } }
 
 /* Eşleştirme soruları */

@@ -867,6 +867,370 @@ window.EXAMS = [
   ]
  },
  {
+  "id": "er-gorsel",
+  "title": "ER diyagramı (görsel)",
+  "group": "hoca",
+  "mode": "practice",
+  "desc": "23 soru: şekil gösterilir, ne olduğu sorulur (dikdörtgen, elips, baklava, altı çizili…) ve örnek diyagram okunur. Anında kontrol.",
+  "questions": [
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "Varlık (entity)",
+     "İlişki (relationship)",
+     "Birincil anahtar (PK)",
+     "Nitelik (attribute)"
+    ],
+    "a": 0,
+    "exp": "Dikdörtgen = varlık. Veri tabanında tabloya dönüşür.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><g class=\"ent\"><rect x=\"100\" y=\"40\" width=\"120\" height=\"40\"/><text x=\"160\" y=\"61\">Ogrenci</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "İlişki (relationship)",
+     "Varlık (entity)",
+     "Nitelik (attribute)",
+     "Kardinalite"
+    ],
+    "a": 2,
+    "exp": "Elips (oval) = nitelik; tablonun sütunu olur.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><g class=\"att\"><ellipse cx=\"160\" cy=\"60\" rx=\"46\" ry=\"17\"/><text x=\"160\" y=\"61\">ad</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "İlişki (relationship)",
+     "Varlık (entity)",
+     "Nitelik (attribute)",
+     "Veri akışı"
+    ],
+    "a": 0,
+    "exp": "Eşkenar dörtgen (baklava, elmas) = ilişki. Kahoot'ta \"Elmas neyi temsil eder?\" diye soruldu.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><g class=\"rel\"><polygon points=\"108,60 160,34 212,60 160,86\"/><text x=\"160\" y=\"61\">Kayit</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "Yabancı anahtar (FK)",
+     "Çok değerli nitelik",
+     "Birincil anahtar (PK)",
+     "Türetilmiş nitelik"
+    ],
+    "a": 2,
+    "exp": "Niteliğin altı çizili = anahtar nitelik (PK). Kahoot'ta soruldu.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><g class=\"att pk\"><ellipse cx=\"160\" cy=\"60\" rx=\"59\" ry=\"17\"/><text x=\"160\" y=\"61\">ogrenci_no</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "Çok değerli nitelik",
+     "Türetilmiş nitelik",
+     "Zayıf varlık",
+     "Birincil anahtar (PK)"
+    ],
+    "a": 0,
+    "exp": "Çift elips: bir kaydın bu nitelikte birden çok değeri olabilir (birden çok telefon).",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><g class=\"att multi\"><ellipse cx=\"160\" cy=\"60\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"160\" cy=\"60\" rx=\"41.1\" ry=\"12\"/><text x=\"160\" y=\"61\">telefon</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "Çok değerli nitelik",
+     "Türetilmiş nitelik",
+     "Yabancı anahtar (FK)",
+     "Birleşik nitelik"
+    ],
+    "a": 1,
+    "exp": "Kesikli elips: değeri başka nitelikten hesaplanır (yaş ← doğum tarihi); saklanmaz.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><g class=\"att derived\"><ellipse cx=\"160\" cy=\"60\" rx=\"46\" ry=\"17\"/><text x=\"160\" y=\"61\">yas</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "Tanımlayıcı ilişki",
+     "Zayıf varlık",
+     "Çok değerli nitelik",
+     "Varlık (entity)"
+    ],
+    "a": 1,
+    "exp": "Çift dikdörtgen: kendi anahtarı olmayan, başka varlığa bağlı varlık.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><g class=\"ent\"><rect x=\"100\" y=\"40\" width=\"120\" height=\"40\"/><rect class=\"in\" x=\"105\" y=\"45\" width=\"110\" height=\"30\"/><text x=\"160\" y=\"61\">Bagimli</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "Tanımlayıcı ilişki",
+     "Varlık (entity)",
+     "İlişki (relationship)",
+     "Zayıf varlık"
+    ],
+    "a": 0,
+    "exp": "Çift eşkenar dörtgen: zayıf varlığı sahibi olan varlığa bağlayan ilişki.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><g class=\"rel\"><polygon points=\"108,60 160,34 212,60 160,86\"/><polygon class=\"in\" points=\"116,60 160,40 204,60 160,80\"/><text x=\"160\" y=\"61\">Bagli</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösterimindeki bu şekil neyi temsil eder?",
+    "opts": [
+     "İlişki (relationship)",
+     "Çok değerli nitelik",
+     "Birleşik nitelik",
+     "Türetilmiş nitelik"
+    ],
+    "a": 2,
+    "exp": "Bir nitelik alt niteliklere ayrılıyor: ad_soyad → ad + soyad.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 320 130\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:320px;min-width:0\"><line x1=\"160\" y1=\"34\" x2=\"80\" y2=\"100\"/><line x1=\"160\" y1=\"34\" x2=\"240\" y2=\"100\"/><g class=\"att\"><ellipse cx=\"160\" cy=\"34\" rx=\"50.4\" ry=\"17\"/><text x=\"160\" y=\"35\">ad_soyad</text></g><g class=\"att\"><ellipse cx=\"80\" cy=\"100\" rx=\"46\" ry=\"17\"/><text x=\"80\" y=\"101\">ad</text></g><g class=\"att\"><ellipse cx=\"240\" cy=\"100\" rx=\"46\" ry=\"17\"/><text x=\"240\" y=\"101\">soyad</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Bu diyagramda Ders tarafındaki **çift çizgi** ne anlama gelir?",
+    "opts": [
+     "Tam katılım: her ders bir bölüme bağlı olmak zorunda",
+     "Ders tablosunda iki FK var",
+     "İlişki M:N'dir",
+     "Ders zayıf varlıktır"
+    ],
+    "a": 0,
+    "exp": "Çift çizgi = tam (zorunlu) katılım. Tek çizgi = kısmi katılım (bölümün dersi olmayabilir).",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 520 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" style=\"max-width:520px;min-width:0\"><line x1=\"80\" y1=\"57\" x2=\"260\" y2=\"57\"/><line x1=\"80\" y1=\"63\" x2=\"260\" y2=\"63\"/><line x1=\"260\" y1=\"60\" x2=\"440\" y2=\"60\"/><g class=\"ent\"><rect x=\"20\" y=\"40\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"61\">Ders</text></g><g class=\"rel\"><polygon points=\"208,60 260,34 312,60 260,86\"/><text x=\"260\" y=\"61\">Acar</text></g><g class=\"ent\"><rect x=\"380\" y=\"40\" width=\"120\" height=\"40\"/><text x=\"440\" y=\"61\">Bolum</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "ER diyagramında varlıklar (entity) genellikle hangi şekille gösterilir?",
+    "opts": [
+     "Daire",
+     "Elips",
+     "Eşkenar dörtgen",
+     "Dikdörtgen",
+     "Ok"
+    ],
+    "a": 3,
+    "exp": "Kahoot sorusu: varlık dikdörtgen.",
+    "src": "ER görsel"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Chen gösteriminde nitelikler hangi şekille gösterilir?",
+    "opts": [
+     "Dikdörtgen",
+     "Kare",
+     "Üçgen",
+     "Eşkenar dörtgen",
+     "Oval (elips)"
+    ],
+    "a": 4,
+    "exp": "Kahoot sorusu: nitelik oval.",
+    "src": "ER görsel"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "ER diyagramında çizgilerin üstüne yazılan **1, N, M** neyi gösterir?",
+    "opts": [
+     "Veri tipini",
+     "Kardinaliteyi (ilişki türünü)",
+     "Tablo sayısını",
+     "Satır numarasını",
+     "Sütun sayısını"
+    ],
+    "a": 1,
+    "exp": "1:1, 1:N, M:N.",
+    "src": "ER görsel"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda kaç **varlık** vardır?",
+    "opts": [
+     "3",
+     "4",
+     "9",
+     "2",
+     "5"
+    ],
+    "a": 0,
+    "exp": "Dikdörtgenler: Musteri, Siparis, Urun.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda kaç **ilişki** vardır?",
+    "opts": [
+     "1",
+     "3",
+     "9",
+     "4",
+     "2"
+    ],
+    "a": 4,
+    "exp": "Baklavalar: Verir, Icerir.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda **Musteri – Siparis** ilişkisinin türü nedir?",
+    "opts": [
+     "1:1",
+     "N:1 ama ara tablo gerekir",
+     "M:N",
+     "İlişki yoktur",
+     "1:N"
+    ],
+    "a": 4,
+    "exp": "Musteri tarafında 1, Siparis tarafında N: bir müşteri çok sipariş verir.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda **Siparis – Urun** ilişkisinin türü nedir?",
+    "opts": [
+     "İlişki yoktur",
+     "M:N",
+     "N:1",
+     "1:N",
+     "1:1"
+    ],
+    "a": 1,
+    "exp": "Bir siparişte çok ürün, bir ürün çok siparişte: M:N.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagram tablolara dönüştürülürse en az kaç tablo oluşur?",
+    "opts": [
+     "4",
+     "6",
+     "3",
+     "5",
+     "2"
+    ],
+    "a": 0,
+    "exp": "3 varlık + M:N ilişki (Icerir) için 1 ara tablo (siparis_detay gibi) = 4. 1:N ilişki tablo istemez.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda `musteri_no` hangi tabloya **yabancı anahtar** olarak eklenir?",
+    "opts": [
+     "Hiçbirine",
+     "siparis",
+     "Ara tabloya",
+     "urun",
+     "musteri"
+    ],
+    "a": 1,
+    "exp": "1:N ilişkide FK çok tarafına: siparis.musteri_no.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda **Musteri** varlığının birincil anahtarı hangisidir?",
+    "opts": [
+     "yas",
+     "musteri_no",
+     "telefon",
+     "ad",
+     "siparis_no"
+    ],
+    "a": 1,
+    "exp": "Altı çizili nitelik PK'dir.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda `telefon` neden **çift elips** ile çizilmiştir?",
+    "opts": [
+     "Telefon birincil anahtardır",
+     "Bir müşterinin birden çok telefonu olabilir (çok değerli nitelik)",
+     "Telefon zorunlu alandır",
+     "Telefon hesaplanarak bulunur",
+     "Telefon başka tabloya FK'dir"
+    ],
+    "a": 1,
+    "exp": "Çok değerli nitelik; tabloya dönüşürken genelde ayrı bir tabloya (musteri_telefon) ayrılır.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda `yas` niteliği için hangisi doğrudur?",
+    "opts": [
+     "Kesikli çizildiği için türetilmiştir; doğum tarihinden hesaplanır, saklanmaz",
+     "Zayıf varlıktır",
+     "Yabancı anahtardır",
+     "Birincil anahtardır",
+     "Çok değerlidir"
+    ],
+    "a": 0,
+    "exp": "Kesikli elips = türetilmiş nitelik.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   },
+   {
+    "type": "mc",
+    "topic": "iliskisel",
+    "q": "Örnek diyagramda Verir ile Siparis arasındaki **çift çizgi** ne anlatır?",
+    "opts": [
+     "Siparişte iki FK vardır",
+     "Her sipariş mutlaka bir müşteriye ait olmalı (tam katılım)",
+     "Her müşteri mutlaka sipariş vermeli",
+     "İlişki M:N'dir",
+     "Siparis zayıf varlıktır"
+    ],
+    "a": 1,
+    "exp": "Çift çizgi hangi taraftaysa o tarafın katılımı zorunludur: siparişsiz müşteri olabilir, müşterisiz sipariş olamaz.",
+    "src": "ER görsel",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>"
+   }
+  ]
+ },
+ {
   "id": "deneme1",
   "title": "Deneme sınavı 1",
   "desc": "20 soru: 17 test, 2 boşluk doldurma, 1 eşleştirme. 7 konudan, diğer denemelerle ortak soru yok.",

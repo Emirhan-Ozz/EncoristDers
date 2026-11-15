@@ -402,6 +402,28 @@ window.TOPICS = [
     "text": "**ER diyagramı (Chen gösterimi)**: **dikdörtgen** = varlık (tablo), **elips** = nitelik (sütun), **eşkenar dörtgen (baklava)** = ilişki, çizgi üstündeki **1 / N / M** = kardinalite. Birincil anahtarın **altı çizilir**. phpMyAdmin'in **Designer** ekranı ise tabloları kutu, FK bağlarını çizgi olarak gösterir."
    },
    {
+    "t": "p",
+    "text": "**ER diyagramı sembolleri (görsel)**: sınavda \"bu şekil neyi temsil eder?\" diye sorulabilir. Hepsi Chen gösterimi."
+   },
+   {
+    "t": "erd",
+    "svg": "<svg viewBox=\"0 0 760 868\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><g class=\"ent\"><rect x=\"70\" y=\"24\" width=\"120\" height=\"40\"/><text x=\"130\" y=\"45\">Ogrenci</text></g><text class=\"lg lg-b\" x=\"270\" y=\"33\">Dikdörtgen</text><text class=\"lg\" x=\"270\" y=\"56\">Varlık (entity). Tabloya dönüşür: Ogrenci, Ders, Bolum.</text><line class=\"sep\" x1=\"10\" y1=\"83\" x2=\"750\" y2=\"83\"/><g class=\"ent\"><rect x=\"70\" y=\"102\" width=\"120\" height=\"40\"/><rect class=\"in\" x=\"75\" y=\"107\" width=\"110\" height=\"30\"/><text x=\"130\" y=\"123\">Bagimli</text></g><text class=\"lg lg-b\" x=\"270\" y=\"111\">Çift dikdörtgen</text><text class=\"lg\" x=\"270\" y=\"134\">Zayıf varlık. Kendi başına anahtarı yok, başka varlığa bağlı yaşar.</text><line class=\"sep\" x1=\"10\" y1=\"161\" x2=\"750\" y2=\"161\"/><g class=\"att\"><ellipse cx=\"130\" cy=\"200\" rx=\"46\" ry=\"17\"/><text x=\"130\" y=\"201\">ad</text></g><text class=\"lg lg-b\" x=\"270\" y=\"189\">Elips (oval)</text><text class=\"lg\" x=\"270\" y=\"212\">Nitelik (attribute). Tablonun sütunu olur: ad, kredi.</text><line class=\"sep\" x1=\"10\" y1=\"239\" x2=\"750\" y2=\"239\"/><g class=\"att pk\"><ellipse cx=\"130\" cy=\"278\" rx=\"59\" ry=\"17\"/><text x=\"130\" y=\"279\">ogrenci_no</text></g><text class=\"lg lg-b\" x=\"270\" y=\"267\">Altı çizili elips</text><text class=\"lg\" x=\"270\" y=\"290\">Anahtar nitelik: birincil anahtar (PK).</text><line class=\"sep\" x1=\"10\" y1=\"317\" x2=\"750\" y2=\"317\"/><g class=\"att multi\"><ellipse cx=\"130\" cy=\"356\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"130\" cy=\"356\" rx=\"41.1\" ry=\"12\"/><text x=\"130\" y=\"357\">telefon</text></g><text class=\"lg lg-b\" x=\"270\" y=\"345\">Çift elips</text><text class=\"lg\" x=\"270\" y=\"368\">Çok değerli nitelik: bir kişinin birden çok telefonu. Ayrı tabloya ayrılır.</text><line class=\"sep\" x1=\"10\" y1=\"395\" x2=\"750\" y2=\"395\"/><g class=\"att derived\"><ellipse cx=\"130\" cy=\"434\" rx=\"46\" ry=\"17\"/><text x=\"130\" y=\"435\">yas</text></g><text class=\"lg lg-b\" x=\"270\" y=\"423\">Kesikli elips</text><text class=\"lg\" x=\"270\" y=\"446\">Türetilmiş nitelik: saklanmaz, hesaplanır (yaş ← doğum tarihi).</text><line class=\"sep\" x1=\"10\" y1=\"473\" x2=\"750\" y2=\"473\"/><line x1=\"130\" y1=\"496\" x2=\"68\" y2=\"528\"/><line x1=\"130\" y1=\"496\" x2=\"192\" y2=\"528\"/><g class=\"att\"><ellipse cx=\"130\" cy=\"496\" rx=\"50.4\" ry=\"17\"/><text x=\"130\" y=\"497\">ad_soyad</text></g><g class=\"att\"><ellipse cx=\"68\" cy=\"530\" rx=\"46\" ry=\"17\"/><text x=\"68\" y=\"531\">ad</text></g><g class=\"att\"><ellipse cx=\"192\" cy=\"530\" rx=\"46\" ry=\"17\"/><text x=\"192\" y=\"531\">soyad</text></g><text class=\"lg lg-b\" x=\"270\" y=\"501\">Elipse bağlı elipsler</text><text class=\"lg\" x=\"270\" y=\"524\">Birleşik nitelik: parçalara ayrılır (ad_soyad → ad + soyad).</text><line class=\"sep\" x1=\"10\" y1=\"551\" x2=\"750\" y2=\"551\"/><g class=\"rel\"><polygon points=\"78,590 130,564 182,590 130,616\"/><text x=\"130\" y=\"591\">Kayit</text></g><text class=\"lg lg-b\" x=\"270\" y=\"579\">Eşkenar dörtgen (baklava)</text><text class=\"lg\" x=\"270\" y=\"602\">İlişki (relationship). İçine fiil yazılır: Kayit, Acar, Verir.</text><line class=\"sep\" x1=\"10\" y1=\"629\" x2=\"750\" y2=\"629\"/><g class=\"rel\"><polygon points=\"78,668 130,642 182,668 130,694\"/><polygon class=\"in\" points=\"86,668 130,648 174,668 130,688\"/><text x=\"130\" y=\"669\">Bagli</text></g><text class=\"lg lg-b\" x=\"270\" y=\"657\">Çift eşkenar dörtgen</text><text class=\"lg\" x=\"270\" y=\"680\">Tanımlayıcı ilişki: zayıf varlığı sahibine bağlar.</text><line class=\"sep\" x1=\"10\" y1=\"707\" x2=\"750\" y2=\"707\"/><line x1=\"30\" y1=\"746\" x2=\"230\" y2=\"746\"/><text class=\"card\" x=\"70\" y=\"734\">1</text><text class=\"card\" x=\"190\" y=\"734\">N</text><text class=\"lg lg-b\" x=\"270\" y=\"735\">Çizgi + 1 / N / M</text><text class=\"lg\" x=\"270\" y=\"758\">Bağlantı ve kardinalite: 1:1, 1:N, M:N. Sayılar çizginin üstüne yazılır.</text><line class=\"sep\" x1=\"10\" y1=\"785\" x2=\"750\" y2=\"785\"/><line x1=\"30\" y1=\"821\" x2=\"230\" y2=\"821\"/><line x1=\"30\" y1=\"827\" x2=\"230\" y2=\"827\"/><text class=\"lg lg-b\" x=\"270\" y=\"813\">Çift çizgi</text><text class=\"lg\" x=\"270\" y=\"836\">Tam katılım: o taraftaki her kayıt ilişkiye katılmak zorunda.</text></svg>",
+    "cap": "En sık sorulanlar ilk dördü: dikdörtgen = varlık, elips = nitelik, baklava = ilişki, altı çizili = PK."
+   },
+   {
+    "t": "p",
+    "text": "**Diyagram nasıl okunur?** Aşağıdaki örnekte: 3 dikdörtgen → **3 varlık** (Musteri, Siparis, Urun). 2 baklava → **2 ilişki** (Verir, Icerir). Musteri tarafında **1**, Siparis tarafında **N** → bir müşteri çok sipariş verir (**1:N**), FK siparis tablosuna (`musteri_no`). Siparis–Urun **M:N** → ara tablo gerekir. Toplam tablo: 3 varlık + 1 ara tablo = **4**. `telefon` çift elips (çok değerli), `yas` kesikli (türetilmiş, saklanmaz). Siparis tarafındaki **çift çizgi**: her sipariş mutlaka bir müşteriye ait."
+   },
+   {
+    "t": "erd",
+    "svg": "<svg viewBox=\"0 0 820 290\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\"><line x1=\"140\" y1=\"145\" x2=\"173\" y2=\"145\"/><line x1=\"277\" y1=\"142\" x2=\"340\" y2=\"142\"/><line x1=\"277\" y1=\"148\" x2=\"340\" y2=\"148\"/><line x1=\"460\" y1=\"145\" x2=\"528\" y2=\"145\"/><line x1=\"632\" y1=\"145\" x2=\"680\" y2=\"145\"/><text class=\"card\" x=\"156.5\" y=\"132\">1</text><text class=\"card\" x=\"308.5\" y=\"131\">N</text><text class=\"card\" x=\"494\" y=\"132\">M</text><text class=\"card\" x=\"656\" y=\"132\">N</text><line x1=\"80\" y1=\"145\" x2=\"70\" y2=\"57\"/><line x1=\"80\" y1=\"145\" x2=\"155\" y2=\"75\"/><line x1=\"80\" y1=\"145\" x2=\"65\" y2=\"233\"/><line x1=\"80\" y1=\"145\" x2=\"165\" y2=\"220\"/><line x1=\"400\" y1=\"145\" x2=\"350\" y2=\"57\"/><line x1=\"400\" y1=\"145\" x2=\"460\" y2=\"57\"/><line x1=\"740\" y1=\"145\" x2=\"700\" y2=\"50\"/><line x1=\"740\" y1=\"145\" x2=\"760\" y2=\"233\"/><line x1=\"740\" y1=\"145\" x2=\"792\" y2=\"90\"/><g class=\"rel\"><polygon points=\"173,145 225,119 277,145 225,171\"/><text x=\"225\" y=\"146\">Verir</text></g><g class=\"rel\"><polygon points=\"528,145 580,119 632,145 580,171\"/><text x=\"580\" y=\"146\">Icerir</text></g><g class=\"att pk\"><ellipse cx=\"70\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"70\" y=\"58\">musteri_no</text></g><g class=\"att\"><ellipse cx=\"155\" cy=\"75\" rx=\"46\" ry=\"17\"/><text x=\"155\" y=\"76\">ad</text></g><g class=\"att multi\"><ellipse cx=\"65\" cy=\"233\" rx=\"46.1\" ry=\"17\"/><ellipse class=\"in\" cx=\"65\" cy=\"233\" rx=\"41.1\" ry=\"12\"/><text x=\"65\" y=\"234\">telefon</text></g><g class=\"att derived\"><ellipse cx=\"165\" cy=\"220\" rx=\"46\" ry=\"17\"/><text x=\"165\" y=\"221\">yas</text></g><g class=\"att pk\"><ellipse cx=\"350\" cy=\"57\" rx=\"59\" ry=\"17\"/><text x=\"350\" y=\"58\">siparis_no</text></g><g class=\"att\"><ellipse cx=\"460\" cy=\"57\" rx=\"46\" ry=\"17\"/><text x=\"460\" y=\"58\">tarih</text></g><g class=\"att pk\"><ellipse cx=\"700\" cy=\"50\" rx=\"46.1\" ry=\"17\"/><text x=\"700\" y=\"51\">urun_no</text></g><g class=\"att\"><ellipse cx=\"760\" cy=\"233\" rx=\"50.4\" ry=\"17\"/><text x=\"760\" y=\"234\">urun_adi</text></g><g class=\"att\"><ellipse cx=\"792\" cy=\"90\" rx=\"46\" ry=\"17\"/><text x=\"792\" y=\"91\">fiyat</text></g><g class=\"ent\"><rect x=\"20\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"80\" y=\"146\">Musteri</text></g><g class=\"ent\"><rect x=\"340\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"400\" y=\"146\">Siparis</text></g><g class=\"ent\"><rect x=\"680\" y=\"125\" width=\"120\" height=\"40\"/><text x=\"740\" y=\"146\">Urun</text></g></svg>",
+    "cap": "Örnek: Musteri 1—N Siparis M—N Urun. Bu diyagramdan soru gelirse önce şekilleri say, sonra kardinaliteye bak."
+   },
+   {
+    "t": "tip",
+    "text": "Tabloya çevirirken: her **varlık** bir tablo, her **M:N** ilişki bir ara tablo; **1:N** ve **1:1** ilişkiler tablo değil FK olur. **Çok değerli** nitelik ayrı tabloya ayrılır, **türetilmiş** nitelik saklanmaz."
+   },
+   {
     "t": "trap",
     "text": "1:N ilişkide FK **\"1\" tarafına değil, \"N\" tarafına** eklenir. Bölüm tablosuna ders_kodu koymak yanlıştır: bir bölümün birden çok dersi vardır, tek sütuna sığmaz."
    },
@@ -1477,18 +1499,6 @@ window.TOPICS = [
        "4"
       ],
       [
-       "Akıllı Saat",
-       "3"
-      ],
-      [
-       "Kot Pantolon",
-       "3"
-      ],
-      [
-       "Kablosuz Kulaklık",
-       "3"
-      ],
-      [
        "Bluetooth Hoparlör",
        "3"
       ],
@@ -1498,6 +1508,18 @@ window.TOPICS = [
       ],
       [
        "Kapüşonlu Sweatshirt",
+       "3"
+      ],
+      [
+       "Akıllı Saat",
+       "3"
+      ],
+      [
+       "Kot Pantolon",
+       "3"
+      ],
+      [
+       "Kablosuz Kulaklık",
        "3"
       ]
      ]

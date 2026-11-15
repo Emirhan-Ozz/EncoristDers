@@ -505,6 +505,7 @@
     if (q.type === 'code' && q.title) body += '<div class="q-text"><strong>' + esc(q.title) + '</strong></div>';
     body += '<div class="q-text">' + fmt(q.q) + '</div>';
     if (q.tables) body += tablesHtml(q.tables);
+    if (q.svg) body += '<figure class="erd">' + q.svg + '</figure>';
     if (q.type === 'match') {
       body += '<div class="match">' + q.pairs.map(function (p, k) {
         return '<div class="match-row" data-row="' + k + '"><span class="ml">' + fmt(p[0]) + '</span><select data-q="' + i + '" data-m="' + k + '"><option value="-1">Seç…</option>' +

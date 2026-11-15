@@ -3,6 +3,7 @@ Kaynak: ders konu listesi (7 hafta), derste kurulan okul_db (1-1_kod, 1-2_kod, I
 magaza veritabanı ve GROUP BY / HAVING uygulaması.
 Kod bloklarında 'db' varsa build.py sorguyu MariaDB'de çalıştırır ve sonuç tablosunu ('res') ekler;
 'ddl': True olanlar boş bir deneme veritabanında hatasız çalışmalıdır."""
+import er
 from html import escape as E
 
 
@@ -154,6 +155,11 @@ topic('iliskisel', 'İlişkisel veri tabanı modeli', 'Hafta 2 · derste çizile
         ['1:N', 'FK **çok tarafına** eklenir (`ders.bolum_no`).'],
         ['M:N', '**Ara (bağlantı) tablo** kurulur; iki tablonun PK\'leri burada FK olur, ikisi birlikte bileşik PK olur (`ders_kaydi`).']]),
     P('**ER diyagramı (Chen gösterimi)**: **dikdörtgen** = varlık (tablo), **elips** = nitelik (sütun), **eşkenar dörtgen (baklava)** = ilişki, çizgi üstündeki **1 / N / M** = kardinalite. Birincil anahtarın **altı çizilir**. phpMyAdmin\'in **Designer** ekranı ise tabloları kutu, FK bağlarını çizgi olarak gösterir.'),
+    P('**ER diyagramı sembolleri (görsel)**: sınavda "bu şekil neyi temsil eder?" diye sorulabilir. Hepsi Chen gösterimi.'),
+    ERD(er.legend(), 'En sık sorulanlar ilk dördü: dikdörtgen = varlık, elips = nitelik, baklava = ilişki, altı çizili = PK.'),
+    P('**Diyagram nasıl okunur?** Aşağıdaki örnekte: 3 dikdörtgen → **3 varlık** (Musteri, Siparis, Urun). 2 baklava → **2 ilişki** (Verir, Icerir). Musteri tarafında **1**, Siparis tarafında **N** → bir müşteri çok sipariş verir (**1:N**), FK siparis tablosuna (`musteri_no`). Siparis–Urun **M:N** → ara tablo gerekir. Toplam tablo: 3 varlık + 1 ara tablo = **4**. `telefon` çift elips (çok değerli), `yas` kesikli (türetilmiş, saklanmaz). Siparis tarafındaki **çift çizgi**: her sipariş mutlaka bir müşteriye ait.'),
+    ERD(er.ORNEK, 'Örnek: Musteri 1—N Siparis M—N Urun. Bu diyagramdan soru gelirse önce şekilleri say, sonra kardinaliteye bak.'),
+    TIP('Tabloya çevirirken: her **varlık** bir tablo, her **M:N** ilişki bir ara tablo; **1:N** ve **1:1** ilişkiler tablo değil FK olur. **Çok değerli** nitelik ayrı tabloya ayrılır, **türetilmiş** nitelik saklanmaz.'),
     TRAP('1:N ilişkide FK **"1" tarafına değil, "N" tarafına** eklenir. Bölüm tablosuna ders_kodu koymak yanlıştır: bir bölümün birden çok dersi vardır, tek sütuna sığmaz.'),
     P('**Normalizasyon**: tekrarları ve güncelleme sorunlarını (anomalileri) azaltmak için tabloları bölme süreci.'),
     TB(['Normal form', 'Kural'], [
