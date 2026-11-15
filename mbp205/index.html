@@ -32,17 +32,17 @@ html:active-view-transition-type(back)::view-transition-new(root){animation-name
 addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=navigation.activation;if(!a||!a.from)return;var d=function(u){return new URL(u).pathname.replace(/index\.html$/,'').split('/').filter(Boolean).length};e.viewTransition.types.add(d(a.entry.url)<d(a.from.url)?'back':'forward')}catch(_){}});
 </script>
 <script src="../phase.js?v=1" data-scroll="tekrar"></script>
-<style>.tabs a.tab-onemli{color:var(--accent);font-weight:800}.tabs a.tab-onemli:hover{color:var(--accent)}</style>
+<style>.tabs a.tab-onemli{color:var(--accent);font-weight:800}.tabs a.tab-onemli:hover{color:var(--accent)}@media (max-width:440px){.tabs .tl{display:none}.tabs{justify-content:space-between}.tabs a{padding:0 6px}}@media (max-width:640px){html body .sk-fab,html body .sk-home{left:auto;right:12px;width:38px;height:38px;opacity:.75}html body .sk-fab{bottom:12px}html body .sk-home{bottom:56px}}</style>
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#tekrar"><i></i>MBP205<span> · Nesne Tabanlı Programlama II</span></a>
       <nav class="tabs" aria-label="Bölümler">
-        <a href="#tekrar" data-tab="tekrar">Genel Tekrar</a>
-        <a href="#onemli" data-tab="onemli" class="tab-onemli">! ÖNEMLİ !</a>
+        <a href="#tekrar" data-tab="tekrar"><span class="tl">Genel </span>Tekrar</a>
+        <a href="#onemli" data-tab="onemli" class="tab-onemli"><span class="tl">! </span>ÖNEMLİ<span class="tl"> !</span></a>
         <a href="#ozet" data-tab="ozet">Özet</a>
-        <a href="#yazili" data-tab="yazili">Yazılı prova</a>
+        <a href="#yazili" data-tab="yazili">Yazılı<span class="tl"> prova</span></a>
         <a href="#test" data-tab="test">Test</a>
       </nav>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Tema değiştir" title="Açık / koyu tema">◐</button>
@@ -55,7 +55,7 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
   <script src="questions.js?v=20261115a"></script>
   <script src="yazili-data.js?v=20261115a"></script>
   <script src="yazili.js?v=20261114a"></script>
-  <script src="ozet.js?v=20261115b"></script>
+  <script src="ozet.js?v=20261115c"></script>
   <script src="assets/app.js?v=20261115a"></script>
 <script src="../kit.js?v=20261113h"></script>
 <script src="kit-init.js?v=20261115b"></script>

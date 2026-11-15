@@ -148,14 +148,18 @@
     '.oz-ex pre{margin:0;white-space:pre;font:15px/1.5 var(--mono);background:var(--code-bg);color:var(--code-text);border-radius:8px;padding:10px 12px;overflow:auto}' +
     '.oz-ex pre code{background:none;border:0;padding:0;font:inherit;color:inherit}' +
     '.oz-ex pre.uml{background:var(--surface-2);color:var(--text);border:1px solid var(--border);margin-bottom:6px}' +
-    '.oz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}' +
+    '.oz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}.oz-ex{min-width:0}' +
     '.oz-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}.oz-head h1{margin:0}.oz-head h1 a{color:inherit;text-decoration:none}' +
     '.oz-imp{text-decoration:none;font-weight:700;border:2px solid var(--accent);color:var(--accent);border-radius:999px;padding:5px 14px}.oz-imp:hover,.oz-imp.on{background:var(--accent);color:#fff}' +
     '.oz-img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border)}' +
     '.oz-tab td,.oz-tab th{vertical-align:top}' +
     '.oz-not{border-top:1px dashed var(--border);padding:12px 0 4px}.oz-not:first-of-type{border-top:0}.oz-not h3{margin:0 0 6px;font-size:1.05rem;color:var(--accent)}' +
-    '.oz-fix{font-size:.88rem;color:var(--muted);margin:6px 0 0}.oz-photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:14px}' +
-    '.oz-tab{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:.93rem}.oz-tab th,.oz-tab td{border:1px solid var(--border);padding:6px 10px;text-align:left}.oz-tab th{background:var(--surface-2)}';
+    '.oz-fix{font-size:.88rem;color:var(--muted);margin:6px 0 0}.oz-photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px;margin-top:14px}' +
+    '.oz-tab{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:.93rem}.oz-tab th,.oz-tab td{border:1px solid var(--border);padding:6px 10px;text-align:left}.oz-tab th{background:var(--surface-2)}' +
+    '@media (max-width:560px){.oz-tab.stack,.oz-tab.stack tbody,.oz-tab.stack tr,.oz-tab.stack td{display:block;width:auto}' +
+    '.oz-tab.stack tr:first-child{display:none}.oz-tab.stack tr{border:1px solid var(--border);border-radius:8px;margin:0 0 10px;overflow:hidden}' +
+    '.oz-tab.stack td{border:0;border-top:1px solid var(--border);padding:7px 12px}.oz-tab.stack td:first-child{border-top:0}' +
+    '.oz-tab.stack td.oz-k{background:var(--surface-2)}.oz-tab.stack td[data-label]::before{content:attr(data-label);display:block;font-size:.76rem;font-weight:700;color:var(--muted);margin-bottom:1px}}';
 
 
   /* Tahta fotoğrafı (hocanın sınav başlıkları) → tablo */
@@ -182,9 +186,17 @@
     ]
   };
 
-  function table(head, rows) {
-    return '<table class="oz-tab"><tr>' + head.map(function (h) { return '<th>' + md(h) + '</th>'; }).join('') + '</tr>' +
-      rows.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td>' + md(c) + '</td>' : '<td><b>' + md(c) + '</b></td>'; }).join('') + '</tr>'; }).join('') + '</table>';
+  // Telefonda (≤560px) her satır kart olur; hücre başlığı data-label ile gösterilir.
+  function table(head, rows, boldFirst) {
+    if (boldFirst == null) boldFirst = true;
+    return '<table class="oz-tab stack"><tr>' + head.map(function (h) { return '<th>' + md(h) + '</th>'; }).join('') + '</tr>' +
+      rows.map(function (r) {
+        return '<tr>' + r.map(function (c, i) {
+          var lab = String(head[i] || '').replace(/[`*]/g, '');
+          var first = i === 0 && boldFirst;
+          return '<td' + (lab && !first ? ' data-label="' + esc(lab) + '"' : '') + (first ? ' class="oz-k"' : '') + '>' + (first ? '<b>' + md(c) + '</b>' : md(c)) + '</td>';
+        }).join('') + '</tr>';
+      }).join('') + '</table>';
   }
   function head(active) {
     if (active === 'onemli') return '<div class="oz-head"><h1>! ÖNEMLİ !</h1><a class="oz-imp" href="#ozet">Özet →</a></div>';
@@ -231,8 +243,7 @@
       '<p style="color:var(--muted);font-size:.9rem;margin:0 0 10px">İki sayfalık el yazısı notun metne çevrilmiş hali. Kodlardaki <code>sout</code> kısaltması <code>System.out.println</code> olarak yazıldı.</p>' +
       NOTLAR.map(function (n) {
         return '<div class="oz-not"><h3>' + esc(n.t) + '</h3>' +
-          (n.tab ? '<table class="oz-tab"><tr>' + n.tab[0].map(function (h) { return '<th>' + md(h) + '</th>'; }).join('') + '</tr>' +
-            n.tab.slice(1).map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + md(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</table>' : '') +
+          (n.tab ? table(n.tab[0], n.tab.slice(1), false) : '') +
           '<ul>' + n.m.map(function (x) { return '<li>' + md(x) + '</li>'; }).join('') + '</ul>' +
           (n.k ? '<div class="oz-ex"><pre class="code">' + hl(n.k) + '</pre></div>' : '') +
           (n.not ? '<p class="oz-fix">✱ ' + md(n.not) + '</p>' : '') + '</div>';
@@ -254,9 +265,7 @@
       OZET.map(function (t, i) {
         return '<section class="oz-card" id="oz-' + t.id + '"><h2><span>' + (i + 1) + '</span>' + esc(t.title) + '</h2>' +
           '<p class="oz-tanim">' + md(t.tanim) + '</p>' +
-          (t.tablo ? '<table class="oz-tab">' + t.tablo.map(function (r, ri) {
-            return '<tr>' + r.map(function (c) { return ri ? '<td>' + md(c) + '</td>' : '<th>' + md(c) + '</th>'; }).join('') + '</tr>';
-          }).join('') + '</table>' : '') +
+          (t.tablo ? table(t.tablo[0], t.tablo.slice(1), true) : '') +
           '<ul>' + t.maddeler.map(function (m) { return '<li>' + md(m) + '</li>'; }).join('') + '</ul>' +
           '<div class="oz-grid">' + t.kodlar.map(function (k) {
             return '<div class="oz-ex"><small>Örnek · ' + esc(k.b) + '</small>' +
