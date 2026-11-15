@@ -362,12 +362,18 @@ mc('WHERE ile HAVING için hangisi doğrudur?', ['WHERE gruplamadan önce satır
 mc('Doğru yazım sırası hangisidir?', ['SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY', 'SELECT, FROM, GROUP BY, WHERE, HAVING, ORDER BY', 'SELECT, FROM, WHERE, HAVING, GROUP BY, ORDER BY', 'SELECT, WHERE, FROM, GROUP BY, ORDER BY, HAVING', 'FROM, SELECT, WHERE, ORDER BY, GROUP BY, HAVING'],
    'Uygulama: SELECT … FROM … JOIN … WHERE … GROUP BY … HAVING … ORDER BY …')
 mc('Mantıksal çalışma sırasında hangisi **en önce** işlenir?', ['FROM', 'SELECT', 'WHERE', 'GROUP BY', 'ORDER BY'], 'FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT.')
-mc('`magaza` veri tabanında aşağıdaki sorgu kaç satır döndürür? (Şehirler: İzmir 3, İstanbul 3, Ankara 2, Gaziantep 1, Bursa 1 müşteri)', ['3', '5', '2', '10', '1'],
-   'Birden fazla müşterisi olan şehirler: İzmir, İstanbul, Ankara (uygulama soru 7).',
-   sql="SELECT sehir, COUNT(*) FROM musteriler GROUP BY sehir HAVING COUNT(*) > 1;", mode='n', db='magaza')
-mc('`magaza` veri tabanında her şehirdeki müşteri sayısını veren sorgu (uygulama soru 3) kaç satır döndürür?', ['5', '10', '3', '1', '6'],
-   '5 farklı şehir: İzmir, İstanbul, Ankara, Gaziantep, Bursa.',
-   sql="SELECT sehir, COUNT(*) AS musteri_sayisi FROM musteriler GROUP BY sehir;", mode='n', db='magaza')
+MUS = [tb('musteriler', ['musteri_id', 'ad', 'sehir'], [[1, 'Ayşe', 'İzmir'], [2, 'Mehmet', 'İstanbul'], [3, 'Zeynep', 'İzmir'], [4, 'Ahmet', 'Ankara'], [5, 'Elif', 'İstanbul'],
+    [6, 'Can', 'Gaziantep'], [7, 'Deniz', 'İzmir'], [8, 'Selin', 'Ankara'], [9, 'Emre', 'Bursa'], [10, 'Merve', 'İstanbul']])]
+mc('Sorgu kaç satır döndürür?', ['3', '5', '2', '10', '1'],
+   'Gruplar: İzmir 3, İstanbul 3, Ankara 2, Gaziantep 1, Bursa 1. HAVING COUNT(*) > 1 → İzmir, İstanbul, Ankara (uygulama soru 7).',
+   sql="SELECT sehir, COUNT(*) FROM musteriler GROUP BY sehir HAVING COUNT(*) > 1;", mode='n', tables=MUS)
+mc('Her şehirdeki müşteri sayısını veren sorgu kaç satır döndürür?', ['5', '10', '3', '1', '6'],
+   'GROUP BY her farklı şehir için bir satır üretir: İzmir, İstanbul, Ankara, Gaziantep, Bursa (uygulama soru 3).',
+   sql="SELECT sehir, COUNT(*) AS musteri_sayisi FROM musteriler GROUP BY sehir;", mode='n', tables=MUS)
+mc('Sorgu sonucu kaçtır?', ['10', '5', '3', '1', '9'], 'COUNT(*) tablodaki bütün satırları sayar (uygulama soru 1).',
+   sql="SELECT COUNT(*) FROM musteriler;", mode='val', tables=MUS)
+mc('Sorgu sonucu kaçtır?', ['5', '10', '3', '4', '1'], 'COUNT(DISTINCT sehir) farklı şehirleri sayar: İzmir, İstanbul, Ankara, Gaziantep, Bursa.',
+   sql="SELECT COUNT(DISTINCT sehir) FROM musteriler;", mode='val', tables=MUS)
 SIP = [tb('siparisler', ['siparis_id', 'musteri_id', 'durum'], [[1, 1, 'Teslim Edildi'], [2, 2, 'Teslim Edildi'], [3, 1, 'Kargoda'], [4, 3, 'İptal'], [5, 1, 'Teslim Edildi'], [6, 2, 'İptal']])]
 mc('Sorgu sonucunda "Teslim Edildi" satırındaki sayı kaçtır?', ['3', '2', '6', '1', '4'], 'Durum bazında sayım (uygulama soru 4): Teslim Edildi 3, İptal 2, Kargoda 1.',
    sql="SELECT COUNT(*) FROM siparisler GROUP BY durum HAVING durum = 'Teslim Edildi';", code="SELECT durum, COUNT(*) AS adet\nFROM siparisler\nGROUP BY durum;", mode='val', tables=SIP)
@@ -386,38 +392,27 @@ mc('`SELECT sehir, ad, COUNT(*) FROM musteriler GROUP BY sehir;` sorgusunun soru
    'Bir şehirde birden çok ad var; hangisinin yazılacağı belli değil (ONLY_FULL_GROUP_BY hatası).',
    sql="SELECT sehir, ad, COUNT(*) FROM musteriler GROUP BY sehir;", mode='err', db='magaza', code=None,
    setup="SET SESSION sql_mode = 'ONLY_FULL_GROUP_BY';")
-mc('Uygulama soru 10\'da (iptaller hariç, cirosu 5000 TL\'yi geçen şehirler) iptal edilen siparişler hangi bölümde elenir?', ['WHERE', 'HAVING', 'ORDER BY', 'GROUP BY', 'SELECT'],
-   'İptal tek tek satırların özelliğidir, gruplamadan önce WHERE ile atılır; 5000 koşulu ise HAVING\'dedir.')
-mc('`magaza` veri tabanında uygulama soru 10\'un sorgusu kaç şehir döndürür?', ['2', '3', '4', '5', '1'],
-   'İstanbul (16579.70) ve İzmir (13014.20). Gaziantep (3899.00) ve Ankara (3500.00) 5000 TL\'nin altında kalır; Bursa\'dan sipariş yok.',
-   sql="""SELECT m.sehir, SUM(d.adet * d.birim_fiyat) AS ciro
-FROM musteriler m
-JOIN siparisler s    ON s.musteri_id = m.musteri_id
-JOIN siparis_detay d ON d.siparis_id = s.siparis_id
-WHERE s.durum <> 'İptal'
-GROUP BY m.sehir
-HAVING SUM(d.adet * d.birim_fiyat) > 5000
-ORDER BY ciro DESC;""", mode='n', db='magaza')
-mc('Aynı sorguda (uygulama 10) ilk satırdaki şehir hangisidir?', ['İstanbul', 'İzmir', 'Ankara', 'Gaziantep', 'Bursa'], 'En yüksek ciro İstanbul\'da.',
-   sql="""SELECT m.sehir
-FROM musteriler m
-JOIN siparisler s    ON s.musteri_id = m.musteri_id
-JOIN siparis_detay d ON d.siparis_id = s.siparis_id
-WHERE s.durum <> 'İptal'
-GROUP BY m.sehir
-HAVING SUM(d.adet * d.birim_fiyat) > 5000
-ORDER BY SUM(d.adet * d.birim_fiyat) DESC LIMIT 1;""", mode='val', db='magaza', code="-- uygulama soru 10'un sorgusu, ORDER BY ciro DESC")
-mc('`magaza` veri tabanında toplam kaç müşteri vardır? (uygulama soru 1)', ['10', '18', '9', '5', '30'], '`SELECT COUNT(*) FROM musteriler;`',
-   sql="SELECT COUNT(*) FROM musteriler;", mode='val', db='magaza', code="SELECT COUNT(*) FROM musteriler;")
-mc('`magaza` veri tabanında en az 2 sipariş vermiş müşteri sayısı kaçtır? (uygulama soru 8)', ['6', '3', '8', '10', '2'],
-   'Ayşe 3, Mehmet 3, Zeynep 3, Elif 2, Can 2, Deniz 2 sipariş verdi.',
-   sql="""SELECT COUNT(*) FROM (SELECT m.musteri_id FROM musteriler m JOIN siparisler s ON s.musteri_id = m.musteri_id
-GROUP BY m.musteri_id HAVING COUNT(s.siparis_id) >= 2) x;""", mode='val', db='magaza',
-   code="""SELECT m.ad, m.soyad, COUNT(s.siparis_id) AS siparis_sayisi
-FROM musteriler m
-JOIN siparisler s ON s.musteri_id = m.musteri_id
-GROUP BY m.musteri_id, m.ad, m.soyad
-HAVING COUNT(s.siparis_id) >= 2;""")
+mc('İptal edilen siparişler hariç, cirosu 5000 TL\'yi geçen şehirler listelenecek. "İptal olmasın" koşulu sorgunun hangi bölümüne yazılır?', ['WHERE', 'HAVING', 'ORDER BY', 'GROUP BY', 'SELECT'],
+   'İptal tek tek satırların özelliğidir, gruplamadan önce WHERE ile atılır; 5000 koşulu ise HAVING\'dedir (uygulama soru 10).')
+SAT = [tb('satislar', ['sehir', 'durum', 'tutar'], [['İstanbul', 'Teslim Edildi', '4000.00'], ['İstanbul', 'Kargoda', '2500.00'], ['İzmir', 'Teslim Edildi', '3000.00'],
+    ['İzmir', 'İptal', '4000.00'], ['Ankara', 'Teslim Edildi', '3500.00'], ['Ankara', 'Teslim Edildi', '2000.00'], ['Gaziantep', 'İptal', '6000.00']])]
+SAT_SQL = """SELECT sehir, SUM(tutar) AS ciro
+FROM satislar
+WHERE durum <> 'İptal'
+GROUP BY sehir
+HAVING SUM(tutar) > 5000
+ORDER BY ciro DESC;"""
+mc('Sorgu kaç satır döndürür?', ['2', '4', '3', '1', '0'],
+   'Önce WHERE iptalleri atar. Kalan cirolar: İstanbul 6500, Ankara 5500, İzmir 3000. HAVING > 5000: İstanbul ve Ankara (uygulama soru 10).',
+   sql=SAT_SQL, mode='n', tables=SAT)
+mc('Sorgu sonucunun ilk satırındaki şehir hangisidir?', ['İstanbul', 'Ankara', 'İzmir', 'Gaziantep', 'Boş sonuç'], 'ORDER BY ciro DESC: İstanbul 6500 > Ankara 5500 (uygulama soru 10).',
+   sql="SELECT sehir FROM satislar WHERE durum <> 'İptal' GROUP BY sehir HAVING SUM(tutar) > 5000 ORDER BY SUM(tutar) DESC LIMIT 1;", code=SAT_SQL, mode='val', tables=SAT)
+mc('Bu sorgudan `WHERE durum <> \'İptal\'` satırı silinirse kaç satır döner?', ['4', '2', '3', '1', '0'],
+   'İptaller de toplanır: İzmir 7000, İstanbul 6500, Gaziantep 6000, Ankara 5500; hepsi 5000\'i geçer (uygulama soru 10).',
+   sql="SELECT sehir, SUM(tutar) AS ciro FROM satislar GROUP BY sehir HAVING SUM(tutar) > 5000;", mode='n', tables=SAT, code=SAT_SQL)
+mc('En az 2 sipariş vermiş müşterileri listeleyen sorgu kaç satır döndürür?', ['2', '3', '1', '6', '0'],
+   'Müşteri bazında: 1 → 3, 2 → 2, 3 → 1 sipariş. HAVING COUNT(*) >= 2: müşteri 1 ve 2 (uygulama soru 8).',
+   sql="SELECT musteri_id, COUNT(*) AS siparis_sayisi\nFROM siparisler\nGROUP BY musteri_id\nHAVING COUNT(*) >= 2;", mode='n', tables=SIP)
 mc('`AVG` fonksiyonu NULL değerleri nasıl ele alır?', ['Hesaba katmaz; NULL olmayanların ortalamasını alır', '0 olarak sayar', 'Hata verir', 'Sonucu NULL yapar', 'En büyük değer yapar'],
    'Not: 10, NULL, 20 → AVG = 15, (10+0+20)/3 değil.')
 NOTLAR = [tb('notlar', ['ogrenci', 'puan'], [['Ali', 10], ['Ayşe', None], ['Can', 20]])]
@@ -454,7 +449,7 @@ mc('Sorgu sonucu hangisidir?', ['Turizm ve Otel İşletmeciliği', 'Grafik Tasar
    'Hiç dersi olmayan bölüm: 4 numara.',
    sql="SELECT b.bolum_adi FROM bolum b LEFT JOIN ders d ON d.bolum_no = b.bolum_no WHERE d.ders_kodu IS NULL;", mode='col', db='okul_db', tables=okul('bolum', 'ders'))
 mc('Sorgu kaç satır döndürür?', ['24', '10', '6', '4', '1'], 'CROSS JOIN kartezyen çarpım: 6 ders × 4 bölüm = 24.',
-   sql="SELECT * FROM ders CROSS JOIN bolum;", mode='n', db='okul_db')
+   sql="SELECT * FROM ders CROSS JOIN bolum;", mode='n', db='okul_db', tables=okul('ders', 'bolum'))
 mc('MySQL\'de hangi JOIN türü **doğrudan desteklenmez**?', ['FULL OUTER JOIN', 'INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'CROSS JOIN'], 'LEFT JOIN … UNION … RIGHT JOIN ile yapılır.')
 mc('Aşağıdaki sorgu neden **hata verir**?', ['ogrenci_no iki tabloda da var; hangi tablonunki olduğu belirsiz', 'JOIN yerine WHERE yazılmalıydı', 'Takma ad kullanılamaz', 'ON yerine IN gelmeli', 'SELECT\'te iki sütun olamaz'],
    '#1052 Column \'ogrenci_no\' in field list is ambiguous. Çözüm: `o.ogrenci_no`.',
@@ -475,16 +470,21 @@ mc('Sorguda Kerem\'in satırında hangi sayı görünür?', ['0', '1', 'NULL', '
 mc('Aynı sorguda `COUNT(*)` kullanılsaydı Kerem\'in satırında kaç yazardı?', ['1', '0', 'NULL', '6', 'Hata verirdi'], 'LEFT JOIN\'in eşleşmesiz satırı da bir satırdır; COUNT(*) onu sayar.',
    sql="SELECT COUNT(*) FROM ogrenci o LEFT JOIN ders_kaydi k ON k.ogrenci_no = o.ogrenci_no WHERE o.ad = 'Kerem' GROUP BY o.ogrenci_no;",
    code="SELECT o.ad, COUNT(*) AS ders_sayisi\nFROM ogrenci o\nLEFT JOIN ders_kaydi k ON k.ogrenci_no = o.ogrenci_no\nGROUP BY o.ogrenci_no, o.ad;", mode='val', db='okul_db', tables=okul('ogrenci', 'ders_kaydi'))
-mc('`magaza` veri tabanında hiç satılmamış ürünler (uygulama bonus) hangileridir?', ['Mekanik Klavye, Kamp Sandalyesi', 'Mekanik Klavye', 'Kamp Sandalyesi, Termos', 'Oyuncak', 'Hepsi satıldı'],
-   'LEFT JOIN + GROUP BY + HAVING COUNT(d.detay_id) = 0.',
+URN = [tb('urunler', ['urun_id', 'urun_adi'], [[1, 'Kablosuz Kulaklık'], [2, 'Akıllı Saat'], [8, 'Python ile Programlama'], [9, 'Veri Bilimine Giriş'], [16, 'Mekanik Klavye'], [17, 'Kamp Sandalyesi']])]
+mc('Sorgu hangi ürünleri döndürür?', ['Mekanik Klavye, Kamp Sandalyesi', 'Mekanik Klavye', 'Kablosuz Kulaklık, Akıllı Saat', 'Veri Bilimine Giriş, Kamp Sandalyesi', 'Boş sonuç'],
+   'LEFT JOIN bütün ürünleri getirir; siparis_detay\'da hiç satırı olmayanların sayısı 0 olur. 16 ve 17 hiç satılmamış (uygulama bonus).',
    sql="""SELECT u.urun_adi
 FROM urunler u
 LEFT JOIN siparis_detay d ON d.urun_id = u.urun_id
 GROUP BY u.urun_id, u.urun_adi
-HAVING COUNT(d.detay_id) = 0
-ORDER BY u.urun_id;""", mode='col', db='magaza')
-mc('`magaza` veri tabanında her kategorinin ürün sayısını, ürünü olmayan "Oyuncak" da 0 görünecek şekilde listelemek için hangisi gerekir?', ['kategoriler LEFT JOIN urunler', 'kategoriler INNER JOIN urunler', 'urunler CROSS JOIN kategoriler', 'Sadece WHERE', 'HAVING COUNT(*) > 0'],
-   'INNER JOIN ürünü olmayan kategoriyi atar.')
+HAVING COUNT(d.urun_id) = 0
+ORDER BY u.urun_id;""", mode='col', tables=URN + DET)
+mc('Bu sorguda `LEFT JOIN` yerine `JOIN` (INNER) yazılırsa kaç satır döner?', ['0 satır', '2 satır', '6 satır', '4 satır', '1 satır'],
+   'INNER JOIN satılmamış ürünleri hiç getirmez; kalan her ürünün sayısı en az 1 olur, HAVING = 0 kimseyi geçirmez (uygulama bonus).',
+   sql="SELECT u.urun_adi FROM urunler u JOIN siparis_detay d ON d.urun_id = u.urun_id GROUP BY u.urun_id, u.urun_adi HAVING COUNT(d.urun_id) = 0;", mode='n', tables=URN + DET,
+   code="SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.urun_id) = 0;")
+mc('`kategoriler` ve `urunler` tablolarıyla her kategorinin ürün sayısı listelenecek; hiç ürünü olmayan kategori de 0 ile görünsün. Hangisi gerekir?', ['kategoriler LEFT JOIN urunler', 'kategoriler INNER JOIN urunler', 'urunler CROSS JOIN kategoriler', 'Sadece WHERE', 'HAVING COUNT(*) > 0'],
+   'INNER JOIN ürünü olmayan kategoriyi atar; LEFT JOIN soldaki tüm kategorileri tutar, COUNT(u.urun_id) 0 verir.')
 mc('Sorgu sonucu kaç satırdır?', ['4', '5', '3', '6', '2'], '4 kredili dersler 101, 102, 301; AA alan dersler 101, 202. UNION tekrarı (101) atar: 101, 102, 202, 301.',
    sql="SELECT ders_kodu FROM ders WHERE kredi = 4 UNION SELECT ders_kodu FROM ders_kaydi WHERE harf_notu = 'AA';", mode='n', db='okul_db', tables=okul('ders', 'ders_kaydi'))
 mc('Aynı sorgu `UNION ALL` ile yazılırsa kaç satır döner?', ['5', '4', '3', '6', '2'], 'UNION ALL tekrarları atmaz: 3 + 2 = 5.',

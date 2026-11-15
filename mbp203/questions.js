@@ -52,7 +52,7 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "`magaza` veri tabanında aşağıdaki sorgu kaç satır döndürür? (Şehirler: İzmir 3, İstanbul 3, Ankara 2, Gaziantep 1, Bursa 1 müşteri)",
+    "q": "Sorgu kaç satır döndürür?",
     "opts": [
      "3",
      "2",
@@ -61,13 +61,75 @@ window.EXAMS = [
      "10"
     ],
     "a": 0,
-    "exp": "Birden fazla müşterisi olan şehirler: İzmir, İstanbul, Ankara (uygulama soru 7).",
-    "code": "SELECT sehir, COUNT(*) FROM musteriler GROUP BY sehir HAVING COUNT(*) > 1;"
+    "exp": "Gruplar: İzmir 3, İstanbul 3, Ankara 2, Gaziantep 1, Bursa 1. HAVING COUNT(*) > 1 → İzmir, İstanbul, Ankara (uygulama soru 7).",
+    "code": "SELECT sehir, COUNT(*) FROM musteriler GROUP BY sehir HAVING COUNT(*) > 1;",
+    "tables": [
+     {
+      "name": "musteriler",
+      "cols": [
+       "musteri_id",
+       "ad",
+       "sehir"
+      ],
+      "rows": [
+       [
+        "1",
+        "Ayşe",
+        "İzmir"
+       ],
+       [
+        "2",
+        "Mehmet",
+        "İstanbul"
+       ],
+       [
+        "3",
+        "Zeynep",
+        "İzmir"
+       ],
+       [
+        "4",
+        "Ahmet",
+        "Ankara"
+       ],
+       [
+        "5",
+        "Elif",
+        "İstanbul"
+       ],
+       [
+        "6",
+        "Can",
+        "Gaziantep"
+       ],
+       [
+        "7",
+        "Deniz",
+        "İzmir"
+       ],
+       [
+        "8",
+        "Selin",
+        "Ankara"
+       ],
+       [
+        "9",
+        "Emre",
+        "Bursa"
+       ],
+       [
+        "10",
+        "Merve",
+        "İstanbul"
+       ]
+      ]
+     }
+    ]
    },
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "`magaza` veri tabanında her şehirdeki müşteri sayısını veren sorgu (uygulama soru 3) kaç satır döndürür?",
+    "q": "Her şehirdeki müşteri sayısını veren sorgu kaç satır döndürür?",
     "opts": [
      "10",
      "6",
@@ -76,21 +138,160 @@ window.EXAMS = [
      "1"
     ],
     "a": 2,
-    "exp": "5 farklı şehir: İzmir, İstanbul, Ankara, Gaziantep, Bursa.",
-    "code": "SELECT sehir, COUNT(*) AS musteri_sayisi FROM musteriler GROUP BY sehir;"
+    "exp": "GROUP BY her farklı şehir için bir satır üretir: İzmir, İstanbul, Ankara, Gaziantep, Bursa (uygulama soru 3).",
+    "code": "SELECT sehir, COUNT(*) AS musteri_sayisi FROM musteriler GROUP BY sehir;",
+    "tables": [
+     {
+      "name": "musteriler",
+      "cols": [
+       "musteri_id",
+       "ad",
+       "sehir"
+      ],
+      "rows": [
+       [
+        "1",
+        "Ayşe",
+        "İzmir"
+       ],
+       [
+        "2",
+        "Mehmet",
+        "İstanbul"
+       ],
+       [
+        "3",
+        "Zeynep",
+        "İzmir"
+       ],
+       [
+        "4",
+        "Ahmet",
+        "Ankara"
+       ],
+       [
+        "5",
+        "Elif",
+        "İstanbul"
+       ],
+       [
+        "6",
+        "Can",
+        "Gaziantep"
+       ],
+       [
+        "7",
+        "Deniz",
+        "İzmir"
+       ],
+       [
+        "8",
+        "Selin",
+        "Ankara"
+       ],
+       [
+        "9",
+        "Emre",
+        "Bursa"
+       ],
+       [
+        "10",
+        "Merve",
+        "İstanbul"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Sorgu sonucu kaçtır?",
+    "opts": [
+     "1",
+     "9",
+     "3",
+     "10",
+     "5"
+    ],
+    "a": 3,
+    "exp": "COUNT(*) tablodaki bütün satırları sayar (uygulama soru 1).",
+    "code": "SELECT COUNT(*) FROM musteriler;",
+    "tables": [
+     {
+      "name": "musteriler",
+      "cols": [
+       "musteri_id",
+       "ad",
+       "sehir"
+      ],
+      "rows": [
+       [
+        "1",
+        "Ayşe",
+        "İzmir"
+       ],
+       [
+        "2",
+        "Mehmet",
+        "İstanbul"
+       ],
+       [
+        "3",
+        "Zeynep",
+        "İzmir"
+       ],
+       [
+        "4",
+        "Ahmet",
+        "Ankara"
+       ],
+       [
+        "5",
+        "Elif",
+        "İstanbul"
+       ],
+       [
+        "6",
+        "Can",
+        "Gaziantep"
+       ],
+       [
+        "7",
+        "Deniz",
+        "İzmir"
+       ],
+       [
+        "8",
+        "Selin",
+        "Ankara"
+       ],
+       [
+        "9",
+        "Emre",
+        "Bursa"
+       ],
+       [
+        "10",
+        "Merve",
+        "İstanbul"
+       ]
+      ]
+     }
+    ]
    },
    {
     "type": "mc",
     "topic": "ileri1",
     "q": "Sorgu sonucunda \"Teslim Edildi\" satırındaki sayı kaçtır?",
     "opts": [
-     "1",
-     "4",
-     "6",
      "3",
+     "1",
+     "6",
+     "4",
      "2"
     ],
-    "a": 3,
+    "a": 0,
     "exp": "Durum bazında sayım (uygulama soru 4): Teslim Edildi 3, İptal 2, Kargoda 1.",
     "code": "SELECT durum, COUNT(*) AS adet\nFROM siparisler\nGROUP BY durum;",
     "tables": [
@@ -142,8 +343,8 @@ window.EXAMS = [
     "q": "Sorgu sonucunda 1 numaralı siparişin toplamı kaçtır?",
     "opts": [
      "640.00",
-     "1250.00",
      "1570.00",
+     "1250.00",
      "1890.00",
      "3"
     ],
@@ -197,76 +398,259 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "Uygulama soru 10'da (iptaller hariç, cirosu 5000 TL'yi geçen şehirler) iptal edilen siparişler hangi bölümde elenir?",
+    "q": "İptal edilen siparişler hariç, cirosu 5000 TL'yi geçen şehirler listelenecek. \"İptal olmasın\" koşulu sorgunun hangi bölümüne yazılır?",
     "opts": [
-     "WHERE",
-     "HAVING",
      "ORDER BY",
+     "HAVING",
      "GROUP BY",
+     "WHERE",
      "SELECT"
     ],
-    "a": 0,
-    "exp": "İptal tek tek satırların özelliğidir, gruplamadan önce WHERE ile atılır; 5000 koşulu ise HAVING'dedir."
-   },
-   {
-    "type": "mc",
-    "topic": "ileri1",
-    "q": "`magaza` veri tabanında uygulama soru 10'un sorgusu kaç şehir döndürür?",
-    "opts": [
-     "2",
-     "1",
-     "5",
-     "4",
-     "3"
-    ],
-    "a": 0,
-    "exp": "İstanbul (16579.70) ve İzmir (13014.20). Gaziantep (3899.00) ve Ankara (3500.00) 5000 TL'nin altında kalır; Bursa'dan sipariş yok.",
-    "code": "SELECT m.sehir, SUM(d.adet * d.birim_fiyat) AS ciro\nFROM musteriler m\nJOIN siparisler s    ON s.musteri_id = m.musteri_id\nJOIN siparis_detay d ON d.siparis_id = s.siparis_id\nWHERE s.durum <> 'İptal'\nGROUP BY m.sehir\nHAVING SUM(d.adet * d.birim_fiyat) > 5000\nORDER BY ciro DESC;"
-   },
-   {
-    "type": "mc",
-    "topic": "ileri1",
-    "q": "Aynı sorguda (uygulama 10) ilk satırdaki şehir hangisidir?",
-    "opts": [
-     "Ankara",
-     "İzmir",
-     "Gaziantep",
-     "İstanbul",
-     "Bursa"
-    ],
     "a": 3,
-    "exp": "En yüksek ciro İstanbul'da.",
-    "code": "-- uygulama soru 10'un sorgusu, ORDER BY ciro DESC"
+    "exp": "İptal tek tek satırların özelliğidir, gruplamadan önce WHERE ile atılır; 5000 koşulu ise HAVING'dedir (uygulama soru 10)."
    },
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "`magaza` veri tabanında toplam kaç müşteri vardır? (uygulama soru 1)",
+    "q": "Sorgu kaç satır döndürür?",
     "opts": [
-     "5",
-     "30",
-     "18",
-     "9",
-     "10"
+     "1",
+     "0",
+     "4",
+     "3",
+     "2"
     ],
     "a": 4,
-    "exp": "`SELECT COUNT(*) FROM musteriler;`",
-    "code": "SELECT COUNT(*) FROM musteriler;"
+    "exp": "Önce WHERE iptalleri atar. Kalan cirolar: İstanbul 6500, Ankara 5500, İzmir 3000. HAVING > 5000: İstanbul ve Ankara (uygulama soru 10).",
+    "code": "SELECT sehir, SUM(tutar) AS ciro\nFROM satislar\nWHERE durum <> 'İptal'\nGROUP BY sehir\nHAVING SUM(tutar) > 5000\nORDER BY ciro DESC;",
+    "tables": [
+     {
+      "name": "satislar",
+      "cols": [
+       "sehir",
+       "durum",
+       "tutar"
+      ],
+      "rows": [
+       [
+        "İstanbul",
+        "Teslim Edildi",
+        "4000.00"
+       ],
+       [
+        "İstanbul",
+        "Kargoda",
+        "2500.00"
+       ],
+       [
+        "İzmir",
+        "Teslim Edildi",
+        "3000.00"
+       ],
+       [
+        "İzmir",
+        "İptal",
+        "4000.00"
+       ],
+       [
+        "Ankara",
+        "Teslim Edildi",
+        "3500.00"
+       ],
+       [
+        "Ankara",
+        "Teslim Edildi",
+        "2000.00"
+       ],
+       [
+        "Gaziantep",
+        "İptal",
+        "6000.00"
+       ]
+      ]
+     }
+    ]
    },
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "`magaza` veri tabanında en az 2 sipariş vermiş müşteri sayısı kaçtır? (uygulama soru 8)",
+    "q": "Sorgu sonucunun ilk satırındaki şehir hangisidir?",
     "opts": [
-     "6",
-     "2",
-     "3",
-     "8",
-     "10"
+     "İstanbul",
+     "Boş sonuç",
+     "Ankara",
+     "İzmir",
+     "Gaziantep"
     ],
     "a": 0,
-    "exp": "Ayşe 3, Mehmet 3, Zeynep 3, Elif 2, Can 2, Deniz 2 sipariş verdi.",
-    "code": "SELECT m.ad, m.soyad, COUNT(s.siparis_id) AS siparis_sayisi\nFROM musteriler m\nJOIN siparisler s ON s.musteri_id = m.musteri_id\nGROUP BY m.musteri_id, m.ad, m.soyad\nHAVING COUNT(s.siparis_id) >= 2;"
+    "exp": "ORDER BY ciro DESC: İstanbul 6500 > Ankara 5500 (uygulama soru 10).",
+    "code": "SELECT sehir, SUM(tutar) AS ciro\nFROM satislar\nWHERE durum <> 'İptal'\nGROUP BY sehir\nHAVING SUM(tutar) > 5000\nORDER BY ciro DESC;",
+    "tables": [
+     {
+      "name": "satislar",
+      "cols": [
+       "sehir",
+       "durum",
+       "tutar"
+      ],
+      "rows": [
+       [
+        "İstanbul",
+        "Teslim Edildi",
+        "4000.00"
+       ],
+       [
+        "İstanbul",
+        "Kargoda",
+        "2500.00"
+       ],
+       [
+        "İzmir",
+        "Teslim Edildi",
+        "3000.00"
+       ],
+       [
+        "İzmir",
+        "İptal",
+        "4000.00"
+       ],
+       [
+        "Ankara",
+        "Teslim Edildi",
+        "3500.00"
+       ],
+       [
+        "Ankara",
+        "Teslim Edildi",
+        "2000.00"
+       ],
+       [
+        "Gaziantep",
+        "İptal",
+        "6000.00"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Bu sorgudan `WHERE durum <> 'İptal'` satırı silinirse kaç satır döner?",
+    "opts": [
+     "2",
+     "4",
+     "0",
+     "1",
+     "3"
+    ],
+    "a": 1,
+    "exp": "İptaller de toplanır: İzmir 7000, İstanbul 6500, Gaziantep 6000, Ankara 5500; hepsi 5000'i geçer (uygulama soru 10).",
+    "code": "SELECT sehir, SUM(tutar) AS ciro\nFROM satislar\nWHERE durum <> 'İptal'\nGROUP BY sehir\nHAVING SUM(tutar) > 5000\nORDER BY ciro DESC;",
+    "tables": [
+     {
+      "name": "satislar",
+      "cols": [
+       "sehir",
+       "durum",
+       "tutar"
+      ],
+      "rows": [
+       [
+        "İstanbul",
+        "Teslim Edildi",
+        "4000.00"
+       ],
+       [
+        "İstanbul",
+        "Kargoda",
+        "2500.00"
+       ],
+       [
+        "İzmir",
+        "Teslim Edildi",
+        "3000.00"
+       ],
+       [
+        "İzmir",
+        "İptal",
+        "4000.00"
+       ],
+       [
+        "Ankara",
+        "Teslim Edildi",
+        "3500.00"
+       ],
+       [
+        "Ankara",
+        "Teslim Edildi",
+        "2000.00"
+       ],
+       [
+        "Gaziantep",
+        "İptal",
+        "6000.00"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "En az 2 sipariş vermiş müşterileri listeleyen sorgu kaç satır döndürür?",
+    "opts": [
+     "6",
+     "1",
+     "2",
+     "3",
+     "0"
+    ],
+    "a": 2,
+    "exp": "Müşteri bazında: 1 → 3, 2 → 2, 3 → 1 sipariş. HAVING COUNT(*) >= 2: müşteri 1 ve 2 (uygulama soru 8).",
+    "code": "SELECT musteri_id, COUNT(*) AS siparis_sayisi\nFROM siparisler\nGROUP BY musteri_id\nHAVING COUNT(*) >= 2;",
+    "tables": [
+     {
+      "name": "siparisler",
+      "cols": [
+       "siparis_id",
+       "musteri_id",
+       "durum"
+      ],
+      "rows": [
+       [
+        "1",
+        "1",
+        "Teslim Edildi"
+       ],
+       [
+        "2",
+        "2",
+        "Teslim Edildi"
+       ],
+       [
+        "3",
+        "1",
+        "Kargoda"
+       ],
+       [
+        "4",
+        "3",
+        "İptal"
+       ],
+       [
+        "5",
+        "1",
+        "Teslim Edildi"
+       ],
+       [
+        "6",
+        "2",
+        "İptal"
+       ]
+      ]
+     }
+    ]
    },
    {
     "type": "match",
@@ -292,8 +676,8 @@ window.EXAMS = [
     ],
     "exp": "Uygulamadaki kısa hatırlatma.",
     "choices": [
-     "Sonucu sıralar",
      "Gruplamadan önce satırları süzer",
+     "Sonucu sıralar",
      "Aynı değerli satırları gruplar",
      "Gruplamadan sonra grupları süzer"
     ]
@@ -301,17 +685,184 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri2",
-    "q": "`magaza` veri tabanında hiç satılmamış ürünler (uygulama bonus) hangileridir?",
+    "q": "Sorgu hangi ürünleri döndürür?",
     "opts": [
-     "Kamp Sandalyesi, Termos",
-     "Mekanik Klavye",
+     "Kablosuz Kulaklık, Akıllı Saat",
+     "Boş sonuç",
+     "Veri Bilimine Giriş, Kamp Sandalyesi",
      "Mekanik Klavye, Kamp Sandalyesi",
-     "Hepsi satıldı",
-     "Oyuncak"
+     "Mekanik Klavye"
     ],
-    "a": 2,
-    "exp": "LEFT JOIN + GROUP BY + HAVING COUNT(d.detay_id) = 0.",
-    "code": "SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.detay_id) = 0\nORDER BY u.urun_id;"
+    "a": 3,
+    "exp": "LEFT JOIN bütün ürünleri getirir; siparis_detay'da hiç satırı olmayanların sayısı 0 olur. 16 ve 17 hiç satılmamış (uygulama bonus).",
+    "code": "SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.urun_id) = 0\nORDER BY u.urun_id;",
+    "tables": [
+     {
+      "name": "urunler",
+      "cols": [
+       "urun_id",
+       "urun_adi"
+      ],
+      "rows": [
+       [
+        "1",
+        "Kablosuz Kulaklık"
+       ],
+       [
+        "2",
+        "Akıllı Saat"
+       ],
+       [
+        "8",
+        "Python ile Programlama"
+       ],
+       [
+        "9",
+        "Veri Bilimine Giriş"
+       ],
+       [
+        "16",
+        "Mekanik Klavye"
+       ],
+       [
+        "17",
+        "Kamp Sandalyesi"
+       ]
+      ]
+     },
+     {
+      "name": "siparis_detay",
+      "cols": [
+       "siparis_id",
+       "urun_id",
+       "adet",
+       "birim_fiyat"
+      ],
+      "rows": [
+       [
+        "1",
+        "1",
+        "1",
+        "1250.00"
+       ],
+       [
+        "1",
+        "8",
+        "2",
+        "320.00"
+       ],
+       [
+        "2",
+        "2",
+        "1",
+        "3400.00"
+       ],
+       [
+        "3",
+        "8",
+        "3",
+        "320.00"
+       ],
+       [
+        "3",
+        "9",
+        "1",
+        "410.00"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "type": "mc",
+    "topic": "ileri2",
+    "q": "Bu sorguda `LEFT JOIN` yerine `JOIN` (INNER) yazılırsa kaç satır döner?",
+    "opts": [
+     "4 satır",
+     "2 satır",
+     "1 satır",
+     "6 satır",
+     "0 satır"
+    ],
+    "a": 4,
+    "exp": "INNER JOIN satılmamış ürünleri hiç getirmez; kalan her ürünün sayısı en az 1 olur, HAVING = 0 kimseyi geçirmez (uygulama bonus).",
+    "code": "SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.urun_id) = 0;",
+    "tables": [
+     {
+      "name": "urunler",
+      "cols": [
+       "urun_id",
+       "urun_adi"
+      ],
+      "rows": [
+       [
+        "1",
+        "Kablosuz Kulaklık"
+       ],
+       [
+        "2",
+        "Akıllı Saat"
+       ],
+       [
+        "8",
+        "Python ile Programlama"
+       ],
+       [
+        "9",
+        "Veri Bilimine Giriş"
+       ],
+       [
+        "16",
+        "Mekanik Klavye"
+       ],
+       [
+        "17",
+        "Kamp Sandalyesi"
+       ]
+      ]
+     },
+     {
+      "name": "siparis_detay",
+      "cols": [
+       "siparis_id",
+       "urun_id",
+       "adet",
+       "birim_fiyat"
+      ],
+      "rows": [
+       [
+        "1",
+        "1",
+        "1",
+        "1250.00"
+       ],
+       [
+        "1",
+        "8",
+        "2",
+        "320.00"
+       ],
+       [
+        "2",
+        "2",
+        "1",
+        "3400.00"
+       ],
+       [
+        "3",
+        "8",
+        "3",
+        "320.00"
+       ],
+       [
+        "3",
+        "9",
+        "1",
+        "410.00"
+       ]
+      ]
+     }
+    ]
    }
   ]
  },
@@ -696,30 +1247,29 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "`magaza` veri tabanında uygulama soru 10'un sorgusu kaç şehir döndürür?",
+    "q": "`AVG` fonksiyonu NULL değerleri nasıl ele alır?",
     "opts": [
-     "2",
-     "1",
-     "5",
-     "4",
-     "3"
+     "Hata verir",
+     "En büyük değer yapar",
+     "Sonucu NULL yapar",
+     "Hesaba katmaz; NULL olmayanların ortalamasını alır",
+     "0 olarak sayar"
     ],
-    "a": 0,
-    "exp": "İstanbul (16579.70) ve İzmir (13014.20). Gaziantep (3899.00) ve Ankara (3500.00) 5000 TL'nin altında kalır; Bursa'dan sipariş yok.",
-    "code": "SELECT m.sehir, SUM(d.adet * d.birim_fiyat) AS ciro\nFROM musteriler m\nJOIN siparisler s    ON s.musteri_id = m.musteri_id\nJOIN siparis_detay d ON d.siparis_id = s.siparis_id\nWHERE s.durum <> 'İptal'\nGROUP BY m.sehir\nHAVING SUM(d.adet * d.birim_fiyat) > 5000\nORDER BY ciro DESC;"
+    "a": 3,
+    "exp": "Not: 10, NULL, 20 → AVG = 15, (10+0+20)/3 değil."
    },
    {
     "type": "mc",
     "topic": "ileri2",
     "q": "Sorgu kaç satır döndürür?",
     "opts": [
-     "5",
-     "1",
      "4",
+     "1",
      "30",
-     "6"
+     "6",
+     "5"
     ],
-    "a": 0,
+    "a": 4,
     "exp": "Kerem'in kartı yok; INNER JOIN onu getirmez.",
     "code": "SELECT o.ad, k.kart_no FROM ogrenci o JOIN ogrenci_karti k ON k.ogrenci_no = o.ogrenci_no;",
     "tables": [
@@ -800,54 +1350,42 @@ window.EXAMS = [
     "q": "Aşağıdaki sorgu neden **hata verir**?",
     "opts": [
      "Takma ad kullanılamaz",
-     "JOIN yerine WHERE yazılmalıydı",
-     "SELECT'te iki sütun olamaz",
+     "ogrenci_no iki tabloda da var; hangi tablonunki olduğu belirsiz",
      "ON yerine IN gelmeli",
-     "ogrenci_no iki tabloda da var; hangi tablonunki olduğu belirsiz"
+     "JOIN yerine WHERE yazılmalıydı",
+     "SELECT'te iki sütun olamaz"
     ],
-    "a": 4,
+    "a": 1,
     "exp": "#1052 Column 'ogrenci_no' in field list is ambiguous. Çözüm: `o.ogrenci_no`.",
     "code": "SELECT ogrenci_no, ders_kodu FROM ogrenci o JOIN ders_kaydi k ON k.ogrenci_no = o.ogrenci_no;"
    },
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "Görünüm oluşturulduktan sonra temel tabloya yeni satır eklenirse görünüm ne gösterir?",
+    "q": "`DROP VIEW ogrenci_notlari;` çalıştırılırsa ne olur?",
     "opts": [
-     "Eski veriyi gösterir",
-     "Yeni satırı da gösterir",
-     "Hata verir",
-     "Görünüm silinir",
-     "Sadece yeni satırı gösterir"
+     "Hata verir; görünüm silinemez",
+     "ogrenci tablosu da silinir",
+     "Sadece görünüm tanımı silinir; tablolardaki veriler kalır",
+     "Veri tabanı silinir",
+     "Notlar silinir"
     ],
-    "a": 1,
-    "exp": "Görünüm her seferinde sorguyu yeniden çalıştırır.",
-    "code": "CREATE VIEW ucuz AS SELECT ad FROM urun WHERE fiyat < 50;\nINSERT INTO urun VALUES (2, 'Silgi', 5);\nSELECT * FROM ucuz;"
+    "a": 2,
+    "exp": "Görünüm verinin kopyası değildir."
    },
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "`DROP VIEW ogrenci_notlari;` çalıştırılırsa ne olur?",
+    "q": "Tetikleyici hangi olay için **tanımlanamaz**?",
     "opts": [
-     "Sadece görünüm tanımı silinir; tablolardaki veriler kalır",
-     "Notlar silinir",
-     "Hata verir; görünüm silinemez",
-     "ogrenci tablosu da silinir",
-     "Veri tabanı silinir"
+     "UPDATE",
+     "Hepsi için tanımlanabilir",
+     "DELETE",
+     "SELECT",
+     "INSERT"
     ],
-    "a": 0,
-    "exp": "Görünüm verinin kopyası değildir."
-   },
-   {
-    "type": "fill",
-    "topic": "gorunum",
-    "q": "Boşluğu doldurun: görünüm oluşturun.",
-    "code": "CREATE ____ kredili_dersler AS\nSELECT ders_adi, kredi FROM ders WHERE kredi >= 4;",
-    "ans": [
-     "VIEW"
-    ],
-    "cs": false,
-    "exp": "CREATE VIEW … AS SELECT."
+    "a": 3,
+    "exp": "Tetikleyici sadece veri değiştiren olaylarda (INSERT/UPDATE/DELETE) çalışır."
    },
    {
     "type": "fill",
@@ -861,33 +1399,44 @@ window.EXAMS = [
     "exp": "DELETE FROM tablo WHERE koşul."
    },
    {
+    "type": "fill",
+    "topic": "ileri1",
+    "q": "Boşluğu doldurun: her siparişin toplam tutarı.",
+    "code": "SELECT siparis_id, ____(adet * birim_fiyat) AS toplam\nFROM siparis_detay\nGROUP BY siparis_id;",
+    "ans": [
+     "SUM"
+    ],
+    "cs": false,
+    "exp": "SUM toplar."
+   },
+   {
     "type": "match",
-    "topic": "iliskisel",
-    "q": "Terimleri eşleştirin.",
+    "topic": "ileri1",
+    "q": "Fonksiyonları eşleştirin.",
     "pairs": [
      [
-      "Demet (tuple)",
-      "Satır"
-     ],
-     [
-      "Nitelik",
-      "Sütun"
-     ],
-     [
-      "Derece",
-      "Sütun sayısı"
-     ],
-     [
-      "Kardinalite",
+      "COUNT(*)",
       "Satır sayısı"
+     ],
+     [
+      "SUM(adet)",
+      "Toplam"
+     ],
+     [
+      "AVG(fiyat)",
+      "Ortalama"
+     ],
+     [
+      "MAX(fiyat)",
+      "En büyük değer"
      ]
     ],
-    "exp": "İlişkisel modelin temel terimleri.",
+    "exp": "Toplama (aggregate) fonksiyonları her grup için tek değer üretir.",
     "choices": [
-     "Satır",
-     "Sütun sayısı",
+     "Ortalama",
      "Satır sayısı",
-     "Sütun"
+     "Toplam",
+     "En büyük değer"
     ]
    }
   ]
@@ -1154,17 +1703,32 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "Sorgu sonucu hangisidir?",
+    "q": "`SELECT sehir, ad, COUNT(*) FROM musteriler GROUP BY sehir;` sorgusunun sorunu nedir?",
     "opts": [
-     "1, 2",
-     "1, 2, 3",
-     "2, 3",
-     "3",
-     "1"
+     "ad sütunu GROUP BY'da yok ve toplama fonksiyonu içinde değil",
+     "Sorun yoktur",
+     "GROUP BY'dan sonra WHERE gelmeli",
+     "sehir sütunu SELECT'te olamaz",
+     "COUNT(*) GROUP BY ile kullanılamaz"
     ],
     "a": 0,
-    "exp": "Önce WHERE iptalleri atar (4, 6). Kalan: müşteri 1 → 3, 2 → 1. HAVING COUNT >= 1: 1 ve 2.",
-    "code": "SELECT musteri_id FROM siparisler WHERE durum <> 'İptal' GROUP BY musteri_id HAVING COUNT(*) >= 1 ORDER BY musteri_id;",
+    "exp": "Bir şehirde birden çok ad var; hangisinin yazılacağı belli değil (ONLY_FULL_GROUP_BY hatası).",
+    "code": "SELECT sehir, ad, COUNT(*) FROM musteriler GROUP BY sehir;"
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Sorgu sonucunda \"Teslim Edildi\" satırındaki sayı kaçtır?",
+    "opts": [
+     "3",
+     "1",
+     "6",
+     "4",
+     "2"
+    ],
+    "a": 0,
+    "exp": "Durum bazında sayım (uygulama soru 4): Teslim Edildi 3, İptal 2, Kargoda 1.",
+    "code": "SELECT durum, COUNT(*) AS adet\nFROM siparisler\nGROUP BY durum;",
     "tables": [
      {
       "name": "siparisler",
@@ -1211,51 +1775,60 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "`magaza` veri tabanında toplam kaç müşteri vardır? (uygulama soru 1)",
+    "q": "Sorgu kaç satır döndürür?",
     "opts": [
-     "5",
-     "30",
-     "18",
-     "9",
-     "10"
+     "1",
+     "0",
+     "4",
+     "3",
+     "2"
     ],
     "a": 4,
-    "exp": "`SELECT COUNT(*) FROM musteriler;`",
-    "code": "SELECT COUNT(*) FROM musteriler;"
-   },
-   {
-    "type": "mc",
-    "topic": "ileri1",
-    "q": "Sorgu sonucu (`a | b`) hangisidir?",
-    "opts": [
-     "2 | 2",
-     "3 | 0",
-     "2 | 3",
-     "3 | 2",
-     "3 | 3"
-    ],
-    "a": 3,
-    "exp": "COUNT(*) 3 satır, COUNT(puan) NULL olmayan 2.",
-    "code": "SELECT COUNT(*) AS a, COUNT(puan) AS b FROM notlar;",
+    "exp": "Önce WHERE iptalleri atar. Kalan cirolar: İstanbul 6500, Ankara 5500, İzmir 3000. HAVING > 5000: İstanbul ve Ankara (uygulama soru 10).",
+    "code": "SELECT sehir, SUM(tutar) AS ciro\nFROM satislar\nWHERE durum <> 'İptal'\nGROUP BY sehir\nHAVING SUM(tutar) > 5000\nORDER BY ciro DESC;",
     "tables": [
      {
-      "name": "notlar",
+      "name": "satislar",
       "cols": [
-       "ogrenci",
-       "puan"
+       "sehir",
+       "durum",
+       "tutar"
       ],
       "rows": [
        [
-        "Ali",
-        "10"
+        "İstanbul",
+        "Teslim Edildi",
+        "4000.00"
        ],
        [
-        "Ayşe",
-        null
+        "İstanbul",
+        "Kargoda",
+        "2500.00"
        ],
        [
-        "Can",
-        "20"
+        "İzmir",
+        "Teslim Edildi",
+        "3000.00"
+       ],
+       [
+        "İzmir",
+        "İptal",
+        "4000.00"
+       ],
+       [
+        "Ankara",
+        "Teslim Edildi",
+        "3500.00"
+       ],
+       [
+        "Ankara",
+        "Teslim Edildi",
+        "2000.00"
+       ],
+       [
+        "Gaziantep",
+        "İptal",
+        "6000.00"
        ]
       ]
      }
@@ -1266,13 +1839,13 @@ window.EXAMS = [
     "topic": "ileri2",
     "q": "MySQL'de hangi JOIN türü **doğrudan desteklenmez**?",
     "opts": [
-     "RIGHT JOIN",
-     "LEFT JOIN",
      "FULL OUTER JOIN",
+     "LEFT JOIN",
      "INNER JOIN",
-     "CROSS JOIN"
+     "CROSS JOIN",
+     "RIGHT JOIN"
     ],
-    "a": 2,
+    "a": 0,
     "exp": "LEFT JOIN … UNION … RIGHT JOIN ile yapılır."
    },
    {
@@ -1280,13 +1853,13 @@ window.EXAMS = [
     "topic": "ileri2",
     "q": "Bölüm 2 (Grafik) derslerine kayıtları getiren 3 tablolu JOIN kaç satır döndürür?",
     "opts": [
-     "4",
-     "3",
-     "2",
      "11",
-     "5"
+     "3",
+     "5",
+     "2",
+     "4"
     ],
-    "a": 0,
+    "a": 4,
     "exp": "201: Ahmet, İrem; 202: Mert, İrem.",
     "code": "SELECT o.ad, d.ders_adi, k.harf_notu\nFROM ders_kaydi k\nJOIN ogrenci o ON o.ogrenci_no = k.ogrenci_no\nJOIN ders d    ON d.ders_kodu  = k.ders_kodu\nWHERE d.bolum_no = 2;",
     "tables": [
@@ -1407,81 +1980,84 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "Tetikleyici hangi olay için **tanımlanamaz**?",
+    "q": "Görünüm kullanmanın faydası **olmayan** hangisidir?",
     "opts": [
-     "SELECT",
-     "DELETE",
-     "Hepsi için tanımlanabilir",
-     "INSERT",
-     "UPDATE"
+     "Kullanıcıya sadece belli sütunları göstermek (güvenlik)",
+     "Karmaşık JOIN sorgusunu tek isimle kullanmak",
+     "Uygulama kodunu sadeleştirmek",
+     "Tablo yapısını kullanıcıdan gizlemek",
+     "Verinin ikinci bir kopyasını diskte saklayıp yedek oluşturması"
     ],
-    "a": 0,
-    "exp": "Tetikleyici sadece veri değiştiren olaylarda (INSERT/UPDATE/DELETE) çalışır."
+    "a": 4,
+    "exp": "Görünüm veri saklamaz, yedek değildir."
    },
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "Görünüm kullanmanın faydası **olmayan** hangisidir?",
+    "q": "Var olan bir görünümü yoksa oluşturan, varsa değiştiren komut hangisidir?",
     "opts": [
-     "Verinin ikinci bir kopyasını diskte saklayıp yedek oluşturması",
-     "Karmaşık JOIN sorgusunu tek isimle kullanmak",
-     "Tablo yapısını kullanıcıdan gizlemek",
-     "Kullanıcıya sadece belli sütunları göstermek (güvenlik)",
-     "Uygulama kodunu sadeleştirmek"
+     "ALTER OR CREATE VIEW",
+     "CREATE OR REPLACE VIEW",
+     "UPDATE VIEW",
+     "REPLACE TABLE",
+     "MODIFY VIEW"
     ],
-    "a": 0,
-    "exp": "Görünüm veri saklamaz, yedek değildir."
+    "a": 1,
+    "exp": "CREATE OR REPLACE VIEW (ALTER VIEW de tanımı değiştirir)."
    },
    {
     "type": "fill",
     "topic": "sql-giris",
-    "q": "Boşluğu doldurun: sayı her satırda kendiliğinden artsın.",
-    "code": "CREATE TABLE musteri (\n  musteri_no  INT ____ PRIMARY KEY,\n  musteri_adi VARCHAR(100)\n);",
+    "q": "Boşluğu doldurun: 102 kodlu dersin kredisini 5 yapın.",
+    "code": "UPDATE ders ____ kredi = 5 WHERE ders_kodu = 102;",
     "ans": [
-     "AUTO_INCREMENT"
+     "SET"
     ],
     "cs": false,
-    "exp": "AUTO_INCREMENT."
+    "exp": "UPDATE tablo SET sütun = değer WHERE koşul."
    },
    {
     "type": "fill",
-    "topic": "gorunum",
-    "q": "Boşluğu doldurun: eklenen satırın değeri.",
-    "code": "CREATE TRIGGER stok_dus AFTER INSERT ON satis\nFOR EACH ROW\n  UPDATE urun SET stok = stok - ____.adet WHERE id = NEW.urun_id;",
+    "topic": "sorgular",
+    "q": "Boşluğu doldurun: notu girilmemiş kayıtlar.",
+    "code": "SELECT * FROM ders_kaydi WHERE harf_notu ____;",
     "ans": [
-     "NEW"
+     "IS NULL"
     ],
     "cs": false,
-    "exp": "INSERT'te yeni satır NEW ile okunur."
+    "exp": "`= NULL` çalışmaz; IS NULL yazılır.",
+    "whyFill": {
+     "= NULL": "= NULL hiçbir satır getirmez."
+    }
    },
    {
     "type": "match",
-    "topic": "ileri2",
-    "q": "Fonksiyonları eşleştirin.",
+    "topic": "sql-giris",
+    "q": "Kısıtları anlamlarıyla eşleştirin.",
     "pairs": [
      [
-      "CONCAT",
-      "Metinleri birleştirir"
+      "PRIMARY KEY",
+      "Tekrar etmez, NULL olmaz"
      ],
      [
-      "IFNULL",
-      "NULL ise yerine değer koyar"
+      "UNIQUE",
+      "Tekrar etmez, NULL olabilir"
      ],
      [
-      "DATEDIFF",
-      "İki tarih arasındaki gün"
+      "NOT NULL",
+      "Boş bırakılamaz"
      ],
      [
-      "UPPER",
-      "Büyük harfe çevirir"
+      "DEFAULT",
+      "Değer verilmezse varsayılanı yazar"
      ]
     ],
-    "exp": "Sık kullanılan tek satır fonksiyonları.",
+    "exp": "Kısıtlar CREATE TABLE içinde sütunun yanına yazılır.",
     "choices": [
-     "NULL ise yerine değer koyar",
-     "Büyük harfe çevirir",
-     "İki tarih arasındaki gün",
-     "Metinleri birleştirir"
+     "Tekrar etmez, NULL olabilir",
+     "Değer verilmezse varsayılanı yazar",
+     "Tekrar etmez, NULL olmaz",
+     "Boş bırakılamaz"
     ]
    }
   ]
@@ -1818,16 +2394,98 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "Uygulama soru 10'da (iptaller hariç, cirosu 5000 TL'yi geçen şehirler) iptal edilen siparişler hangi bölümde elenir?",
+    "q": "Sorgu sonucu (`a | b`) hangisidir?",
     "opts": [
-     "WHERE",
-     "HAVING",
-     "ORDER BY",
-     "GROUP BY",
-     "SELECT"
+     "2 | 3",
+     "2 | 2",
+     "3 | 3",
+     "3 | 2",
+     "3 | 0"
+    ],
+    "a": 3,
+    "exp": "COUNT(*) 3 satır, COUNT(puan) NULL olmayan 2.",
+    "code": "SELECT COUNT(*) AS a, COUNT(puan) AS b FROM notlar;",
+    "tables": [
+     {
+      "name": "notlar",
+      "cols": [
+       "ogrenci",
+       "puan"
+      ],
+      "rows": [
+       [
+        "Ali",
+        "10"
+       ],
+       [
+        "Ayşe",
+        null
+       ],
+       [
+        "Can",
+        "20"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Sorgu sonucu kaçtır?",
+    "opts": [
+     "3400.00",
+     "1250.00",
+     "410.00",
+     "320.00",
+     "5380.00"
     ],
     "a": 0,
-    "exp": "İptal tek tek satırların özelliğidir, gruplamadan önce WHERE ile atılır; 5000 koşulu ise HAVING'dedir."
+    "exp": "En büyük birim fiyat.",
+    "code": "SELECT MAX(birim_fiyat) FROM siparis_detay;",
+    "tables": [
+     {
+      "name": "siparis_detay",
+      "cols": [
+       "siparis_id",
+       "urun_id",
+       "adet",
+       "birim_fiyat"
+      ],
+      "rows": [
+       [
+        "1",
+        "1",
+        "1",
+        "1250.00"
+       ],
+       [
+        "1",
+        "8",
+        "2",
+        "320.00"
+       ],
+       [
+        "2",
+        "2",
+        "1",
+        "3400.00"
+       ],
+       [
+        "3",
+        "8",
+        "3",
+        "320.00"
+       ],
+       [
+        "3",
+        "9",
+        "1",
+        "410.00"
+       ]
+      ]
+     }
+    ]
    },
    {
     "type": "mc",
@@ -1845,113 +2503,128 @@ window.EXAMS = [
    },
    {
     "type": "mc",
-    "topic": "ileri1",
-    "q": "Sorgu kaç satır döndürür?",
+    "topic": "ileri2",
+    "q": "Aynı sorgu `UNION ALL` ile yazılırsa kaç satır döner?",
     "opts": [
-     "2",
-     "1",
      "3",
      "6",
-     "0"
+     "5",
+     "2",
+     "4"
     ],
-    "a": 1,
-    "exp": "Müşteri bazında sipariş sayıları: 1 → 3, 2 → 2, 3 → 1. En az 3 olan sadece müşteri 1.",
-    "code": "SELECT musteri_id, COUNT(*) AS n FROM siparisler GROUP BY musteri_id HAVING COUNT(*) >= 3;",
+    "a": 2,
+    "exp": "UNION ALL tekrarları atmaz: 3 + 2 = 5.",
+    "code": "SELECT ders_kodu FROM ders WHERE kredi = 4 UNION ALL SELECT ders_kodu FROM ders_kaydi WHERE harf_notu = 'AA';",
     "tables": [
      {
-      "name": "siparisler",
+      "name": "ders",
       "cols": [
-       "siparis_id",
-       "musteri_id",
-       "durum"
+       "ders_kodu",
+       "ders_adi",
+       "kredi",
+       "bolum_no"
       ],
       "rows": [
        [
-        "1",
-        "1",
-        "Teslim Edildi"
-       ],
-       [
-        "2",
-        "2",
-        "Teslim Edildi"
-       ],
-       [
-        "3",
-        "1",
-        "Kargoda"
-       ],
-       [
+        "101",
+        "Veritabanı Yönetim Sistemleri",
         "4",
+        "1"
+       ],
+       [
+        "102",
+        "Web Programlama",
+        "4",
+        "1"
+       ],
+       [
+        "103",
+        "Nesne Tabanlı Programlama",
         "3",
-        "İptal"
+        "1"
        ],
        [
-        "5",
-        "1",
-        "Teslim Edildi"
+        "201",
+        "Tipografi",
+        "3",
+        "2"
        ],
        [
-        "6",
-        "2",
-        "İptal"
+        "202",
+        "Dijital Fotoğrafçılık",
+        "3",
+        "2"
+       ],
+       [
+        "301",
+        "Genel Muhasebe",
+        "4",
+        "3"
        ]
       ]
-     }
-    ]
-   },
-   {
-    "type": "mc",
-    "topic": "ileri2",
-    "q": "Sorgu sonucu hangisidir?",
-    "opts": [
-     "Ahmet",
-     "NULL",
-     "AhmetKara",
-     "Ahmet Kara",
-     "Kara Ahmet"
-    ],
-    "a": 3,
-    "exp": "CONCAT değerleri birleştirir; araya ' ' konmuş.",
-    "code": "SELECT CONCAT(ad, ' ', soyad) FROM ogrenci WHERE ogrenci_no = 20250101;",
-    "tables": [
+     },
      {
-      "name": "ogrenci",
+      "name": "ders_kaydi",
       "cols": [
        "ogrenci_no",
-       "ad",
-       "soyad"
+       "ders_kodu",
+       "harf_notu"
       ],
       "rows": [
        [
         "20250101",
-        "Ahmet",
-        "Kara"
+        "101",
+        "AA"
+       ],
+       [
+        "20250101",
+        "102",
+        "BA"
+       ],
+       [
+        "20250101",
+        "201",
+        null
        ],
        [
         "20250102",
-        "Zehra",
-        "Aksoy"
+        "101",
+        "BB"
+       ],
+       [
+        "20250102",
+        "103",
+        null
        ],
        [
         "20250103",
-        "Mert",
-        "Güneş"
+        "101",
+        "CB"
+       ],
+       [
+        "20250103",
+        "202",
+        "AA"
        ],
        [
         "20250104",
-        "İrem",
-        "Toprak"
+        "201",
+        "BA"
+       ],
+       [
+        "20250104",
+        "202",
+        null
        ],
        [
         "20250105",
-        "Deniz",
-        "Uçar"
+        "301",
+        "CC"
        ],
        [
-        "20250106",
-        "Kerem",
-        "Yalçın"
+        "20250105",
+        "101",
+        "DC"
        ]
       ]
      }
@@ -1962,13 +2635,13 @@ window.EXAMS = [
     "topic": "ileri2",
     "q": "Sorgu sonucu hangisidir?",
     "opts": [
+     "Bilgisayar Programcılığı",
      "Muhasebe ve Vergi Uygulamaları",
      "Turizm ve Otel İşletmeciliği",
-     "Boş sonuç",
      "Grafik Tasarımı",
-     "Bilgisayar Programcılığı"
+     "Boş sonuç"
     ],
-    "a": 1,
+    "a": 2,
     "exp": "Hiç dersi olmayan bölüm: 4 numara.",
     "code": "SELECT b.bolum_adi FROM bolum b LEFT JOIN ders d ON d.bolum_no = b.bolum_no WHERE d.ders_kodu IS NULL;",
     "tables": [
@@ -2049,85 +2722,82 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "Var olan bir görünümü yoksa oluşturan, varsa değiştiren komut hangisidir?",
-    "opts": [
-     "CREATE OR REPLACE VIEW",
-     "REPLACE TABLE",
-     "MODIFY VIEW",
-     "UPDATE VIEW",
-     "ALTER OR CREATE VIEW"
-    ],
-    "a": 0,
-    "exp": "CREATE OR REPLACE VIEW (ALTER VIEW de tanımı değiştirir)."
-   },
-   {
-    "type": "mc",
-    "topic": "gorunum",
     "q": "Satış eklendiğinde stok düşen tetikleyici çalıştıktan sonra ürünün stoku kaç olur?",
     "opts": [
-     "3",
-     "7",
-     "0",
      "13",
-     "10"
+     "3",
+     "0",
+     "10",
+     "7"
     ],
-    "a": 1,
+    "a": 4,
     "exp": "AFTER INSERT: 10 - 3 = 7.",
     "code": "DELIMITER $$\nCREATE TRIGGER stok_dus AFTER INSERT ON satis\nFOR EACH ROW\nBEGIN\n  UPDATE urun SET stok = stok - NEW.adet WHERE id = NEW.urun_id;\nEND$$\nDELIMITER ;\n\nINSERT INTO urun VALUES (1, 'Kulaklık', 10);\nINSERT INTO satis (urun_id, adet) VALUES (1, 3);\nSELECT stok FROM urun WHERE id = 1;"
    },
    {
-    "type": "fill",
-    "topic": "sql-giris",
-    "q": "Boşluğu doldurun: 102 kodlu dersin kredisini 5 yapın.",
-    "code": "UPDATE ders ____ kredi = 5 WHERE ders_kodu = 102;",
-    "ans": [
-     "SET"
+    "type": "mc",
+    "topic": "gorunum",
+    "q": "Hangi görünüm üzerinden **UPDATE yapılamaz**?",
+    "opts": [
+     "Takma ad kullanan basit görünüm",
+     "Tek tablonun tüm sütunlarını seçen görünüm",
+     "Tek tablodan bazı sütunları seçen görünüm",
+     "GROUP BY ve COUNT içeren görünüm",
+     "Tek tablodan WHERE ile süzen görünüm"
     ],
-    "cs": false,
-    "exp": "UPDATE tablo SET sütun = değer WHERE koşul."
+    "a": 3,
+    "exp": "Toplama fonksiyonu / GROUP BY / DISTINCT içeren görünüm güncellenemez."
    },
    {
     "type": "fill",
-    "topic": "sorgular",
-    "q": "Boşluğu doldurun: notu girilmemiş kayıtlar.",
-    "code": "SELECT * FROM ders_kaydi WHERE harf_notu ____;",
+    "topic": "sql-giris",
+    "q": "Boşluğu doldurun: 1:1 ilişki için kart tablosunda aynı öğrenci iki kez olmamalı.",
+    "code": "CREATE TABLE ogrenci_karti (\n  kart_no    INT PRIMARY KEY,\n  ogrenci_no INT NOT NULL ____\n);",
+    "ans": [
+     "UNIQUE"
+    ],
+    "cs": false,
+    "exp": "UNIQUE ile her öğrencinin en fazla bir kartı olur."
+   },
+   {
+    "type": "fill",
+    "topic": "ileri2",
+    "q": "Boşluğu doldurun: eşleşmeyenler.",
+    "code": "SELECT b.bolum_adi FROM bolum b\nLEFT JOIN ders d ON d.bolum_no = b.bolum_no\nWHERE d.ders_kodu ____;",
     "ans": [
      "IS NULL"
     ],
     "cs": false,
-    "exp": "`= NULL` çalışmaz; IS NULL yazılır.",
-    "whyFill": {
-     "= NULL": "= NULL hiçbir satır getirmez."
-    }
+    "exp": "LEFT JOIN + IS NULL eşleşmeyenleri bulur."
    },
    {
     "type": "match",
-    "topic": "sql-giris",
-    "q": "Komutları SQL alt dilleriyle eşleştirin.",
+    "topic": "ileri2",
+    "q": "Fonksiyonları eşleştirin.",
     "pairs": [
      [
-      "CREATE TABLE",
-      "DDL"
+      "CONCAT",
+      "Metinleri birleştirir"
      ],
      [
-      "INSERT INTO",
-      "DML"
+      "IFNULL",
+      "NULL ise yerine değer koyar"
      ],
      [
-      "GRANT",
-      "DCL"
+      "DATEDIFF",
+      "İki tarih arasındaki gün"
      ],
      [
-      "ROLLBACK",
-      "TCL"
+      "UPPER",
+      "Büyük harfe çevirir"
      ]
     ],
-    "exp": "DDL yapı, DML veri, DCL yetki, TCL işlem.",
+    "exp": "Sık kullanılan tek satır fonksiyonları.",
     "choices": [
-     "DML",
-     "TCL",
-     "DDL",
-     "DCL"
+     "Metinleri birleştirir",
+     "İki tarih arasındaki gün",
+     "Büyük harfe çevirir",
+     "NULL ise yerine değer koyar"
     ]
    }
   ]
@@ -2335,6 +3005,83 @@ window.EXAMS = [
     "topic": "ileri1",
     "q": "Sorgu sonucu kaçtır?",
     "opts": [
+     "10",
+     "5",
+     "3",
+     "1",
+     "4"
+    ],
+    "a": 1,
+    "exp": "COUNT(DISTINCT sehir) farklı şehirleri sayar: İzmir, İstanbul, Ankara, Gaziantep, Bursa.",
+    "code": "SELECT COUNT(DISTINCT sehir) FROM musteriler;",
+    "tables": [
+     {
+      "name": "musteriler",
+      "cols": [
+       "musteri_id",
+       "ad",
+       "sehir"
+      ],
+      "rows": [
+       [
+        "1",
+        "Ayşe",
+        "İzmir"
+       ],
+       [
+        "2",
+        "Mehmet",
+        "İstanbul"
+       ],
+       [
+        "3",
+        "Zeynep",
+        "İzmir"
+       ],
+       [
+        "4",
+        "Ahmet",
+        "Ankara"
+       ],
+       [
+        "5",
+        "Elif",
+        "İstanbul"
+       ],
+       [
+        "6",
+        "Can",
+        "Gaziantep"
+       ],
+       [
+        "7",
+        "Deniz",
+        "İzmir"
+       ],
+       [
+        "8",
+        "Selin",
+        "Ankara"
+       ],
+       [
+        "9",
+        "Emre",
+        "Bursa"
+       ],
+       [
+        "10",
+        "Merve",
+        "İstanbul"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
+    "q": "Sorgu sonucu kaçtır?",
+    "opts": [
      "3",
      "11",
      "5",
@@ -2428,19 +3175,52 @@ window.EXAMS = [
    },
    {
     "type": "mc",
-    "topic": "ileri1",
-    "q": "Sorgu sonucu kaçtır?",
+    "topic": "ileri2",
+    "q": "Sorgu hangi ürünleri döndürür?",
     "opts": [
-     "5380.00",
-     "1250.00",
-     "410.00",
-     "3400.00",
-     "320.00"
+     "Kablosuz Kulaklık, Akıllı Saat",
+     "Boş sonuç",
+     "Veri Bilimine Giriş, Kamp Sandalyesi",
+     "Mekanik Klavye, Kamp Sandalyesi",
+     "Mekanik Klavye"
     ],
     "a": 3,
-    "exp": "En büyük birim fiyat.",
-    "code": "SELECT MAX(birim_fiyat) FROM siparis_detay;",
+    "exp": "LEFT JOIN bütün ürünleri getirir; siparis_detay'da hiç satırı olmayanların sayısı 0 olur. 16 ve 17 hiç satılmamış (uygulama bonus).",
+    "code": "SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.urun_id) = 0\nORDER BY u.urun_id;",
     "tables": [
+     {
+      "name": "urunler",
+      "cols": [
+       "urun_id",
+       "urun_adi"
+      ],
+      "rows": [
+       [
+        "1",
+        "Kablosuz Kulaklık"
+       ],
+       [
+        "2",
+        "Akıllı Saat"
+       ],
+       [
+        "8",
+        "Python ile Programlama"
+       ],
+       [
+        "9",
+        "Veri Bilimine Giriş"
+       ],
+       [
+        "16",
+        "Mekanik Klavye"
+       ],
+       [
+        "17",
+        "Kamp Sandalyesi"
+       ]
+      ]
+     },
      {
       "name": "siparis_detay",
       "cols": [
@@ -2487,28 +3267,13 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri2",
-    "q": "`magaza` veri tabanında hiç satılmamış ürünler (uygulama bonus) hangileridir?",
-    "opts": [
-     "Kamp Sandalyesi, Termos",
-     "Mekanik Klavye",
-     "Mekanik Klavye, Kamp Sandalyesi",
-     "Hepsi satıldı",
-     "Oyuncak"
-    ],
-    "a": 2,
-    "exp": "LEFT JOIN + GROUP BY + HAVING COUNT(d.detay_id) = 0.",
-    "code": "SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.detay_id) = 0\nORDER BY u.urun_id;"
-   },
-   {
-    "type": "mc",
-    "topic": "ileri2",
     "q": "Sorgu kaç satır döndürür?",
     "opts": [
-     "5",
+     "1",
      "6",
      "11",
-     "30",
-     "1"
+     "5",
+     "30"
     ],
     "a": 1,
     "exp": "LEFT JOIN soldaki 6 öğrencinin hepsini getirir; Kerem'in kart_no'su NULL.",
@@ -2588,81 +3353,84 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "`AFTER INSERT` tetikleyicisinde hangisi **kullanılamaz**?",
+    "q": "Görünüm (VIEW) için hangisi doğrudur?",
     "opts": [
-     "BEGIN … END",
-     "NEW",
-     "FOR EACH ROW",
-     "OLD",
-     "UPDATE"
+     "Bir SELECT sorgusuna verilen addır; veriyi kendisi saklamaz (sanal tablo)",
+     "Sadece bir kez çalışır",
+     "Veri tabanı oluşturur",
+     "Tablonun yedek kopyasıdır",
+     "INSERT olunca kendiliğinden çalışır"
     ],
-    "a": 3,
-    "exp": "INSERT'te önceki satır olmadığı için OLD yoktur."
+    "a": 0,
+    "exp": "Her çağrıldığında içindeki sorgu yeniden çalışır.",
+    "why": {
+     "4": "Bu tetikleyicinin tanımı."
+    }
    },
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "Tetikleyici gövdesindeki `;` işaretlerinin komutu erken bitirmemesi için ne kullanılır?",
+    "q": "Tetikleyicide `NEW.adet` ifadesi neyi gösterir?",
     "opts": [
-     "DELIMITER $$",
-     "COMMIT",
-     "SET NAMES",
-     "GO",
-     "END IF"
+     "Eklenen / güncellenen satırın yeni adet değerini",
+     "Yeni oluşturulan tabloyu",
+     "Silinen satırın adet değerini",
+     "Tablodaki toplam adedi",
+     "Bir önceki tetikleyicinin sonucunu"
     ],
     "a": 0,
-    "exp": "Geçici ayırıcı; sonra `DELIMITER ;` ile geri alınır."
+    "exp": "NEW yeni değer, OLD eski değer."
    },
    {
     "type": "fill",
-    "topic": "ileri1",
-    "q": "Boşluğu doldurun: her şehirdeki müşteri sayısı.",
-    "code": "SELECT sehir, COUNT(*) FROM musteriler ____ sehir;",
+    "topic": "gorunum",
+    "q": "Boşluğu doldurun: görünüm oluşturun.",
+    "code": "CREATE ____ kredili_dersler AS\nSELECT ders_adi, kredi FROM ders WHERE kredi >= 4;",
     "ans": [
-     "GROUP BY"
+     "VIEW"
     ],
     "cs": false,
-    "exp": "GROUP BY aynı şehirleri bir grup yapar."
+    "exp": "CREATE VIEW … AS SELECT."
    },
    {
     "type": "fill",
-    "topic": "sorgular",
-    "q": "Boşluğu doldurun: kredisi 3 ile 4 arasında (dahil).",
-    "code": "SELECT ders_adi FROM ders WHERE kredi ____ 3 AND 4;",
+    "topic": "sql-giris",
+    "q": "Boşluğu doldurun: sayı her satırda kendiliğinden artsın.",
+    "code": "CREATE TABLE musteri (\n  musteri_no  INT ____ PRIMARY KEY,\n  musteri_adi VARCHAR(100)\n);",
     "ans": [
-     "BETWEEN"
+     "AUTO_INCREMENT"
     ],
     "cs": false,
-    "exp": "BETWEEN uçları dahil eder."
+    "exp": "AUTO_INCREMENT."
    },
    {
     "type": "match",
-    "topic": "ileri2",
-    "q": "JOIN türlerini eşleştirin.",
+    "topic": "sorgular",
+    "q": "Operatörleri anlamlarıyla eşleştirin.",
     "pairs": [
      [
-      "INNER JOIN",
-      "Sadece eşleşenler"
+      "LIKE 'A%'",
+      "A ile başlayan"
      ],
      [
-      "LEFT JOIN",
-      "Soldaki tablonun hepsi"
+      "BETWEEN 3 AND 4",
+      "3 ve 4 dahil aralık"
      ],
      [
-      "RIGHT JOIN",
-      "Sağdaki tablonun hepsi"
+      "IN (101, 201)",
+      "Listedekilerden biri"
      ],
      [
-      "CROSS JOIN",
-      "Her satır her satırla"
+      "IS NULL",
+      "Değeri girilmemiş"
      ]
     ],
-    "exp": "MySQL'de FULL OUTER JOIN yoktur.",
+    "exp": "WHERE koşulunda kullanılan operatörler.",
     "choices": [
-     "Soldaki tablonun hepsi",
-     "Sağdaki tablonun hepsi",
-     "Her satır her satırla",
-     "Sadece eşleşenler"
+     "3 ve 4 dahil aralık",
+     "A ile başlayan",
+     "Değeri girilmemiş",
+     "Listedekilerden biri"
     ]
    }
   ]
@@ -2906,6 +3674,64 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri1",
+    "q": "Sorgu sonucu hangi ürün numaralarıdır?",
+    "opts": [
+     "2",
+     "8, 9",
+     "8",
+     "1, 2, 8",
+     "1, 8"
+    ],
+    "a": 2,
+    "exp": "Ürün 8: 2 + 3 = 5 adet ≥ 3. Diğerleri 1 adet.",
+    "code": "SELECT urun_id FROM siparis_detay GROUP BY urun_id HAVING SUM(adet) >= 3;",
+    "tables": [
+     {
+      "name": "siparis_detay",
+      "cols": [
+       "siparis_id",
+       "urun_id",
+       "adet",
+       "birim_fiyat"
+      ],
+      "rows": [
+       [
+        "1",
+        "1",
+        "1",
+        "1250.00"
+       ],
+       [
+        "1",
+        "8",
+        "2",
+        "320.00"
+       ],
+       [
+        "2",
+        "2",
+        "1",
+        "3400.00"
+       ],
+       [
+        "3",
+        "8",
+        "3",
+        "320.00"
+       ],
+       [
+        "3",
+        "9",
+        "1",
+        "410.00"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "type": "mc",
+    "topic": "ileri1",
     "q": "Hangi sorgu **hata verir**?",
     "opts": [
      "SELECT COUNT(*) FROM musteriler;",
@@ -2921,62 +3747,55 @@ window.EXAMS = [
    {
     "type": "mc",
     "topic": "ileri1",
-    "q": "Sorgu sonucu kaçtır?",
+    "q": "En az 2 sipariş vermiş müşterileri listeleyen sorgu kaç satır döndürür?",
     "opts": [
-     "4",
-     "3.5000",
      "6",
-     "24",
-     "21"
+     "1",
+     "2",
+     "3",
+     "0"
     ],
-    "a": 4,
-    "exp": "Kredilerin toplamı: 4+4+3+3+3+4 = 21.",
-    "code": "SELECT SUM(kredi) FROM ders;",
+    "a": 2,
+    "exp": "Müşteri bazında: 1 → 3, 2 → 2, 3 → 1 sipariş. HAVING COUNT(*) >= 2: müşteri 1 ve 2 (uygulama soru 8).",
+    "code": "SELECT musteri_id, COUNT(*) AS siparis_sayisi\nFROM siparisler\nGROUP BY musteri_id\nHAVING COUNT(*) >= 2;",
     "tables": [
      {
-      "name": "ders",
+      "name": "siparisler",
       "cols": [
-       "ders_kodu",
-       "ders_adi",
-       "kredi",
-       "bolum_no"
+       "siparis_id",
+       "musteri_id",
+       "durum"
       ],
       "rows": [
        [
-        "101",
-        "Veritabanı Yönetim Sistemleri",
-        "4",
-        "1"
+        "1",
+        "1",
+        "Teslim Edildi"
        ],
        [
-        "102",
-        "Web Programlama",
-        "4",
-        "1"
+        "2",
+        "2",
+        "Teslim Edildi"
        ],
        [
-        "103",
-        "Nesne Tabanlı Programlama",
         "3",
-        "1"
+        "1",
+        "Kargoda"
        ],
        [
-        "201",
-        "Tipografi",
-        "3",
-        "2"
-       ],
-       [
-        "202",
-        "Dijital Fotoğrafçılık",
-        "3",
-        "2"
-       ],
-       [
-        "301",
-        "Genel Muhasebe",
         "4",
-        "3"
+        "3",
+        "İptal"
+       ],
+       [
+        "5",
+        "1",
+        "Teslim Edildi"
+       ],
+       [
+        "6",
+        "2",
+        "İptal"
        ]
       ]
      }
@@ -2984,27 +3803,13 @@ window.EXAMS = [
    },
    {
     "type": "mc",
-    "topic": "ileri1",
-    "q": "WHERE ile HAVING için hangisi doğrudur?",
-    "opts": [
-     "WHERE toplama fonksiyonu alır",
-     "HAVING sadece ORDER BY ile kullanılır",
-     "WHERE gruplamadan önce satırları, HAVING gruplamadan sonra grupları süzer",
-     "HAVING gruplamadan önce çalışır",
-     "İkisi aynı anda çalışır"
-    ],
-    "a": 2,
-    "exp": "Uygulamadaki kısa hatırlatma."
-   },
-   {
-    "type": "mc",
     "topic": "ileri2",
     "q": "Sorgu kaç satırda \"Ağır\" yazar?",
     "opts": [
-     "6",
+     "1",
      "3",
      "0",
-     "1",
+     "6",
      "2"
     ],
     "a": 4,
@@ -3065,94 +3870,94 @@ window.EXAMS = [
     "topic": "ileri2",
     "q": "`SELECT CHAR_LENGTH('Mert');` sonucu nedir?",
     "opts": [
-     "Mert",
      "4",
-     "3",
      "5",
-     "8"
+     "8",
+     "3",
+     "Mert"
     ],
-    "a": 1,
+    "a": 0,
     "exp": "Karakter sayısı.",
     "code": "SELECT CHAR_LENGTH('Mert');"
    },
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "Tetikleyici (TRIGGER) için hangisi doğrudur?",
+    "q": "Görünüm oluşturan komut hangisidir?",
     "opts": [
-     "Sadece veri tabanı oluşturulurken çalışır",
-     "Veriyi sanal tablo gibi gösterir",
-     "Tabloda INSERT, UPDATE veya DELETE olunca kendiliğinden çalışır",
-     "SELECT sorgularında çalışır",
-     "CALL ile elle çağrılır"
+     "CREATE VIEW ad AS SELECT …",
+     "CREATE TABLE ad AS VIEW …",
+     "CREATE VIEW ad ON tablo",
+     "MAKE VIEW ad …",
+     "NEW VIEW ad = SELECT …"
     ],
-    "a": 2,
-    "exp": "Elle çağrılan saklı yordamdır (CALL); tetikleyici olayla çalışır."
+    "a": 0,
+    "exp": "CREATE VIEW … AS SELECT."
    },
    {
     "type": "mc",
     "topic": "gorunum",
-    "q": "Tetikleyicide `NEW.adet` ifadesi neyi gösterir?",
+    "q": "`AFTER INSERT` tetikleyicisinde hangisi **kullanılamaz**?",
     "opts": [
-     "Bir önceki tetikleyicinin sonucunu",
-     "Yeni oluşturulan tabloyu",
-     "Silinen satırın adet değerini",
-     "Eklenen / güncellenen satırın yeni adet değerini",
-     "Tablodaki toplam adedi"
+     "OLD",
+     "NEW",
+     "UPDATE",
+     "FOR EACH ROW",
+     "BEGIN … END"
     ],
-    "a": 3,
-    "exp": "NEW yeni değer, OLD eski değer."
+    "a": 0,
+    "exp": "INSERT'te önceki satır olmadığı için OLD yoktur."
+   },
+   {
+    "type": "fill",
+    "topic": "gorunum",
+    "q": "Boşluğu doldurun: her satır için çalışsın.",
+    "code": "CREATE TRIGGER log_ekle AFTER DELETE ON musteri\nFOR ____ ROW\n  INSERT INTO silinen VALUES (OLD.id, OLD.ad);",
+    "ans": [
+     "EACH"
+    ],
+    "cs": false,
+    "exp": "FOR EACH ROW."
    },
    {
     "type": "fill",
     "topic": "ileri2",
-    "q": "Boşluğu doldurun: birleştirme koşulu.",
-    "code": "SELECT d.ders_adi, b.bolum_adi\nFROM ders d JOIN bolum b ____ b.bolum_no = d.bolum_no;",
+    "q": "Boşluğu doldurun: ad ve soyadı birleştir.",
+    "code": "SELECT ____(ad, ' ', soyad) AS tam_ad FROM ogrenci;",
     "ans": [
-     "ON"
+     "CONCAT"
     ],
     "cs": false,
-    "exp": "JOIN … ON eşitlik."
-   },
-   {
-    "type": "fill",
-    "topic": "sql-giris",
-    "q": "Boşluğu doldurun: tabloya yeni satır ekleyin.",
-    "code": "____ INTO bolum (bolum_no, bolum_adi) VALUES (5, 'Spor');",
-    "ans": [
-     "INSERT"
-    ],
-    "cs": false,
-    "exp": "INSERT INTO … VALUES."
+    "exp": "CONCAT."
    },
    {
     "type": "match",
     "topic": "iliskisel",
-    "q": "ER diyagramı şekillerini anlamlarıyla eşleştirin.",
+    "q": "İlişki türünü tabloya dönüştürme yöntemiyle eşleştirin.",
     "pairs": [
      [
-      "Dikdörtgen",
-      "Varlık (tablo)"
+      "1:1",
+      "FK eklenir ve UNIQUE yapılır"
      ],
      [
-      "Elips",
-      "Nitelik (sütun)"
+      "1:N",
+      "FK çok tarafına eklenir"
      ],
      [
-      "Eşkenar dörtgen",
-      "İlişki"
+      "M:N",
+      "Ara tablo kurulur"
      ],
      [
-      "Altı çizili nitelik",
-      "Birincil anahtar"
+      "Bileşik PK",
+      "Birden çok sütun birlikte anahtar olur"
      ]
     ],
-    "exp": "Chen gösterimi.",
+    "exp": "Derste: ogrenci_karti (1:1), ders (1:N), ders_kaydi (M:N).",
     "choices": [
-     "Varlık (tablo)",
-     "İlişki",
-     "Birincil anahtar",
-     "Nitelik (sütun)"
+     "Ara tablo kurulur",
+     "Birden çok sütun birlikte anahtar olur",
+     "FK çok tarafına eklenir",
+     "FK eklenir ve UNIQUE yapılır"
     ]
    }
   ]
@@ -6464,7 +7269,7 @@ window.TOPIC_QUESTIONS = {
   {
    "type": "mc",
    "topic": "ileri1",
-   "q": "`magaza` veri tabanında aşağıdaki sorgu kaç satır döndürür? (Şehirler: İzmir 3, İstanbul 3, Ankara 2, Gaziantep 1, Bursa 1 müşteri)",
+   "q": "Sorgu kaç satır döndürür?",
    "opts": [
     "3",
     "2",
@@ -6473,13 +7278,75 @@ window.TOPIC_QUESTIONS = {
     "10"
    ],
    "a": 0,
-   "exp": "Birden fazla müşterisi olan şehirler: İzmir, İstanbul, Ankara (uygulama soru 7).",
-   "code": "SELECT sehir, COUNT(*) FROM musteriler GROUP BY sehir HAVING COUNT(*) > 1;"
+   "exp": "Gruplar: İzmir 3, İstanbul 3, Ankara 2, Gaziantep 1, Bursa 1. HAVING COUNT(*) > 1 → İzmir, İstanbul, Ankara (uygulama soru 7).",
+   "code": "SELECT sehir, COUNT(*) FROM musteriler GROUP BY sehir HAVING COUNT(*) > 1;",
+   "tables": [
+    {
+     "name": "musteriler",
+     "cols": [
+      "musteri_id",
+      "ad",
+      "sehir"
+     ],
+     "rows": [
+      [
+       "1",
+       "Ayşe",
+       "İzmir"
+      ],
+      [
+       "2",
+       "Mehmet",
+       "İstanbul"
+      ],
+      [
+       "3",
+       "Zeynep",
+       "İzmir"
+      ],
+      [
+       "4",
+       "Ahmet",
+       "Ankara"
+      ],
+      [
+       "5",
+       "Elif",
+       "İstanbul"
+      ],
+      [
+       "6",
+       "Can",
+       "Gaziantep"
+      ],
+      [
+       "7",
+       "Deniz",
+       "İzmir"
+      ],
+      [
+       "8",
+       "Selin",
+       "Ankara"
+      ],
+      [
+       "9",
+       "Emre",
+       "Bursa"
+      ],
+      [
+       "10",
+       "Merve",
+       "İstanbul"
+      ]
+     ]
+    }
+   ]
   },
   {
    "type": "mc",
    "topic": "ileri1",
-   "q": "`magaza` veri tabanında her şehirdeki müşteri sayısını veren sorgu (uygulama soru 3) kaç satır döndürür?",
+   "q": "Her şehirdeki müşteri sayısını veren sorgu kaç satır döndürür?",
    "opts": [
     "10",
     "6",
@@ -6488,21 +7355,237 @@ window.TOPIC_QUESTIONS = {
     "1"
    ],
    "a": 2,
-   "exp": "5 farklı şehir: İzmir, İstanbul, Ankara, Gaziantep, Bursa.",
-   "code": "SELECT sehir, COUNT(*) AS musteri_sayisi FROM musteriler GROUP BY sehir;"
+   "exp": "GROUP BY her farklı şehir için bir satır üretir: İzmir, İstanbul, Ankara, Gaziantep, Bursa (uygulama soru 3).",
+   "code": "SELECT sehir, COUNT(*) AS musteri_sayisi FROM musteriler GROUP BY sehir;",
+   "tables": [
+    {
+     "name": "musteriler",
+     "cols": [
+      "musteri_id",
+      "ad",
+      "sehir"
+     ],
+     "rows": [
+      [
+       "1",
+       "Ayşe",
+       "İzmir"
+      ],
+      [
+       "2",
+       "Mehmet",
+       "İstanbul"
+      ],
+      [
+       "3",
+       "Zeynep",
+       "İzmir"
+      ],
+      [
+       "4",
+       "Ahmet",
+       "Ankara"
+      ],
+      [
+       "5",
+       "Elif",
+       "İstanbul"
+      ],
+      [
+       "6",
+       "Can",
+       "Gaziantep"
+      ],
+      [
+       "7",
+       "Deniz",
+       "İzmir"
+      ],
+      [
+       "8",
+       "Selin",
+       "Ankara"
+      ],
+      [
+       "9",
+       "Emre",
+       "Bursa"
+      ],
+      [
+       "10",
+       "Merve",
+       "İstanbul"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "type": "mc",
+   "topic": "ileri1",
+   "q": "Sorgu sonucu kaçtır?",
+   "opts": [
+    "1",
+    "9",
+    "3",
+    "10",
+    "5"
+   ],
+   "a": 3,
+   "exp": "COUNT(*) tablodaki bütün satırları sayar (uygulama soru 1).",
+   "code": "SELECT COUNT(*) FROM musteriler;",
+   "tables": [
+    {
+     "name": "musteriler",
+     "cols": [
+      "musteri_id",
+      "ad",
+      "sehir"
+     ],
+     "rows": [
+      [
+       "1",
+       "Ayşe",
+       "İzmir"
+      ],
+      [
+       "2",
+       "Mehmet",
+       "İstanbul"
+      ],
+      [
+       "3",
+       "Zeynep",
+       "İzmir"
+      ],
+      [
+       "4",
+       "Ahmet",
+       "Ankara"
+      ],
+      [
+       "5",
+       "Elif",
+       "İstanbul"
+      ],
+      [
+       "6",
+       "Can",
+       "Gaziantep"
+      ],
+      [
+       "7",
+       "Deniz",
+       "İzmir"
+      ],
+      [
+       "8",
+       "Selin",
+       "Ankara"
+      ],
+      [
+       "9",
+       "Emre",
+       "Bursa"
+      ],
+      [
+       "10",
+       "Merve",
+       "İstanbul"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "type": "mc",
+   "topic": "ileri1",
+   "q": "Sorgu sonucu kaçtır?",
+   "opts": [
+    "10",
+    "5",
+    "3",
+    "1",
+    "4"
+   ],
+   "a": 1,
+   "exp": "COUNT(DISTINCT sehir) farklı şehirleri sayar: İzmir, İstanbul, Ankara, Gaziantep, Bursa.",
+   "code": "SELECT COUNT(DISTINCT sehir) FROM musteriler;",
+   "tables": [
+    {
+     "name": "musteriler",
+     "cols": [
+      "musteri_id",
+      "ad",
+      "sehir"
+     ],
+     "rows": [
+      [
+       "1",
+       "Ayşe",
+       "İzmir"
+      ],
+      [
+       "2",
+       "Mehmet",
+       "İstanbul"
+      ],
+      [
+       "3",
+       "Zeynep",
+       "İzmir"
+      ],
+      [
+       "4",
+       "Ahmet",
+       "Ankara"
+      ],
+      [
+       "5",
+       "Elif",
+       "İstanbul"
+      ],
+      [
+       "6",
+       "Can",
+       "Gaziantep"
+      ],
+      [
+       "7",
+       "Deniz",
+       "İzmir"
+      ],
+      [
+       "8",
+       "Selin",
+       "Ankara"
+      ],
+      [
+       "9",
+       "Emre",
+       "Bursa"
+      ],
+      [
+       "10",
+       "Merve",
+       "İstanbul"
+      ]
+     ]
+    }
+   ]
   },
   {
    "type": "mc",
    "topic": "ileri1",
    "q": "Sorgu sonucunda \"Teslim Edildi\" satırındaki sayı kaçtır?",
    "opts": [
-    "1",
-    "4",
-    "6",
     "3",
+    "1",
+    "6",
+    "4",
     "2"
    ],
-   "a": 3,
+   "a": 0,
    "exp": "Durum bazında sayım (uygulama soru 4): Teslim Edildi 3, İptal 2, Kargoda 1.",
    "code": "SELECT durum, COUNT(*) AS adet\nFROM siparisler\nGROUP BY durum;",
    "tables": [
@@ -6553,13 +7636,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri1",
    "q": "Sorgu kaç satır döndürür?",
    "opts": [
+    "6",
+    "3",
     "2",
     "1",
-    "3",
-    "6",
     "0"
    ],
-   "a": 1,
+   "a": 3,
    "exp": "Müşteri bazında sipariş sayıları: 1 → 3, 2 → 2, 3 → 1. En az 3 olan sadece müşteri 1.",
    "code": "SELECT musteri_id, COUNT(*) AS n FROM siparisler GROUP BY musteri_id HAVING COUNT(*) >= 3;",
    "tables": [
@@ -6610,13 +7693,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri1",
    "q": "Sorgu sonucu hangisidir?",
    "opts": [
-    "1, 2",
-    "1, 2, 3",
-    "2, 3",
     "3",
-    "1"
+    "1",
+    "2, 3",
+    "1, 2, 3",
+    "1, 2"
    ],
-   "a": 0,
+   "a": 4,
    "exp": "Önce WHERE iptalleri atar (4, 6). Kalan: müşteri 1 → 3, 2 → 1. HAVING COUNT >= 1: 1 ve 2.",
    "code": "SELECT musteri_id FROM siparisler WHERE durum <> 'İptal' GROUP BY musteri_id HAVING COUNT(*) >= 1 ORDER BY musteri_id;",
    "tables": [
@@ -6668,8 +7751,8 @@ window.TOPIC_QUESTIONS = {
    "q": "Sorgu sonucunda 1 numaralı siparişin toplamı kaçtır?",
    "opts": [
     "640.00",
-    "1250.00",
     "1570.00",
+    "1250.00",
     "1890.00",
     "3"
    ],
@@ -6725,13 +7808,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri1",
    "q": "Sorgu sonucu hangi ürün numaralarıdır?",
    "opts": [
-    "1, 2, 8",
-    "1, 8",
-    "8, 9",
     "2",
-    "8"
+    "8, 9",
+    "8",
+    "1, 2, 8",
+    "1, 8"
    ],
-   "a": 4,
+   "a": 2,
    "exp": "Ürün 8: 2 + 3 = 5 adet ≥ 3. Diğerleri 1 adet.",
    "code": "SELECT urun_id FROM siparis_detay GROUP BY urun_id HAVING SUM(adet) >= 3;",
    "tables": [
@@ -6783,13 +7866,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri1",
    "q": "Sorgu sonucu kaçtır?",
    "opts": [
-    "5380.00",
+    "3400.00",
     "1250.00",
     "410.00",
-    "3400.00",
-    "320.00"
+    "320.00",
+    "5380.00"
    ],
-   "a": 3,
+   "a": 0,
    "exp": "En büyük birim fiyat.",
    "code": "SELECT MAX(birim_fiyat) FROM siparis_detay;",
    "tables": [
@@ -6841,102 +7924,285 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri1",
    "q": "`SELECT sehir, ad, COUNT(*) FROM musteriler GROUP BY sehir;` sorgusunun sorunu nedir?",
    "opts": [
-    "GROUP BY'dan sonra WHERE gelmeli",
-    "sehir sütunu SELECT'te olamaz",
     "ad sütunu GROUP BY'da yok ve toplama fonksiyonu içinde değil",
     "Sorun yoktur",
+    "GROUP BY'dan sonra WHERE gelmeli",
+    "sehir sütunu SELECT'te olamaz",
     "COUNT(*) GROUP BY ile kullanılamaz"
    ],
-   "a": 2,
+   "a": 0,
    "exp": "Bir şehirde birden çok ad var; hangisinin yazılacağı belli değil (ONLY_FULL_GROUP_BY hatası).",
    "code": "SELECT sehir, ad, COUNT(*) FROM musteriler GROUP BY sehir;"
   },
   {
    "type": "mc",
    "topic": "ileri1",
-   "q": "Uygulama soru 10'da (iptaller hariç, cirosu 5000 TL'yi geçen şehirler) iptal edilen siparişler hangi bölümde elenir?",
+   "q": "İptal edilen siparişler hariç, cirosu 5000 TL'yi geçen şehirler listelenecek. \"İptal olmasın\" koşulu sorgunun hangi bölümüne yazılır?",
    "opts": [
-    "WHERE",
-    "HAVING",
     "ORDER BY",
+    "HAVING",
     "GROUP BY",
+    "WHERE",
     "SELECT"
    ],
-   "a": 0,
-   "exp": "İptal tek tek satırların özelliğidir, gruplamadan önce WHERE ile atılır; 5000 koşulu ise HAVING'dedir."
-  },
-  {
-   "type": "mc",
-   "topic": "ileri1",
-   "q": "`magaza` veri tabanında uygulama soru 10'un sorgusu kaç şehir döndürür?",
-   "opts": [
-    "2",
-    "1",
-    "5",
-    "4",
-    "3"
-   ],
-   "a": 0,
-   "exp": "İstanbul (16579.70) ve İzmir (13014.20). Gaziantep (3899.00) ve Ankara (3500.00) 5000 TL'nin altında kalır; Bursa'dan sipariş yok.",
-   "code": "SELECT m.sehir, SUM(d.adet * d.birim_fiyat) AS ciro\nFROM musteriler m\nJOIN siparisler s    ON s.musteri_id = m.musteri_id\nJOIN siparis_detay d ON d.siparis_id = s.siparis_id\nWHERE s.durum <> 'İptal'\nGROUP BY m.sehir\nHAVING SUM(d.adet * d.birim_fiyat) > 5000\nORDER BY ciro DESC;"
-  },
-  {
-   "type": "mc",
-   "topic": "ileri1",
-   "q": "Aynı sorguda (uygulama 10) ilk satırdaki şehir hangisidir?",
-   "opts": [
-    "Ankara",
-    "İzmir",
-    "Gaziantep",
-    "İstanbul",
-    "Bursa"
-   ],
    "a": 3,
-   "exp": "En yüksek ciro İstanbul'da.",
-   "code": "-- uygulama soru 10'un sorgusu, ORDER BY ciro DESC"
+   "exp": "İptal tek tek satırların özelliğidir, gruplamadan önce WHERE ile atılır; 5000 koşulu ise HAVING'dedir (uygulama soru 10)."
   },
   {
    "type": "mc",
    "topic": "ileri1",
-   "q": "`magaza` veri tabanında toplam kaç müşteri vardır? (uygulama soru 1)",
+   "q": "Sorgu kaç satır döndürür?",
    "opts": [
-    "5",
-    "30",
-    "18",
-    "9",
-    "10"
+    "1",
+    "0",
+    "4",
+    "3",
+    "2"
    ],
    "a": 4,
-   "exp": "`SELECT COUNT(*) FROM musteriler;`",
-   "code": "SELECT COUNT(*) FROM musteriler;"
+   "exp": "Önce WHERE iptalleri atar. Kalan cirolar: İstanbul 6500, Ankara 5500, İzmir 3000. HAVING > 5000: İstanbul ve Ankara (uygulama soru 10).",
+   "code": "SELECT sehir, SUM(tutar) AS ciro\nFROM satislar\nWHERE durum <> 'İptal'\nGROUP BY sehir\nHAVING SUM(tutar) > 5000\nORDER BY ciro DESC;",
+   "tables": [
+    {
+     "name": "satislar",
+     "cols": [
+      "sehir",
+      "durum",
+      "tutar"
+     ],
+     "rows": [
+      [
+       "İstanbul",
+       "Teslim Edildi",
+       "4000.00"
+      ],
+      [
+       "İstanbul",
+       "Kargoda",
+       "2500.00"
+      ],
+      [
+       "İzmir",
+       "Teslim Edildi",
+       "3000.00"
+      ],
+      [
+       "İzmir",
+       "İptal",
+       "4000.00"
+      ],
+      [
+       "Ankara",
+       "Teslim Edildi",
+       "3500.00"
+      ],
+      [
+       "Ankara",
+       "Teslim Edildi",
+       "2000.00"
+      ],
+      [
+       "Gaziantep",
+       "İptal",
+       "6000.00"
+      ]
+     ]
+    }
+   ]
   },
   {
    "type": "mc",
    "topic": "ileri1",
-   "q": "`magaza` veri tabanında en az 2 sipariş vermiş müşteri sayısı kaçtır? (uygulama soru 8)",
+   "q": "Sorgu sonucunun ilk satırındaki şehir hangisidir?",
    "opts": [
-    "6",
-    "2",
-    "3",
-    "8",
-    "10"
+    "İstanbul",
+    "Boş sonuç",
+    "Ankara",
+    "İzmir",
+    "Gaziantep"
    ],
    "a": 0,
-   "exp": "Ayşe 3, Mehmet 3, Zeynep 3, Elif 2, Can 2, Deniz 2 sipariş verdi.",
-   "code": "SELECT m.ad, m.soyad, COUNT(s.siparis_id) AS siparis_sayisi\nFROM musteriler m\nJOIN siparisler s ON s.musteri_id = m.musteri_id\nGROUP BY m.musteri_id, m.ad, m.soyad\nHAVING COUNT(s.siparis_id) >= 2;"
+   "exp": "ORDER BY ciro DESC: İstanbul 6500 > Ankara 5500 (uygulama soru 10).",
+   "code": "SELECT sehir, SUM(tutar) AS ciro\nFROM satislar\nWHERE durum <> 'İptal'\nGROUP BY sehir\nHAVING SUM(tutar) > 5000\nORDER BY ciro DESC;",
+   "tables": [
+    {
+     "name": "satislar",
+     "cols": [
+      "sehir",
+      "durum",
+      "tutar"
+     ],
+     "rows": [
+      [
+       "İstanbul",
+       "Teslim Edildi",
+       "4000.00"
+      ],
+      [
+       "İstanbul",
+       "Kargoda",
+       "2500.00"
+      ],
+      [
+       "İzmir",
+       "Teslim Edildi",
+       "3000.00"
+      ],
+      [
+       "İzmir",
+       "İptal",
+       "4000.00"
+      ],
+      [
+       "Ankara",
+       "Teslim Edildi",
+       "3500.00"
+      ],
+      [
+       "Ankara",
+       "Teslim Edildi",
+       "2000.00"
+      ],
+      [
+       "Gaziantep",
+       "İptal",
+       "6000.00"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "type": "mc",
+   "topic": "ileri1",
+   "q": "Bu sorgudan `WHERE durum <> 'İptal'` satırı silinirse kaç satır döner?",
+   "opts": [
+    "2",
+    "4",
+    "0",
+    "1",
+    "3"
+   ],
+   "a": 1,
+   "exp": "İptaller de toplanır: İzmir 7000, İstanbul 6500, Gaziantep 6000, Ankara 5500; hepsi 5000'i geçer (uygulama soru 10).",
+   "code": "SELECT sehir, SUM(tutar) AS ciro\nFROM satislar\nWHERE durum <> 'İptal'\nGROUP BY sehir\nHAVING SUM(tutar) > 5000\nORDER BY ciro DESC;",
+   "tables": [
+    {
+     "name": "satislar",
+     "cols": [
+      "sehir",
+      "durum",
+      "tutar"
+     ],
+     "rows": [
+      [
+       "İstanbul",
+       "Teslim Edildi",
+       "4000.00"
+      ],
+      [
+       "İstanbul",
+       "Kargoda",
+       "2500.00"
+      ],
+      [
+       "İzmir",
+       "Teslim Edildi",
+       "3000.00"
+      ],
+      [
+       "İzmir",
+       "İptal",
+       "4000.00"
+      ],
+      [
+       "Ankara",
+       "Teslim Edildi",
+       "3500.00"
+      ],
+      [
+       "Ankara",
+       "Teslim Edildi",
+       "2000.00"
+      ],
+      [
+       "Gaziantep",
+       "İptal",
+       "6000.00"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "type": "mc",
+   "topic": "ileri1",
+   "q": "En az 2 sipariş vermiş müşterileri listeleyen sorgu kaç satır döndürür?",
+   "opts": [
+    "6",
+    "1",
+    "2",
+    "3",
+    "0"
+   ],
+   "a": 2,
+   "exp": "Müşteri bazında: 1 → 3, 2 → 2, 3 → 1 sipariş. HAVING COUNT(*) >= 2: müşteri 1 ve 2 (uygulama soru 8).",
+   "code": "SELECT musteri_id, COUNT(*) AS siparis_sayisi\nFROM siparisler\nGROUP BY musteri_id\nHAVING COUNT(*) >= 2;",
+   "tables": [
+    {
+     "name": "siparisler",
+     "cols": [
+      "siparis_id",
+      "musteri_id",
+      "durum"
+     ],
+     "rows": [
+      [
+       "1",
+       "1",
+       "Teslim Edildi"
+      ],
+      [
+       "2",
+       "2",
+       "Teslim Edildi"
+      ],
+      [
+       "3",
+       "1",
+       "Kargoda"
+      ],
+      [
+       "4",
+       "3",
+       "İptal"
+      ],
+      [
+       "5",
+       "1",
+       "Teslim Edildi"
+      ],
+      [
+       "6",
+       "2",
+       "İptal"
+      ]
+     ]
+    }
+   ]
   },
   {
    "type": "mc",
    "topic": "ileri1",
    "q": "`AVG` fonksiyonu NULL değerleri nasıl ele alır?",
    "opts": [
-    "0 olarak sayar",
-    "Hesaba katmaz; NULL olmayanların ortalamasını alır",
+    "Hata verir",
     "En büyük değer yapar",
     "Sonucu NULL yapar",
-    "Hata verir"
+    "Hesaba katmaz; NULL olmayanların ortalamasını alır",
+    "0 olarak sayar"
    ],
-   "a": 1,
+   "a": 3,
    "exp": "Not: 10, NULL, 20 → AVG = 15, (10+0+20)/3 değil."
   },
   {
@@ -6944,10 +8210,10 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri1",
    "q": "Sorgu sonucu kaçtır?",
    "opts": [
-    "30",
     "NULL",
-    "15.0000",
     "10.0000",
+    "15.0000",
+    "30",
     "20.0000"
    ],
    "a": 2,
@@ -6982,11 +8248,11 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri1",
    "q": "Sorgu sonucu (`a | b`) hangisidir?",
    "opts": [
-    "2 | 2",
-    "3 | 0",
     "2 | 3",
+    "2 | 2",
+    "3 | 3",
     "3 | 2",
-    "3 | 3"
+    "3 | 0"
    ],
    "a": 3,
    "exp": "COUNT(*) 3 satır, COUNT(puan) NULL olmayan 2.",
@@ -7097,10 +8363,10 @@ window.TOPIC_QUESTIONS = {
    ],
    "exp": "Toplama (aggregate) fonksiyonları her grup için tek değer üretir.",
    "choices": [
-    "Toplam",
-    "En büyük değer",
     "Ortalama",
-    "Satır sayısı"
+    "Satır sayısı",
+    "Toplam",
+    "En büyük değer"
    ]
   },
   {
@@ -7127,8 +8393,8 @@ window.TOPIC_QUESTIONS = {
    ],
    "exp": "Uygulamadaki kısa hatırlatma.",
    "choices": [
-    "Sonucu sıralar",
     "Gruplamadan önce satırları süzer",
+    "Sonucu sıralar",
     "Aynı değerli satırları gruplar",
     "Gruplamadan sonra grupları süzer"
    ]
@@ -7141,10 +8407,10 @@ window.TOPIC_QUESTIONS = {
    "q": "`INNER JOIN` hangi satırları getirir?",
    "opts": [
     "Sadece iki tabloda da eşleşen satırları",
-    "Her satırı her satırla",
+    "Eşleşmeyen satırları",
     "Sağdaki tablonun bütün satırlarını",
-    "Soldaki tablonun bütün satırlarını",
-    "Eşleşmeyen satırları"
+    "Her satırı her satırla",
+    "Soldaki tablonun bütün satırlarını"
    ],
    "a": 0,
    "exp": "Eşleşme yoksa satır sonuçta yer almaz."
@@ -7154,13 +8420,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "`LEFT JOIN` hangi satırları getirir?",
    "opts": [
-    "Soldaki tablonun bütün satırlarını; sağda eşleşme yoksa sağ sütunlar NULL",
     "Sadece eşleşen satırları",
+    "Soldaki tablonun bütün satırlarını; sağda eşleşme yoksa sağ sütunlar NULL",
     "Kartezyen çarpımı",
     "Sadece eşleşmeyenleri",
     "Sağdaki tablonun bütün satırlarını"
    ],
-   "a": 0,
+   "a": 1,
    "exp": "Kartı olmayan öğrenciyi de listelemek için kullanıldı."
   },
   {
@@ -7168,13 +8434,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Sorgu kaç satır döndürür?",
    "opts": [
-    "5",
-    "1",
     "4",
+    "1",
     "30",
-    "6"
+    "6",
+    "5"
    ],
-   "a": 0,
+   "a": 4,
    "exp": "Kerem'in kartı yok; INNER JOIN onu getirmez.",
    "code": "SELECT o.ad, k.kart_no FROM ogrenci o JOIN ogrenci_karti k ON k.ogrenci_no = o.ogrenci_no;",
    "tables": [
@@ -7254,11 +8520,11 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Sorgu kaç satır döndürür?",
    "opts": [
-    "5",
+    "1",
     "6",
     "11",
-    "30",
-    "1"
+    "5",
+    "30"
    ],
    "a": 1,
    "exp": "LEFT JOIN soldaki 6 öğrencinin hepsini getirir; Kerem'in kart_no'su NULL.",
@@ -7340,13 +8606,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Sorgu sonucu hangisidir?",
    "opts": [
-    "Ahmet",
     "Boş sonuç",
-    "Kerem, Deniz",
+    "Kerem",
     "Deniz",
-    "Kerem"
+    "Kerem, Deniz",
+    "Ahmet"
    ],
-   "a": 4,
+   "a": 1,
    "exp": "LEFT JOIN + IS NULL: kartı olmayan öğrenci.",
    "code": "SELECT o.ad FROM ogrenci o LEFT JOIN ogrenci_karti k ON k.ogrenci_no = o.ogrenci_no WHERE k.kart_no IS NULL;",
    "tables": [
@@ -7426,13 +8692,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Sorgu sonucu hangisidir?",
    "opts": [
+    "Bilgisayar Programcılığı",
     "Muhasebe ve Vergi Uygulamaları",
     "Turizm ve Otel İşletmeciliği",
-    "Boş sonuç",
     "Grafik Tasarımı",
-    "Bilgisayar Programcılığı"
+    "Boş sonuç"
    ],
-   "a": 1,
+   "a": 2,
    "exp": "Hiç dersi olmayan bölüm: 4 numara.",
    "code": "SELECT b.bolum_adi FROM bolum b LEFT JOIN ders d ON d.bolum_no = b.bolum_no WHERE d.ders_kodu IS NULL;",
    "tables": [
@@ -7515,28 +8781,102 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Sorgu kaç satır döndürür?",
    "opts": [
-    "1",
-    "24",
+    "6",
     "10",
+    "1",
     "4",
-    "6"
+    "24"
    ],
-   "a": 1,
+   "a": 4,
    "exp": "CROSS JOIN kartezyen çarpım: 6 ders × 4 bölüm = 24.",
-   "code": "SELECT * FROM ders CROSS JOIN bolum;"
+   "code": "SELECT * FROM ders CROSS JOIN bolum;",
+   "tables": [
+    {
+     "name": "ders",
+     "cols": [
+      "ders_kodu",
+      "ders_adi",
+      "kredi",
+      "bolum_no"
+     ],
+     "rows": [
+      [
+       "101",
+       "Veritabanı Yönetim Sistemleri",
+       "4",
+       "1"
+      ],
+      [
+       "102",
+       "Web Programlama",
+       "4",
+       "1"
+      ],
+      [
+       "103",
+       "Nesne Tabanlı Programlama",
+       "3",
+       "1"
+      ],
+      [
+       "201",
+       "Tipografi",
+       "3",
+       "2"
+      ],
+      [
+       "202",
+       "Dijital Fotoğrafçılık",
+       "3",
+       "2"
+      ],
+      [
+       "301",
+       "Genel Muhasebe",
+       "4",
+       "3"
+      ]
+     ]
+    },
+    {
+     "name": "bolum",
+     "cols": [
+      "bolum_no",
+      "bolum_adi"
+     ],
+     "rows": [
+      [
+       "1",
+       "Bilgisayar Programcılığı"
+      ],
+      [
+       "2",
+       "Grafik Tasarımı"
+      ],
+      [
+       "3",
+       "Muhasebe ve Vergi Uygulamaları"
+      ],
+      [
+       "4",
+       "Turizm ve Otel İşletmeciliği"
+      ]
+     ]
+    }
+   ]
   },
   {
    "type": "mc",
    "topic": "ileri2",
    "q": "MySQL'de hangi JOIN türü **doğrudan desteklenmez**?",
    "opts": [
-    "RIGHT JOIN",
-    "LEFT JOIN",
     "FULL OUTER JOIN",
+    "LEFT JOIN",
     "INNER JOIN",
-    "CROSS JOIN"
+    "CROSS JOIN",
+    "RIGHT JOIN"
    ],
-   "a": 2,
+   "a": 0,
    "exp": "LEFT JOIN … UNION … RIGHT JOIN ile yapılır."
   },
   {
@@ -7545,12 +8885,12 @@ window.TOPIC_QUESTIONS = {
    "q": "Aşağıdaki sorgu neden **hata verir**?",
    "opts": [
     "Takma ad kullanılamaz",
-    "JOIN yerine WHERE yazılmalıydı",
-    "SELECT'te iki sütun olamaz",
+    "ogrenci_no iki tabloda da var; hangi tablonunki olduğu belirsiz",
     "ON yerine IN gelmeli",
-    "ogrenci_no iki tabloda da var; hangi tablonunki olduğu belirsiz"
+    "JOIN yerine WHERE yazılmalıydı",
+    "SELECT'te iki sütun olamaz"
    ],
-   "a": 4,
+   "a": 1,
    "exp": "#1052 Column 'ogrenci_no' in field list is ambiguous. Çözüm: `o.ogrenci_no`.",
    "code": "SELECT ogrenci_no, ders_kodu FROM ogrenci o JOIN ders_kaydi k ON k.ogrenci_no = o.ogrenci_no;"
   },
@@ -7559,13 +8899,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Bölüm 2 (Grafik) derslerine kayıtları getiren 3 tablolu JOIN kaç satır döndürür?",
    "opts": [
-    "4",
-    "3",
-    "2",
     "11",
-    "5"
+    "3",
+    "5",
+    "2",
+    "4"
    ],
-   "a": 0,
+   "a": 4,
    "exp": "201: Ahmet, İrem; 202: Mert, İrem.",
    "code": "SELECT o.ad, d.ders_adi, k.harf_notu\nFROM ders_kaydi k\nJOIN ogrenci o ON o.ogrenci_no = k.ogrenci_no\nJOIN ders d    ON d.ders_kodu  = k.ders_kodu\nWHERE d.bolum_no = 2;",
    "tables": [
@@ -7688,13 +9028,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Her öğrencinin kaç derse kayıtlı olduğunu (kaydı olmayan da 0 görünsün) listelemek için hangisi doğrudur?",
    "opts": [
-    "LEFT JOIN ve COUNT(*)",
     "LEFT JOIN ders_kaydi ve COUNT(k.ders_kodu)",
+    "RIGHT JOIN ve MAX",
     "CROSS JOIN ve SUM",
     "INNER JOIN ve COUNT(*)",
-    "RIGHT JOIN ve MAX"
+    "LEFT JOIN ve COUNT(*)"
    ],
-   "a": 1,
+   "a": 0,
    "exp": "COUNT(*) eşleşmeyen satırı 1 sayar; sağ tablonun sütunu sayılınca 0 olur."
   },
   {
@@ -7702,13 +9042,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Sorguda Kerem'in satırında hangi sayı görünür?",
    "opts": [
-    "Satır görünmez",
     "NULL",
-    "6",
     "1",
-    "0"
+    "0",
+    "Satır görünmez",
+    "6"
    ],
-   "a": 4,
+   "a": 2,
    "exp": "LEFT JOIN Kerem'i getirir; COUNT(k.ders_kodu) NULL'u saymaz → 0.",
    "code": "SELECT o.ad, COUNT(k.ders_kodu) AS ders_sayisi\nFROM ogrenci o\nLEFT JOIN ders_kaydi k ON k.ogrenci_no = o.ogrenci_no\nGROUP BY o.ogrenci_no, o.ad;",
    "tables": [
@@ -7824,13 +9164,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Aynı sorguda `COUNT(*)` kullanılsaydı Kerem'in satırında kaç yazardı?",
    "opts": [
+    "0",
     "1",
     "Hata verirdi",
     "6",
-    "0",
     "NULL"
    ],
-   "a": 0,
+   "a": 1,
    "exp": "LEFT JOIN'in eşleşmesiz satırı da bir satırdır; COUNT(*) onu sayar.",
    "code": "SELECT o.ad, COUNT(*) AS ders_sayisi\nFROM ogrenci o\nLEFT JOIN ders_kaydi k ON k.ogrenci_no = o.ogrenci_no\nGROUP BY o.ogrenci_no, o.ad;",
    "tables": [
@@ -7944,42 +9284,209 @@ window.TOPIC_QUESTIONS = {
   {
    "type": "mc",
    "topic": "ileri2",
-   "q": "`magaza` veri tabanında hiç satılmamış ürünler (uygulama bonus) hangileridir?",
+   "q": "Sorgu hangi ürünleri döndürür?",
    "opts": [
-    "Kamp Sandalyesi, Termos",
-    "Mekanik Klavye",
+    "Kablosuz Kulaklık, Akıllı Saat",
+    "Boş sonuç",
+    "Veri Bilimine Giriş, Kamp Sandalyesi",
     "Mekanik Klavye, Kamp Sandalyesi",
-    "Hepsi satıldı",
-    "Oyuncak"
+    "Mekanik Klavye"
    ],
-   "a": 2,
-   "exp": "LEFT JOIN + GROUP BY + HAVING COUNT(d.detay_id) = 0.",
-   "code": "SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.detay_id) = 0\nORDER BY u.urun_id;"
+   "a": 3,
+   "exp": "LEFT JOIN bütün ürünleri getirir; siparis_detay'da hiç satırı olmayanların sayısı 0 olur. 16 ve 17 hiç satılmamış (uygulama bonus).",
+   "code": "SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.urun_id) = 0\nORDER BY u.urun_id;",
+   "tables": [
+    {
+     "name": "urunler",
+     "cols": [
+      "urun_id",
+      "urun_adi"
+     ],
+     "rows": [
+      [
+       "1",
+       "Kablosuz Kulaklık"
+      ],
+      [
+       "2",
+       "Akıllı Saat"
+      ],
+      [
+       "8",
+       "Python ile Programlama"
+      ],
+      [
+       "9",
+       "Veri Bilimine Giriş"
+      ],
+      [
+       "16",
+       "Mekanik Klavye"
+      ],
+      [
+       "17",
+       "Kamp Sandalyesi"
+      ]
+     ]
+    },
+    {
+     "name": "siparis_detay",
+     "cols": [
+      "siparis_id",
+      "urun_id",
+      "adet",
+      "birim_fiyat"
+     ],
+     "rows": [
+      [
+       "1",
+       "1",
+       "1",
+       "1250.00"
+      ],
+      [
+       "1",
+       "8",
+       "2",
+       "320.00"
+      ],
+      [
+       "2",
+       "2",
+       "1",
+       "3400.00"
+      ],
+      [
+       "3",
+       "8",
+       "3",
+       "320.00"
+      ],
+      [
+       "3",
+       "9",
+       "1",
+       "410.00"
+      ]
+     ]
+    }
+   ]
   },
   {
    "type": "mc",
    "topic": "ileri2",
-   "q": "`magaza` veri tabanında her kategorinin ürün sayısını, ürünü olmayan \"Oyuncak\" da 0 görünecek şekilde listelemek için hangisi gerekir?",
+   "q": "Bu sorguda `LEFT JOIN` yerine `JOIN` (INNER) yazılırsa kaç satır döner?",
    "opts": [
+    "4 satır",
+    "2 satır",
+    "1 satır",
+    "6 satır",
+    "0 satır"
+   ],
+   "a": 4,
+   "exp": "INNER JOIN satılmamış ürünleri hiç getirmez; kalan her ürünün sayısı en az 1 olur, HAVING = 0 kimseyi geçirmez (uygulama bonus).",
+   "code": "SELECT u.urun_adi\nFROM urunler u\nLEFT JOIN siparis_detay d ON d.urun_id = u.urun_id\nGROUP BY u.urun_id, u.urun_adi\nHAVING COUNT(d.urun_id) = 0;",
+   "tables": [
+    {
+     "name": "urunler",
+     "cols": [
+      "urun_id",
+      "urun_adi"
+     ],
+     "rows": [
+      [
+       "1",
+       "Kablosuz Kulaklık"
+      ],
+      [
+       "2",
+       "Akıllı Saat"
+      ],
+      [
+       "8",
+       "Python ile Programlama"
+      ],
+      [
+       "9",
+       "Veri Bilimine Giriş"
+      ],
+      [
+       "16",
+       "Mekanik Klavye"
+      ],
+      [
+       "17",
+       "Kamp Sandalyesi"
+      ]
+     ]
+    },
+    {
+     "name": "siparis_detay",
+     "cols": [
+      "siparis_id",
+      "urun_id",
+      "adet",
+      "birim_fiyat"
+     ],
+     "rows": [
+      [
+       "1",
+       "1",
+       "1",
+       "1250.00"
+      ],
+      [
+       "1",
+       "8",
+       "2",
+       "320.00"
+      ],
+      [
+       "2",
+       "2",
+       "1",
+       "3400.00"
+      ],
+      [
+       "3",
+       "8",
+       "3",
+       "320.00"
+      ],
+      [
+       "3",
+       "9",
+       "1",
+       "410.00"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "type": "mc",
+   "topic": "ileri2",
+   "q": "`kategoriler` ve `urunler` tablolarıyla her kategorinin ürün sayısı listelenecek; hiç ürünü olmayan kategori de 0 ile görünsün. Hangisi gerekir?",
+   "opts": [
+    "urunler CROSS JOIN kategoriler",
+    "HAVING COUNT(*) > 0",
     "kategoriler INNER JOIN urunler",
     "kategoriler LEFT JOIN urunler",
-    "HAVING COUNT(*) > 0",
-    "Sadece WHERE",
-    "urunler CROSS JOIN kategoriler"
+    "Sadece WHERE"
    ],
-   "a": 1,
-   "exp": "INNER JOIN ürünü olmayan kategoriyi atar."
+   "a": 3,
+   "exp": "INNER JOIN ürünü olmayan kategoriyi atar; LEFT JOIN soldaki tüm kategorileri tutar, COUNT(u.urun_id) 0 verir."
   },
   {
    "type": "mc",
    "topic": "ileri2",
    "q": "Sorgu sonucu kaç satırdır?",
    "opts": [
-    "3",
+    "5",
     "2",
     "6",
     "4",
-    "5"
+    "3"
    ],
    "a": 3,
    "exp": "4 kredili dersler 101, 102, 301; AA alan dersler 101, 202. UNION tekrarı (101) atar: 101, 102, 202, 301.",
@@ -8104,13 +9611,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Aynı sorgu `UNION ALL` ile yazılırsa kaç satır döner?",
    "opts": [
-    "6",
-    "4",
-    "2",
     "3",
-    "5"
+    "6",
+    "5",
+    "2",
+    "4"
    ],
-   "a": 4,
+   "a": 2,
    "exp": "UNION ALL tekrarları atmaz: 3 + 2 = 5.",
    "code": "SELECT ders_kodu FROM ders WHERE kredi = 4 UNION ALL SELECT ders_kodu FROM ders_kaydi WHERE harf_notu = 'AA';",
    "tables": [
@@ -8233,13 +9740,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Sorgu sonucu hangisidir?",
    "opts": [
-    "Ahmet",
-    "NULL",
-    "AhmetKara",
+    "Kara Ahmet",
     "Ahmet Kara",
-    "Kara Ahmet"
+    "Ahmet",
+    "AhmetKara",
+    "NULL"
    ],
-   "a": 3,
+   "a": 1,
    "exp": "CONCAT değerleri birleştirir; araya ' ' konmuş.",
    "code": "SELECT CONCAT(ad, ' ', soyad) FROM ogrenci WHERE ogrenci_no = 20250101;",
    "tables": [
@@ -8292,11 +9799,11 @@ window.TOPIC_QUESTIONS = {
    "opts": [
     "NULL",
     "Boş",
-    "0",
     "Girilmedi",
+    "0",
     "AA"
    ],
-   "a": 3,
+   "a": 2,
    "exp": "20250102'nin 103 dersinde notu NULL; IFNULL ikinci değeri döndürür.",
    "code": "SELECT IFNULL(harf_notu, 'Girilmedi') FROM ders_kaydi WHERE ogrenci_no = 20250102 AND ders_kodu = 103;",
    "tables": [
@@ -8372,11 +9879,11 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "`SELECT UPPER('sql');` sonucu nedir?",
    "opts": [
-    "Sql",
-    "3",
-    "SQL",
+    "sql",
     "Hata",
-    "sql"
+    "SQL",
+    "Sql",
+    "3"
    ],
    "a": 2,
    "exp": "UPPER büyük harfe, LOWER küçük harfe çevirir.",
@@ -8387,13 +9894,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "`SELECT CHAR_LENGTH('Mert');` sonucu nedir?",
    "opts": [
-    "Mert",
     "4",
-    "3",
     "5",
-    "8"
+    "8",
+    "3",
+    "Mert"
    ],
-   "a": 1,
+   "a": 0,
    "exp": "Karakter sayısı.",
    "code": "SELECT CHAR_LENGTH('Mert');"
   },
@@ -8402,13 +9909,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "`SELECT SUBSTRING('Veritabanı', 1, 4);` sonucu nedir?",
    "opts": [
-    "erit",
-    "Veritabanı",
     "Veri",
+    "tabanı",
+    "erit",
     "V",
-    "tabanı"
+    "Veritabanı"
    ],
-   "a": 2,
+   "a": 0,
    "exp": "1. karakterden başlayıp 4 karakter.",
    "code": "SELECT SUBSTRING('Veritabanı', 1, 4);"
   },
@@ -8417,13 +9924,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "`SELECT DATEDIFF('2025-09-23', '2025-09-20');` sonucu nedir?",
    "opts": [
-    "-3",
     "2025",
-    "3",
+    "-3",
+    "23",
     "0",
-    "23"
+    "3"
    ],
-   "a": 2,
+   "a": 4,
    "exp": "İlk tarih eksi ikinci tarih, gün olarak.",
    "code": "SELECT DATEDIFF('2025-09-23', '2025-09-20');"
   },
@@ -8432,13 +9939,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "`SELECT YEAR('2025-09-20');` sonucu nedir?",
    "opts": [
-    "2025",
     "09",
-    "9",
+    "2025",
     "20",
+    "9",
     "2025-09-20"
    ],
-   "a": 0,
+   "a": 1,
    "exp": "YEAR tarihin yılını döndürür.",
    "code": "SELECT YEAR('2025-09-20');"
   },
@@ -8447,13 +9954,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "`SELECT ROUND(989.6294, 2);` sonucu nedir?",
    "opts": [
-    "989.63",
     "990",
+    "989.6",
+    "989.63",
     "989.62",
-    "989.6294",
-    "989.6"
+    "989.6294"
    ],
-   "a": 0,
+   "a": 2,
    "exp": "İkinci basamaktan sonra 9 → yukarı yuvarlanır.",
    "code": "SELECT ROUND(989.6294, 2);"
   },
@@ -8462,10 +9969,10 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Sorgu kaç satırda \"Ağır\" yazar?",
    "opts": [
-    "6",
+    "1",
     "3",
     "0",
-    "1",
+    "6",
     "2"
    ],
    "a": 4,
@@ -8526,13 +10033,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "ileri2",
    "q": "Tabloya takma ad vermek için hangisi doğrudur?",
    "opts": [
+    "FROM ALIAS ogrenci o",
     "FROM o = ogrenci",
     "FROM ogrenci AS o",
     "FROM ogrenci TO o",
-    "FROM ogrenci(o)",
-    "FROM ALIAS ogrenci o"
+    "FROM ogrenci(o)"
    ],
-   "a": 1,
+   "a": 2,
    "exp": "`AS` yazılmadan `FROM ogrenci o` da olur."
   },
   {
@@ -8614,10 +10121,10 @@ window.TOPIC_QUESTIONS = {
    ],
    "exp": "MySQL'de FULL OUTER JOIN yoktur.",
    "choices": [
-    "Soldaki tablonun hepsi",
     "Sağdaki tablonun hepsi",
     "Her satır her satırla",
-    "Sadece eşleşenler"
+    "Sadece eşleşenler",
+    "Soldaki tablonun hepsi"
    ]
   },
   {
@@ -8644,10 +10151,10 @@ window.TOPIC_QUESTIONS = {
    ],
    "exp": "Sık kullanılan tek satır fonksiyonları.",
    "choices": [
-    "NULL ise yerine değer koyar",
-    "Büyük harfe çevirir",
+    "Metinleri birleştirir",
     "İki tarih arasındaki gün",
-    "Metinleri birleştirir"
+    "Büyük harfe çevirir",
+    "NULL ise yerine değer koyar"
    ]
   }
  ],
@@ -8657,16 +10164,16 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Görünüm (VIEW) için hangisi doğrudur?",
    "opts": [
-    "Sadece bir kez çalışır",
-    "INSERT olunca kendiliğinden çalışır",
-    "Veri tabanı oluşturur",
     "Bir SELECT sorgusuna verilen addır; veriyi kendisi saklamaz (sanal tablo)",
-    "Tablonun yedek kopyasıdır"
+    "Sadece bir kez çalışır",
+    "Veri tabanı oluşturur",
+    "Tablonun yedek kopyasıdır",
+    "INSERT olunca kendiliğinden çalışır"
    ],
-   "a": 3,
+   "a": 0,
    "exp": "Her çağrıldığında içindeki sorgu yeniden çalışır.",
    "why": {
-    "1": "Bu tetikleyicinin tanımı."
+    "4": "Bu tetikleyicinin tanımı."
    }
   },
   {
@@ -8674,13 +10181,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Görünüm oluşturan komut hangisidir?",
    "opts": [
-    "MAKE VIEW ad …",
-    "NEW VIEW ad = SELECT …",
-    "CREATE VIEW ad ON tablo",
     "CREATE VIEW ad AS SELECT …",
-    "CREATE TABLE ad AS VIEW …"
+    "CREATE TABLE ad AS VIEW …",
+    "CREATE VIEW ad ON tablo",
+    "MAKE VIEW ad …",
+    "NEW VIEW ad = SELECT …"
    ],
-   "a": 3,
+   "a": 0,
    "exp": "CREATE VIEW … AS SELECT."
   },
   {
@@ -8688,13 +10195,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Var olan bir görünümü yoksa oluşturan, varsa değiştiren komut hangisidir?",
    "opts": [
+    "ALTER OR CREATE VIEW",
     "CREATE OR REPLACE VIEW",
-    "REPLACE TABLE",
-    "MODIFY VIEW",
     "UPDATE VIEW",
-    "ALTER OR CREATE VIEW"
+    "REPLACE TABLE",
+    "MODIFY VIEW"
    ],
-   "a": 0,
+   "a": 1,
    "exp": "CREATE OR REPLACE VIEW (ALTER VIEW de tanımı değiştirir)."
   },
   {
@@ -8702,13 +10209,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "`DROP VIEW ogrenci_notlari;` çalıştırılırsa ne olur?",
    "opts": [
-    "Sadece görünüm tanımı silinir; tablolardaki veriler kalır",
-    "Notlar silinir",
     "Hata verir; görünüm silinemez",
     "ogrenci tablosu da silinir",
-    "Veri tabanı silinir"
+    "Sadece görünüm tanımı silinir; tablolardaki veriler kalır",
+    "Veri tabanı silinir",
+    "Notlar silinir"
    ],
-   "a": 0,
+   "a": 2,
    "exp": "Görünüm verinin kopyası değildir."
   },
   {
@@ -8716,13 +10223,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Görünüm kullanmanın faydası **olmayan** hangisidir?",
    "opts": [
-    "Verinin ikinci bir kopyasını diskte saklayıp yedek oluşturması",
-    "Karmaşık JOIN sorgusunu tek isimle kullanmak",
-    "Tablo yapısını kullanıcıdan gizlemek",
     "Kullanıcıya sadece belli sütunları göstermek (güvenlik)",
-    "Uygulama kodunu sadeleştirmek"
+    "Karmaşık JOIN sorgusunu tek isimle kullanmak",
+    "Uygulama kodunu sadeleştirmek",
+    "Tablo yapısını kullanıcıdan gizlemek",
+    "Verinin ikinci bir kopyasını diskte saklayıp yedek oluşturması"
    ],
-   "a": 0,
+   "a": 4,
    "exp": "Görünüm veri saklamaz, yedek değildir."
   },
   {
@@ -8730,13 +10237,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Görünüm oluşturulduktan sonra temel tabloya yeni satır eklenirse görünüm ne gösterir?",
    "opts": [
-    "Eski veriyi gösterir",
+    "Görünüm silinir",
+    "Sadece yeni satırı gösterir",
     "Yeni satırı da gösterir",
     "Hata verir",
-    "Görünüm silinir",
-    "Sadece yeni satırı gösterir"
+    "Eski veriyi gösterir"
    ],
-   "a": 1,
+   "a": 2,
    "exp": "Görünüm her seferinde sorguyu yeniden çalıştırır.",
    "code": "CREATE VIEW ucuz AS SELECT ad FROM urun WHERE fiyat < 50;\nINSERT INTO urun VALUES (2, 'Silgi', 5);\nSELECT * FROM ucuz;"
   },
@@ -8745,13 +10252,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Sorgu kaç satır döndürür?",
    "opts": [
-    "0",
-    "3",
     "2",
     "1",
+    "0",
+    "3",
     "11"
    ],
-   "a": 2,
+   "a": 0,
    "exp": "Görünüm 3 tablolu JOIN; AA notu olan 2 kayıt (Ahmet-101, Mert-202).",
    "code": "CREATE OR REPLACE VIEW ogrenci_notlari AS\nSELECT o.ad, o.soyad, d.ders_adi, k.harf_notu\nFROM ders_kaydi k\nJOIN ogrenci o ON o.ogrenci_no = k.ogrenci_no\nJOIN ders d    ON d.ders_kodu  = k.ders_kodu;\nSELECT * FROM ogrenci_notlari WHERE harf_notu = 'AA';",
    "tables": [
@@ -8827,13 +10334,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Hangi görünüm üzerinden **UPDATE yapılamaz**?",
    "opts": [
-    "Tek tablodan WHERE ile süzen görünüm",
-    "Tek tablodan bazı sütunları seçen görünüm",
     "Takma ad kullanan basit görünüm",
     "Tek tablonun tüm sütunlarını seçen görünüm",
-    "GROUP BY ve COUNT içeren görünüm"
+    "Tek tablodan bazı sütunları seçen görünüm",
+    "GROUP BY ve COUNT içeren görünüm",
+    "Tek tablodan WHERE ile süzen görünüm"
    ],
-   "a": 4,
+   "a": 3,
    "exp": "Toplama fonksiyonu / GROUP BY / DISTINCT içeren görünüm güncellenemez."
   },
   {
@@ -8842,12 +10349,12 @@ window.TOPIC_QUESTIONS = {
    "q": "Tetikleyici (TRIGGER) için hangisi doğrudur?",
    "opts": [
     "Sadece veri tabanı oluşturulurken çalışır",
-    "Veriyi sanal tablo gibi gösterir",
-    "Tabloda INSERT, UPDATE veya DELETE olunca kendiliğinden çalışır",
+    "CALL ile elle çağrılır",
     "SELECT sorgularında çalışır",
-    "CALL ile elle çağrılır"
+    "Tabloda INSERT, UPDATE veya DELETE olunca kendiliğinden çalışır",
+    "Veriyi sanal tablo gibi gösterir"
    ],
-   "a": 2,
+   "a": 3,
    "exp": "Elle çağrılan saklı yordamdır (CALL); tetikleyici olayla çalışır."
   },
   {
@@ -8855,13 +10362,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Tetikleyici hangi olay için **tanımlanamaz**?",
    "opts": [
-    "SELECT",
-    "DELETE",
+    "UPDATE",
     "Hepsi için tanımlanabilir",
-    "INSERT",
-    "UPDATE"
+    "DELETE",
+    "SELECT",
+    "INSERT"
    ],
-   "a": 0,
+   "a": 3,
    "exp": "Tetikleyici sadece veri değiştiren olaylarda (INSERT/UPDATE/DELETE) çalışır."
   },
   {
@@ -8869,13 +10376,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Tetikleyicide `NEW.adet` ifadesi neyi gösterir?",
    "opts": [
-    "Bir önceki tetikleyicinin sonucunu",
+    "Eklenen / güncellenen satırın yeni adet değerini",
     "Yeni oluşturulan tabloyu",
     "Silinen satırın adet değerini",
-    "Eklenen / güncellenen satırın yeni adet değerini",
-    "Tablodaki toplam adedi"
+    "Tablodaki toplam adedi",
+    "Bir önceki tetikleyicinin sonucunu"
    ],
-   "a": 3,
+   "a": 0,
    "exp": "NEW yeni değer, OLD eski değer."
   },
   {
@@ -8883,13 +10390,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "`AFTER INSERT` tetikleyicisinde hangisi **kullanılamaz**?",
    "opts": [
-    "BEGIN … END",
-    "NEW",
-    "FOR EACH ROW",
     "OLD",
-    "UPDATE"
+    "NEW",
+    "UPDATE",
+    "FOR EACH ROW",
+    "BEGIN … END"
    ],
-   "a": 3,
+   "a": 0,
    "exp": "INSERT'te önceki satır olmadığı için OLD yoktur."
   },
   {
@@ -8898,12 +10405,12 @@ window.TOPIC_QUESTIONS = {
    "q": "`DELETE` tetikleyicisinde silinen satırın değerlerine nasıl erişilir?",
    "opts": [
     "DELETED.sutun",
+    "OLD.sutun",
     "ROW.sutun",
     "THIS.sutun",
-    "OLD.sutun",
     "NEW.sutun"
    ],
-   "a": 3,
+   "a": 1,
    "exp": "DELETE'te NEW yoktur, OLD vardır."
   },
   {
@@ -8911,13 +10418,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "`FOR EACH ROW` ne anlama gelir?",
    "opts": [
-    "Tetikleyici etkilenen her satır için bir kez çalışır",
     "Döngü kurar ve sonsuza kadar çalışır",
-    "Tetikleyici tablo başına bir kez çalışır",
     "Bütün tablolara uygulanır",
-    "Tabloyu satır satır kopyalar"
+    "Tabloyu satır satır kopyalar",
+    "Tetikleyici tablo başına bir kez çalışır",
+    "Tetikleyici etkilenen her satır için bir kez çalışır"
    ],
-   "a": 0,
+   "a": 4,
    "exp": "Üç satır eklenirse tetikleyici üç kez çalışır."
   },
   {
@@ -8926,10 +10433,10 @@ window.TOPIC_QUESTIONS = {
    "q": "Tetikleyici gövdesindeki `;` işaretlerinin komutu erken bitirmemesi için ne kullanılır?",
    "opts": [
     "DELIMITER $$",
-    "COMMIT",
     "SET NAMES",
+    "END IF",
     "GO",
-    "END IF"
+    "COMMIT"
    ],
    "a": 0,
    "exp": "Geçici ayırıcı; sonra `DELIMITER ;` ile geri alınır."
@@ -8939,13 +10446,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Satış eklendiğinde stok düşen tetikleyici çalıştıktan sonra ürünün stoku kaç olur?",
    "opts": [
-    "3",
-    "7",
-    "0",
     "13",
-    "10"
+    "3",
+    "0",
+    "10",
+    "7"
    ],
-   "a": 1,
+   "a": 4,
    "exp": "AFTER INSERT: 10 - 3 = 7.",
    "code": "DELIMITER $$\nCREATE TRIGGER stok_dus AFTER INSERT ON satis\nFOR EACH ROW\nBEGIN\n  UPDATE urun SET stok = stok - NEW.adet WHERE id = NEW.urun_id;\nEND$$\nDELIMITER ;\n\nINSERT INTO urun VALUES (1, 'Kulaklık', 10);\nINSERT INTO satis (urun_id, adet) VALUES (1, 3);\nSELECT stok FROM urun WHERE id = 1;"
   },
@@ -8954,13 +10461,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Aynı tetikleyiciyle iki satış yapılırsa (adet 2 ve 4) stok 10'dan kaça düşer?",
    "opts": [
-    "2",
-    "8",
     "10",
     "6",
-    "4"
+    "8",
+    "4",
+    "2"
    ],
-   "a": 4,
+   "a": 3,
    "exp": "Her satış için ayrı çalışır: 10 - 2 - 4 = 4.",
    "code": "INSERT INTO satis (urun_id, adet) VALUES (1, 2), (1, 4);\nSELECT stok FROM urun WHERE id = 1;"
   },
@@ -8969,13 +10476,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "`BEFORE INSERT` tetikleyicisi `IF NEW.stok < 0 THEN SET NEW.stok = 0; END IF;` içeriyor. `INSERT INTO urun VALUES (1, -5);` sonrası stok kaçtır?",
    "opts": [
-    "0",
     "Satır eklenmez",
-    "NULL",
+    "-5",
     "5",
-    "-5"
+    "0",
+    "NULL"
    ],
-   "a": 0,
+   "a": 3,
    "exp": "BEFORE tetikleyicisi eklenecek değeri değiştirebilir.",
    "code": "CREATE TABLE urun (id INT PRIMARY KEY, stok INT);\nDELIMITER $$\nCREATE TRIGGER stok_kontrol BEFORE INSERT ON urun\nFOR EACH ROW\nBEGIN\n  IF NEW.stok < 0 THEN\n    SET NEW.stok = 0;\n  END IF;\nEND$$\nDELIMITER ;\nINSERT INTO urun VALUES (1, -5);\nSELECT stok FROM urun;"
   },
@@ -8984,13 +10491,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Silinen müşterileri bir log tablosuna yazmak için hangi tetikleyici uygundur?",
    "opts": [
-    "AFTER DELETE ON musteri … NEW.ad",
     "BEFORE SELECT ON musteri",
     "CREATE VIEW silinenler",
-    "AFTER INSERT ON musteri … NEW.ad",
-    "AFTER DELETE ON musteri … OLD.ad"
+    "AFTER DELETE ON musteri … NEW.ad",
+    "AFTER DELETE ON musteri … OLD.ad",
+    "AFTER INSERT ON musteri … NEW.ad"
    ],
-   "a": 4,
+   "a": 3,
    "exp": "DELETE'te silinen satır OLD ile okunur."
   },
   {
@@ -8999,10 +10506,10 @@ window.TOPIC_QUESTIONS = {
    "q": "Tetikleyiciyi silen komut hangisidir?",
    "opts": [
     "ALTER TRIGGER ad DROP;",
-    "DELETE TRIGGER ad;",
     "REMOVE TRIGGER ad;",
+    "TRUNCATE TRIGGER ad;",
     "DROP TRIGGER ad;",
-    "TRUNCATE TRIGGER ad;"
+    "DELETE TRIGGER ad;"
    ],
    "a": 3,
    "exp": "DROP TRIGGER."
@@ -9012,13 +10519,13 @@ window.TOPIC_QUESTIONS = {
    "topic": "gorunum",
    "q": "Saklı yordam (PROCEDURE) ile tetikleyici arasındaki temel fark nedir?",
    "opts": [
-    "Tetikleyici parametre alır, yordam almaz",
-    "Tetikleyici CALL ile çağrılır",
-    "Yordam sadece SELECT içerir",
+    "İkisi aynıdır",
     "Yordam CALL ile elle çağrılır, tetikleyici olayla kendiliğinden çalışır",
-    "İkisi aynıdır"
+    "Tetikleyici CALL ile çağrılır",
+    "Tetikleyici parametre alır, yordam almaz",
+    "Yordam sadece SELECT içerir"
    ],
-   "a": 3,
+   "a": 1,
    "exp": "Tetikleyici çağrılmaz; olay (INSERT/UPDATE/DELETE) tetikler."
   },
   {
@@ -9089,10 +10596,10 @@ window.TOPIC_QUESTIONS = {
    ],
    "exp": "CREATE TRIGGER ad BEFORE|AFTER olay ON tablo FOR EACH ROW …",
    "choices": [
-    "Yeni değer (INSERT, UPDATE)",
-    "Olaydan önce mi sonra mı",
     "Her etkilenen satır için",
-    "Eski değer (UPDATE, DELETE)"
+    "Olaydan önce mi sonra mı",
+    "Eski değer (UPDATE, DELETE)",
+    "Yeni değer (INSERT, UPDATE)"
    ]
   },
   {
@@ -9119,10 +10626,10 @@ window.TOPIC_QUESTIONS = {
    ],
    "exp": "Sadece tablo veriyi kendisi saklar.",
    "choices": [
-    "CALL ile çağrılan blok",
-    "Adı verilmiş SELECT, sanal tablo",
     "Olayla kendiliğinden çalışan blok",
-    "Veriyi saklayan yapı"
+    "CALL ile çağrılan blok",
+    "Veriyi saklayan yapı",
+    "Adı verilmiş SELECT, sanal tablo"
    ]
   }
  ]
