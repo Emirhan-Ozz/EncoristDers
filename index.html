@@ -168,23 +168,15 @@
   footer{width:min(1120px,92vw); margin:0 auto; padding:22px 0 30px; border-top:1px solid var(--line); color:var(--mute); font-size:.85rem}
 
   /* ---------- ana ekran: "Ne çalışmak istiyorsun?" ---------- */
-  :root{--shine:#9fb6ff; --shine2:#ffd28a}
-  @media (prefers-color-scheme: light){ :root{--shine:rgba(255,255,255,.92); --shine2:#c9d6ff} }
   .home{min-height:calc(100vh - 200px); display:flex; flex-direction:column; justify-content:center}
   .ask{font-size:clamp(2.6rem,7.2vw,5.4rem); line-height:1.02; letter-spacing:-.035em; margin:0 0 14px; font-weight:800;
     background:linear-gradient(90deg,var(--ink) 0 55%,color-mix(in srgb,var(--c1) 70%,var(--ink)) 80%,color-mix(in srgb,var(--c2) 80%,var(--ink)));
     -webkit-background-clip:text; background-clip:text; color:transparent; padding-bottom:.06em}
   .home .ask{margin-bottom:44px;
-    background:
-      linear-gradient(105deg, transparent 38%, var(--shine) 48%, var(--shine2) 50%, var(--shine) 52%, transparent 62%) 160% 0/250% 100% no-repeat,
-      linear-gradient(90deg,var(--ink) 0 55%,color-mix(in srgb,var(--c1) 70%,var(--ink)) 80%,color-mix(in srgb,var(--c2) 80%,var(--ink)));
+    background:linear-gradient(90deg,#7095ff,#ff2bd6,#ff8a2a,#2aa3bd,#5b84ff,#7095ff) 0 0/200% 100% repeat-x;
     -webkit-background-clip:text; background-clip:text; color:transparent;
-    animation:ask-shine 2s ease-in-out infinite}
-  @keyframes ask-shine{
-    0%{background-position:160% 0,0 0; filter:drop-shadow(0 0 0 transparent)}
-    50%{filter:drop-shadow(0 0 10px color-mix(in srgb,var(--c1) 40%,transparent))}
-    80%,100%{background-position:-60% 0,0 0; filter:drop-shadow(0 0 0 transparent)}
-  }
+    animation:ask-wave 6s linear infinite}
+  @keyframes ask-wave{ from{background-position:0 0} to{background-position:-200% 0} }
   @media (prefers-reduced-motion: reduce){ .home .ask{animation:none} }
   .big-grid{display:grid; gap:28px; grid-template-columns:repeat(2,minmax(0,1fr))}
   @media (max-width:760px){ .big-grid{grid-template-columns:1fr; gap:18px} a.card.big{height:360px} a.card.big .face{padding:26px} }
@@ -260,7 +252,6 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
             <span class="hint">Üstüne gel: ders adlarını gör →</span>
           </div>
           <div class="face back" aria-hidden="true">
-            <span class="wm">Vize</span>
             <div class="ui-bar"><i class="on">Dersler</i><i>Genel Tekrar</i><i>Test</i></div>
             <div class="ui-body">
               <span class="b-title sm">Güz 2026–2027 · Vize</span>
@@ -286,7 +277,6 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
             <span class="hint">Üstüne gel: içeriği gör →</span>
           </div>
           <div class="face back" aria-hidden="true">
-            <span class="wm">Final</span>
             <div class="ui-bar"><i class="on">Dersler</i><i>Genel Tekrar</i><i>Test</i></div>
             <div class="ui-body">
               <span class="b-title sm">Güz 2026–2027 · Final</span>
