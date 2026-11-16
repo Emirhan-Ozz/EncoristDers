@@ -172,7 +172,12 @@
   .ask{font-size:clamp(2.6rem,7.2vw,5.4rem); line-height:1.02; letter-spacing:-.035em; margin:0 0 14px; font-weight:800;
     background:linear-gradient(90deg,var(--ink) 0 55%,color-mix(in srgb,var(--c1) 70%,var(--ink)) 80%,color-mix(in srgb,var(--c2) 80%,var(--ink)));
     -webkit-background-clip:text; background-clip:text; color:transparent; padding-bottom:.06em}
-  .home .lead{margin:0 0 44px}
+  .home .ask{margin-bottom:44px; animation:ask-glow 2s ease-in-out infinite}
+  @keyframes ask-glow{
+    0%,100%{filter:drop-shadow(0 0 0 transparent)}
+    50%{filter:drop-shadow(0 0 14px color-mix(in srgb,var(--c1) 55%,transparent)) drop-shadow(0 0 30px color-mix(in srgb,var(--c2) 28%,transparent))}
+  }
+  @media (prefers-reduced-motion: reduce){ .home .ask{animation:none} }
   .big-grid{display:grid; gap:28px; grid-template-columns:repeat(2,minmax(0,1fr))}
   @media (max-width:760px){ .big-grid{grid-template-columns:1fr; gap:18px} a.card.big{height:360px} a.card.big .face{padding:26px} }
   @media (hover:none){ a.card.big .hint{display:none} }
@@ -236,7 +241,6 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
   <section class="home" id="home">
     <p class="eyebrow">Emirhan Öz · EncoristDers</p>
     <h1 class="ask">Ne çalışmak istiyorsun?</h1>
-    <p class="lead">Kartın üstüne gel, içinde ne olduğunu gör. Tıklayınca açılır.</p>
     <div class="big-grid">
       <a class="card big all" href="#vize" aria-label="Güz 2026–2027 Vize: 5 dersin çalışma sitelerini aç">
         <div class="flip">
