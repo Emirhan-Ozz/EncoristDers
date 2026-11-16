@@ -110,22 +110,15 @@
   /* ---------- sayfa dolgusu: soluk doku + ek bölümler ---------- */
   body{position:relative; isolation:isolate}
   body::before{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:radial-gradient(color-mix(in srgb, var(--mute) 16%, transparent) 1px, transparent 1.4px) 0 0/22px 22px;
+    background:
+      radial-gradient(60vw 40vh at 8% -6%, color-mix(in srgb, var(--c1) 9%, transparent), transparent 70%),
+      radial-gradient(50vw 45vh at 100% 4%, color-mix(in srgb, var(--c2) 8%, transparent), transparent 70%),
+      radial-gradient(color-mix(in srgb, var(--mute) 16%, transparent) 1px, transparent 1.4px) 0 0/22px 22px;
     -webkit-mask-image:linear-gradient(180deg,#000 0,#000 40%,transparent 85%); mask-image:linear-gradient(180deg,#000 0,#000 40%,transparent 85%)}
-  /* gezinen ışıklar */
-  .bg-orbs{position:fixed; inset:0; z-index:-2; pointer-events:none; overflow:hidden}
-  .bg-orbs i{position:absolute; width:62vmax; height:62vmax; border-radius:50%; filter:blur(70px); will-change:transform}
-  .bg-orbs i:nth-child(1){left:-22vmax; top:-30vmax; background:radial-gradient(closest-side, color-mix(in srgb, var(--c1) 17%, transparent), transparent);
-    animation:orb-a 26s ease-in-out infinite alternate}
-  .bg-orbs i:nth-child(2){right:-24vmax; top:-22vmax; background:radial-gradient(closest-side, color-mix(in srgb, var(--c2) 15%, transparent), transparent);
-    animation:orb-b 32s ease-in-out infinite alternate}
-  @keyframes orb-a{0%{transform:translate(0,0)} 50%{transform:translate(38vw,22vh)} 100%{transform:translate(12vw,48vh)}}
-  @keyframes orb-b{0%{transform:translate(0,0)} 50%{transform:translate(-34vw,30vh)} 100%{transform:translate(-8vw,52vh)}}
   /* grain dokusu */
-  body::after{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.07; mix-blend-mode:overlay;
+  body::after{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.05;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  @media (prefers-color-scheme: light){ body::after{opacity:.09; mix-blend-mode:multiply} }
-  @media (prefers-reduced-motion: reduce){ .bg-orbs i{animation:none} }
+  @media (prefers-color-scheme: light){ body::after{opacity:.06} }
   .lead{margin-bottom:22px}
   .stats{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0 0 40px}
   .stats li{display:inline-flex; align-items:baseline; gap:6px; padding:6px 13px; border-radius:99px; font-size:.86rem; color:var(--mute);
@@ -244,7 +237,6 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
 </script>
 </head>
 <body>
-<div class="bg-orbs" aria-hidden="true"><i></i><i></i></div>
 <main>
   <section class="home" id="home">
     <p class="eyebrow">Emirhan Öz · EncoristDers</p>
