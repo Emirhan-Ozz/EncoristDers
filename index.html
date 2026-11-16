@@ -4,11 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EncoristDers · Çalışma siteleri</title>
-<meta name="description" content="GER101 Almanca, piyano nota okuma, MBP221 Mobil Uygulamalar, MBP207 Görsel Programlama, MBP205 Nesne Tabanlı Programlama II ve MBP203 Veri Tabanı ve Yönetimi çalışma siteleri tek yerde.">
+<meta name="description" content="GER101 Almanca, MBP221 Mobil Uygulamalar, MBP207 Görsel Programlama, MBP205 Nesne Tabanlı Programlama II ve MBP203 Veri Tabanı ve Yönetimi çalışma siteleri tek yerde.">
 <style>
-  @font-face{font-family:"CG";src:url("piano/assets/fonts/cg-latin-600.woff2") format("woff2");font-weight:600;font-display:swap}
-  @font-face{font-family:"CG";src:url("piano/assets/fonts/cg-latin-500i.woff2") format("woff2");font-weight:500;font-style:italic;font-display:swap}
-  @font-face{font-family:"Lora";src:url("piano/assets/fonts/lora-latin-400.woff2") format("woff2");font-weight:400;font-display:swap}
 
   :root{
     --c1:#7095ff; --c2:#b48a49;
@@ -105,7 +102,6 @@
   .py{--accent:#7095ff; --band:linear-gradient(90deg,#7095ff,#4fc3dc); --soft:#1b2440; --hi:#9ab4ff; --g1:rgba(112,149,255,.15); --g2:rgba(79,195,220,.14)}
   .oop{--accent:#d9600b; --band:linear-gradient(90deg,#ffb45c,#ff8a2a 50%,#5fa8e0); --soft:#33261a; --hi:#ffad5e; --g1:rgba(255,138,42,.15); --g2:rgba(95,168,224,.14)}
   .db{--accent:#00758f; --band:linear-gradient(90deg,#4cc3dc,#2aa3bd 45%,#f5a945); --soft:#14303a; --hi:#6fd6ec; --g1:rgba(76,195,220,.15); --g2:rgba(245,169,69,.14)}
-  .piano{--accent:#b48a49; --band:linear-gradient(90deg,#d2a964,#d4897a); --soft:#2a2316; --hi:#e0bb7a; --g1:rgba(210,169,100,.14); --g2:rgba(212,137,122,.15)}
 
   /* dokunmatik: takla yok, kart düz kalır */
   @media (prefers-reduced-motion: reduce){ .flip{transition:none} }
@@ -209,6 +205,14 @@
   /* dokunmatikte arka yüz görünmediği için ön yüzde ders çipleri var */
   .back-link{display:inline-flex; gap:8px; align-items:center; color:var(--mute); text-decoration:none; font-size:.92rem; margin:0 0 18px}
   .back-link:hover{color:var(--ink)}
+  .fin{--accent:#8a90a2; --band:linear-gradient(90deg,#6b7385,#aab1c2 50%,#6b7385); --soft:#22262f; --hi:#c6ccd9; --g1:rgba(170,177,194,.10); --g2:rgba(107,115,133,.12)}
+  .fin .front{border-style:dashed}
+  .empty{display:flex; flex-direction:column; gap:6px; background:#161a22; border:1px dashed #3a4150; border-radius:12px; padding:22px 18px; color:#98a1b1; font-size:.92rem; text-align:center}
+  .empty b{color:#e5e8ee; font-size:1.05rem}
+  .final-empty{display:flex; flex-direction:column; gap:8px; align-items:flex-start; margin-top:26px; padding:34px 30px; border:1.5px dashed var(--line); border-radius:22px;
+    background:color-mix(in srgb, var(--panel) 70%, transparent); color:var(--mute); max-width:640px}
+  .final-empty b{color:var(--ink); font-size:1.25rem}
+  .final-empty a{margin-top:8px; color:var(--c1); font-weight:600; text-decoration:none}
   [hidden]{display:none !important}
 </style>
 <style id="vt-slide">
@@ -234,20 +238,20 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
     <h1 class="ask">Ne çalışmak istiyorsun?</h1>
     <p class="lead">Kartın üstüne gel, içinde ne olduğunu gör. Tıklayınca açılır.</p>
     <div class="big-grid">
-      <a class="card big all" href="#dersler" aria-label="Dersler: 5 dersin çalışma sitelerini aç">
+      <a class="card big all" href="#vize" aria-label="Güz 2026–2027 Vize: 5 dersin çalışma sitelerini aç">
         <div class="flip">
           <div class="face front">
-            <span class="tag">Güz 2026–2027</span>
-            <h2>Dersler<small>5 dersin çalışma sitesi</small></h2>
-            <p>Konu özetleri, testler, deneme sınavları ve yazılı provalar. Vizeler bitti; siteler finale kadar açık.</p>
+            <span class="tag">Vize</span>
+            <h2>Güz 2026–2027 Vize<small>5 dersin çalışma sitesi</small></h2>
+            <p>Konu özetleri, testler, deneme sınavları ve yazılı provalar. Vizeler bitti; siteler açık kalıyor.</p>
             <div class="chips"><i style="--c:#ff2bd6">Almanca</i><i style="--c:#2b59d1">Mobil</i><i style="--c:#7095ff">Python</i><i style="--c:#ff8a2a">Java</i><i style="--c:#2aa3bd">SQL</i></div>
             <span class="hint">Üstüne gel: ders adlarını gör →</span>
           </div>
           <div class="face back" aria-hidden="true">
-            <span class="wm">Dersler</span>
+            <span class="wm">Vize</span>
             <div class="ui-bar"><i class="on">Dersler</i><i>Genel Tekrar</i><i>Test</i></div>
             <div class="ui-body">
-              <span class="b-title sm">5 ders · Güz 2026–2027</span>
+              <span class="b-title sm">Güz 2026–2027 · Vize</span>
               <div class="rows">
                 <span style="--c:#ff2bd6"><em>GER101</em>Almanca I<small>Tekrar · Test · Kelimeler</small></span>
                 <span style="--c:#5b84ff"><em>MBP221</em>Mobil Uygulamalar ve Teknolojiler<small>Tekrar · Test</small></span>
@@ -255,31 +259,27 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
                 <span style="--c:#ff8a2a"><em>MBP205</em>Nesne Tabanlı Programlama II<small>Java · Yazılı</small></span>
                 <span style="--c:#2aa3bd"><em>MBP203</em>Veri Tabanı ve Yönetimi<small>SQL · Kahoot</small></span>
               </div>
-              <span class="go">Dersleri aç →</span>
+              <span class="go">Vize sitelerini aç →</span>
             </div>
           </div>
         </div>
       </a>
-      <a class="card big piano" href="piano/" aria-label="Piyano: nota okuma sitesini aç">
+      <a class="card big fin" href="#final" aria-label="Güz 2026–2027 Final: henüz boş">
         <div class="flip">
           <div class="face front">
-            <span class="tag">Hobi</span>
-            <h2>Piyano<small>Piano notes · nota okuma</small></h2>
-            <p>Porte, notalar ve alıştırmalar. Je te laisserai des notes üzerinden nota okuma çalışması.</p>
-            <div class="chips"><i style="--c:#d2a964">Nota tekrarı</i><i style="--c:#d4897a">Alıştırmalar</i></div>
+            <span class="tag">Final</span>
+            <h2>Güz 2026–2027 Final<small>Henüz boş</small></h2>
+            <p>Final çalışma siteleri buraya gelecek. Final tarihleri ve konular belli olunca eklenir.</p>
+            <div class="chips"><i style="--c:#8a90a2">Yakında</i></div>
             <span class="hint">Üstüne gel: içeriği gör →</span>
           </div>
           <div class="face back" aria-hidden="true">
-            <span class="wm">Piyano</span>
-            <div class="ui-bar"><i class="on">Genel Tekrar</i><i>Alıştırma</i></div>
+            <span class="wm">Final</span>
+            <div class="ui-bar"><i class="on">Dersler</i><i>Genel Tekrar</i><i>Test</i></div>
             <div class="ui-body">
-              <span class="b-title sm">Je te laisserai des notes</span>
-              <div class="staffbox"><svg viewBox="0 0 240 62" fill="none" stroke="currentColor"><g stroke-width="1" opacity=".55"><path d="M0 10H240M0 20H240M0 30H240M0 40H240M0 50H240"/></g><g fill="currentColor" stroke="none"><ellipse cx="62" cy="45" rx="6.2" ry="4.4" transform="rotate(-20 62 45)"/><ellipse cx="104" cy="35" rx="6.2" ry="4.4" transform="rotate(-20 104 35)"/><ellipse cx="146" cy="25" rx="6.2" ry="4.4" transform="rotate(-20 146 25)"/><ellipse cx="188" cy="15" rx="6.2" ry="4.4" transform="rotate(-20 188 15)"/></g><g stroke-width="1.6"><path d="M67.5 43V14M109.5 33V4M140.5 27V56M182.5 17V46"/></g></svg></div>
-              <div class="rows">
-                <span style="--c:#d2a964"><em>Tekrar</em>Nota tekrarı<small>Porte · notalar</small></span>
-                <span style="--c:#d4897a"><em>Alıştırma</em>Nota okuma alıştırmaları<small>Anında kontrol</small></span>
-              </div>
-              <span class="go">Siteyi aç →</span>
+              <span class="b-title sm">Güz 2026–2027 · Final</span>
+              <div class="empty"><b>Henüz ders yok</b>Final siteleri eklendikçe ders adları burada listelenecek.</div>
+              <span class="go">Final sayfasını aç →</span>
             </div>
           </div>
         </div>
@@ -287,12 +287,12 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
     </div>
   </section>
 
-  <section id="dersler" hidden>
+  <section id="vize" hidden>
   <a class="back-link" href="#">← Ne çalışmak istiyorsun?</a>
-  <p class="eyebrow">Emirhan Öz</p>
-  <h1>EncoristDers</h1>
-  <p class="lead">Altı çalışma sitesi tek adreste. Kartın üstüne gel, açılacak sitenin temasını gör.</p>
-  <ul class="stats"><li><b>6</b>çalışma sitesi</li><li><b>5</b>ders</li><li><b>1</b>hobi</li><li>Almanca · Mobil · Python · Java · SQL · Piyano</li></ul>
+  <p class="eyebrow">EncoristDers</p>
+  <h1>Güz 2026–2027 Vize</h1>
+  <p class="lead">Güz 2026–2027 vize çalışma siteleri. Kartın üstüne gel, açılacak sitenin temasını gör.</p>
+  <ul class="stats"><li><b>5</b>ders</li><li>Almanca · Mobil · Python · Java · SQL</li></ul>
 
   <div class="grid">
     <a class="card ger" href="ger101/" aria-label="GER101 Almanca I sitesini aç">
@@ -398,24 +398,6 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
       </div>
     </a>
 
-    <a class="card piano" href="piano/" aria-label="Piano notes nota okuma sitesini aç">
-      <div class="flip">
-        <div class="face front">
-          <span class="tag">Piyano</span>
-          <h2>Piano notes</h2>
-          <p>Nota okuma çalışması: porte, notalar ve alıştırmalar.</p>
-        </div>
-        <div class="face back" aria-hidden="true">
-          <span class="wm">Piyano</span>
-          <div class="ui-bar"><i class="on">Genel Tekrar</i><i>Alıştırma</i></div>
-          <div class="ui-body">
-            <span class="b-title sm">Je te laisserai des notes</span>
-            <div class="staffbox"><svg viewBox="0 0 240 62" fill="none" stroke="currentColor"><g stroke-width="1" opacity=".55"><path d="M0 10H240M0 20H240M0 30H240M0 40H240M0 50H240"/></g><g fill="currentColor" stroke="none"><ellipse cx="62" cy="45" rx="6.2" ry="4.4" transform="rotate(-20 62 45)"/><ellipse cx="104" cy="35" rx="6.2" ry="4.4" transform="rotate(-20 104 35)"/><ellipse cx="146" cy="25" rx="6.2" ry="4.4" transform="rotate(-20 146 25)"/><ellipse cx="188" cy="15" rx="6.2" ry="4.4" transform="rotate(-20 188 15)"/></g><g stroke-width="1.6"><path d="M67.5 43V14M109.5 33V4M140.5 27V56M182.5 17V46"/></g></svg></div>
-            <span class="go">Siteyi aç →</span>
-          </div>
-        </div>
-      </div>
-    </a>
   </div>
   <section class="more" aria-label="Ek bölümler">
     <h2 class="sec">Hızlı erişim</h2>
@@ -451,15 +433,11 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
         <a href="mbp203/#tekrar/iliskisel">ER diyagramı ve anahtarlar<span>→</span></a>
         <a href="mbp203/#tekrar/ileri2">JOIN türleri<span>→</span></a>
       </div>
-      <div class="ql" style="--c:#b48a49"><p class="ql-h"><i></i>Piano notes</p>
-        <a href="piano/#tekrar">Nota tekrarı<span>→</span></a>
-        <a href="piano/#test">Alıştırmalar<span>→</span></a>
-      </div>
     </div>
     <div class="duo">
       <div class="panel"><h2 class="sec">Son eklenenler</h2><ol class="tl">
         <li style="--c:#00758f"><b>MBP203 · Veri Tabanı ve Yönetimi</b><span>Yeni site: 7 konu özeti (MySQL), ER diyagramları, 217 soru, 5 deneme sınavı (17 test + 2 boşluk + 1 eşleştirme); SQL cevapları gerçek veri tabanında doğrulandı.</span></li>
-        <li style="--c:#7095ff"><b>Tüm siteler · yeni arayüz</b><span>Kartlar ve siteler Starter Python düzeninde; Piano notes da aynı görünüme geçti.</span></li>
+        <li style="--c:#7095ff"><b>Tüm siteler · yeni arayüz</b><span>Kartlar ve siteler Starter Python düzeninde. Piano notes DersForAll'a taşındı.</span></li>
         <li style="--c:#d9600b"><b>MBP205 · Nesne Tabanlı Programlama II</b><span>Yeni site: tahtadaki konular, UML çizimleri, 7 soruluk açık uçlu yazılı prova (21 soru, model cevaplar), 121 test sorusu.</span></li>
         <li style="--c:#7095ff"><b>Tüm siteler · Yanlışlarım, arama, sesli okuma</b><span>Yanlış yaptığın sorular ayrı testte birikir; 🔍 ile site içinde ara; Almanca ve İngilizce kelimeleri dinle.</span></li>
         <li style="--c:#7095ff"><b>MBP207 Görsel Programlama</b><span>Python vizesi için test, boşluk doldurma, kod tamamlama ve yazma soruları.</span></li>
@@ -471,6 +449,17 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
       </ol></div>
     </div>
   </section>
+  </section>
+
+  <section id="final" hidden>
+    <a class="back-link" href="#">← Ne çalışmak istiyorsun?</a>
+    <p class="eyebrow">EncoristDers</p>
+    <h1>Güz 2026–2027 Final</h1>
+    <div class="final-empty">
+      <b>Henüz burada bir şey yok</b>
+      <span>Final çalışma siteleri hazırlandıkça bu sayfaya kart olarak eklenecek. Vize siteleri bu arada açık.</span>
+      <a href="#vize">Vize sitelerine git →</a>
+    </div>
   </section>
 </main>
 <footer><span>EncoristDers · GitHub Pages</span><span>Emirhan Öz · 2026 · <a href="https://github.com/Emirhan-Ozz/EncoristDers">GitHub</a></span></footer>
@@ -502,11 +491,13 @@ addEventListener('pagereveal',function(e){if(!e.viewTransition)return;try{var a=
 </script>
 <script>
 (function(){
-  var home = document.getElementById('home'), ders = document.getElementById('dersler');
+  var V = { '': document.getElementById('home'), '#vize': document.getElementById('vize'), '#final': document.getElementById('final') };
+  var T = { '': 'EncoristDers · Ne çalışmak istiyorsun?', '#vize': 'Güz 2026–2027 Vize · EncoristDers', '#final': 'Güz 2026–2027 Final · EncoristDers' };
   function route(){
-    var d = location.hash === '#dersler';
-    home.hidden = d; ders.hidden = !d;
-    document.title = d ? 'Dersler · EncoristDers' : 'EncoristDers · Ne çalışmak istiyorsun?';
+    var h = location.hash === '#dersler' ? '#vize' : location.hash;
+    if (!V[h]) h = '';
+    for (var k in V) V[k].hidden = k !== h;
+    document.title = T[h];
     document.querySelectorAll('a.card').forEach(function(c){ c.classList.remove('hov','flipped','settled','snap','p3d'); });
     scrollTo(0, 0);
   }
